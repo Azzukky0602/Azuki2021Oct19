@@ -21,8 +21,8 @@ st.header('南関東')
 
 st.write('   ')
 st.info('【参考】テキトー指数の使い方  \nhttps://note.com/tekito_lab/n/n3342d6531772')
-st.info('JRAはこちら  \nhttps://share.streamlit.io/azzukky/tekito0612/main/WEBJRA.py')
-st.info('園田・姫路・門別・地方交流はこちら  \nhttps://share.streamlit.io/azzukky/tekito0612/main/WEBkoryu.py')
+st.info('JRAはこちら  \nhttps://share.streamlit.io/azzukky0602/azuki2021oct19/main/WEBJRA.py')
+st.info('園田・姫路・門別・地方交流はこちら  \nhttps://share.streamlit.io/azzukky0602/azuki2021oct19/main/WEBkoryu.py')
 
 
 st.write('   ')
