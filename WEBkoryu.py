@@ -85,14 +85,12 @@ elif basho == '盛岡':
 else:
     place = "0"    
 
-#kai = st.number_input('【半角数字】第何回開催？', 1, 25, 1)
 
-#day = st.number_input('【半角数字】何日目？', 1, 6, 3)
 
 race = st.number_input('【半角数字】レース番号？', 1, 12, 11)
 
 race_for_keisan = nengappi + place + '00' + '00' + str(str(race).zfill(2))
-#race_for_keisan = nengappi + place + str(str(kai).zfill(2)) + str(str(day).zfill(2)) + str(str(race).zfill(2))
+
 
 push = st.button('計算！')
 if push == True:
