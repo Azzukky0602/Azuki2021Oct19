@@ -906,7 +906,7 @@ if push == True:
     hyo4.set_index("順位", inplace=True)
     
     st.write(race_name[:-26])
-    st.table(hyo4)
+    st.dataframe(hyo4)
 
 else:
     st.write('・・・・・・・・')
