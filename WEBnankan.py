@@ -246,7 +246,7 @@ if push == True:
                         kijun = 450
                     elif  'Ｊｐｎ２' in p_df.iloc[t]['レース名2'] and p_df.iloc[t]['日付2'] >= dt(kotoshi, 7, 1):  
                         kijun = 600                        
-                    elif  'Ｊｐｎ３' in p_df.iloc[t]['レース名2'] and p_df.iloc[t]['日付2'] <= dt(kotoshi 6, 30):  
+                    elif  'Ｊｐｎ３' in p_df.iloc[t]['レース名2'] and p_df.iloc[t]['日付2'] <= dt(kotoshi, 6, 30):  
                         kijun = 415
                     elif  'Ｊｐｎ３' in p_df.iloc[t]['レース名2'] and p_df.iloc[t]['日付2'] >= dt(kotoshi1, 7, 1):  
                         kijun = 500                        
