@@ -43,13 +43,14 @@ jst_time_today = utc_time.astimezone(timezone(td(hours=+9)))
 jst_date_today = jst_time_today.strftime('%Y%m%d')
 jst_time_tomorrow = jst_time_today + td(days = 1)
 jst_date_tomorrow = jst_time_tomorrow.strftime('%Y%m%d')
+kotoshi = jst_time_today.year
 
 if yosoubi == '今日':
     nengappi = jst_date_today
 elif yosoubi == '明日':
     nengappi = jst_date_tomorrow
 elif yosoubi == '日付入力':
-    nengappi = '2021' + st.text_input('レースの日付を入力：例0628')    
+    nengappi = str(kotoshi) + st.text_input('レースの日付を入力：例0628')
     
 basho = st.radio('開催場所？', ['園田', '姫路', '門別', '大井', '船橋', '川崎', '浦和', '盛岡', '水沢', '金沢', '笠松', '名古屋', '高知', '佐賀'])
 
@@ -84,14 +85,10 @@ elif basho == '盛岡':
 else:
     place = "0"    
 
-#kai = st.number_input('【半角数字】第何回開催？', 1, 25, 1)
-
-#day = st.number_input('【半角数字】何日目？', 1, 6, 3)
 
 race = st.number_input('【半角数字】レース番号？', 1, 12, 11)
 
 race_for_keisan = nengappi + place + '00' + '00' + str(str(race).zfill(2))
-#race_for_keisan = nengappi + place + str(str(kai).zfill(2)) + str(str(day).zfill(2)) + str(str(race).zfill(2))
 
 push = st.button('計算！')
 if push == True:
