@@ -43,6 +43,7 @@ jst_time_today = utc_time.astimezone(timezone(td(hours=+9)))
 jst_date_today = jst_time_today.strftime('%Y%m%d')
 jst_time_tomorrow = jst_time_today + td(days = 1)
 jst_date_tomorrow = jst_time_tomorrow.strftime('%Y%m%d')
+kotoshi = jst_time_today.year
 
 yosoubi = st.radio('いつのレース？', ['今日', '明日', '日付入力'])
 
@@ -51,7 +52,7 @@ if yosoubi == '今日':
 elif yosoubi == '明日':
     nengappi = jst_date_tomorrow
 elif yosoubi == '日付入力':
-    nengappi = '2021' + st.text_input('レースの日付を入力：例0628')
+    nengappi = str(kotoshi) + st.text_input('レースの日付を入力：例0628')
 
 basho = st.radio('開催場所？', ['大井', '船橋', '川崎', '浦和'])
 
@@ -237,37 +238,37 @@ if push == True:
                     elif 'Ｊ' in p_df.iloc[t]['競馬場'] and '新馬' in p_df.iloc[t]['レース名2']:
                         kijun = 200    
 
-                    elif 'Ｊｐｎ１' in p_df.iloc[t]['レース名2'] and p_df.iloc[t]['日付2'] <= dt(2021, 6, 30):  
+                    elif 'Ｊｐｎ１' in p_df.iloc[t]['レース名2'] and p_df.iloc[t]['日付2'] <= dt(kotoshi, 6, 30):  
                         kijun = 500
-                    elif 'Ｊｐｎ１' in p_df.iloc[t]['レース名2'] and p_df.iloc[t]['日付2'] >= dt(2021, 7, 1):  
+                    elif 'Ｊｐｎ１' in p_df.iloc[t]['レース名2'] and p_df.iloc[t]['日付2'] >= dt(kotoshi, 7, 1):  
                         kijun = 700                        
-                    elif  'Ｊｐｎ２' in p_df.iloc[t]['レース名2'] and p_df.iloc[t]['日付2'] <= dt(2021, 6, 30):  
+                    elif  'Ｊｐｎ２' in p_df.iloc[t]['レース名2'] and p_df.iloc[t]['日付2'] <= dt(kotoshi, 6, 30):  
                         kijun = 450
-                    elif  'Ｊｐｎ２' in p_df.iloc[t]['レース名2'] and p_df.iloc[t]['日付2'] >= dt(2021, 7, 1):  
+                    elif  'Ｊｐｎ２' in p_df.iloc[t]['レース名2'] and p_df.iloc[t]['日付2'] >= dt(kotoshi, 7, 1):  
                         kijun = 600                        
-                    elif  'Ｊｐｎ３' in p_df.iloc[t]['レース名2'] and p_df.iloc[t]['日付2'] <= dt(2021, 6, 30):  
+                    elif  'Ｊｐｎ３' in p_df.iloc[t]['レース名2'] and p_df.iloc[t]['日付2'] <= dt(kotoshi 6, 30):  
                         kijun = 415
-                    elif  'Ｊｐｎ３' in p_df.iloc[t]['レース名2'] and p_df.iloc[t]['日付2'] >= dt(2021, 7, 1):  
+                    elif  'Ｊｐｎ３' in p_df.iloc[t]['レース名2'] and p_df.iloc[t]['日付2'] >= dt(kotoshi1, 7, 1):  
                         kijun = 500                        
 
 
-                    elif p_df.iloc[t]['競馬場'] in nankan and 'Ｓ１' in p_df.iloc[t]['レース名2'] and p_df.iloc[t]['日付2'] <= dt(2021, 6, 30):  
+                    elif p_df.iloc[t]['競馬場'] in nankan and 'Ｓ１' in p_df.iloc[t]['レース名2'] and p_df.iloc[t]['日付2'] <= dt(kotoshi, 6, 30):  
                         kijun = 350
-                    elif p_df.iloc[t]['競馬場'] in nankan and 'Ｓ１' in p_df.iloc[t]['レース名2'] and p_df.iloc[t]['日付2'] >= dt(2021, 7, 1):  
+                    elif p_df.iloc[t]['競馬場'] in nankan and 'Ｓ１' in p_df.iloc[t]['レース名2'] and p_df.iloc[t]['日付2'] >= dt(kotoshi, 7, 1):  
                         kijun = 500                        
-                    elif p_df.iloc[t]['競馬場'] in nankan and 'Ｓ２' in p_df.iloc[t]['レース名2'] and p_df.iloc[t]['日付2'] <= dt(2021, 6, 30):  
+                    elif p_df.iloc[t]['競馬場'] in nankan and 'Ｓ２' in p_df.iloc[t]['レース名2'] and p_df.iloc[t]['日付2'] <= dt(kotoshi, 6, 30):  
                         kijun = 320
-                    elif p_df.iloc[t]['競馬場'] in nankan and 'Ｓ２' in p_df.iloc[t]['レース名2'] and p_df.iloc[t]['日付2'] >= dt(2021, 7, 1):  
+                    elif p_df.iloc[t]['競馬場'] in nankan and 'Ｓ２' in p_df.iloc[t]['レース名2'] and p_df.iloc[t]['日付2'] >= dt(kotoshi, 7, 1):  
                         kijun = 450                         
-                    elif p_df.iloc[t]['競馬場'] in nankan and 'Ｓ３' in p_df.iloc[t]['レース名2'] and p_df.iloc[t]['日付2'] <= dt(2021, 6, 30):  
+                    elif p_df.iloc[t]['競馬場'] in nankan and 'Ｓ３' in p_df.iloc[t]['レース名2'] and p_df.iloc[t]['日付2'] <= dt(kotoshi, 6, 30):  
                         kijun = 300
-                    elif p_df.iloc[t]['競馬場'] in nankan and 'Ｓ３' in p_df.iloc[t]['レース名2'] and p_df.iloc[t]['日付2'] >= dt(2021, 7, 1):  
+                    elif p_df.iloc[t]['競馬場'] in nankan and 'Ｓ３' in p_df.iloc[t]['レース名2'] and p_df.iloc[t]['日付2'] >= dt(kotoshi, 7, 1):  
                         kijun = 400                         
                     elif p_df.iloc[t]['競馬場'] in nankan and ('オープン' in p_df.iloc[t]['レース名2'])\
-                      and ('Ｓ' and 'Ａ' and 'Ｂ' and 'Ｃ' not in p_df.iloc[t]['レース名2']) and p_df.iloc[t]['日付2'] <= dt(2021, 6, 30): 
+                      and ('Ｓ' and 'Ａ' and 'Ｂ' and 'Ｃ' not in p_df.iloc[t]['レース名2']) and p_df.iloc[t]['日付2'] <= dt(kotoshi, 6, 30): 
                         kijun = 240
                     elif p_df.iloc[t]['競馬場'] in nankan and ('オープン' in p_df.iloc[t]['レース名2'])\
-                      and ('Ｓ' and 'Ａ' and 'Ｂ' and 'Ｃ' not in p_df.iloc[t]['レース名2']) and p_df.iloc[t]['日付2'] >= dt(2021, 7, 1): 
+                      and ('Ｓ' and 'Ａ' and 'Ｂ' and 'Ｃ' not in p_df.iloc[t]['レース名2']) and p_df.iloc[t]['日付2'] >= dt(kotoshi, 7, 1): 
                         kijun = 350
 
                     elif p_df.iloc[t]['競馬場'] in nankan and 'Ａ１' in p_df.iloc[t]['レース名2']:  
@@ -442,37 +443,37 @@ if push == True:
                         elif 'Ｊ' in p_df.iloc[t]['競馬場'] and '新馬' in p_df.iloc[t]['レース名2']:
                             kijun = 200    
 
-                        elif 'Ｊｐｎ１' in p_df.iloc[t]['レース名2'] and p_df.iloc[t]['日付2'] <= dt(2021, 6, 30):  
+                        elif 'Ｊｐｎ１' in p_df.iloc[t]['レース名2'] and p_df.iloc[t]['日付2'] <= dt(kotoshi, 6, 30):  
                             kijun = 500
-                        elif 'Ｊｐｎ１' in p_df.iloc[t]['レース名2'] and p_df.iloc[t]['日付2'] >= dt(2021, 7, 1):  
+                        elif 'Ｊｐｎ１' in p_df.iloc[t]['レース名2'] and p_df.iloc[t]['日付2'] >= dt(kotoshi, 7, 1):  
                             kijun = 700                        
-                        elif  'Ｊｐｎ２' in p_df.iloc[t]['レース名2'] and p_df.iloc[t]['日付2'] <= dt(2021, 6, 30):  
+                        elif  'Ｊｐｎ２' in p_df.iloc[t]['レース名2'] and p_df.iloc[t]['日付2'] <= dt(kotoshi, 6, 30):  
                             kijun = 450
-                        elif  'Ｊｐｎ２' in p_df.iloc[t]['レース名2'] and p_df.iloc[t]['日付2'] >= dt(2021, 7, 1):  
+                        elif  'Ｊｐｎ２' in p_df.iloc[t]['レース名2'] and p_df.iloc[t]['日付2'] >= dt(kotoshi, 7, 1):  
                             kijun = 600                        
-                        elif  'Ｊｐｎ３' in p_df.iloc[t]['レース名2'] and p_df.iloc[t]['日付2'] <= dt(2021, 6, 30):  
+                        elif  'Ｊｐｎ３' in p_df.iloc[t]['レース名2'] and p_df.iloc[t]['日付2'] <= dt(kotoshi, 6, 30):  
                             kijun = 415
-                        elif  'Ｊｐｎ３' in p_df.iloc[t]['レース名2'] and p_df.iloc[t]['日付2'] >= dt(2021, 7, 1):  
+                        elif  'Ｊｐｎ３' in p_df.iloc[t]['レース名2'] and p_df.iloc[t]['日付2'] >= dt(kotoshi, 7, 1):  
                             kijun = 500                        
 
 
-                        elif p_df.iloc[t]['競馬場'] in nankan and 'Ｓ１' in p_df.iloc[t]['レース名2'] and p_df.iloc[t]['日付2'] <= dt(2021, 6, 30):  
+                        elif p_df.iloc[t]['競馬場'] in nankan and 'Ｓ１' in p_df.iloc[t]['レース名2'] and p_df.iloc[t]['日付2'] <= dt(kotoshi, 6, 30):  
                             kijun = 350
-                        elif p_df.iloc[t]['競馬場'] in nankan and 'Ｓ１' in p_df.iloc[t]['レース名2'] and p_df.iloc[t]['日付2'] >= dt(2021, 7, 1):  
+                        elif p_df.iloc[t]['競馬場'] in nankan and 'Ｓ１' in p_df.iloc[t]['レース名2'] and p_df.iloc[t]['日付2'] >= dt(kotoshi, 7, 1):  
                             kijun = 500                        
-                        elif p_df.iloc[t]['競馬場'] in nankan and 'Ｓ２' in p_df.iloc[t]['レース名2'] and p_df.iloc[t]['日付2'] < dt(2021, 6, 30):  
+                        elif p_df.iloc[t]['競馬場'] in nankan and 'Ｓ２' in p_df.iloc[t]['レース名2'] and p_df.iloc[t]['日付2'] < dt(kotoshi, 6, 30):  
                             kijun = 320
-                        elif p_df.iloc[t]['競馬場'] in nankan and 'Ｓ２' in p_df.iloc[t]['レース名2'] and p_df.iloc[t]['日付2'] >= dt(2021, 7, 1):  
+                        elif p_df.iloc[t]['競馬場'] in nankan and 'Ｓ２' in p_df.iloc[t]['レース名2'] and p_df.iloc[t]['日付2'] >= dt(kotoshi, 7, 1):  
                             kijun = 450                         
-                        elif p_df.iloc[t]['競馬場'] in nankan and 'Ｓ３' in p_df.iloc[t]['レース名2'] and p_df.iloc[t]['日付2'] < dt(2021, 6, 30):  
+                        elif p_df.iloc[t]['競馬場'] in nankan and 'Ｓ３' in p_df.iloc[t]['レース名2'] and p_df.iloc[t]['日付2'] < dt(kotoshi, 6, 30):  
                             kijun = 300
-                        elif p_df.iloc[t]['競馬場'] in nankan and 'Ｓ３' in p_df.iloc[t]['レース名2'] and p_df.iloc[t]['日付2'] >= dt(2021, 7, 1):  
+                        elif p_df.iloc[t]['競馬場'] in nankan and 'Ｓ３' in p_df.iloc[t]['レース名2'] and p_df.iloc[t]['日付2'] >= dt(kotoshi, 7, 1):  
                             kijun = 400                         
                         elif p_df.iloc[t]['競馬場'] in nankan and ('オープン' in p_df.iloc[t]['レース名2'])\
-                          and ('Ｓ' and 'Ａ' and 'Ｂ' and 'Ｃ' not in p_df.iloc[t]['レース名2']) and p_df.iloc[t]['日付2'] <= dt(2021, 6, 30): 
+                          and ('Ｓ' and 'Ａ' and 'Ｂ' and 'Ｃ' not in p_df.iloc[t]['レース名2']) and p_df.iloc[t]['日付2'] <= dt(kotoshi, 6, 30): 
                             kijun = 240
                         elif p_df.iloc[t]['競馬場'] in nankan and ('オープン' in p_df.iloc[t]['レース名2'])\
-                          and ('Ｓ' and 'Ａ' and 'Ｂ' and 'Ｃ' not in p_df.iloc[t]['レース名2']) and p_df.iloc[t]['日付2'] >= dt(2021, 7, 1): 
+                          and ('Ｓ' and 'Ａ' and 'Ｂ' and 'Ｃ' not in p_df.iloc[t]['レース名2']) and p_df.iloc[t]['日付2'] >= dt(kotoshi, 7, 1): 
                             kijun = 350
                             
                             
@@ -862,7 +863,7 @@ if push == True:
 
     cl_list = []
     for i in range(len(hyo1)):
-        if racedate <= dt(2021, 6, 30):
+        if racedate <= dt(kotoshi, 6, 30):
 
             if hyo1.loc[i]['年齢'] == 3:
                 if 0 <= hyo1.loc[i]['賞金'] < 500:
@@ -971,7 +972,7 @@ if push == True:
             cl_list.append(present_cl)
 
 
-        if racedate >= dt(2021, 7, 1):
+        if racedate >= dt(kotoshi, 7, 1):
             if hyo1.loc[i]['年齢'] == 3:
                 if 0 <= hyo1.loc[i]['賞金'] < 200:
                     present_cl = "C3"
@@ -1090,7 +1091,7 @@ if push == True:
 
     ok_list = []
     for i in range(len(hyo1)):
-        if racedate <= dt(2021, 6, 30):
+        if racedate <= dt(kotoshi, 6, 30):
             
             if hyo1.loc[i]['年齢'] == 3:
                 if hyo1.loc[i]['クラス'] == 'ND':
@@ -1704,7 +1705,6 @@ if push == True:
 
     #後期
         else:
-        #if racedate >= dt(2021, 7, 1):
             if hyo1.loc[i]['年齢'] == 3:
 
                 if hyo1.loc[i]['クラス'] == 'C3':
