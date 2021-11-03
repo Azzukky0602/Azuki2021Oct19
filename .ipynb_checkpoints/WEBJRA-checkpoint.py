@@ -128,9 +128,12 @@ if push == True:
 
         horse_results = {}                                  
         for horse_id in syusso_list:
-            time.sleep(1)
-            url2 = 'https://db.netkeiba.com/horse/result/' + horse_id[:10]    
-            horse_results[horse_id] = pd.read_html(url2)[0]#.head(10)
+            try:                
+                time.sleep(1)
+                url2 = 'https://db.netkeiba.com/horse/result/' + horse_id[:10]    
+                horse_results[horse_id] = pd.read_html(url2)[0]#.head(10)
+            except:
+                pass
 
         past_results = copy.deepcopy(horse_results)   #個々から下のコードに影響されないhorse_resultsのコピーを作る。
 
