@@ -60,7 +60,7 @@ else:
     
 kai = st.number_input('【半角数字】第何回開催？', 1, 6, 1)
 day = st.number_input('【半角数字】何日目？', 1, 12, 6)
-race = st.number_input('【半角数字】レース番号？', 6, 12, 11)
+race = st.number_input('【半角数字】レース番号？', 1, 12, 11)
 
 race_for_keisan = str(place.zfill(2)) + str(str(kai).zfill(2)) + str(str(day).zfill(2)) + str(str(race).zfill(2))
 
