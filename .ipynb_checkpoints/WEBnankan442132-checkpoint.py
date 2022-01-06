@@ -116,16 +116,20 @@ if push == True:
 
         weight_list = []
         gender_list = []
-        age_list = []        
+        age_list = []
+        trainer_list = []
         for uma2 in profile:
             uma2_text = uma2.text
-            weight = re.findall(r'\d\d.\d', uma2_text)[0]
+            weight = re.findall(r'\S\S+', uma2_text)[2]
             weight_list.append(weight)
-            sei = re.findall(r'\D\d+', uma2_text)[0][0]
+            sei = re.findall(r'\S\S+', uma2_text)[0][0]
             gender_list.append(sei)
-            rei = re.findall(r'\D\d+', uma2_text)[0][1:]
+            rei = re.findall(r'\S\S+', uma2_text)[0][1:]
             age_list.append(rei)        
-
+            trainer = re.findall(r'\S\S+', uma2_text)[8]
+            trainer_list.append(trainer)
+            
+            
         syusso_list = [x1 + ' ' + x2 +  ' ' + x3 + ' ' + x4 for (x1, x2, x3, x4) in zip(horse_id_list, weight_list, gender_list, age_list)]
 
         jockey_list = []
@@ -799,6 +803,7 @@ if push == True:
     hyo1['指数'] = kekka.values()
     hyo1['賞金'] = horse_syokin_list
     hyo1['騎手'] = jockey_list
+    hyo1['調教師'] = trainer_list
     hyo1['年齢'] = age_list
     hyo1['斤量'] = weight_list
     hyo1['斤量'] = hyo1['斤量'].astype(float)
@@ -2343,7 +2348,7 @@ if push == True:
                 ok_list.append(ok)
 
     hyo1["許容着順"] = ok_list
-    hyo2 = hyo1[['順位', '馬番','馬名', '騎手', 'クラス', '許容着順', '前走', '指数', 'オッズ', '年齢']]
+    hyo2 = hyo1[['順位', '馬番','馬名', '騎手', '調教師', 'クラス', '許容着順', '前走', '指数', 'オッズ', '年齢']]
     hyo3 = hyo2.sort_values('順位')
     hyo3.set_index("順位", inplace=True)
 
