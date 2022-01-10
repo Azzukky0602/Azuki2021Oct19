@@ -126,7 +126,8 @@ if push == True:
             gender_list.append(sei)
             rei = re.findall(r'\S\S+', uma2_text)[0][1:]
             age_list.append(rei)        
-            trainer = re.findall(r'\S\S+', uma2_text)[8]
+            trainerX = re.findall(r'\D\D+', uma2_text)[4]
+            trainer = ''.join(trainerX.split())[2:]
             trainer_list.append(trainer)
             
             
