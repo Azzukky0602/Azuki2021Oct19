@@ -16,8 +16,10 @@ from datetime import timezone
 import copy
 
 
+
+
 st.title('テキトー指数研究所＠WEB')
-st.header('園田・姫路・門別・地方交流重賞')
+st.header('園田・姫路・門別・地方交流重賞　永久版')
 
 st.write('   ')
 st.info('【参考】テキトー指数の使い方  \nhttps://note.com/tekito_lab/n/n3342d6531772')
