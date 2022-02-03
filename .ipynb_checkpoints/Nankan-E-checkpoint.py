@@ -875,15 +875,15 @@ if push == True:
         if racedate <= dt(kotoshi, 6, 30):
 
             if hyo1.loc[i]['年齢'] == 3:
-                if 0 <= hyo1.loc[i]['賞金'] < 500:
+                if 0 <= hyo1.loc[i]['賞金'] < 600:
                     present_cl = "ND"
-                elif 500 <= hyo1.loc[i]['賞金'] < 800:
+                elif 500 <= hyo1.loc[i]['賞金'] < 1000:
                     present_cl = "B3"
-                elif 800 <= hyo1.loc[i]['賞金'] < 1100:
+                elif 800 <= hyo1.loc[i]['賞金'] < 1300:
                     present_cl = "B2"
-                elif 1100 <= hyo1.loc[i]['賞金'] < 1500:
+                elif 1100 <= hyo1.loc[i]['賞金'] < 1800:
                     present_cl = "B1"
-                elif 1500 <= hyo1.loc[i]['賞金'] < 2300:
+                elif 1500 <= hyo1.loc[i]['賞金'] < 2600:
                     present_cl = "A2"
                 else:
                     present_cl = "A1"                        
@@ -895,13 +895,13 @@ if push == True:
                     present_cl = "C2"
                 elif 400 <= hyo1.loc[i]['賞金'] < 700:
                     present_cl = "C1"
-                elif 700 <= hyo1.loc[i]['賞金'] < 1000:
+                elif 700 <= hyo1.loc[i]['賞金'] < 1100:
                     present_cl = "B3"
-                elif 1000 <= hyo1.loc[i]['賞金'] < 1400:
+                elif 1000 <= hyo1.loc[i]['賞金'] < 1500:
                     present_cl = "B2"
-                elif 1400 <= hyo1.loc[i]['賞金'] < 1900:
+                elif 1400 <= hyo1.loc[i]['賞金'] < 2000:
                     present_cl = "B1"
-                elif 1900 <= hyo1.loc[i]['賞金'] < 3000:
+                elif 1900 <= hyo1.loc[i]['賞金'] < 3300:
                     present_cl = "A2"
                 else:
                     present_cl = "A1"
@@ -909,17 +909,17 @@ if push == True:
             elif hyo1.loc[i]['年齢'] == 5:
                 if 0 <= hyo1.loc[i]['賞金'] < 400:
                     present_cl = "C3"
-                elif 400 <= hyo1.loc[i]['賞金'] < 600:
+                elif 400 <= hyo1.loc[i]['賞金'] < 700:
                     present_cl = "C2"
-                elif 600 <= hyo1.loc[i]['賞金'] < 900:
+                elif 600 <= hyo1.loc[i]['賞金'] < 1000:
                     present_cl = "C1"
-                elif 900 <= hyo1.loc[i]['賞金'] < 1300:
+                elif 900 <= hyo1.loc[i]['賞金'] < 1400:
                     present_cl = "B3"
-                elif 1300 <= hyo1.loc[i]['賞金'] < 1800:
+                elif 1300 <= hyo1.loc[i]['賞金'] < 1900:
                     present_cl = "B2"
-                elif 1800 <= hyo1.loc[i]['賞金'] < 2400:
+                elif 1800 <= hyo1.loc[i]['賞金'] < 2500:
                     present_cl = "B1"
-                elif 2400 <= hyo1.loc[i]['賞金'] < 3600:
+                elif 2400 <= hyo1.loc[i]['賞金'] < 4200:
                     present_cl = "A2"
                 else:
                     present_cl = "A1"
@@ -935,9 +935,9 @@ if push == True:
                     present_cl = "B3"
                 elif 1700 <= hyo1.loc[i]['賞金'] < 2300:
                     present_cl = "B2"
-                elif 2300 <= hyo1.loc[i]['賞金'] < 3000:
+                elif 2300 <= hyo1.loc[i]['賞金'] < 3200:
                     present_cl = "B1"
-                elif 3000 <= hyo1.loc[i]['賞金'] < 4700:
+                elif 3000 <= hyo1.loc[i]['賞金'] < 5000:
                     present_cl = "A2"
                 else:
                     present_cl = "A1"             
@@ -953,9 +953,9 @@ if push == True:
                     present_cl = "B3"
                 elif 2100 <= hyo1.loc[i]['賞金'] < 2800:
                     present_cl = "B2"
-                elif 2800 <= hyo1.loc[i]['賞金'] < 3500:
+                elif 2800 <= hyo1.loc[i]['賞金'] < 3800:
                     present_cl = "B1"
-                elif 3500 <= hyo1.loc[i]['賞金'] < 5300:
+                elif 3500 <= hyo1.loc[i]['賞金'] < 5600:
                     present_cl = "A2"
                 else:
                     present_cl = "A1"
@@ -967,13 +967,13 @@ if push == True:
                     present_cl = "C2"
                 elif 1500 <= hyo1.loc[i]['賞金'] < 1900:
                     present_cl = "C1"
-                elif 1900 <= hyo1.loc[i]['賞金'] < 2400:
+                elif 1900 <= hyo1.loc[i]['賞金'] < 2300:
                     present_cl = "B3"
                 elif 2400 <= hyo1.loc[i]['賞金'] < 3100:
                     present_cl = "B2"
-                elif 3100 <= hyo1.loc[i]['賞金'] < 3900:
+                elif 3100 <= hyo1.loc[i]['賞金'] < 4200:
                     present_cl = "B1"
-                elif 3900 <= hyo1.loc[i]['賞金'] < 5800:
+                elif 3900 <= hyo1.loc[i]['賞金'] < 6000:
                     present_cl = "A2"
                 else:
                     present_cl = "A1"         
@@ -989,13 +989,13 @@ if push == True:
                     present_cl = "C2"
                 elif 400 <= hyo1.loc[i]['賞金'] < 700:
                     present_cl = "C1"
-                elif 700 <= hyo1.loc[i]['賞金'] < 1000:
+                elif 700 <= hyo1.loc[i]['賞金'] < 1100:
                     present_cl = "B3"
-                elif 1000 <= hyo1.loc[i]['賞金'] < 1300:
+                elif 1000 <= hyo1.loc[i]['賞金'] < 1500:
                     present_cl = "B2"
-                elif 1300 <= hyo1.loc[i]['賞金'] < 1700:
+                elif 1300 <= hyo1.loc[i]['賞金'] < 2000:
                     present_cl = "B1"
-                elif 1700 <= hyo1.loc[i]['賞金'] < 2500:
+                elif 1700 <= hyo1.loc[i]['賞金'] < 2800:
                     present_cl = "A2"
                 else:
                     present_cl = "A1"
@@ -1007,13 +1007,13 @@ if push == True:
                     present_cl = "C2"
                 elif 500 <= hyo1.loc[i]['賞金'] < 800:
                     present_cl = "C1"
-                elif 800 <= hyo1.loc[i]['賞金'] < 1100:
+                elif 800 <= hyo1.loc[i]['賞金'] < 1200:
                     present_cl = "B3"
-                elif 1100 <= hyo1.loc[i]['賞金'] < 1600:
+                elif 1100 <= hyo1.loc[i]['賞金'] < 1700:
                     present_cl = "B2"
-                elif 1600 <= hyo1.loc[i]['賞金'] < 2000:
+                elif 1600 <= hyo1.loc[i]['賞金'] < 2200:
                     present_cl = "B1"
-                elif 2000 <= hyo1.loc[i]['賞金'] < 3300:
+                elif 2000 <= hyo1.loc[i]['賞金'] < 3500:
                     present_cl = "A2"
                 else:
                     present_cl = "A1"
@@ -1021,17 +1021,17 @@ if push == True:
             elif hyo1.loc[i]['年齢'] == 5:
                 if 0 <= hyo1.loc[i]['賞金'] < 500:
                     present_cl = "C3"
-                elif 500 <= hyo1.loc[i]['賞金'] < 700:
+                elif 500 <= hyo1.loc[i]['賞金'] < 800:
                     present_cl = "C2"
-                elif 700 <= hyo1.loc[i]['賞金'] < 1000:
+                elif 700 <= hyo1.loc[i]['賞金'] < 1100:
                     present_cl = "C1"
-                elif 1000 <= hyo1.loc[i]['賞金'] < 1400:
+                elif 1000 <= hyo1.loc[i]['賞金'] < 1500:
                     present_cl = "B3"
                 elif 1400 <= hyo1.loc[i]['賞金'] < 2100:
                     present_cl = "B2"
-                elif 2100 <= hyo1.loc[i]['賞金'] < 2500:
+                elif 2100 <= hyo1.loc[i]['賞金'] < 2700:
                     present_cl = "B1"
-                elif 2500 <= hyo1.loc[i]['賞金'] < 4100:
+                elif 2500 <= hyo1.loc[i]['賞金'] < 4400:
                     present_cl = "A2"
                 else:
                     present_cl = "A1"
@@ -1047,9 +1047,9 @@ if push == True:
                     present_cl = "B3"
                 elif 1800 <= hyo1.loc[i]['賞金'] < 2500:
                     present_cl = "B2"
-                elif 2500 <= hyo1.loc[i]['賞金'] < 3100:
+                elif 2500 <= hyo1.loc[i]['賞金'] < 3400:
                     present_cl = "B1"
-                elif 3100 <= hyo1.loc[i]['賞金'] < 4800:
+                elif 3100 <= hyo1.loc[i]['賞金'] < 5200:
                     present_cl = "A2"
                 else:
                     present_cl = "A1"             
@@ -1065,9 +1065,9 @@ if push == True:
                     present_cl = "B3"
                 elif 2200 <= hyo1.loc[i]['賞金'] < 3000:
                     present_cl = "B2"
-                elif 3000 <= hyo1.loc[i]['賞金'] < 3700:
+                elif 3000 <= hyo1.loc[i]['賞金'] < 4100:
                     present_cl = "B1"
-                elif 3700 <= hyo1.loc[i]['賞金'] < 5500:
+                elif 3700 <= hyo1.loc[i]['賞金'] < 5900:
                     present_cl = "A2"
                 else:
                     present_cl = "A1"
@@ -1079,13 +1079,13 @@ if push == True:
                     present_cl = "C2"
                 elif 1500 <= hyo1.loc[i]['賞金'] < 1900:
                     present_cl = "C1"
-                elif 1900 <= hyo1.loc[i]['賞金'] < 2400:
+                elif 1900 <= hyo1.loc[i]['賞金'] < 2300:
                     present_cl = "B3"
                 elif 2400 <= hyo1.loc[i]['賞金'] < 3100:
                     present_cl = "B2"
-                elif 3200 <= hyo1.loc[i]['賞金'] < 3900:
+                elif 3200 <= hyo1.loc[i]['賞金'] < 4200:
                     present_cl = "B1"
-                elif 3900 <= hyo1.loc[i]['賞金'] < 5800:
+                elif 3900 <= hyo1.loc[i]['賞金'] < 6000:
                     present_cl = "A2"
                 else:
                     present_cl = "A1"
