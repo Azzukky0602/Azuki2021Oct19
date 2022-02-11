@@ -886,7 +886,7 @@ if push == True:
                 else:
                     present_cl = "A1"                        
             
-            if hyo1.loc[i]['年齢'] == 4:
+            elif hyo1.loc[i]['年齢'] == 4:
                 if 0 <= hyo1.loc[i]['賞金'] < 200:
                     present_cl = "C3"
                 elif 200 <= hyo1.loc[i]['賞金'] < 400:
@@ -1619,7 +1619,7 @@ if push == True:
                     else:
                         ok = "1着でも現級"
                                
-                if hyo1.loc[i]['クラス'] == 'C2':
+                elif hyo1.loc[i]['クラス'] == 'C2':
                     if hyo1.loc[i]['賞金'] + race_syokin[4] >= 1500:
                         ok = "5着で昇級"
                     elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 1500:
