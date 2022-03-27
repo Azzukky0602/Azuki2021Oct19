@@ -699,8 +699,8 @@ if push == True:
         time.sleep(1)
         url_b = 'https://db.netkeiba.com/horse/' + uma_b
         uma_data = pd.read_html(url_b)[1]
-        starion = uma_data[uma_data[0].str.contains('生産者')].iat[0,1]
-        owner = uma_data[uma_data[0].str.contains('馬主')].iat[0,1]
+        starion = uma_data[uma_data[0].str.contains('生産者')].iat[0,1][:4]
+        owner = uma_data[uma_data[0].str.contains('馬主')].iat[0,1][:4]
         starion_list.append(starion)
         owner_list.append(owner)
     
@@ -708,12 +708,12 @@ if push == True:
     hyo2['馬主'] = owner_list
 
 #生産者補正
-    hyo2.loc[hyo2['馬主'] == 'シルクレーシング', '指数'] = hyo2['指数'] * 1.05
-    hyo2.loc[hyo2['馬主'] == 'キャロットファーム', '指数'] = hyo2['指数'] * 1.05
-    hyo2.loc[hyo2['馬主'] == 'サンデーレーシング', '指数'] = hyo2['指数'] * 1.05
+    hyo2.loc[hyo2['馬主'] == 'シルクレ', '指数'] = hyo2['指数'] * 1.05
+    hyo2.loc[hyo2['馬主'] == 'キャロッ', '指数'] = hyo2['指数'] * 1.05
+    hyo2.loc[hyo2['馬主'] == 'サンデー', '指数'] = hyo2['指数'] * 1.05
 
 #馬主補正
-    hyo2.loc[hyo2['生産者'] == 'ノーザンファーム', '指数'] = hyo2['指数'] * 1.05
+    hyo2.loc[hyo2['生産者'] == 'ノーザン', '指数'] = hyo2['指数'] * 1.05
     
 
     
