@@ -702,7 +702,7 @@ if push == True:
         url_b = 'https://db.netkeiba.com/horse/' + uma_b
         uma_data = pd.read_html(url_b)[1]
         starion = uma_data[uma_data[0].str.contains('生産者')].iat[0,1][:4]
-        owner = uma_data[uma_data[0].str.contains('馬主')].iat[0,1][:4]
+        owner = uma_data[uma_data[0].str.contains('馬主')].iat[0,1][:4
         starion_list.append(starion)
         owner_list.append(owner)
     
