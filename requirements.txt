@@ -1,4 +1,4 @@
 beautifulsoup4
 requests
 lxml
-streamlit==0.69.0
+streamlit
