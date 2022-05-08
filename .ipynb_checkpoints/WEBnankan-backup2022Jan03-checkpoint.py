@@ -14,6 +14,7 @@ from datetime import datetime as dt
 from datetime import timedelta as td
 from datetime import timezone
 import copy
+import numpy as np
 
 
 st.title('テキトー指数研究所＠WEB')
@@ -2324,8 +2325,22 @@ if push == True:
 
                 ok_list.append(ok)
 
+                
+#偏差値計算    
+    final_shisu = hyo1['指数'].to_list()
+    ave = np.average(final_shisu)
+    std = np.std(final_shisu)
+
+    deviation = []
+    for i in final_shisu:
+      deviation_value = '{:.1f}'.format(float((i - ave) / std * 10 + 50), 1)
+      deviation.append(deviation_value)
+
+    hyo1['偏差値'] = deviation
+           
+                
     hyo1["許容着順"] = ok_list
-    hyo2 = hyo1[['順位', '馬番','馬名','騎手', '調教師', 'クラス', '許容着順', '指数', '年齢']]
+    hyo2 = hyo1[['順位', '馬番','馬名', '騎手', '調教師', 'クラス', '許容着順', '前走', '指数', '偏差値', 'オッズ', '年齢']]
     hyo3 = hyo2.sort_values('順位')
     hyo3.set_index("順位", inplace=True)
 
