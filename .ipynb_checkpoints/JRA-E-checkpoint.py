@@ -14,7 +14,7 @@ from datetime import datetime as dt
 from datetime import timedelta as td
 from datetime import timezone
 import copy
-
+import numpy as np
 
 
 
@@ -905,9 +905,25 @@ if push == True:
     
     
     hyo2['指数']= hyo2['指数'].astype(int)
+
+#偏差値計算    
+    final_shisu = hyo2['指数'].to_list()
+    ave = np.average(final_shisu)
+    std = np.std(final_shisu)
+
+    deviation = []
+    for i in final_shisu:
+      deviation_value = '{:.1f}'.format(float((i - ave) / std * 10 + 50), 1)
+      deviation.append(deviation_value)
+
+    hyo2['偏差値'] = deviation
+    
+    
+    
+    
     hyo2['斤量']= hyo2['斤量'].astype(str)
     hyo2['順位'] = hyo2['指数'].rank(ascending=False).astype(int)    
-    hyo3 = hyo2.iloc[:,[13,1,2,9,3,4,7,8,5,11,12]]
+    hyo3 = hyo2.iloc[:,[14,1,2,9,13,3,4,7,8,5,11,12]]    
     hyo4 = hyo3.sort_values('順位')
     hyo4.set_index("順位", inplace=True)
     
