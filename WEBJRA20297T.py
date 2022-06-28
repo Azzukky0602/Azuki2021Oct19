@@ -981,7 +981,7 @@ if push == True:
     
     hyo2['斤量']= hyo2['斤量'].astype(str)
     hyo2['順位'] = hyo2['指数'].rank(ascending=False).astype(int)    
-    hyo3 = hyo2.iloc[:,[14,1,2,13,3,4,7,8,5,11,12]]
+    hyo3 = hyo2.iloc[:,[14,1,2,9,13,3,4,7,8,5,11,12]]
     hyo4 = hyo3.sort_values('順位')
     hyo4.set_index("順位", inplace=True)
     
