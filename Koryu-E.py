@@ -984,7 +984,7 @@ if push == True:
     
     hyo1['年齢'] = hyo1['年齢'].astype(int)
     hyo1['順位'] = hyo1['指数'].rank(ascending=False).astype(int)
-    hyo2 = hyo1[['順位', '馬番', '馬名', '前走', '偏差値', 'オッズ', '騎手', '年齢']]
+    hyo2 = hyo1[['順位', '馬番', '馬名', '前走', '指数', '偏差値', 'オッズ', '騎手', '年齢']]
     hyo3 = hyo2.sort_values('順位')
     hyo3.set_index("順位", inplace=True)
     
