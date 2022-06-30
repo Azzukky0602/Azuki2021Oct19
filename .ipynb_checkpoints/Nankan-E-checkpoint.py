@@ -19,7 +19,6 @@ import copy
 import numpy as np
 
 
-
 st.title('テキトー指数研究所＠WEB')
 st.header('南関東　永久版')
 
