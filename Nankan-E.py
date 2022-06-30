@@ -25,8 +25,6 @@ st.header('南関東　永久版')
 st.write('   ')
 st.info('【参考】テキトー指数の使い方  \nhttps://note.com/tekito_lab/n/n3342d6531772')
 st.info('【参考】南関東競馬の賞金理論  \nhttps://note.com/tekito_lab/n/n9583c0fa9d75')
-st.info('JRAはこちら  \nhttps://azzukky0602-azuki2021oct19-jra-e-43nrcn.streamlitapp.com/')
-st.info('園田・姫路・門別・地方交流はこちら  \nhttps://azzukky0602-azuki2021oct19-koryu-e-l6gglf.streamlitapp.com/')
 
 st.write('   ')
 st.write('   ')
