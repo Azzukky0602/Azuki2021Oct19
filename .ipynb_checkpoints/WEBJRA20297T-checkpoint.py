@@ -22,8 +22,6 @@ st.header('JRA')
 
 st.write('   ')
 st.info('【参考】テキトー指数の使い方  \nhttps://note.com/tekito_lab/n/n3342d6531772')
-st.info('南関東はこちら  \nhttps://azzukky0602-azuki2021oct19-webnankan20297t-nmovp3.streamlitapp.com/')
-st.info('園田・姫路・門別・地方交流はこちら  \nhttps://azzukky0602-azuki2021oct19-webkoryu20297t-zkxmnp.streamlitapp.com/')
 st.info('開催回、開催日を確認してください  \nhttps://www.jra.go.jp/')
 
 st.write('   ')
