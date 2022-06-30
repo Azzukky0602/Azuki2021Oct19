@@ -22,8 +22,8 @@ st.header('園田・姫路・門別・地方交流重賞')
 
 st.write('   ')
 st.info('【参考】テキトー指数の使い方  \nhttps://note.com/tekito_lab/n/n3342d6531772')
-st.info('JRAはこちら  \nhttps://share.streamlit.io/azzukky0602/azuki2021oct19/main/WEBJRA20297T.py')
-st.info('南関東はこちら  \nhttps://share.streamlit.io/azzukky0602/azuki2021oct19/main/WEBnankan20297T.py')
+st.info('JRAはこちら  \nhttps://azzukky0602-azuki2021oct19-webjra20297t-jqbgff.streamlitapp.com/')
+st.info('南関東はこちら  \nhttps://azzukky0602-azuki2021oct19-webnankan20297t-nmovp3.streamlitapp.com/')
 
 st.write('   ')
 st.write('   ')
