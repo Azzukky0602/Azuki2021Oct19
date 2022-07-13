@@ -68,8 +68,11 @@ utc_time = dt.now(timezone.utc)
 jst_time_today = utc_time.astimezone(timezone(td(hours=+9)))
 kotoshi = jst_time_today.year
 
+st.write('   ')
+st.subheader('計算するときはチェックボックスをチェック！')
+st.subheader('次のレースを計算するときはチェックを外す！')
 
-push = st.button('計算！')
+push = st.checkbox('チェック！！')
 if push == True:
    
     st.write('計算には約1分かかります。しばらくお待ちください。')
@@ -995,6 +998,7 @@ if push == True:
     
     st.write(race_name[:-26])
     st.table(hyo4)
+
 
 else:
     st.write('・・・・・・・・')
