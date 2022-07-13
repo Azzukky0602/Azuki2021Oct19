@@ -90,8 +90,11 @@ race = st.number_input('【半角数字】レース番号？', 1, 12, 11)
 
 race_for_keisan = nengappi + place + '00' + '00' + str(str(race).zfill(2))
 
+st.write('   ')
+st.subheader('計算するときはチェックボックスをチェック！')
+st.subheader('次のレースを計算する前にチェックを外す！')
 
-push = st.button('計算！')
+push = st.checkbox('チェック！！')
 if push == True:
     
     st.write('計算には約1分かかります。しばらくお待ちください。')
