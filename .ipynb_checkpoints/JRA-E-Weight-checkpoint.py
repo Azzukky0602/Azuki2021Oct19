@@ -70,7 +70,7 @@ kotoshi = jst_time_today.year
 
 st.write('   ')
 st.subheader('計算するときはチェックボックスをチェック！')
-st.subheader('次のレースを計算するときはチェックを外す！')
+st.subheader('次のレースを計算する前にチェックを外す！')
 
 push = st.checkbox('チェック！！')
 if push == True:
