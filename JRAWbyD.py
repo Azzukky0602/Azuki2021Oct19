@@ -650,6 +650,8 @@ if push == True:
                 else:
                     e = 1.0
 
+                    
+                #斤量補正
                 if 1000 <= race_distance <= 1400:
                     if all(L3) =='牝':
                         f = kijun1 * 0.30 * (max(hyo2['斤量']) - float(horse_id[11:15]))
