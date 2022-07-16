@@ -366,10 +366,29 @@ if push == True:
                     e = 1.0
 
                 #斤量補正        
-                if '牝' in horse_id:
-                    f = kijun1 * 0.1 * ((float(max(weight_list))) - 2.0 - float(horse_id[10:15].strip()))
-                else:
-                    f = kijun1 * 0.1 * ((float(max(weight_list))) - float(horse_id[10:15].strip()))
+
+                #斤量補正
+                if 800 <= race_distance <= 1000:
+                    if '牝' in horse_id:
+                        f = kijun1 * 0.30 * ((float(max(weight_list))) - 2.0 - float(horse_id[10:15].strip()))
+                    else:
+                        f = kijun1 * 0.30 * ((float(max(weight_list))) - float(horse_id[10:15].strip()))
+                elif 1000 < race_distance <= 1400:
+                    if '牝' in horse_id:
+                        f = kijun1 * 0.20 * ((float(max(weight_list))) - 2.0 - float(horse_id[10:15].strip()))
+                    else:
+                        f = kijun1 * 0.20 * ((float(max(weight_list))) - float(horse_id[10:15].strip()))
+                elif 1400 < race_distance <= 1800:
+                    if '牝' in horse_id:
+                        f = kijun1 * 0.10 * ((float(max(weight_list))) - 2.0 - float(horse_id[10:15].strip()))
+                    else:
+                        f = kijun1 * 0.10 * ((float(max(weight_list))) - float(horse_id[10:15].strip()))
+                elif race_distance > 1800:
+                    if '牝' in horse_id:
+                        f = kijun1 * 0.15 * ((float(max(weight_list))) - 2.0 - float(horse_id[10:15].strip()))
+                    else:
+                        f = kijun1 * 0.15 * ((float(max(weight_list))) - float(horse_id[10:15].strip()))
+
 
                 #休養係数        
                 #if td(weeks = 12) < (racedate - p_df.iloc[0]['日付2']) <= td(weeks = 24):
@@ -731,10 +750,27 @@ if push == True:
 
                         
                 #斤量補正        
-                if '牝' in horse_id:
-                    f = kijun1 * 0.1 * ((float(max(weight_list))) - 2.0 - float(horse_id[10:15].strip()))
-                else:
-                    f = kijun1 * 0.1 * ((float(max(weight_list))) - float(horse_id[10:15].strip()))
+                if 800 <= race_distance <= 1000:
+                    if '牝' in horse_id:
+                        f = kijun1 * 0.30 * ((float(max(weight_list))) - 2.0 - float(horse_id[10:15].strip()))
+                    else:
+                        f = kijun1 * 0.30 * ((float(max(weight_list))) - float(horse_id[10:15].strip()))
+                elif 1000 < race_distance <= 1400:
+                    if '牝' in horse_id:
+                        f = kijun1 * 0.20 * ((float(max(weight_list))) - 2.0 - float(horse_id[10:15].strip()))
+                    else:
+                        f = kijun1 * 0.20 * ((float(max(weight_list))) - float(horse_id[10:15].strip()))
+                elif 1400 < race_distance <= 1800:
+                    if '牝' in horse_id:
+                        f = kijun1 * 0.10 * ((float(max(weight_list))) - 2.0 - float(horse_id[10:15].strip()))
+                    else:
+                        f = kijun1 * 0.10 * ((float(max(weight_list))) - float(horse_id[10:15].strip()))
+                elif race_distance > 1800:
+                    if '牝' in horse_id:
+                        f = kijun1 * 0.15 * ((float(max(weight_list))) - 2.0 - float(horse_id[10:15].strip()))
+                    else:
+                        f = kijun1 * 0.15 * ((float(max(weight_list))) - float(horse_id[10:15].strip()))
+
 
                 #休養係数        
                 #if td(weeks = 12) < (racedate - p_df.iloc[0]['日付2']) <= td(weeks = 24):
