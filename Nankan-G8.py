@@ -99,6 +99,7 @@ if push == True:
         rd = re.findall(r'\d+', url)[0][:8]
         racedate = dt.strptime(rd, '%Y%m%d')
         racename = soup.find('h2').text.replace('\u3000', ' ')
+        racenumber = soup.find('h1').text[:-4]        
         course_distance = soup.select('#raceInfomation > div > div.raceNote > ul.trackState.trackMainState > li.distance')[0].text.strip()
 
         if ',' in course_distance:
@@ -2374,7 +2375,7 @@ if push == True:
     hyo3 = hyo2.sort_values('順位')
     hyo3.set_index("順位", inplace=True)
 
-    st.write(racename)
+    st.write('【' + racenumber + '】' +  racename)
     st.table(hyo3)
     
 else:
