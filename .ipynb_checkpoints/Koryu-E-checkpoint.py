@@ -1024,7 +1024,7 @@ if push == True:
     hyo3 = hyo2.sort_values('順位')
     hyo3.set_index("順位", inplace=True)
     
-    st.write(racenumber + ' ' + racename)
+    st.write('【' + racenumber + '】' +  racename)
     st.table(hyo3)
     
 else:
