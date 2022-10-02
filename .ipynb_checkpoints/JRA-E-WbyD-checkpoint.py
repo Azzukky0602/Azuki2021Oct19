@@ -360,20 +360,20 @@ if push == True:
                 #斤量補正
                 if 1000 <= race_distance <= 1400:
                     if all(L3) =='牝':
-                        f = kijun1 * 0.30 * (max(hyo2['斤量']) - float(horse_id[11:15]))
-                    else:
-                        if '牝' in horse_id:
-                            f = kijun1 * 0.30 * (max(hyo2['斤量']) -2.0 - float(horse_id[11:15]))
-                        else:
-                            f = kijun1 * 0.30 * (max(hyo2['斤量']) - float(horse_id[11:15]))                
-                elif 1400 < race_distance <= 1800:
-                    if all(L3) =='牝':
                         f = kijun1 * 0.20 * (max(hyo2['斤量']) - float(horse_id[11:15]))
                     else:
                         if '牝' in horse_id:
                             f = kijun1 * 0.20 * (max(hyo2['斤量']) -2.0 - float(horse_id[11:15]))
                         else:
-                            f = kijun1 * 0.20 * (max(hyo2['斤量']) - float(horse_id[11:15]))                            
+                            f = kijun1 * 0.20 * (max(hyo2['斤量']) - float(horse_id[11:15]))                
+                elif 1400 < race_distance <= 1800:
+                    if all(L3) =='牝':
+                        f = kijun1 * 0.15 * (max(hyo2['斤量']) - float(horse_id[11:15]))
+                    else:
+                        if '牝' in horse_id:
+                            f = kijun1 * 0.15 * (max(hyo2['斤量']) -2.0 - float(horse_id[11:15]))
+                        else:
+                            f = kijun1 * 0.15 * (max(hyo2['斤量']) - float(horse_id[11:15]))                            
                 elif 1800 < race_distance <= 2400:
                     if all(L3) =='牝':
                         f = kijun1 * 0.10 * (max(hyo2['斤量']) - float(horse_id[11:15]))
@@ -384,12 +384,12 @@ if push == True:
                             f = kijun1 * 0.10 * (max(hyo2['斤量']) - float(horse_id[11:15]))            
                 elif race_distance > 2400:
                     if all(L3) =='牝':
-                        f = kijun1 * 0.15 * (max(hyo2['斤量']) - float(horse_id[11:15]))
+                        f = kijun1 * 0.05 * (max(hyo2['斤量']) - float(horse_id[11:15]))
                     else:
                         if '牝' in horse_id:
-                            f = kijun1 * 0.15 * (max(hyo2['斤量']) -2.0 - float(horse_id[11:15]))
+                            f = kijun1 * 0.05 * (max(hyo2['斤量']) -2.0 - float(horse_id[11:15]))
                         else:
-                            f = kijun1 * 0.15 * (max(hyo2['斤量']) - float(horse_id[11:15]))            
+                            f = kijun1 * 0.05 * (max(hyo2['斤量']) - float(horse_id[11:15]))            
 
                             
                 #休養係数
@@ -654,20 +654,20 @@ if push == True:
                 #斤量補正
                 if 1000 <= race_distance <= 1400:
                     if all(L3) =='牝':
-                        f = kijun1 * 0.30 * (max(hyo2['斤量']) - float(horse_id[11:15]))
-                    else:
-                        if '牝' in horse_id:
-                            f = kijun1 * 0.30 * (max(hyo2['斤量']) -2.0 - float(horse_id[11:15]))
-                        else:
-                            f = kijun1 * 0.30 * (max(hyo2['斤量']) - float(horse_id[11:15]))                
-                elif 1400 < race_distance <= 1800:
-                    if all(L3) =='牝':
                         f = kijun1 * 0.20 * (max(hyo2['斤量']) - float(horse_id[11:15]))
                     else:
                         if '牝' in horse_id:
                             f = kijun1 * 0.20 * (max(hyo2['斤量']) -2.0 - float(horse_id[11:15]))
                         else:
-                            f = kijun1 * 0.20 * (max(hyo2['斤量']) - float(horse_id[11:15]))                            
+                            f = kijun1 * 0.20 * (max(hyo2['斤量']) - float(horse_id[11:15]))                
+                elif 1400 < race_distance <= 1800:
+                    if all(L3) =='牝':
+                        f = kijun1 * 0.15 * (max(hyo2['斤量']) - float(horse_id[11:15]))
+                    else:
+                        if '牝' in horse_id:
+                            f = kijun1 * 0.15 * (max(hyo2['斤量']) -2.0 - float(horse_id[11:15]))
+                        else:
+                            f = kijun1 * 0.15 * (max(hyo2['斤量']) - float(horse_id[11:15]))                            
                 elif 1800 < race_distance <= 2400:
                     if all(L3) =='牝':
                         f = kijun1 * 0.10 * (max(hyo2['斤量']) - float(horse_id[11:15]))
@@ -678,12 +678,12 @@ if push == True:
                             f = kijun1 * 0.10 * (max(hyo2['斤量']) - float(horse_id[11:15]))            
                 elif race_distance > 2400:
                     if all(L3) =='牝':
-                        f = kijun1 * 0.15 * (max(hyo2['斤量']) - float(horse_id[11:15]))
+                        f = kijun1 * 0.05 * (max(hyo2['斤量']) - float(horse_id[11:15]))
                     else:
                         if '牝' in horse_id:
-                            f = kijun1 * 0.15 * (max(hyo2['斤量']) -2.0 - float(horse_id[11:15]))
+                            f = kijun1 * 0.05 * (max(hyo2['斤量']) -2.0 - float(horse_id[11:15]))
                         else:
-                            f = kijun1 * 0.15 * (max(hyo2['斤量']) - float(horse_id[11:15]))            
+                            f = kijun1 * 0.05 * (max(hyo2['斤量']) - float(horse_id[11:15]))            
                             
                 #休養係数
                 if td(weeks = 0) < (race_date - p_df.iloc[0]['日付2']) <= td(weeks = 4):
