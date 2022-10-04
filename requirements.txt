@@ -2,4 +2,4 @@ beautifulsoup4
 requests
 lxml
 numpy
-streamlit
+streamlit==1.12.0
