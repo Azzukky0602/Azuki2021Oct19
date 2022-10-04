@@ -3,4 +3,3 @@ requests
 lxml
 numpy
 streamlit
-python==3.9.14
