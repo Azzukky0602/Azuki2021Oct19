@@ -10,6 +10,7 @@ import re
 from bs4 import BeautifulSoup
 import time
 import pandas as pd
+import html5lib
 from datetime import datetime as dt
 from datetime import timedelta as td
 from pytz import timezone
