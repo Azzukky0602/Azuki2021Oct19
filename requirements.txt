@@ -1,8 +1,7 @@
 streamlit
 requests
-re
+lxml
 bs4
 pandas
 pytz
 numpy
-re
