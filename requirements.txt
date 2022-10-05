@@ -2,9 +2,6 @@ streamlit
 requests
 re
 bs4
-time
 pandas
-datetime
 pytz
-copy
 numpy
