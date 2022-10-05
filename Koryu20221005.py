@@ -12,7 +12,7 @@ import time
 import pandas as pd
 from datetime import datetime as dt
 from datetime import timedelta as td
-from datetime import timezone
+from pytz import timezone
 import copy
 import numpy as np
 
@@ -37,12 +37,12 @@ st.write('   ')
 
 yosoubi = st.radio('いつのレース？', ['今日', '明日', '日付入力'])
 
-utc_time = dt.now(timezone.utc)
-jst_time_today = utc_time.astimezone(timezone(td(hours=+9)))
-jst_date_today = jst_time_today.strftime('%Y%m%d')
-jst_time_tomorrow = jst_time_today + td(days = 1)
+utc_time = dt.now(timezone('Asia/Tokyo'))
+jst_date_today = utc_time.strftime('%Y%m%d')
+jst_time_tomorrow = utc_time + td(days = 1)
 jst_date_tomorrow = jst_time_tomorrow.strftime('%Y%m%d')
-kotoshi = jst_time_today.year
+kotoshi = utc_time.year
+kotoshi
 
 if yosoubi == '今日':
     nengappi = jst_date_today
