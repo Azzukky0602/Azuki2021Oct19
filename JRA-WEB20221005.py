@@ -79,7 +79,7 @@ if push == True:
     st.write('計算には約1分かかります。しばらくお待ちください。')
     
     url = 'https://race.netkeiba.com/race/shutuba.html?race_id=' + str(kotoshi) + race_for_keisan + '&rf=race_submenu'
-    hyo = pd.read_html(url, header = 1)[0]
+    hyo = pd.read_html(url)[0]
 
     hyo2 = copy.deepcopy(hyo)
     hyo2['性'] = hyo2['性齢'].map(lambda x:str(x)[0])
