@@ -280,10 +280,10 @@ if push == True:
                     elif p_df.iloc[t]['競馬場'] in nankan and (('Ｂ２' in p_df.iloc[t]['レース名2']) \
                         and ('Ｂ１' and 'Ｂ３' not in p_df.iloc[t]['レース名2'])): #B2  
                         kijun = 220
-                    elif p_df.iloc[t]['競馬場'] in nankan and (('Ｂ２' in p_df.iloc[t]['レース名2']) /
+                    elif p_df.iloc[t]['競馬場'] in nankan and (('Ｂ２' in p_df.iloc[t]['レース名2']) \
                         and ('Ｂ３' in p_df.iloc[t]['レース名2'])):  #B2B3
                         kijun = 210
-                    elif p_df.iloc[t]['競馬場'] in nankan and (('Ｂ３' in p_df.iloc[t]['レース名2']) /
+                    elif p_df.iloc[t]['競馬場'] in nankan and (('Ｂ３' in p_df.iloc[t]['レース名2']) \
                         and ('Ｂ２' and 'Ｃ１' not in p_df.iloc[t]['レース名2'])): #B3
                         kijun = 200
                     elif p_df.iloc[t]['競馬場'] in nankan and (('Ｂ３' in p_df.iloc[t]['レース名2']) \
