@@ -1,7 +1,8 @@
-streamlit
+beautifulsoup4
 requests
-re
-bs4
-pandas
+lxml
+numpy
+streamlit
 pytz
+pandas
 numpy
