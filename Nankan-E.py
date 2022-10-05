@@ -43,7 +43,6 @@ jst_date_today = utc_time.strftime('%Y%m%d')
 jst_time_tomorrow = utc_time + td(days = 1)
 jst_date_tomorrow = jst_time_tomorrow.strftime('%Y%m%d')
 kotoshi = utc_time.year
-kotoshi
 
 yosoubi = st.radio('いつのレース？', ['今日', '明日', '日付入力'])
 
