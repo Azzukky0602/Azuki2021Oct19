@@ -12,14 +12,13 @@ import time
 import pandas as pd
 from datetime import datetime as dt
 from datetime import timedelta as td
-from datetime import timezone
+from pytz import timezone
 import copy
 import numpy as np
 
 
-
 st.title('テキトー指数研究所＠WEB')
-st.header('園田・姫路・門別・地方交流重賞　永久版')
+st.header('園田・姫路・門別・地方交流重賞')
 
 st.write('   ')
 st.info('【参考】テキトー指数の使い方  \nhttps://note.com/tekito_lab/n/n3342d6531772')
@@ -38,12 +37,12 @@ st.write('   ')
 
 yosoubi = st.radio('いつのレース？', ['今日', '明日', '日付入力'])
 
-utc_time = dt.now(timezone.utc)
-jst_time_today = utc_time.astimezone(timezone(td(hours=+9)))
-jst_date_today = jst_time_today.strftime('%Y%m%d')
-jst_time_tomorrow = jst_time_today + td(days = 1)
+utc_time = dt.now(timezone('Asia/Tokyo'))
+jst_date_today = utc_time.strftime('%Y%m%d')
+jst_time_tomorrow = utc_time + td(days = 1)
 jst_date_tomorrow = jst_time_tomorrow.strftime('%Y%m%d')
-kotoshi = jst_time_today.year
+kotoshi = utc_time.year
+kotoshi
 
 if yosoubi == '今日':
     nengappi = jst_date_today
@@ -116,7 +115,7 @@ if push == True:
         rd = re.findall(r'\d+', url)[0][:8]
         racedate = dt.strptime(rd, '%Y%m%d')
         racename = soup.find('h2').text.replace('\u3000', ' ')
-        racenumber = soup.find('h1').text[:-4]        
+        racenumber = soup.find('h1').text[:-4]
         course_distance = soup.select('#raceInfomation > div > div.raceNote > ul.trackState.trackMainState > li.distance')[0].text.strip()
         if ',' in course_distance:
             course_distance = course_distance.replace(',' , '')
@@ -184,7 +183,7 @@ if push == True:
         df['着順2'] = df['着順'].str.split('/', expand = True)[0].astype(int)
         df['差2'] = df['差'].astype(float)
 
-        df.drop(['馬場天候', '馬番', '人気', '上3F', 'R', '馬体重', '負担重量', '調教師', 'レース名', '距離', '着順', '日付', '差', '騎手'], axis = 1, inplace = True)
+        df.drop(['馬番', '人気', '上3F', 'R', '負担重量', '調教師', 'レース名', '距離', '着順', '日付', '差', '騎手'], axis = 1, inplace = True)
 
         df = df.loc[:, ['日付2', '競馬場', 'レース名2', 'コース', '距離2', '着順2', '差2', 'タイム']].dropna()
         df = df[(df['差2'] < 4.0)]
@@ -261,66 +260,87 @@ if push == True:
                         kijun = 450
                     elif p_df.iloc[t]['競馬場'] in nankan and 'Ｓ３' in p_df.iloc[t]['レース名2']:  
                         kijun = 400
-                    elif p_df.iloc[t]['競馬場'] in nankan and ('オープン' in p_df.iloc[t]['レース名2']) and ('Ｓ１' and 'Ｓ２' and 'Ｓ３' not in p_df.iloc[t]['レース名2']): 
+                    elif p_df.iloc[t]['競馬場'] in nankan and ('オープン' in p_df.iloc[t]['レース名2']) \
+                        and ('Ｓ１' and 'Ｓ２' and 'Ｓ３' not in p_df.iloc[t]['レース名2']): 
                         kijun = 350 
                     elif p_df.iloc[t]['競馬場'] in nankan and 'Ａ１' in p_df.iloc[t]['レース名2']:  
                         kijun = 320
-                    elif p_df.iloc[t]['競馬場'] in nankan and (('Ａ２' in p_df.iloc[t]['レース名2']) and ('Ｂ１' not in p_df.iloc[t]['レース名2'])): #A2
+                    elif p_df.iloc[t]['競馬場'] in nankan and (('Ａ２' in p_df.iloc[t]['レース名2']) \
+                        and ('Ｂ１' not in p_df.iloc[t]['レース名2'])): #A2
                         kijun = 300
-                    elif p_df.iloc[t]['競馬場'] in nankan and (('Ａ２' in p_df.iloc[t]['レース名2']) and ('Ｂ１' in p_df.iloc[t]['レース名2'])): #A2B1
+                    elif p_df.iloc[t]['競馬場'] in nankan and (('Ａ２' in p_df.iloc[t]['レース名2']) \
+                        and ('Ｂ１' in p_df.iloc[t]['レース名2'])): #A2B1
                         kijun = 270
-                    elif p_df.iloc[t]['競馬場'] in nankan and (('Ｂ１' in p_df.iloc[t]['レース名2']) and ('Ａ２' and 'Ｂ２' not in p_df.iloc[t]['レース名2'])): #B1
+                    elif p_df.iloc[t]['競馬場'] in nankan and (('Ｂ１' in p_df.iloc[t]['レース名2']) \
+                        and ('Ａ２' and 'Ｂ２' not in p_df.iloc[t]['レース名2'])): #B1
                         kijun = 240  
-                    elif p_df.iloc[t]['競馬場'] in nankan and (('Ｂ１' in p_df.iloc[t]['レース名2']) and ('Ｂ２' in p_df.iloc[t]['レース名2'])): #B1B2
+                    elif p_df.iloc[t]['競馬場'] in nankan and (('Ｂ１' in p_df.iloc[t]['レース名2']) \
+                        and ('Ｂ２' in p_df.iloc[t]['レース名2'])): #B1B2
                         kijun = 230        
-                    elif p_df.iloc[t]['競馬場'] in nankan and (('Ｂ２' in p_df.iloc[t]['レース名2']) and ('Ｂ１' and 'Ｂ３' not in p_df.iloc[t]['レース名2'])): #B2  
+                    elif p_df.iloc[t]['競馬場'] in nankan and (('Ｂ２' in p_df.iloc[t]['レース名2']) \
+                        and ('Ｂ１' and 'Ｂ３' not in p_df.iloc[t]['レース名2'])): #B2  
                         kijun = 220
-                    elif p_df.iloc[t]['競馬場'] in nankan and (('Ｂ２' in p_df.iloc[t]['レース名2']) and ('Ｂ３' in p_df.iloc[t]['レース名2'])):  #B2B3
+                    elif p_df.iloc[t]['競馬場'] in nankan and (('Ｂ２' in p_df.iloc[t]['レース名2']) \
+                        and ('Ｂ３' in p_df.iloc[t]['レース名2'])):  #B2B3
                         kijun = 210
-                    elif p_df.iloc[t]['競馬場'] in nankan and (('Ｂ３' in p_df.iloc[t]['レース名2']) and ('Ｂ２' and 'Ｃ１' not in p_df.iloc[t]['レース名2'])): #B3
+                    elif p_df.iloc[t]['競馬場'] in nankan and (('Ｂ３' in p_df.iloc[t]['レース名2']) \
+                        and ('Ｂ２' and 'Ｃ１' not in p_df.iloc[t]['レース名2'])): #B3
                         kijun = 200
-                    elif p_df.iloc[t]['競馬場'] in nankan and (('Ｂ３' in p_df.iloc[t]['レース名2']) and ('Ｃ１' in p_df.iloc[t]['レース名2'])): #B3C1
+                    elif p_df.iloc[t]['競馬場'] in nankan and (('Ｂ３' in p_df.iloc[t]['レース名2']) \
+                        and ('Ｃ１' in p_df.iloc[t]['レース名2'])): #B3C1
                         kijun = 180
-                    elif p_df.iloc[t]['競馬場'] in nankan and (('Ｃ１' in p_df.iloc[t]['レース名2']) and ('Ｂ３' and 'Ｃ２' not in p_df.iloc[t]['レース名2'])): #C1
+                    elif p_df.iloc[t]['競馬場'] in nankan and (('Ｃ１' in p_df.iloc[t]['レース名2']) \
+                        and ('Ｂ３' and 'Ｃ２' not in p_df.iloc[t]['レース名2'])): #C1
                         kijun = 160
-                    elif p_df.iloc[t]['競馬場'] in nankan and (('Ｃ１' in p_df.iloc[t]['レース名2']) and ('Ｃ２' in p_df.iloc[t]['レース名2'])): #C1C2
+                    elif p_df.iloc[t]['競馬場'] in nankan and (('Ｃ１' in p_df.iloc[t]['レース名2']) \
+                        and ('Ｃ２' in p_df.iloc[t]['レース名2'])): #C1C2
                         kijun = 150
-                    elif p_df.iloc[t]['競馬場'] in nankan and (('Ｃ２' in p_df.iloc[t]['レース名2']) and ('Ｃ１' and 'Ｃ３' not in p_df.iloc[t]['レース名2'])): #C2
+                    elif p_df.iloc[t]['競馬場'] in nankan and (('Ｃ２' in p_df.iloc[t]['レース名2']) \
+                        and ('Ｃ１' and 'Ｃ３' not in p_df.iloc[t]['レース名2'])): #C2
                         kijun = 140
-                    elif p_df.iloc[t]['競馬場'] in nankan and (('Ｃ２' in p_df.iloc[t]['レース名2']) and ('Ｃ３' in p_df.iloc[t]['レース名2'])): #C2C3
+                    elif p_df.iloc[t]['競馬場'] in nankan and (('Ｃ２' in p_df.iloc[t]['レース名2']) \
+                        and ('Ｃ３' in p_df.iloc[t]['レース名2'])): #C2C3
                         kijun = 130
-                    elif p_df.iloc[t]['競馬場'] in nankan and (('Ｃ３' in p_df.iloc[t]['レース名2']) and ('Ｃ２' not in p_df.iloc[t]['レース名2'])): #C3  
+                    elif p_df.iloc[t]['競馬場'] in nankan and (('Ｃ３' in p_df.iloc[t]['レース名2']) \
+                        and ('Ｃ２' not in p_df.iloc[t]['レース名2'])): #C3  
                         kijun = 120
 
                     elif p_df.iloc[t]['競馬場'] in hyogo and ('ＪＲＡ交流' in p_df.iloc[t]['レース名2']):  
                         kijun = 280    
                     elif p_df.iloc[t]['競馬場'] in hyogo and ('重賞' in p_df.iloc[t]['レース名2']):  
                         kijun = 350
-                    elif p_df.iloc[t]['競馬場'] in hyogo and (('Ａ１' in p_df.iloc[t]['レース名2']) and ('Ａ２' not in p_df.iloc[t]['レース名2'])):  
+                    elif p_df.iloc[t]['競馬場'] in hyogo and (('Ａ１' in p_df.iloc[t]['レース名2']) \
+                        and ('Ａ２' not in p_df.iloc[t]['レース名2'])):  
                         kijun = 280
                     elif p_df.iloc[t]['競馬場'] in hyogo and ('Ａ１'and 'Ａ２' in p_df.iloc[t]['レース名2']):  
                         kijun = 260
-                    elif p_df.iloc[t]['競馬場'] in hyogo and (('Ａ２' in p_df.iloc[t]['レース名2']) and ('Ａ１' and 'Ｂ１' not in p_df.iloc[t]['レース名2'])):  
+                    elif p_df.iloc[t]['競馬場'] in hyogo and (('Ａ２' in p_df.iloc[t]['レース名2']) \
+                        and ('Ａ１' and 'Ｂ１' not in p_df.iloc[t]['レース名2'])):  
                         kijun = 240
                     elif p_df.iloc[t]['競馬場'] in hyogo and ('Ａ２' and 'Ｂ１' in p_df.iloc[t]['レース名2']):  
                         kijun = 220
-                    elif p_df.iloc[t]['競馬場'] in hyogo and (('Ｂ１' in p_df.iloc[t]['レース名2']) and ('Ａ２' and 'Ｂ２' not in p_df.iloc[t]['レース名2'])):
+                    elif p_df.iloc[t]['競馬場'] in hyogo and (('Ｂ１' in p_df.iloc[t]['レース名2']) \
+                        and ('Ａ２' and 'Ｂ２' not in p_df.iloc[t]['レース名2'])):
                         kijun = 200        
                     elif p_df.iloc[t]['競馬場'] in hyogo and ('Ｂ１' and 'Ｂ２' in p_df.iloc[t]['レース名2']):  
                         kijun = 180
-                    elif p_df.iloc[t]['競馬場'] in hyogo and (('Ｂ２' in p_df.iloc[t]['レース名2']) and ('Ａ１' and 'Ｃ１' not in p_df.iloc[t]['レース名2'])):
+                    elif p_df.iloc[t]['競馬場'] in hyogo and (('Ｂ２' in p_df.iloc[t]['レース名2']) \
+                        and ('Ａ１' and 'Ｃ１' not in p_df.iloc[t]['レース名2'])):
                         kijun = 160     
                     elif p_df.iloc[t]['競馬場'] in hyogo and ('Ｂ２' and 'Ｃ１' in p_df.iloc[t]['レース名2']):  
                         kijun = 140
-                    elif p_df.iloc[t]['競馬場'] in hyogo and (('Ｃ１' in p_df.iloc[t]['レース名2']) and ('Ｂ２' and 'Ｃ２' not in p_df.iloc[t]['レース名2'])):  
+                    elif p_df.iloc[t]['競馬場'] in hyogo and (('Ｃ１' in p_df.iloc[t]['レース名2']) \
+                        and ('Ｂ２' and 'Ｃ２' not in p_df.iloc[t]['レース名2'])):  
                         kijun = 120
                     elif p_df.iloc[t]['競馬場'] in hyogo and ('Ｃ１' and 'Ｃ２' in p_df.iloc[t]['レース名2']):  
                         kijun = 110
-                    elif p_df.iloc[t]['競馬場'] in hyogo and (('Ｃ２' in p_df.iloc[t]['レース名2']) and ('Ｃ１' and 'Ｃ３' not in p_df.iloc[t]['レース名2'])):  
+                    elif p_df.iloc[t]['競馬場'] in hyogo and (('Ｃ２' in p_df.iloc[t]['レース名2']) \
+                        and ('Ｃ１' and 'Ｃ３' not in p_df.iloc[t]['レース名2'])):  
                         kijun = 100
                     elif p_df.iloc[t]['競馬場'] in hyogo and ('Ｃ２' and 'Ｃ３' in p_df.iloc[t]['レース名2']):  
                         kijun = 90   
-                    elif p_df.iloc[t]['競馬場'] in hyogo and (('Ｃ３' in p_df.iloc[t]['レース名2']) and ('Ｃ２' not in p_df.iloc[t]['レース名2'])):  
+                    elif p_df.iloc[t]['競馬場'] in hyogo and (('Ｃ３' in p_df.iloc[t]['レース名2']) \
+                        and ('Ｃ２' not in p_df.iloc[t]['レース名2'])):  
                         kijun = 80
 
                     elif p_df.iloc[t]['競馬場'] in tokai and 'ＳＰ１' in p_df.iloc[t]['レース名2']:  
@@ -350,26 +370,36 @@ if push == True:
                         kijun = 200
                     elif p_df.iloc[t]['競馬場'] == '門別' and 'Ａ４' in p_df.iloc[t]['レース名2']:  
                         kijun = 190
-                    elif p_df.iloc[t]['競馬場'] == '門別' and 'Ａ' not in p_df.iloc[t]['レース名2'] and 'Ｂ１' in p_df.iloc[t]['レース名2']:  
+                    elif p_df.iloc[t]['競馬場'] == '門別' and 'Ａ' not in p_df.iloc[t]['レース名2'] \
+                        and 'Ｂ１' in p_df.iloc[t]['レース名2']:  
                         kijun = 160
-                    elif p_df.iloc[t]['競馬場'] == '門別' and 'Ａ' not in p_df.iloc[t]['レース名2'] and 'Ｂ２' in p_df.iloc[t]['レース名2']:  
+                    elif p_df.iloc[t]['競馬場'] == '門別' and 'Ａ' not in p_df.iloc[t]['レース名2'] \
+                        and 'Ｂ２' in p_df.iloc[t]['レース名2']:  
                         kijun = 150
-                    elif p_df.iloc[t]['競馬場'] == '門別' and 'Ａ' not in p_df.iloc[t]['レース名2'] and 'Ｂ３' in p_df.iloc[t]['レース名2']:  
+                    elif p_df.iloc[t]['競馬場'] == '門別' and 'Ａ' not in p_df.iloc[t]['レース名2'] \
+                        and 'Ｂ３' in p_df.iloc[t]['レース名2']:  
                         kijun = 140
-                    elif p_df.iloc[t]['競馬場'] == '門別' and 'Ａ' not in p_df.iloc[t]['レース名2'] and 'Ｂ４' in p_df.iloc[t]['レース名2']:  
+                    elif p_df.iloc[t]['競馬場'] == '門別' and 'Ａ' not in p_df.iloc[t]['レース名2'] \
+                        and 'Ｂ４' in p_df.iloc[t]['レース名2']:  
                         kijun = 130
-                    elif p_df.iloc[t]['競馬場'] == '門別' and 'Ｂ' not in p_df.iloc[t]['レース名2'] and 'Ｃ１' in p_df.iloc[t]['レース名2']:  
+                    elif p_df.iloc[t]['競馬場'] == '門別' and 'Ｂ' not in p_df.iloc[t]['レース名2'] \
+                        and 'Ｃ１' in p_df.iloc[t]['レース名2']:  
                         kijun = 100
-                    elif p_df.iloc[t]['競馬場'] == '門別' and 'Ｂ' not in p_df.iloc[t]['レース名2'] and 'Ｃ２' in p_df.iloc[t]['レース名2']:  
+                    elif p_df.iloc[t]['競馬場'] == '門別' and 'Ｂ' not in p_df.iloc[t]['レース名2'] \
+                        and 'Ｃ２' in p_df.iloc[t]['レース名2']:  
                         kijun = 90
-                    elif p_df.iloc[t]['競馬場'] == '門別' and 'Ｂ' not in p_df.iloc[t]['レース名2'] and 'Ｃ３' in p_df.iloc[t]['レース名2']:  
+                    elif p_df.iloc[t]['競馬場'] == '門別' and 'Ｂ' not in p_df.iloc[t]['レース名2'] \
+                        and 'Ｃ３' in p_df.iloc[t]['レース名2']:  
                         kijun = 80
-                    elif p_df.iloc[t]['競馬場'] == '門別' and 'Ｂ' not in p_df.iloc[t]['レース名2'] and 'Ｃ４' in p_df.iloc[t]['レース名2']:  
+                    elif p_df.iloc[t]['競馬場'] == '門別' and 'Ｂ' not in p_df.iloc[t]['レース名2'] \
+                        and 'Ｃ４' in p_df.iloc[t]['レース名2']:  
                         kijun = 70
 
-                    elif p_df.iloc[t]['競馬場'] in others and 'オープン' in p_df.iloc[t]['レース名2'] and 'Ｊｐｎ' not in p_df.iloc[t]['レース名2']:  
+                    elif p_df.iloc[t]['競馬場'] in others and 'オープン' in p_df.iloc[t]['レース名2'] \
+                        and 'Ｊｐｎ' not in p_df.iloc[t]['レース名2']:  
                         kijun = 220
-                    elif p_df.iloc[t]['競馬場'] in others and 'Ａ' in p_df.iloc[t]['レース名2'] and 'Ｂ' not in p_df.iloc[t]['レース名2']:  
+                    elif p_df.iloc[t]['競馬場'] in others and 'Ａ' in p_df.iloc[t]['レース名2'] \
+                        and 'Ｂ' not in p_df.iloc[t]['レース名2']:  
                         kijun = 200
 
                     else:
@@ -432,27 +462,10 @@ if push == True:
                     e = 1.0
 
                 #斤量補正        
-                if 800 <= race_distance <= 1000:
-                    if '牝' in horse_id:
-                        f = kijun1 * 0.30 * ((float(max(weight_list))) - 2.0 - float(horse_id[10:15].strip()))
-                    else:
-                        f = kijun1 * 0.30 * ((float(max(weight_list))) - float(horse_id[10:15].strip()))
-                elif 1000 < race_distance <= 1400:
-                    if '牝' in horse_id:
-                        f = kijun1 * 0.20 * ((float(max(weight_list))) - 2.0 - float(horse_id[10:15].strip()))
-                    else:
-                        f = kijun1 * 0.20 * ((float(max(weight_list))) - float(horse_id[10:15].strip()))
-                elif 1400 < race_distance <= 1800:
-                    if '牝' in horse_id:
-                        f = kijun1 * 0.10 * ((float(max(weight_list))) - 2.0 - float(horse_id[10:15].strip()))
-                    else:
-                        f = kijun1 * 0.10 * ((float(max(weight_list))) - float(horse_id[10:15].strip()))
-                elif race_distance > 1800:
-                    if '牝' in horse_id:
-                        f = kijun1 * 0.15 * ((float(max(weight_list))) - 2.0 - float(horse_id[10:15].strip()))
-                    else:
-                        f = kijun1 * 0.15 * ((float(max(weight_list))) - float(horse_id[10:15].strip()))
-
+                if '牝' in horse_id:
+                    f = kijun1 * 0.1 * ((float(max(weight_list))) - 2.0 - float(horse_id[10:15].strip()))
+                else:
+                    f = kijun1 * 0.1 * ((float(max(weight_list))) - float(horse_id[10:15].strip()))
 
                 #休養係数        
                 if td(weeks = 0) < (racedate - p_df.iloc[0]['日付2']) <= td(weeks = 12):
@@ -558,66 +571,87 @@ if push == True:
                         kijun = 450
                     elif p_df.iloc[t]['競馬場'] in nankan and 'Ｓ３' in p_df.iloc[t]['レース名2']:  
                         kijun = 400
-                    elif p_df.iloc[t]['競馬場'] in nankan and ('オープン' in p_df.iloc[t]['レース名2']) and ('Ｓ１' and 'Ｓ２' and 'Ｓ３' not in p_df.iloc[t]['レース名2']): 
+                    elif p_df.iloc[t]['競馬場'] in nankan and ('オープン' in p_df.iloc[t]['レース名2']) \
+                        and ('Ｓ１' and 'Ｓ２' and 'Ｓ３' not in p_df.iloc[t]['レース名2']): 
                         kijun = 350 
                     elif p_df.iloc[t]['競馬場'] in nankan and 'Ａ１' in p_df.iloc[t]['レース名2']:  
                         kijun = 320
-                    elif p_df.iloc[t]['競馬場'] in nankan and (('Ａ２' in p_df.iloc[t]['レース名2']) and ('Ｂ１' not in p_df.iloc[t]['レース名2'])): #A2
+                    elif p_df.iloc[t]['競馬場'] in nankan and (('Ａ２' in p_df.iloc[t]['レース名2']) \
+                        and ('Ｂ１' not in p_df.iloc[t]['レース名2'])): #A2
                         kijun = 300
-                    elif p_df.iloc[t]['競馬場'] in nankan and (('Ａ２' in p_df.iloc[t]['レース名2']) and ('Ｂ１' in p_df.iloc[t]['レース名2'])): #A2B1
+                    elif p_df.iloc[t]['競馬場'] in nankan and (('Ａ２' in p_df.iloc[t]['レース名2']) \
+                        and ('Ｂ１' in p_df.iloc[t]['レース名2'])): #A2B1
                         kijun = 270
-                    elif p_df.iloc[t]['競馬場'] in nankan and (('Ｂ１' in p_df.iloc[t]['レース名2']) and ('Ａ２' and 'Ｂ２' not in p_df.iloc[t]['レース名2'])): #B1
+                    elif p_df.iloc[t]['競馬場'] in nankan and (('Ｂ１' in p_df.iloc[t]['レース名2']) \
+                        and ('Ａ２' and 'Ｂ２' not in p_df.iloc[t]['レース名2'])): #B1
                         kijun = 240  
-                    elif p_df.iloc[t]['競馬場'] in nankan and (('Ｂ１' in p_df.iloc[t]['レース名2']) and ('Ｂ２' in p_df.iloc[t]['レース名2'])): #B1B2
+                    elif p_df.iloc[t]['競馬場'] in nankan and (('Ｂ１' in p_df.iloc[t]['レース名2']) \
+                        and ('Ｂ２' in p_df.iloc[t]['レース名2'])): #B1B2
                         kijun = 230        
-                    elif p_df.iloc[t]['競馬場'] in nankan and (('Ｂ２' in p_df.iloc[t]['レース名2']) and ('Ｂ１' and 'Ｂ３' not in p_df.iloc[t]['レース名2'])): #B2  
+                    elif p_df.iloc[t]['競馬場'] in nankan and (('Ｂ２' in p_df.iloc[t]['レース名2']) \
+                        and ('Ｂ１' and 'Ｂ３' not in p_df.iloc[t]['レース名2'])): #B2  
                         kijun = 220
-                    elif p_df.iloc[t]['競馬場'] in nankan and (('Ｂ２' in p_df.iloc[t]['レース名2']) and ('Ｂ３' in p_df.iloc[t]['レース名2'])):  #B2B3
+                    elif p_df.iloc[t]['競馬場'] in nankan and (('Ｂ２' in p_df.iloc[t]['レース名2']) \
+                        and ('Ｂ３' in p_df.iloc[t]['レース名2'])):  #B2B3
                         kijun = 210
-                    elif p_df.iloc[t]['競馬場'] in nankan and (('Ｂ３' in p_df.iloc[t]['レース名2']) and ('Ｂ２' and 'Ｃ１' not in p_df.iloc[t]['レース名2'])): #B3
+                    elif p_df.iloc[t]['競馬場'] in nankan and (('Ｂ３' in p_df.iloc[t]['レース名2']) \
+                        and ('Ｂ２' and 'Ｃ１' not in p_df.iloc[t]['レース名2'])): #B3
                         kijun = 200
-                    elif p_df.iloc[t]['競馬場'] in nankan and (('Ｂ３' in p_df.iloc[t]['レース名2']) and ('Ｃ１' in p_df.iloc[t]['レース名2'])): #B3C1
+                    elif p_df.iloc[t]['競馬場'] in nankan and (('Ｂ３' in p_df.iloc[t]['レース名2']) \
+                        and ('Ｃ１' in p_df.iloc[t]['レース名2'])): #B3C1
                         kijun = 180
-                    elif p_df.iloc[t]['競馬場'] in nankan and (('Ｃ１' in p_df.iloc[t]['レース名2']) and ('Ｂ３' and 'Ｃ２' not in p_df.iloc[t]['レース名2'])): #C1
+                    elif p_df.iloc[t]['競馬場'] in nankan and (('Ｃ１' in p_df.iloc[t]['レース名2']) \
+                        and ('Ｂ３' and 'Ｃ２' not in p_df.iloc[t]['レース名2'])): #C1
                         kijun = 160
-                    elif p_df.iloc[t]['競馬場'] in nankan and (('Ｃ１' in p_df.iloc[t]['レース名2']) and ('Ｃ２' in p_df.iloc[t]['レース名2'])): #C1C2
+                    elif p_df.iloc[t]['競馬場'] in nankan and (('Ｃ１' in p_df.iloc[t]['レース名2']) \
+                        and ('Ｃ２' in p_df.iloc[t]['レース名2'])): #C1C2
                         kijun = 150
-                    elif p_df.iloc[t]['競馬場'] in nankan and (('Ｃ２' in p_df.iloc[t]['レース名2']) and ('Ｃ１' and 'Ｃ３' not in p_df.iloc[t]['レース名2'])): #C2
+                    elif p_df.iloc[t]['競馬場'] in nankan and (('Ｃ２' in p_df.iloc[t]['レース名2']) \
+                        and ('Ｃ１' and 'Ｃ３' not in p_df.iloc[t]['レース名2'])): #C2
                         kijun = 140
-                    elif p_df.iloc[t]['競馬場'] in nankan and (('Ｃ２' in p_df.iloc[t]['レース名2']) and ('Ｃ３' in p_df.iloc[t]['レース名2'])): #C2C3
+                    elif p_df.iloc[t]['競馬場'] in nankan and (('Ｃ２' in p_df.iloc[t]['レース名2']) \
+                        and ('Ｃ３' in p_df.iloc[t]['レース名2'])): #C2C3
                         kijun = 130
-                    elif p_df.iloc[t]['競馬場'] in nankan and (('Ｃ３' in p_df.iloc[t]['レース名2']) and ('Ｃ２' not in p_df.iloc[t]['レース名2'])): #C3  
+                    elif p_df.iloc[t]['競馬場'] in nankan and (('Ｃ３' in p_df.iloc[t]['レース名2']) \
+                        and ('Ｃ２' not in p_df.iloc[t]['レース名2'])): #C3  
                         kijun = 120
 
                     elif p_df.iloc[t]['競馬場'] in hyogo and ('ＪＲＡ交流' in p_df.iloc[t]['レース名2']):  
                         kijun = 280    
                     elif p_df.iloc[t]['競馬場'] in hyogo and ('重賞' in p_df.iloc[t]['レース名2']):  
                         kijun = 350
-                    elif p_df.iloc[t]['競馬場'] in hyogo and (('Ａ１' in p_df.iloc[t]['レース名2']) and ('Ａ２' not in p_df.iloc[t]['レース名2'])):  
+                    elif p_df.iloc[t]['競馬場'] in hyogo and (('Ａ１' in p_df.iloc[t]['レース名2']) \
+                        and ('Ａ２' not in p_df.iloc[t]['レース名2'])):  
                         kijun = 280
                     elif p_df.iloc[t]['競馬場'] in hyogo and ('Ａ１'and 'Ａ２' in p_df.iloc[t]['レース名2']):  
                         kijun = 260
-                    elif p_df.iloc[t]['競馬場'] in hyogo and (('Ａ２' in p_df.iloc[t]['レース名2']) and ('Ａ１' and 'Ｂ１' not in p_df.iloc[t]['レース名2'])):  
+                    elif p_df.iloc[t]['競馬場'] in hyogo and (('Ａ２' in p_df.iloc[t]['レース名2']) \
+                        and ('Ａ１' and 'Ｂ１' not in p_df.iloc[t]['レース名2'])):  
                         kijun = 240
                     elif p_df.iloc[t]['競馬場'] in hyogo and ('Ａ２' and 'Ｂ１' in p_df.iloc[t]['レース名2']):  
                         kijun = 220
-                    elif p_df.iloc[t]['競馬場'] in hyogo and (('Ｂ１' in p_df.iloc[t]['レース名2']) and ('Ａ２' and 'Ｂ２' not in p_df.iloc[t]['レース名2'])):
+                    elif p_df.iloc[t]['競馬場'] in hyogo and (('Ｂ１' in p_df.iloc[t]['レース名2']) \
+                        and ('Ａ２' and 'Ｂ２' not in p_df.iloc[t]['レース名2'])):
                         kijun = 200        
                     elif p_df.iloc[t]['競馬場'] in hyogo and ('Ｂ１' and 'Ｂ２' in p_df.iloc[t]['レース名2']):  
                         kijun = 180
-                    elif p_df.iloc[t]['競馬場'] in hyogo and (('Ｂ２' in p_df.iloc[t]['レース名2']) and ('Ａ１' and 'Ｃ１' not in p_df.iloc[t]['レース名2'])):
+                    elif p_df.iloc[t]['競馬場'] in hyogo and (('Ｂ２' in p_df.iloc[t]['レース名2']) \
+                        and ('Ａ１' and 'Ｃ１' not in p_df.iloc[t]['レース名2'])):
                         kijun = 160     
                     elif p_df.iloc[t]['競馬場'] in hyogo and ('Ｂ２' and 'Ｃ１' in p_df.iloc[t]['レース名2']):  
                         kijun = 140
-                    elif p_df.iloc[t]['競馬場'] in hyogo and (('Ｃ１' in p_df.iloc[t]['レース名2']) and ('Ｂ２' and 'Ｃ２' not in p_df.iloc[t]['レース名2'])):  
+                    elif p_df.iloc[t]['競馬場'] in hyogo and (('Ｃ１' in p_df.iloc[t]['レース名2']) \
+                        and ('Ｂ２' and 'Ｃ２' not in p_df.iloc[t]['レース名2'])):  
                         kijun = 120
                     elif p_df.iloc[t]['競馬場'] in hyogo and ('Ｃ１' and 'Ｃ２' in p_df.iloc[t]['レース名2']):  
                         kijun = 110
-                    elif p_df.iloc[t]['競馬場'] in hyogo and (('Ｃ２' in p_df.iloc[t]['レース名2']) and ('Ｃ１' and 'Ｃ３' not in p_df.iloc[t]['レース名2'])):  
+                    elif p_df.iloc[t]['競馬場'] in hyogo and (('Ｃ２' in p_df.iloc[t]['レース名2']) \
+                        and ('Ｃ１' and 'Ｃ３' not in p_df.iloc[t]['レース名2'])):  
                         kijun = 100
                     elif p_df.iloc[t]['競馬場'] in hyogo and ('Ｃ２' and 'Ｃ３' in p_df.iloc[t]['レース名2']):  
                         kijun = 90   
-                    elif p_df.iloc[t]['競馬場'] in hyogo and (('Ｃ３' in p_df.iloc[t]['レース名2']) and ('Ｃ２' not in p_df.iloc[t]['レース名2'])):  
+                    elif p_df.iloc[t]['競馬場'] in hyogo and (('Ｃ３' in p_df.iloc[t]['レース名2']) \
+                        and ('Ｃ２' not in p_df.iloc[t]['レース名2'])):  
                         kijun = 80
 
                     elif p_df.iloc[t]['競馬場'] in tokai and 'ＳＰ１' in p_df.iloc[t]['レース名2']:  
@@ -647,26 +681,36 @@ if push == True:
                         kijun = 200
                     elif p_df.iloc[t]['競馬場'] == '門別' and 'Ａ４' in p_df.iloc[t]['レース名2']:  
                         kijun = 190
-                    elif p_df.iloc[t]['競馬場'] == '門別' and 'Ａ' not in p_df.iloc[t]['レース名2'] and 'Ｂ１' in p_df.iloc[t]['レース名2']:  
+                    elif p_df.iloc[t]['競馬場'] == '門別' and 'Ａ' not in p_df.iloc[t]['レース名2'] \
+                        and 'Ｂ１' in p_df.iloc[t]['レース名2']:  
                         kijun = 160
-                    elif p_df.iloc[t]['競馬場'] == '門別' and 'Ａ' not in p_df.iloc[t]['レース名2'] and 'Ｂ２' in p_df.iloc[t]['レース名2']:  
+                    elif p_df.iloc[t]['競馬場'] == '門別' and 'Ａ' not in p_df.iloc[t]['レース名2'] \
+                        and 'Ｂ２' in p_df.iloc[t]['レース名2']:  
                         kijun = 150
-                    elif p_df.iloc[t]['競馬場'] == '門別' and 'Ａ' not in p_df.iloc[t]['レース名2'] and 'Ｂ３' in p_df.iloc[t]['レース名2']:  
+                    elif p_df.iloc[t]['競馬場'] == '門別' and 'Ａ' not in p_df.iloc[t]['レース名2'] \
+                        and 'Ｂ３' in p_df.iloc[t]['レース名2']:  
                         kijun = 140
-                    elif p_df.iloc[t]['競馬場'] == '門別' and 'Ａ' not in p_df.iloc[t]['レース名2'] and 'Ｂ４' in p_df.iloc[t]['レース名2']:  
+                    elif p_df.iloc[t]['競馬場'] == '門別' and 'Ａ' not in p_df.iloc[t]['レース名2'] \
+                        and 'Ｂ４' in p_df.iloc[t]['レース名2']:  
                         kijun = 130
-                    elif p_df.iloc[t]['競馬場'] == '門別' and 'Ｂ' not in p_df.iloc[t]['レース名2'] and 'Ｃ１' in p_df.iloc[t]['レース名2']:  
+                    elif p_df.iloc[t]['競馬場'] == '門別' and 'Ｂ' not in p_df.iloc[t]['レース名2'] \
+                        and 'Ｃ１' in p_df.iloc[t]['レース名2']:  
                         kijun = 100
-                    elif p_df.iloc[t]['競馬場'] == '門別' and 'Ｂ' not in p_df.iloc[t]['レース名2'] and 'Ｃ２' in p_df.iloc[t]['レース名2']:  
+                    elif p_df.iloc[t]['競馬場'] == '門別' and 'Ｂ' not in p_df.iloc[t]['レース名2'] \
+                        and 'Ｃ２' in p_df.iloc[t]['レース名2']:  
                         kijun = 90
-                    elif p_df.iloc[t]['競馬場'] == '門別' and 'Ｂ' not in p_df.iloc[t]['レース名2'] and 'Ｃ３' in p_df.iloc[t]['レース名2']:  
+                    elif p_df.iloc[t]['競馬場'] == '門別' and 'Ｂ' not in p_df.iloc[t]['レース名2'] \
+                        and 'Ｃ３' in p_df.iloc[t]['レース名2']:  
                         kijun = 80
-                    elif p_df.iloc[t]['競馬場'] == '門別' and 'Ｂ' not in p_df.iloc[t]['レース名2'] and 'Ｃ４' in p_df.iloc[t]['レース名2']:  
+                    elif p_df.iloc[t]['競馬場'] == '門別' and 'Ｂ' not in p_df.iloc[t]['レース名2'] \
+                        and 'Ｃ４' in p_df.iloc[t]['レース名2']:  
                         kijun = 70
 
-                    elif p_df.iloc[t]['競馬場'] in others and 'オープン' in p_df.iloc[t]['レース名2'] and 'Ｊｐｎ' not in p_df.iloc[t]['レース名2']:  
+                    elif p_df.iloc[t]['競馬場'] in others and 'オープン' in p_df.iloc[t]['レース名2'] \
+                        and 'Ｊｐｎ' not in p_df.iloc[t]['レース名2']:  
                         kijun = 220
-                    elif p_df.iloc[t]['競馬場'] in others and 'Ａ' in p_df.iloc[t]['レース名2'] and 'Ｂ' not in p_df.iloc[t]['レース名2']:  
+                    elif p_df.iloc[t]['競馬場'] in others and 'Ａ' in p_df.iloc[t]['レース名2'] \
+                        and 'Ｂ' not in p_df.iloc[t]['レース名2']:  
                         kijun = 200
 
                     else:
@@ -707,7 +751,8 @@ if push == True:
                 
                 
                 #連勝係数       
-                if p_df.iloc[0]['着順2'] == 1 and p_df.iloc[1]['着順2'] == 1 and p_df.iloc[2]['着順2'] == 1 and p_df.iloc[3]['着順2'] == 1:
+                if p_df.iloc[0]['着順2'] == 1 and p_df.iloc[1]['着順2'] == 1 and p_df.iloc[2]['着順2'] == 1 \
+                        and p_df.iloc[3]['着順2'] == 1:
                     rensho = (-p_df.iloc[0]['差2'] -p_df.iloc[1]['差2'] -p_df.iloc[2]['差2'] -p_df.iloc[3]['差2']) / 4
                     if rensho < -0.7:
                         e = 1.5
@@ -741,27 +786,10 @@ if push == True:
                     e = 1.0
 
                 #斤量補正        
-                if 800 <= race_distance <= 1000:
-                    if '牝' in horse_id:
-                        f = kijun1 * 0.30 * ((float(max(weight_list))) - 2.0 - float(horse_id[10:15].strip()))
-                    else:
-                        f = kijun1 * 0.30 * ((float(max(weight_list))) - float(horse_id[10:15].strip()))
-                elif 1000 < race_distance <= 1400:
-                    if '牝' in horse_id:
-                        f = kijun1 * 0.20 * ((float(max(weight_list))) - 2.0 - float(horse_id[10:15].strip()))
-                    else:
-                        f = kijun1 * 0.20 * ((float(max(weight_list))) - float(horse_id[10:15].strip()))
-                elif 1400 < race_distance <= 1800:
-                    if '牝' in horse_id:
-                        f = kijun1 * 0.10 * ((float(max(weight_list))) - 2.0 - float(horse_id[10:15].strip()))
-                    else:
-                        f = kijun1 * 0.10 * ((float(max(weight_list))) - float(horse_id[10:15].strip()))
-                elif race_distance > 1800:
-                    if '牝' in horse_id:
-                        f = kijun1 * 0.15 * ((float(max(weight_list))) - 2.0 - float(horse_id[10:15].strip()))
-                    else:
-                        f = kijun1 * 0.15 * ((float(max(weight_list))) - float(horse_id[10:15].strip()))
-
+                if '牝' in horse_id:
+                    f = kijun1 * 0.1 * ((float(max(weight_list))) - 2.0 - float(horse_id[10:15].strip()))
+                else:
+                    f = kijun1 * 0.1 * ((float(max(weight_list))) - float(horse_id[10:15].strip()))
 
                 #休養係数        
                 if td(weeks = 0) < (racedate - p_df.iloc[0]['日付2']) <= td(weeks = 12):
@@ -847,7 +875,6 @@ if push == True:
     s = pd.Series(past_weight_list)
     hyo1['斤量増減']= hyo1['斤量'] - s
 
-    
 #20220520時点のデータ 
 
 #騎手補正：連帯率40以上:1.2, 35-40%:1.15, 30-35%:1.1, 25-30%:1.05, 20-25%:1.025     
