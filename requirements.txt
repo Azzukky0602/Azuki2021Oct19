@@ -1,8 +1,8 @@
-beautifulsoup4
-requests
-lxml
-numpy
 streamlit
-pytz
+requests
+re
+bs4
 pandas
+pytz
 numpy
+re
