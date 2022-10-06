@@ -142,7 +142,7 @@ if push == True:
         
         processed_horse_results = {}        
         for horse_id, df in past_results.items():
-            df.reset_index(inplace=True)
+
             df['日付2'] = [dt.strptime(i, "%Y/%m/%d") for i in df['日付']]
             df['着順2'] = df["着順"].map(lambda x:str(x).split('(')[0])
             df['コース'] = df['距離'].map(lambda x:str(x)[0])
