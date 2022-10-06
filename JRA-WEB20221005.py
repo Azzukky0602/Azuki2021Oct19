@@ -138,7 +138,7 @@ if push == True:
             except:
                 pass
 
-        past_results = copy.deepcopy(horse_results)   #個々から下のコードに影響されないhorse_resultsのコピーを作る。
+        past_results = copy.copy(horse_results)   #個々から下のコードに影響されないhorse_resultsのコピーを作る。
         
         processed_horse_results = {}        
         for horse_id, df in past_results.items():
