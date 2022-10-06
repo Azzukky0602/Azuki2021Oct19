@@ -80,7 +80,7 @@ if push == True:
     hyo2 = copy.deepcopy(hyo)
     hyo2['性'] = hyo2['性齢'].map(lambda x:str(x)[0])
     hyo2['年齢'] = hyo2['性齢'].map(lambda x:str(x)[1:]).astype(int)
-    hyo2.drop(['印', '登録', 'メモ', '人気', '馬体重(増減)', '性齢'], axis = 1, inplace = True)
+    hyo2.drop(['印', '登録', 'メモ', '人気', '性齢'], axis = 1, inplace = True)
 
 
     html = requests.get(url)
