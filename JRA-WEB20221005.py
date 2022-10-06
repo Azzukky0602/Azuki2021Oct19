@@ -10,7 +10,6 @@ import re
 from bs4 import BeautifulSoup
 import time
 import pandas as pd
-import html5lib
 import lxml.html
 from datetime import datetime as dt
 from datetime import timedelta as td
@@ -80,10 +79,11 @@ if push == True:
     
     url = 'https://race.netkeiba.com/race/shutuba.html?race_id=' + str(kotoshi) + race_for_keisan + '&rf=race_submenu'
     hyo = pd.read_html(url)[0]
-
+    hyo.columns = hyo.columns.droplevel(0)
+    
     hyo2 = copy.deepcopy(hyo)
-    hyo2['性'] = hyo2['性齢'].map(lambda x:str(x)[0])
-    hyo2['年齢'] = hyo2['性齢'].map(lambda x:str(x)[1:]).astype(int)
+    hyo2['性'] = hyo2['性齢'].str[0]
+    hyo2['年齢'] = hyo2['性齢'].str[1:].astype(int)
     hyo2.drop(['印', '登録', 'メモ', '人気', '馬体重(増減)', '性齢'], axis = 1, inplace = True)
 
 
