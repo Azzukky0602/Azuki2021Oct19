@@ -5,4 +5,3 @@ bs4
 pandas
 pytz
 numpy
-html5lib
