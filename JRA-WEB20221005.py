@@ -139,10 +139,9 @@ if push == True:
                 pass
 
         past_results = copy.deepcopy(horse_results)   #個々から下のコードに影響されないhorse_resultsのコピーを作る。
-        past_results2 = copy.deepcopy(past_results)
         
         processed_horse_results = {}
-        for horse_id, df in past_results2.items():
+        for horse_id, df in past_results.items():
 
             df['日付2'] = [dt.strptime(i, "%Y/%m/%d") for i in df['日付']]
             df['着順2'] = df["着順"].map(lambda x:str(x).split('(')[0])
