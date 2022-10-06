@@ -84,7 +84,7 @@ if push == True:
     hyo2 = copy.deepcopy(hyo)
     hyo2['性'] = hyo2['性齢'].str[0]
     hyo2['年齢'] = hyo2['性齢'].str[1:].astype(int)
-    hyo2.drop(['印', '登録', 'メモ', '人気', '馬体重(増減)', '性齢'], axis = 1, inplace = True)
+    hyo2.drop(['印', '登録', 'メモ', '人気', '性齢'], axis = 1, inplace = True)
 
 
     html = requests.get(url)
@@ -1008,7 +1008,7 @@ if push == True:
     
     hyo2['斤量']= hyo2['斤量'].astype(str)
     hyo2['順位'] = hyo2['指数'].rank(ascending=False).astype(int)    
-    hyo3 = hyo2.iloc[:,[14,1,2,9,13,3,4,7,8,5,11,12]]
+    hyo3 = hyo2.iloc[:,[15,1,2,10,14,3,4,8,9,5,12,13]]
     hyo4 = hyo3.sort_values('順位')
     hyo4.set_index("順位", inplace=True)
     
