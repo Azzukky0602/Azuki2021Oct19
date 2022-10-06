@@ -757,8 +757,8 @@ if push == True:
 
         return tekito_shisu
 
-        kekka = shisu(processed_horse_results)
-        hyo2['指数'] = kekka.values()
+    kekka = shisu(processed_horse_results)
+    hyo2['指数'] = kekka.values()
 
 #前走からの斤量増減        
     past_weight_list = []
