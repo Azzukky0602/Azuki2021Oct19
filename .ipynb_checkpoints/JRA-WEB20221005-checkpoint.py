@@ -144,7 +144,7 @@ if push == True:
         for horse_id, df in past_results.items():
 
             df['日付2'] = [dt.strptime(i, "%Y/%m/%d") for i in df['日付']]
-            df['着順2'] = df["着順"]#.map(lambda x:str(x).split('(')[0])
+            df['着順2'] = df["着順"].map(lambda x:str(x).split('(')[0])
             df['コース'] = df['距離'].map(lambda x:str(x)[0])
             df['距離2'] = df['距離'].map(lambda x:str(x)[1:]).astype(int)
             df['開催2'] = df['開催'].str.extract('(\D+)')
