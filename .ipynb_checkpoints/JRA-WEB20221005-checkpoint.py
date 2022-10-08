@@ -134,7 +134,7 @@ if push == True:
             try:                
                 time.sleep(1)
                 url2 = 'https://db.netkeiba.com/horse/result/' + horse_id[:10]    
-                horse_results[horse_id] = pd.read_html(url2)[0]#.head(10)
+                horse_results[horse_id] = pd.read_html(url2)[0].head(10)[['日付', '開催', 'レース名', '着順', '斤量', '距離', '着差']]
             except:
                 pass
 
@@ -150,9 +150,9 @@ if push == True:
             df['開催2'] = df['開催'].str.extract('(\D+)')
             df['過去斤量'] = df['斤量']
 
-            df.drop(['天気', '映像', '頭数', '枠番', 'ﾀｲﾑ指数', '通過', 'ペース', '上り','騎手', 'R', '馬場指数', '斤量', 'オッズ', '人気', '馬体重', '厩舎ｺﾒﾝﾄ', '備考', '賞金', '勝ち馬(2着馬)', '日付', '距離', '馬番', '開催', '着順'], axis = 1, inplace = True)
+            #df.drop(['天気', '映像', '頭数', '枠番', 'ﾀｲﾑ指数', '通過', 'ペース', '上り','騎手', 'R', '馬場指数', '斤量', 'オッズ', '人気', '馬体重', '厩舎ｺﾒﾝﾄ', '備考', '賞金', '勝ち馬(2着馬)', '日付', '距離', '馬番', '開催', '着順'], axis = 1, inplace = True)
 
-            df = df.loc[:, ['日付2', '開催2', 'レース名', '馬場', 'コース', '距離2', '着順2', '着差', 'タイム']].dropna()
+            df = df.loc[:, ['日付2', '開催2', 'レース名', 'コース', '距離2', '着順2', '着差']].dropna()
             df = df[(df['着差'] < 3.5)]
 
             processed_horse_results[horse_id] = df
