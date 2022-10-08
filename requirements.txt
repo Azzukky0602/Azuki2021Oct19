@@ -1,4 +1,3 @@
-streamlit
 requests
 lxml
 bs4
