@@ -140,23 +140,24 @@ if push == True:
 
         past_results = copy.deepcopy(horse_results)   #個々から下のコードに影響されないhorse_resultsのコピーを作る。
         
-        processed_horse_results = {}        
+
+        processed_horse_results = {}
         for horse_id, df in past_results.items():
 
             df['日付2'] = [dt.strptime(i, "%Y/%m/%d") for i in df['日付']]
-            df['着順'] = df['着順'].map(lambda x:str(x).split('(')[0])
+            df['着順2'] = df['着順'].map(lambda x:str(x).split('(')[0])
             df['コース'] = df['距離'].map(lambda x:str(x)[0])
             df['距離2'] = df['距離'].map(lambda x:str(x)[1:]).astype(int)
             df['開催2'] = df['開催'].str.extract('(\D+)')
             df['過去斤量'] = df['斤量']
 
-            #df.drop(['天気', '映像', '頭数', '枠番', 'ﾀｲﾑ指数', '通過', 'ペース', '上り','騎手', 'R', '馬場指数', '斤量', 'オッズ', '人気', '馬体重', '厩舎ｺﾒﾝﾄ', '備考', '賞金', '勝ち馬(2着馬)', '日付', '距離', '馬番', '開催', '着順'], axis = 1, inplace = True)
+            #df2.drop(['天気', '映像', '頭数', '枠番', 'ﾀｲﾑ指数', '通過', 'ペース', '上り','騎手', 'R', '馬場指数', '斤量', 'オッズ', '人気', '馬体重',\
+                         #'厩舎ｺﾒﾝﾄ', '備考', '賞金', '勝ち馬(2着馬)', '日付', '距離', '馬番', '開催', '着順'], axis = 1, inplace = True)
 
-            df = df.loc[:, ['日付2', '開催2', 'レース名', 'コース', '距離2', '着順2', '着差']].dropna()
+            df = df.loc[:, ['日付2', '開催2', 'レース名', 'コース', '距離2', '着順2', '着差', '過去斤量']].dropna()
             df = df[(df['着差'] < 3.5)]
 
             processed_horse_results[horse_id] = df
-
 
 
 
