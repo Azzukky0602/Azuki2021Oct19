@@ -313,140 +313,140 @@ if push == True:
 
                     kijun1, kijun2, kijun3 = base_number[0], base_number[1], base_number[2]
 
-                #着差係数
-                chakusa = []
-                for u in range(3):
+                    #着差係数
+                    chakusa = []
+                    for u in range(3):
 
-                    if p_df.iloc[u]['着差'] < -0.7:
-                        race_chakusa = 1.5
-                    elif -0.7 <= p_df.iloc[u]['着差'] < -0.5:
-                        race_chakusa = 1.3    
-                    elif -0.5 <= p_df.iloc[u]['着差'] < -0.3:
-                        race_chakusa = 1.2
-                    elif -0.3 <= p_df.iloc[u]['着差'] <= 0.5:
-                        race_chakusa = 1.0
-                    elif 0.5 < p_df.iloc[u]['着差'] <= 1.0:
-                        race_chakusa = 0.8
-                    elif 1.0 < p_df.iloc[u]['着差'] <= 2.0:
-                        race_chakusa = 0.5
-                    else:
-                        race_chakusa = 0.2
-                    chakusa.append(race_chakusa)
-
-                a, b, c = chakusa[0], chakusa[1], chakusa[2]
-
-                #連勝係数    
-                if p_df.iloc[0]['着順2'] == "1" and p_df.iloc[1]['着順2'] == "1" and p_df.iloc[2]['着順2'] == "1":
-                    rensho = (p_df.iloc[0]['着差'] + p_df.iloc[1]['着差'] + p_df.iloc[2]['着差']) / 4
-                    if rensho < -0.7:
-                        e = 1.4
-                    elif -0.7 <= rensho < -0.5:
-                        e = 1.3    
-                    elif -0.5 <= rensho < -0.3:
-                        e = 1.2
-                    else:
-                        e = 1.1
-                elif p_df.iloc[0]['着順2'] == "1" and p_df.iloc[1]['着順2'] == "1": #and p_df.iloc[2]['着順2'] != "1":
-                    rensho = (p_df.iloc[0]['着差'] + p_df.iloc[1]['着差'] + p_df.iloc[2]['着差']) / 4
-                    if rensho < -0.7:
-                        e = 1.3
-                    elif -0.7 <= rensho < -0.5:
-                        e = 1.2    
-                    elif -0.5 <= rensho < -0.3:
-                        e = 1.1
-                    else:
-                        e = 1.05
-                else:
-                    e = 1.0
-
-                #斤量補正
-                if 1000 <= race_distance <= 1400:
-                    if all(L3) =='牝':
-                        f = kijun1 * 0.20 * (max(hyo2['斤量']) - float(horse_id[11:15]))
-                    else:
-                        if '牝' in horse_id:
-                            f = kijun1 * 0.20 * (max(hyo2['斤量']) -2.0 - float(horse_id[11:15]))
+                        if p_df.iloc[u]['着差'] < -0.7:
+                            race_chakusa = 1.5
+                        elif -0.7 <= p_df.iloc[u]['着差'] < -0.5:
+                            race_chakusa = 1.3    
+                        elif -0.5 <= p_df.iloc[u]['着差'] < -0.3:
+                            race_chakusa = 1.2
+                        elif -0.3 <= p_df.iloc[u]['着差'] <= 0.5:
+                            race_chakusa = 1.0
+                        elif 0.5 < p_df.iloc[u]['着差'] <= 1.0:
+                            race_chakusa = 0.8
+                        elif 1.0 < p_df.iloc[u]['着差'] <= 2.0:
+                            race_chakusa = 0.5
                         else:
-                            f = kijun1 * 0.20 * (max(hyo2['斤量']) - float(horse_id[11:15]))                
-                elif 1400 < race_distance <= 1800:
-                    if all(L3) =='牝':
-                        f = kijun1 * 0.15 * (max(hyo2['斤量']) - float(horse_id[11:15]))
-                    else:
-                        if '牝' in horse_id:
-                            f = kijun1 * 0.15 * (max(hyo2['斤量']) -2.0 - float(horse_id[11:15]))
+                            race_chakusa = 0.2
+                        chakusa.append(race_chakusa)
+
+                    a, b, c = chakusa[0], chakusa[1], chakusa[2]
+
+                    #連勝係数    
+                    if p_df.iloc[0]['着順2'] == "1" and p_df.iloc[1]['着順2'] == "1" and p_df.iloc[2]['着順2'] == "1":
+                        rensho = (p_df.iloc[0]['着差'] + p_df.iloc[1]['着差'] + p_df.iloc[2]['着差']) / 4
+                        if rensho < -0.7:
+                            e = 1.4
+                        elif -0.7 <= rensho < -0.5:
+                            e = 1.3    
+                        elif -0.5 <= rensho < -0.3:
+                            e = 1.2
                         else:
-                            f = kijun1 * 0.15 * (max(hyo2['斤量']) - float(horse_id[11:15]))                            
-                elif 1800 < race_distance <= 2400:
-                    if all(L3) =='牝':
-                        f = kijun1 * 0.10 * (max(hyo2['斤量']) - float(horse_id[11:15]))
-                    else:
-                        if '牝' in horse_id:
-                            f = kijun1 * 0.10 * (max(hyo2['斤量']) -2.0 - float(horse_id[11:15]))
+                            e = 1.1
+                    elif p_df.iloc[0]['着順2'] == "1" and p_df.iloc[1]['着順2'] == "1": #and p_df.iloc[2]['着順2'] != "1":
+                        rensho = (p_df.iloc[0]['着差'] + p_df.iloc[1]['着差'] + p_df.iloc[2]['着差']) / 4
+                        if rensho < -0.7:
+                            e = 1.3
+                        elif -0.7 <= rensho < -0.5:
+                            e = 1.2    
+                        elif -0.5 <= rensho < -0.3:
+                            e = 1.1
                         else:
-                            f = kijun1 * 0.10 * (max(hyo2['斤量']) - float(horse_id[11:15]))            
-                elif race_distance > 2400:
-                    if all(L3) =='牝':
-                        f = kijun1 * 0.05 * (max(hyo2['斤量']) - float(horse_id[11:15]))
+                            e = 1.05
                     else:
-                        if '牝' in horse_id:
-                            f = kijun1 * 0.05 * (max(hyo2['斤量']) -2.0 - float(horse_id[11:15]))
+                        e = 1.0
+
+                    #斤量補正
+                    if 1000 <= race_distance <= 1400:
+                        if all(L3) =='牝':
+                            f = kijun1 * 0.20 * (max(hyo2['斤量']) - float(horse_id[11:15]))
                         else:
-                            f = kijun1 * 0.05 * (max(hyo2['斤量']) - float(horse_id[11:15]))            
-
-                            
-                #休養係数
-                if td(weeks = 0) < (race_date - p_df.iloc[0]['日付2']) <= td(weeks = 4):
-                    g = 0.95
-                elif td(weeks = 4) < (race_date - p_df.iloc[0]['日付2']) <= td(weeks = 16):
-                    g = 1.0
-                elif td(weeks = 16) < (race_date - p_df.iloc[0]['日付2']) <= td(weeks = 36):
-                    g = 0.9
-                elif td(weeks = 36) < (race_date - p_df.iloc[0]['日付2']) <= td(weeks = 48):
-                    g = 0.85                
-                elif td(weeks = 48) < (race_date - p_df.iloc[0]['日付2']):
-                    g = 0.8
-                else:
-                    g = 1.0
-
-                #距離係数                
-                av_dist = (p_df.iloc[0]['距離2'] + p_df.iloc[1]['距離2'] + p_df.iloc[2]['距離2']) / 3 
-                if 1000 <= race_distance <= 1400:
-                    if abs(race_distance - p_df.iloc[0]['距離2']) > 200 and abs(race_distance - av_dist) > 200:
-                        h = 0.9
-                    else:
-                        h = 1.0
-                elif 1400 < race_distance <= 1800:
-                    if abs(race_distance - p_df.iloc[0]['距離2']) > 300 and abs(race_distance - av_dist) > 300:
-                        h = 0.9
-                    else:
-                        h = 1.0
-                elif 1800 < race_distance <= 2400:
-                    if abs(race_distance - p_df.iloc[0]['距離2']) > 400 and abs(race_distance - av_dist) > 400:
-                        h = 0.9
-                    else:
-                        h = 1.0
-                elif 2400 < race_distance:
-                    if abs(race_distance - p_df.iloc[0]['距離2']) > 500 and av_dist < 2000:
-                        h = 0.9
-                    else:
-                        h = 1.0
-
-                #コース係数
-                if race_course == 'ダ':
-                    if p_df.iloc[0]['コース'] == '芝' and p_df.iloc[1]['コース'] == '芝' and p_df.iloc[2]['コース'] == '芝':
-                        i = 0.7
-                    else:
-                        i = 1.0
-                elif race_course == '芝':
-                    if p_df.iloc[0]['コース'] == 'ダ' and p_df.iloc[1]['コース'] == 'ダ' and p_df.iloc[2]['コース'] == 'ダ':
-                        i = 0.7
-                    else:
-                        i = 1.0
+                            if '牝' in horse_id:
+                                f = kijun1 * 0.20 * (max(hyo2['斤量']) -2.0 - float(horse_id[11:15]))
+                            else:
+                                f = kijun1 * 0.20 * (max(hyo2['斤量']) - float(horse_id[11:15]))                
+                    elif 1400 < race_distance <= 1800:
+                        if all(L3) =='牝':
+                            f = kijun1 * 0.15 * (max(hyo2['斤量']) - float(horse_id[11:15]))
+                        else:
+                            if '牝' in horse_id:
+                                f = kijun1 * 0.15 * (max(hyo2['斤量']) -2.0 - float(horse_id[11:15]))
+                            else:
+                                f = kijun1 * 0.15 * (max(hyo2['斤量']) - float(horse_id[11:15]))                            
+                    elif 1800 < race_distance <= 2400:
+                        if all(L3) =='牝':
+                            f = kijun1 * 0.10 * (max(hyo2['斤量']) - float(horse_id[11:15]))
+                        else:
+                            if '牝' in horse_id:
+                                f = kijun1 * 0.10 * (max(hyo2['斤量']) -2.0 - float(horse_id[11:15]))
+                            else:
+                                f = kijun1 * 0.10 * (max(hyo2['斤量']) - float(horse_id[11:15]))            
+                    elif race_distance > 2400:
+                        if all(L3) =='牝':
+                            f = kijun1 * 0.05 * (max(hyo2['斤量']) - float(horse_id[11:15]))
+                        else:
+                            if '牝' in horse_id:
+                                f = kijun1 * 0.05 * (max(hyo2['斤量']) -2.0 - float(horse_id[11:15]))
+                            else:
+                                f = kijun1 * 0.05 * (max(hyo2['斤量']) - float(horse_id[11:15]))            
 
 
+                    #休養係数
+                    if td(weeks = 0) < (race_date - p_df.iloc[0]['日付2']) <= td(weeks = 4):
+                        g = 0.95
+                    elif td(weeks = 4) < (race_date - p_df.iloc[0]['日付2']) <= td(weeks = 16):
+                        g = 1.0
+                    elif td(weeks = 16) < (race_date - p_df.iloc[0]['日付2']) <= td(weeks = 36):
+                        g = 0.9
+                    elif td(weeks = 36) < (race_date - p_df.iloc[0]['日付2']) <= td(weeks = 48):
+                        g = 0.85                
+                    elif td(weeks = 48) < (race_date - p_df.iloc[0]['日付2']):
+                        g = 0.8
+                    else:
+                        g = 1.0
 
-                ts = ((kijun1 * 2 * a * 2 + kijun2 * b + kijun3 * c) + f) * e * g * h * i
-                tekito_shisu[horse_id]= int(ts) 
+                    #距離係数                
+                    av_dist = (p_df.iloc[0]['距離2'] + p_df.iloc[1]['距離2'] + p_df.iloc[2]['距離2']) / 3 
+                    if 1000 <= race_distance <= 1400:
+                        if abs(race_distance - p_df.iloc[0]['距離2']) > 200 and abs(race_distance - av_dist) > 200:
+                            h = 0.9
+                        else:
+                            h = 1.0
+                    elif 1400 < race_distance <= 1800:
+                        if abs(race_distance - p_df.iloc[0]['距離2']) > 300 and abs(race_distance - av_dist) > 300:
+                            h = 0.9
+                        else:
+                            h = 1.0
+                    elif 1800 < race_distance <= 2400:
+                        if abs(race_distance - p_df.iloc[0]['距離2']) > 400 and abs(race_distance - av_dist) > 400:
+                            h = 0.9
+                        else:
+                            h = 1.0
+                    elif 2400 < race_distance:
+                        if abs(race_distance - p_df.iloc[0]['距離2']) > 500 and av_dist < 2000:
+                            h = 0.9
+                        else:
+                            h = 1.0
+
+                    #コース係数
+                    if race_course == 'ダ':
+                        if p_df.iloc[0]['コース'] == '芝' and p_df.iloc[1]['コース'] == '芝' and p_df.iloc[2]['コース'] == '芝':
+                            i = 0.7
+                        else:
+                            i = 1.0
+                    elif race_course == '芝':
+                        if p_df.iloc[0]['コース'] == 'ダ' and p_df.iloc[1]['コース'] == 'ダ' and p_df.iloc[2]['コース'] == 'ダ':
+                            i = 0.7
+                        else:
+                            i = 1.0
+
+
+
+                    ts = ((kijun1 * 2 * a * 2 + kijun2 * b + kijun3 * c) + f) * e * g * h * i
+                    tekito_shisu[horse_id]= int(ts) 
             
     #3歳　春　補正　4戦以上
             else:
@@ -596,153 +596,153 @@ if push == True:
 
                 #着差係数
 
-                chakusa = []
-                for u in range(4):
+                    chakusa = []
+                    for u in range(4):
 
-                    if p_df.iloc[u]['着差'] < -0.7:
-                        race_chakusa = 1.5
-                    elif -0.7 <= p_df.iloc[u]['着差'] < -0.5:
-                        race_chakusa = 1.3    
-                    elif -0.5 <= p_df.iloc[u]['着差'] < -0.3:
-                        race_chakusa = 1.2
-                    elif -0.3 <= p_df.iloc[u]['着差'] <= 0.5:
-                        race_chakusa = 1.0
-                    elif 0.5 < p_df.iloc[u]['着差'] <= 1.0:
-                        race_chakusa = 0.8
-                    elif 1.0 < p_df.iloc[u]['着差'] <= 2.0:
-                        race_chakusa = 0.5
-                    else:
-                        race_chakusa = 0.2
-                    chakusa.append(race_chakusa)
-
-                a, b, c, d = chakusa[0], chakusa[1], chakusa[2], chakusa[3]                    
-
-
-                #連勝係数    
-                if p_df.iloc[0]['着順2'] == "1" and p_df.iloc[1]['着順2'] == "1" \
-                        and p_df.iloc[2]['着順2'] == "1" and p_df.iloc[3]['着順2'] == "1":
-                    rensho = (p_df.iloc[0]['着差'] + p_df.iloc[1]['着差'] + p_df.iloc[2]['着差'] + p_df.iloc[3]['着差']) / 4
-                    if rensho < -0.7:
-                        e = 1.5
-                    elif -0.7 <= rensho < -0.5:
-                        e = 1.4    
-                    elif -0.5 <= rensho < -0.3:
-                        e = 1.3
-                    else:
-                        e = 1.2
-                elif p_df.iloc[0]['着順2'] == "1" and p_df.iloc[1]['着順2'] == "1" and p_df.iloc[2]['着順2'] == "1":
-                    rensho = (p_df.iloc[0]['着差'] + p_df.iloc[1]['着差'] + p_df.iloc[2]['着差'] + p_df.iloc[3]['着差']) / 4
-                    if rensho < -0.7:
-                        e = 1.4
-                    elif -0.7 <= rensho < -0.5:
-                        e = 1.3   
-                    elif -0.5 <= rensho < -0.3:
-                        e = 1.2
-                    else:
-                        e = 1.1
-                elif p_df.iloc[0]['着順2'] == "1" and p_df.iloc[1]['着順2'] == "1":
-                    rensho = (p_df.iloc[0]['着差'] + p_df.iloc[1]['着差'] + p_df.iloc[2]['着差'] + p_df.iloc[3]['着差']) / 4
-                    if rensho < -0.7:
-                        e = 1.3
-                    elif -0.7 <= rensho < -0.5:
-                        e = 1.2
-                    elif -0.5 <= rensho < -0.3:
-                        e = 1.1
-                    else:
-                        e = 1.05                       
-                else:
-                    e = 1.0
-
-                    
-                #斤量補正
-                if 1000 <= race_distance <= 1400:
-                    if all(L3) =='牝':
-                        f = kijun1 * 0.20 * (max(hyo2['斤量']) - float(horse_id[11:15]))
-                    else:
-                        if '牝' in horse_id:
-                            f = kijun1 * 0.20 * (max(hyo2['斤量']) -2.0 - float(horse_id[11:15]))
+                        if p_df.iloc[u]['着差'] < -0.7:
+                            race_chakusa = 1.5
+                        elif -0.7 <= p_df.iloc[u]['着差'] < -0.5:
+                            race_chakusa = 1.3    
+                        elif -0.5 <= p_df.iloc[u]['着差'] < -0.3:
+                            race_chakusa = 1.2
+                        elif -0.3 <= p_df.iloc[u]['着差'] <= 0.5:
+                            race_chakusa = 1.0
+                        elif 0.5 < p_df.iloc[u]['着差'] <= 1.0:
+                            race_chakusa = 0.8
+                        elif 1.0 < p_df.iloc[u]['着差'] <= 2.0:
+                            race_chakusa = 0.5
                         else:
-                            f = kijun1 * 0.20 * (max(hyo2['斤量']) - float(horse_id[11:15]))                
-                elif 1400 < race_distance <= 1800:
-                    if all(L3) =='牝':
-                        f = kijun1 * 0.15 * (max(hyo2['斤量']) - float(horse_id[11:15]))
-                    else:
-                        if '牝' in horse_id:
-                            f = kijun1 * 0.15 * (max(hyo2['斤量']) -2.0 - float(horse_id[11:15]))
-                        else:
-                            f = kijun1 * 0.15 * (max(hyo2['斤量']) - float(horse_id[11:15]))                            
-                elif 1800 < race_distance <= 2400:
-                    if all(L3) =='牝':
-                        f = kijun1 * 0.10 * (max(hyo2['斤量']) - float(horse_id[11:15]))
-                    else:
-                        if '牝' in horse_id:
-                            f = kijun1 * 0.10 * (max(hyo2['斤量']) -2.0 - float(horse_id[11:15]))
-                        else:
-                            f = kijun1 * 0.10 * (max(hyo2['斤量']) - float(horse_id[11:15]))            
-                elif race_distance > 2400:
-                    if all(L3) =='牝':
-                        f = kijun1 * 0.05 * (max(hyo2['斤量']) - float(horse_id[11:15]))
-                    else:
-                        if '牝' in horse_id:
-                            f = kijun1 * 0.05 * (max(hyo2['斤量']) -2.0 - float(horse_id[11:15]))
-                        else:
-                            f = kijun1 * 0.05 * (max(hyo2['斤量']) - float(horse_id[11:15]))            
-                            
-                #休養係数
-                if td(weeks = 0) < (race_date - p_df.iloc[0]['日付2']) <= td(weeks = 4):
-                    g = 0.95
-                elif td(weeks = 4) < (race_date - p_df.iloc[0]['日付2']) <= td(weeks = 16):
-                    g = 1.0
-                elif td(weeks = 16) < (race_date - p_df.iloc[0]['日付2']) <= td(weeks = 36):
-                    g = 0.9
-                elif td(weeks = 36) < (race_date - p_df.iloc[0]['日付2']) <= td(weeks = 48):
-                    g = 0.85                
-                elif td(weeks = 48) < (race_date - p_df.iloc[0]['日付2']):
-                    g = 0.8
-                else:
-                    g = 1.0
+                            race_chakusa = 0.2
+                        chakusa.append(race_chakusa)
 
-                #距離係数                
-                av_dist = (p_df.iloc[0]['距離2'] + p_df.iloc[1]['距離2'] + p_df.iloc[2]['距離2'] + p_df.iloc[3]['距離2']) / 4 
-                if 1000 <= race_distance <= 1400:
-                    if abs(race_distance - p_df.iloc[0]['距離2']) > 200 and abs(race_distance - av_dist) > 200:
-                        h = 0.9
-                    else:
-                        h = 1.0
-                elif 1400 < race_distance <= 1800:
-                    if abs(race_distance - p_df.iloc[0]['距離2']) > 300 and abs(race_distance - av_dist) > 300:
-                        h = 0.9
-                    else:
-                        h = 1.0
-                elif 1800 < race_distance <= 2400:
-                    if abs(race_distance - p_df.iloc[0]['距離2']) > 400 and abs(race_distance - av_dist) > 400:
-                        h = 0.9
-                    else:
-                        h = 1.0
-                elif 2400 < race_distance:
-                    if abs(race_distance - p_df.iloc[0]['距離2']) > 500 and av_dist < 2000:
-                        h = 0.9
-                    else:
-                        h = 1.0
+                    a, b, c, d = chakusa[0], chakusa[1], chakusa[2], chakusa[3]                    
 
-                #コース係数
-                if race_course == 'ダ':
-                    if p_df.iloc[0]['コース'] == '芝' and p_df.iloc[1]['コース'] == '芝' and p_df.iloc[2]['コース'] == '芝':
-                        i = 0.7
+
+                    #連勝係数    
+                    if p_df.iloc[0]['着順2'] == "1" and p_df.iloc[1]['着順2'] == "1" \
+                            and p_df.iloc[2]['着順2'] == "1" and p_df.iloc[3]['着順2'] == "1":
+                        rensho = (p_df.iloc[0]['着差'] + p_df.iloc[1]['着差'] + p_df.iloc[2]['着差'] + p_df.iloc[3]['着差']) / 4
+                        if rensho < -0.7:
+                            e = 1.5
+                        elif -0.7 <= rensho < -0.5:
+                            e = 1.4    
+                        elif -0.5 <= rensho < -0.3:
+                            e = 1.3
+                        else:
+                            e = 1.2
+                    elif p_df.iloc[0]['着順2'] == "1" and p_df.iloc[1]['着順2'] == "1" and p_df.iloc[2]['着順2'] == "1":
+                        rensho = (p_df.iloc[0]['着差'] + p_df.iloc[1]['着差'] + p_df.iloc[2]['着差'] + p_df.iloc[3]['着差']) / 4
+                        if rensho < -0.7:
+                            e = 1.4
+                        elif -0.7 <= rensho < -0.5:
+                            e = 1.3   
+                        elif -0.5 <= rensho < -0.3:
+                            e = 1.2
+                        else:
+                            e = 1.1
+                    elif p_df.iloc[0]['着順2'] == "1" and p_df.iloc[1]['着順2'] == "1":
+                        rensho = (p_df.iloc[0]['着差'] + p_df.iloc[1]['着差'] + p_df.iloc[2]['着差'] + p_df.iloc[3]['着差']) / 4
+                        if rensho < -0.7:
+                            e = 1.3
+                        elif -0.7 <= rensho < -0.5:
+                            e = 1.2
+                        elif -0.5 <= rensho < -0.3:
+                            e = 1.1
+                        else:
+                            e = 1.05                       
+                    else:
+                        e = 1.0
+
+
+                    #斤量補正
+                    if 1000 <= race_distance <= 1400:
+                        if all(L3) =='牝':
+                            f = kijun1 * 0.20 * (max(hyo2['斤量']) - float(horse_id[11:15]))
+                        else:
+                            if '牝' in horse_id:
+                                f = kijun1 * 0.20 * (max(hyo2['斤量']) -2.0 - float(horse_id[11:15]))
+                            else:
+                                f = kijun1 * 0.20 * (max(hyo2['斤量']) - float(horse_id[11:15]))                
+                    elif 1400 < race_distance <= 1800:
+                        if all(L3) =='牝':
+                            f = kijun1 * 0.15 * (max(hyo2['斤量']) - float(horse_id[11:15]))
+                        else:
+                            if '牝' in horse_id:
+                                f = kijun1 * 0.15 * (max(hyo2['斤量']) -2.0 - float(horse_id[11:15]))
+                            else:
+                                f = kijun1 * 0.15 * (max(hyo2['斤量']) - float(horse_id[11:15]))                            
+                    elif 1800 < race_distance <= 2400:
+                        if all(L3) =='牝':
+                            f = kijun1 * 0.10 * (max(hyo2['斤量']) - float(horse_id[11:15]))
+                        else:
+                            if '牝' in horse_id:
+                                f = kijun1 * 0.10 * (max(hyo2['斤量']) -2.0 - float(horse_id[11:15]))
+                            else:
+                                f = kijun1 * 0.10 * (max(hyo2['斤量']) - float(horse_id[11:15]))            
+                    elif race_distance > 2400:
+                        if all(L3) =='牝':
+                            f = kijun1 * 0.05 * (max(hyo2['斤量']) - float(horse_id[11:15]))
+                        else:
+                            if '牝' in horse_id:
+                                f = kijun1 * 0.05 * (max(hyo2['斤量']) -2.0 - float(horse_id[11:15]))
+                            else:
+                                f = kijun1 * 0.05 * (max(hyo2['斤量']) - float(horse_id[11:15]))            
+
+                    #休養係数
+                    if td(weeks = 0) < (race_date - p_df.iloc[0]['日付2']) <= td(weeks = 4):
+                        g = 0.95
+                    elif td(weeks = 4) < (race_date - p_df.iloc[0]['日付2']) <= td(weeks = 16):
+                        g = 1.0
+                    elif td(weeks = 16) < (race_date - p_df.iloc[0]['日付2']) <= td(weeks = 36):
+                        g = 0.9
+                    elif td(weeks = 36) < (race_date - p_df.iloc[0]['日付2']) <= td(weeks = 48):
+                        g = 0.85                
+                    elif td(weeks = 48) < (race_date - p_df.iloc[0]['日付2']):
+                        g = 0.8
+                    else:
+                        g = 1.0
+
+                    #距離係数                
+                    av_dist = (p_df.iloc[0]['距離2'] + p_df.iloc[1]['距離2'] + p_df.iloc[2]['距離2'] + p_df.iloc[3]['距離2']) / 4 
+                    if 1000 <= race_distance <= 1400:
+                        if abs(race_distance - p_df.iloc[0]['距離2']) > 200 and abs(race_distance - av_dist) > 200:
+                            h = 0.9
+                        else:
+                            h = 1.0
+                    elif 1400 < race_distance <= 1800:
+                        if abs(race_distance - p_df.iloc[0]['距離2']) > 300 and abs(race_distance - av_dist) > 300:
+                            h = 0.9
+                        else:
+                            h = 1.0
+                    elif 1800 < race_distance <= 2400:
+                        if abs(race_distance - p_df.iloc[0]['距離2']) > 400 and abs(race_distance - av_dist) > 400:
+                            h = 0.9
+                        else:
+                            h = 1.0
+                    elif 2400 < race_distance:
+                        if abs(race_distance - p_df.iloc[0]['距離2']) > 500 and av_dist < 2000:
+                            h = 0.9
+                        else:
+                            h = 1.0
+
+                    #コース係数
+                    if race_course == 'ダ':
+                        if p_df.iloc[0]['コース'] == '芝' and p_df.iloc[1]['コース'] == '芝' and p_df.iloc[2]['コース'] == '芝':
+                            i = 0.7
+                        else:
+                            i = 1.0
+                    elif race_course == '芝':
+                        if p_df.iloc[0]['コース'] == 'ダ' and p_df.iloc[1]['コース'] == 'ダ' and p_df.iloc[2]['コース'] == 'ダ':
+                            i = 0.7
+                        else:
+                            i = 1.0
                     else:
                         i = 1.0
-                elif race_course == '芝':
-                    if p_df.iloc[0]['コース'] == 'ダ' and p_df.iloc[1]['コース'] == 'ダ' and p_df.iloc[2]['コース'] == 'ダ':
-                        i = 0.7
-                    else:
-                        i = 1.0
-                else:
-                    i = 1.0
 
 
 
-                ts = ((kijun1 * 2 *a + kijun2 * 2 * b + kijun3 * c + kijun4 * d) + f) * e * g * h * i
-                tekito_shisu[horse_id]= int(ts)
+                    ts = ((kijun1 * 2 *a + kijun2 * 2 * b + kijun3 * c + kijun4 * d) + f) * e * g * h * i
+                    tekito_shisu[horse_id]= int(ts)
 
         return tekito_shisu
 
