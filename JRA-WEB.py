@@ -146,7 +146,7 @@ if push == True:
     past_weight_list = []
     for horse in  syusso_list:
         url2 = 'https://db.netkeiba.com/horse/result/' + horse[:10]
-        past_results = pd.read_html(url2, encoding='EUC-JP')[0].head(20)[['日付','開催','レース名','着','斤','距離','着差']]
+        past_results = pd.read_html(url2, encoding='EUC-JP')[0].head(20)[['日付','開催','レース名','着順','斤量','距離','着差']]
         past_results['日付2'] = [dt.strptime(i, "%Y/%m/%d") for i in past_results['日付']]
         past_results['着順'] = past_results['着順'].astype(str)
         past_results['コース'] = past_results['距離'].str[0]
