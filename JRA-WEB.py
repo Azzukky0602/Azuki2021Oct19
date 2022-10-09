@@ -106,7 +106,7 @@ if push == True:
 
 
     html = requests.get(url)
-    html.encoding = 'EUC-JP'
+    html.encoding = html.apparent_encoding
     soup = BeautifulSoup(html.text, "html.parser")
 
     time.sleep(1)
