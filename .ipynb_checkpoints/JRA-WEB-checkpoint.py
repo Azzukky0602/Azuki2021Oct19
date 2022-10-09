@@ -146,16 +146,17 @@ if push == True:
     past_weight_list = []
     for horse in  syusso_list:
         url2 = 'https://db.netkeiba.com/horse/result/' + horse[:10]
-        past_results = pd.read_html(url2, encoding = 'EUC-JP')[0].head(10)
+        past_results = pd.read_html(url2, encoding='EUC-JP')[0].head(20)[['日付', '開催', 'レース名', '着順', '斤量', '距離', '着差']]
         past_results['日付2'] = [dt.strptime(i, "%Y/%m/%d") for i in past_results['日付']]
-        past_results['着順2'] = past_results['着順'].map(lambda x:str(x).split('(')[0])
-        past_results['コース'] = past_results['距離'].map(lambda x:str(x)[0])
-        past_results['距離2'] = past_results['距離'].map(lambda x:str(x)[1:]).astype(int)
+        past_results['着順'] = past_results['着順'].astype(str)
+        past_results['コース'] = past_results['距離'].str[0]
+        past_results['距離2'] = past_results['距離'].str[1:].astype(int)
         past_results['開催2'] = past_results['開催'].str.extract('(\D+)')
         past_results['過去斤量'] = past_results['斤量']
-
-        npr = past_results.loc[:, ['日付2', '開催2', 'レース名', 'コース', '距離2', '着順2', '着差', '過去斤量']].dropna()
+        npr = past_results.loc[:, ['日付2', '開催2', 'レース名', 'コース', '距離2', '着順', '着差', '過去斤量']].dropna()
         npr = npr[(npr['着差'] < 3.5)] 
+        npr = npr[~npr['着順'].str.contains('降')]
+        npr['着順'] = npr['着順'].astype(int)
 
         past_weight_list.append(npr.iloc[0]['過去斤量'])
 
@@ -318,7 +319,7 @@ if push == True:
             a, b, c = chakusa[0], chakusa[1], chakusa[2]
 
             #連勝係数    
-            if npr.iloc[0]['着順2'] == "1" and npr.iloc[1]['着順2'] == "1" and npr.iloc[2]['着順2'] == "1":
+            if npr.iloc[0]['着順'] == "1" and npr.iloc[1]['着順'] == "1" and npr.iloc[2]['着順'] == "1":
                 rensho = (npr.iloc[0]['着差'] + npr.iloc[1]['着差'] + npr.iloc[2]['着差']) / 3
                 if rensho < -0.7:
                     e = 1.4
@@ -328,7 +329,7 @@ if push == True:
                     e = 1.2
                 else:
                     e = 1.1
-            elif npr.iloc[0]['着順2'] == "1" and npr.iloc[1]['着順2'] == "1": #and npr.iloc[2]['着順2'] != "1":
+            elif npr.iloc[0]['着順'] == "1" and npr.iloc[1]['着順'] == "1": #and npr.iloc[2]['着順'] != "1":
                 rensho = (npr.iloc[0]['着差'] + npr.iloc[1]['着差'] + npr.iloc[2]['着差']) / 3
                 if rensho < -0.7:
                     e = 1.3
@@ -497,7 +498,7 @@ if push == True:
                         kijun = 300
 
                     elif npr.iloc[t]['レース名'] in age3_GI:
-                        if int(npr.iloc[t]['着順2']) <= 5:  
+                        if int(npr.iloc[t]['着順']) <= 5:  
                             kijun = 800
                         elif float(npr.iloc[t]['着差']) <= 0.5:  
                             kijun = 800
@@ -604,7 +605,7 @@ if push == True:
             a, b, c, d = chakusa[0], chakusa[1], chakusa[2], chakusa[3]                    
 
             #連勝係数    
-            if npr.iloc[0]['着順2'] == "1" and npr.iloc[1]['着順2'] == "1" and npr.iloc[2]['着順2'] == "1" and npr.iloc[3]['着順2'] == "1":
+            if npr.iloc[0]['着順'] == "1" and npr.iloc[1]['着順'] == "1" and npr.iloc[2]['着順'] == "1" and npr.iloc[3]['着順'] == "1":
                 rensho = (npr.iloc[0]['着差'] + npr.iloc[1]['着差'] + npr.iloc[2]['着差'] + npr.iloc[3]['着差']) / 4
                 if rensho < -0.7:
                     e = 1.5
@@ -614,7 +615,7 @@ if push == True:
                     e = 1.3
                 else:
                     e = 1.2
-            elif npr.iloc[0]['着順2'] == "1" and npr.iloc[1]['着順2'] == "1" and npr.iloc[2]['着順2'] == "1": #and npr.iloc[3]['着順2'] != 1:
+            elif npr.iloc[0]['着順'] == "1" and npr.iloc[1]['着順'] == "1" and npr.iloc[2]['着順'] == "1": #and npr.iloc[3]['着順'] != 1:
                 rensho = (npr.iloc[0]['着差'] + npr.iloc[1]['着差'] + npr.iloc[2]['着差'] + npr.iloc[3]['着差']) / 4
                 if rensho < -0.7:
                     e = 1.4
@@ -624,7 +625,7 @@ if push == True:
                     e = 1.2
                 else:
                     e = 1.1
-            elif npr.iloc[0]['着順2'] == "1" and npr.iloc[1]['着順2'] == "1": #and npr.iloc[2]['着順2'] != 1 and npr.iloc[3]['着順2'] != 1:
+            elif npr.iloc[0]['着順'] == "1" and npr.iloc[1]['着順'] == "1": #and npr.iloc[2]['着順'] != 1 and npr.iloc[3]['着順'] != 1:
                 rensho = (npr.iloc[0]['着差'] + npr.iloc[1]['着差'] + npr.iloc[2]['着差'] + npr.iloc[3]['着差']) / 4
                 if rensho < -0.7:
                     e = 1.3
