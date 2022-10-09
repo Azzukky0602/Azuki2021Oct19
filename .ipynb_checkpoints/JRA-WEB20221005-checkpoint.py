@@ -186,7 +186,7 @@ if push == True:
         for horse_id, p_df in processed_horse_results.items():  #p_dfはprocessed dafa frame
             if len(p_df) < 3:
                 tekito_shisu[horse_id] = 0
-            
+
     #3歳、3戦のみ
             elif len(p_df) == 3:
                 if int(horse_id[18:]) == 3 and race_date <= dt(kotoshi, 5, 31):
@@ -206,13 +206,17 @@ if push == True:
                             kijun = 415
                         elif 'G3' in p_df.iloc[t]['レース名'] and p_df.iloc[t]['日付2'] < dt(kotoshi, 1, 1):
                             kijun = 300    
-                        elif p_df.iloc[t]['開催2'] in jra and 'L' in p_df.iloc[t]['レース名'] and p_df.iloc[t]['日付2'] > dt(kotoshi, 1, 1):
+                        elif p_df.iloc[t]['開催2'] in jra and 'L' in p_df.iloc[t]['レース名'] \
+                            and p_df.iloc[t]['日付2'] > dt(kotoshi, 1, 1):
                             kijun = 400
-                        elif p_df.iloc[t]['開催2'] in jra and 'L' in p_df.iloc[t]['レース名'] and p_df.iloc[t]['日付2'] < dt(kotoshi, 1, 1):
+                        elif p_df.iloc[t]['開催2'] in jra and 'L' in p_df.iloc[t]['レース名'] \
+                            and p_df.iloc[t]['日付2'] < dt(kotoshi, 1, 1):
                             kijun = 300
-                        elif p_df.iloc[t]['開催2'] in jra and 'OP' in p_df.iloc[t]['レース名'] and p_df.iloc[t]['日付2'] > dt(kotoshi, 1, 1):
+                        elif p_df.iloc[t]['開催2'] in jra and 'OP' in p_df.iloc[t]['レース名'] \
+                            and p_df.iloc[t]['日付2'] > dt(kotoshi, 1, 1):
                             kijun = 400
-                        elif p_df.iloc[t]['開催2'] in jra and 'OP' in p_df.iloc[t]['レース名'] and p_df.iloc[t]['日付2'] < dt(kotoshi, 1, 1):
+                        elif p_df.iloc[t]['開催2'] in jra and 'OP' in p_df.iloc[t]['レース名'] \
+                            and p_df.iloc[t]['日付2'] < dt(kotoshi, 1, 1):
                             kijun = 300
                         elif p_df.iloc[t]['開催2'] in jra and '3勝' in p_df.iloc[t]['レース名']:
                             kijun = 500
@@ -226,7 +230,7 @@ if push == True:
 
                     kijun1, kijun2, kijun3 = base_number[0], base_number[1], base_number[2]
 
-                    
+
                 elif int(horse_id[18:]) == 3 and race_date >= dt(kotoshi, 6, 1):
 
                     base_number = []
@@ -248,9 +252,11 @@ if push == True:
                             kijun = 500   
                         elif p_df.iloc[t]['レース名'] in age3_OP:
                             kijun = 500
-                        elif p_df.iloc[t]['開催2'] in jra and 'L' in p_df.iloc[t]['レース名'] and p_df.iloc[t]['日付2'] < dt(kotoshi, 1, 1):
+                        elif p_df.iloc[t]['開催2'] in jra and 'L' in p_df.iloc[t]['レース名'] \
+                            and p_df.iloc[t]['日付2'] < dt(kotoshi, 1, 1):
                             kijun = 300
-                        elif p_df.iloc[t]['開催2'] in jra and 'OP' in p_df.iloc[t]['レース名'] and p_df.iloc[t]['日付2'] < dt(kotoshi, 1, 1):
+                        elif p_df.iloc[t]['開催2'] in jra and 'OP' in p_df.iloc[t]['レース名'] \
+                            and p_df.iloc[t]['日付2'] < dt(kotoshi, 1, 1):
                             kijun = 300
                         elif 'G1' in p_df.iloc[t]['レース名'] and p_df.iloc[t]['レース名'] not in age3_GI: 
                             kijun = 800
@@ -272,7 +278,7 @@ if push == True:
                             kijun = 200
                         base_number.append(kijun)
 
-                    kijun1, kijun2, kijun3 = base_number[0], base_number[1], base_number[2]
+                    kijun1, kijun2, kijun3 = base_number[0], base_number[1], base_number[2]                
 
                 else:        
 
@@ -337,7 +343,7 @@ if push == True:
 
                 #連勝係数    
                 if p_df.iloc[0]['着順2'] == "1" and p_df.iloc[1]['着順2'] == "1" and p_df.iloc[2]['着順2'] == "1":
-                    rensho = (p_df.iloc[0]['着差'] + p_df.iloc[1]['着差'] + p_df.iloc[2]['着差']) / 4
+                    rensho = (p_df.iloc[0]['着差'] + p_df.iloc[1]['着差'] + p_df.iloc[2]['着差']) / 3
                     if rensho < -0.7:
                         e = 1.4
                     elif -0.7 <= rensho < -0.5:
@@ -347,7 +353,7 @@ if push == True:
                     else:
                         e = 1.1
                 elif p_df.iloc[0]['着順2'] == "1" and p_df.iloc[1]['着順2'] == "1": #and p_df.iloc[2]['着順2'] != "1":
-                    rensho = (p_df.iloc[0]['着差'] + p_df.iloc[1]['着差'] + p_df.iloc[2]['着差']) / 4
+                    rensho = (p_df.iloc[0]['着差'] + p_df.iloc[1]['着差'] + p_df.iloc[2]['着差']) / 3
                     if rensho < -0.7:
                         e = 1.3
                     elif -0.7 <= rensho < -0.5:
@@ -391,7 +397,8 @@ if push == True:
                         if '牝' in horse_id:
                             f = kijun1 * 0.05 * (max(hyo2['斤量']) -2.0 - float(horse_id[11:15]))
                         else:
-                            f = kijun1 * 0.05 * (max(hyo2['斤量']) - float(horse_id[11:15]))            
+                            f = kijun1 * 0.05 * (max(hyo2['斤量']) - float(horse_id[11:15])) 
+
 
 
                 #休養係数
@@ -406,7 +413,8 @@ if push == True:
                 elif td(weeks = 48) < (race_date - p_df.iloc[0]['日付2']):
                     g = 0.8
                 else:
-                    g = 1.0
+                    g = 1.0                
+
 
                 #距離係数                
                 av_dist = (p_df.iloc[0]['距離2'] + p_df.iloc[1]['距離2'] + p_df.iloc[2]['距離2']) / 3 
@@ -447,7 +455,7 @@ if push == True:
 
                 ts = ((kijun1 * 2 * a * 2 + kijun2 * b + kijun3 * c) + f) * e * g * h * i
                 tekito_shisu[horse_id]= int(ts) 
-            
+
     #3歳　春　補正　4戦以上
             else:
                 if int(horse_id[18:]) == 3 and race_date <= dt(kotoshi, 5, 31):
@@ -467,13 +475,17 @@ if push == True:
                             kijun = 415
                         elif 'G3' in p_df.iloc[t]['レース名'] and p_df.iloc[t]['日付2'] < dt(kotoshi, 1, 1):
                             kijun = 300    
-                        elif p_df.iloc[t]['開催2'] in jra and 'L' in p_df.iloc[t]['レース名'] and p_df.iloc[t]['日付2'] > dt(kotoshi, 1, 1):
+                        elif p_df.iloc[t]['開催2'] in jra and 'L' in p_df.iloc[t]['レース名'] \
+                            and p_df.iloc[t]['日付2'] > dt(kotoshi, 1, 1):
                             kijun = 400
-                        elif p_df.iloc[t]['開催2'] in jra and 'L' in p_df.iloc[t]['レース名'] and p_df.iloc[t]['日付2'] < dt(kotoshi, 1, 1):
+                        elif p_df.iloc[t]['開催2'] in jra and 'L' in p_df.iloc[t]['レース名'] \
+                            and p_df.iloc[t]['日付2'] < dt(kotoshi, 1, 1):
                             kijun = 300
-                        elif p_df.iloc[t]['開催2'] in jra and 'OP' in p_df.iloc[t]['レース名'] and p_df.iloc[t]['日付2'] > dt(kotoshi, 1, 1):
+                        elif p_df.iloc[t]['開催2'] in jra and 'OP' in p_df.iloc[t]['レース名'] \
+                        and p_df.iloc[t]['日付2'] > dt(kotoshi, 1, 1):
                             kijun = 400
-                        elif p_df.iloc[t]['開催2'] in jra and 'OP' in p_df.iloc[t]['レース名'] and p_df.iloc[t]['日付2'] < dt(kotoshi, 1, 1):
+                        elif p_df.iloc[t]['開催2'] in jra and 'OP' in p_df.iloc[t]['レース名'] \
+                            and p_df.iloc[t]['日付2'] < dt(kotoshi, 1, 1):
                             kijun = 300
                         elif p_df.iloc[t]['開催2'] in jra and '3勝' in p_df.iloc[t]['レース名']:
                             kijun = 500
@@ -485,23 +497,25 @@ if push == True:
                             kijun = 200
                         base_number.append(kijun)
 
-                    kijun1, kijun2, kijun3, kijun4 = base_number[0], base_number[1], base_number[2], base_number[3] 
-                
+                    kijun1, kijun2, kijun3, kijun4 = base_number[0], base_number[1], base_number[2], base_number[3]    
+
     #3歳　秋　補正　4戦以上
-                elif int(horse_id[18:]) == 3 and race_date >= dt(dt.now().year, 6, 1):
+                elif int(horse_id[18:]) == 3 and race_date >= dt(kotoshi, 6, 1):
 
                     base_number = []
                     for t in range(4):
 
-                        if 'G1' in p_df.iloc[t]['レース名'] and p_df.iloc[t]['日付2'] < dt(dt.now().year, 1, 1):  
+                        if 'G1' in p_df.iloc[t]['レース名'] and p_df.iloc[t]['日付2'] < dt(kotoshi, 1, 1):  
                             kijun = 350                                                    
-                        elif 'G2' in p_df.iloc[t]['レース名'] and p_df.iloc[t]['日付2'] < dt(dt.now().year, 1, 1):
+                        elif 'G2' in p_df.iloc[t]['レース名'] and p_df.iloc[t]['日付2'] < dt(kotoshi, 1, 1):
                             kijun = 300
-                        elif 'G3' in p_df.iloc[t]['レース名'] and p_df.iloc[t]['日付2'] < dt(dt.now().year, 1, 1):
+                        elif 'G3' in p_df.iloc[t]['レース名'] and p_df.iloc[t]['日付2'] < dt(kotoshi, 1, 1):
                             kijun = 300
-                        elif p_df.iloc[t]['開催2'] in jra and 'L' in p_df.iloc[t]['レース名'] and p_df.iloc[t]['日付2'] < dt(dt.now().year, 1, 1):
+                        elif p_df.iloc[t]['開催2'] in jra and 'L' in p_df.iloc[t]['レース名'] \
+                            and p_df.iloc[t]['日付2'] < dt(kotoshi, 1, 1):
                             kijun = 300
-                        elif p_df.iloc[t]['開催2'] in jra and 'OP' in p_df.iloc[t]['レース名'] and p_df.iloc[t]['日付2'] < dt(dt.now().year, 1, 1):
+                        elif p_df.iloc[t]['開催2'] in jra and 'OP' in p_df.iloc[t]['レース名'] \
+                            and p_df.iloc[t]['日付2'] < dt(kotoshi, 1, 1):
                             kijun = 300
 
                         elif p_df.iloc[t]['レース名'] in age3_GI:
@@ -541,10 +555,12 @@ if push == True:
 
                         base_number.append(kijun)
 
-                    kijun1, kijun2, kijun3, kijun4 = base_number[0], base_number[1], base_number[2], base_number[3]
-                        
+                    kijun1, kijun2, kijun3, kijun4 = base_number[0], base_number[1], base_number[2], base_number[3] 
+
+
+    #古馬混合戦の指数
                 else:
-                #elif int(horse_id[18:]) != 3 :   #古馬混合戦の指数         
+
                     base_number = []
                     for t in range(4):
 
@@ -557,8 +573,7 @@ if push == True:
                         elif p_df.iloc[t]['コース'] == '障' and 'OP' in p_df.iloc[t]['レース名']:  
                             kijun = 500            
                         elif p_df.iloc[t]['コース'] == '障' and '未勝利' in p_df.iloc[t]['レース名']:  
-                            kijun = 400                                                   
-
+                            kijun = 400            
                         elif p_df.iloc[t]['開催2'] in jra and 'G1' in p_df.iloc[t]['レース名']:  
                             kijun = 800
                         elif p_df.iloc[t]['開催2'] in jra and 'G2' in p_df.iloc[t]['レース名']:
@@ -571,16 +586,10 @@ if push == True:
                             kijun = 600
                         elif p_df.iloc[t]['開催2'] in jra and '3勝' in p_df.iloc[t]['レース名']:
                             kijun = 500
-                        elif p_df.iloc[t]['開催2'] in jra and '1600' in p_df.iloc[t]['レース名']:
-                            kijun = 500
                         elif p_df.iloc[t]['開催2'] in jra and '2勝'in p_df.iloc[t]['レース名']:
-                            kijun = 400
-                        elif p_df.iloc[t]['開催2'] in jra and '1000' in p_df.iloc[t]['レース名']:
                             kijun = 400
                         elif p_df.iloc[t]['開催2'] in jra and '1勝' in p_df.iloc[t]['レース名']:
                             kijun = 300  
-                        elif p_df.iloc[t]['開催2'] in jra and '500' in p_df.iloc[t]['レース名']:
-                            kijun = 300           
                         elif p_df.iloc[t]['開催2'] not in jra and 'G1' in p_df.iloc[t]['レース名']:  
                             kijun = 700
                         elif p_df.iloc[t]['開催2'] not in jra  and 'G2' in p_df.iloc[t]['レース名']:  
@@ -617,10 +626,8 @@ if push == True:
 
                 a, b, c, d = chakusa[0], chakusa[1], chakusa[2], chakusa[3]                    
 
-
                 #連勝係数    
-                if p_df.iloc[0]['着順2'] == "1" and p_df.iloc[1]['着順2'] == "1" \
-                        and p_df.iloc[2]['着順2'] == "1" and p_df.iloc[3]['着順2'] == "1":
+                if p_df.iloc[0]['着順2'] == "1" and p_df.iloc[1]['着順2'] == "1" and p_df.iloc[2]['着順2'] == "1" and p_df.iloc[3]['着順2'] == "1":
                     rensho = (p_df.iloc[0]['着差'] + p_df.iloc[1]['着差'] + p_df.iloc[2]['着差'] + p_df.iloc[3]['着差']) / 4
                     if rensho < -0.7:
                         e = 1.5
@@ -630,7 +637,7 @@ if push == True:
                         e = 1.3
                     else:
                         e = 1.2
-                elif p_df.iloc[0]['着順2'] == "1" and p_df.iloc[1]['着順2'] == "1" and p_df.iloc[2]['着順2'] == "1":
+                elif p_df.iloc[0]['着順2'] == "1" and p_df.iloc[1]['着順2'] == "1" and p_df.iloc[2]['着順2'] == "1": #and p_df.iloc[3]['着順2'] != 1:
                     rensho = (p_df.iloc[0]['着差'] + p_df.iloc[1]['着差'] + p_df.iloc[2]['着差'] + p_df.iloc[3]['着差']) / 4
                     if rensho < -0.7:
                         e = 1.4
@@ -640,7 +647,7 @@ if push == True:
                         e = 1.2
                     else:
                         e = 1.1
-                elif p_df.iloc[0]['着順2'] == "1" and p_df.iloc[1]['着順2'] == "1":
+                elif p_df.iloc[0]['着順2'] == "1" and p_df.iloc[1]['着順2'] == "1": #and p_df.iloc[2]['着順2'] != 1 and p_df.iloc[3]['着順2'] != 1:
                     rensho = (p_df.iloc[0]['着差'] + p_df.iloc[1]['着差'] + p_df.iloc[2]['着差'] + p_df.iloc[3]['着差']) / 4
                     if rensho < -0.7:
                         e = 1.3
@@ -686,7 +693,8 @@ if push == True:
                         if '牝' in horse_id:
                             f = kijun1 * 0.05 * (max(hyo2['斤量']) -2.0 - float(horse_id[11:15]))
                         else:
-                            f = kijun1 * 0.05 * (max(hyo2['斤量']) - float(horse_id[11:15]))            
+                            f = kijun1 * 0.05 * (max(hyo2['斤量']) - float(horse_id[11:15]))                              
+
 
                 #休養係数
                 if td(weeks = 0) < (race_date - p_df.iloc[0]['日付2']) <= td(weeks = 4):
