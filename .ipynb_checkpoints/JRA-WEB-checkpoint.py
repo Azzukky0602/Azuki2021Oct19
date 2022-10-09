@@ -106,8 +106,8 @@ if push == True:
 
 
     html = requests.get(url)
-    #html.encoding = html.apparent_encoding
-    soup = BeautifulSoup(html.content, "html.parser")
+    html.encoding = 'EUC-JP'
+    soup = BeautifulSoup(html.text, "html.parser")
 
     time.sleep(1)
     syusso = soup.find('table').find_all('a', attrs = {'href': re.compile('^https://db.netkeiba.com/horse/')})
@@ -145,8 +145,8 @@ if push == True:
     tekito_shisu_list = []
     past_weight_list = []
     for horse in  syusso_list:
-        url2 = 'https://db.netkeiba.com/horse/result/' + horse[:10] + '/'
-        past_results = pd.read_html(url2)[0].head(10)[['日付', '開催', 'レース名', '着順', '斤量', '距離', '着差']]
+        url2 = 'https://db.netkeiba.com/horse/result/' + horse[:10]
+        past_results = pd.read_html(url2, encoding = 'EUC-JP')[0].head(10)[['日付', '開催', 'レース名', '着順', '斤量', '距離', '着差']]
         past_results['日付2'] = [dt.strptime(i, "%Y/%m/%d") for i in past_results['日付']]
         past_results['着順2'] = past_results['着順'].map(lambda x:str(x).split('(')[0])
         past_results['コース'] = past_results['距離'].map(lambda x:str(x)[0])
