@@ -111,8 +111,8 @@ if push == True:
 
         L1 = []
         for uma in syusso:
-            horse_id = re.findall(r'\d+', uma['href'])[0]
-            L1.append(horse_id)
+            id_number = re.findall(r'\d+', uma['href'])[0]
+            L1.append(id_number)
 
         L2 = []
         for weight in hyo2['斤量']:
