@@ -106,8 +106,8 @@ if push == True:
 
 
     html = requests.get(url)
-    html.encoding = html.apparent_encoding
-    soup = BeautifulSoup(html.text, "html.parser")
+    #html.encoding = html.apparent_encoding
+    soup = BeautifulSoup(html.content, "html.parser")
 
     time.sleep(1)
     syusso = soup.find('table').find_all('a', attrs = {'href': re.compile('^https://db.netkeiba.com/horse/')})
