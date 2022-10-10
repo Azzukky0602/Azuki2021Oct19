@@ -165,7 +165,7 @@ if push == True:
         npr['着順'] = npr['着順'].astype(int)
         npr.reset_index()
 
-        past_weight_list.append(npr[0]['過去斤量'])
+        past_weight_list.append(npr['過去斤量'][0])
 
         if len(npr) < 3:
             tekito_shisu = 0
