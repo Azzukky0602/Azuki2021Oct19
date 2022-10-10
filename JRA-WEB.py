@@ -142,8 +142,8 @@ if push == True:
 
 
     tekito_shisu_list = []
-    past_weight_list = []
     for horse in  syusso_list:
+        time.sleep(1)
         url2 = 'https://db.netkeiba.com/horse/result/' + horse[:10]
         past_results = pd.read_html(url2, header = 0, encoding='EUC-JP')[0].head(10)
         past_results.columns = ['col1', 'col2','col3','col4','col5','col6','col7','col8','col9','col10','col11','col12','col13','col14',\
@@ -157,7 +157,7 @@ if push == True:
         past_results['pastweight'] = past_results['col14']
         past_results['difference'] = past_results['col19']
         past_results['racename'] = past_results['col5']
-        npr = past_results.loc[:, ['date', 'place', 'racename', 'course', 'distance', 'result', 'difference', 'pastweight']].dropna()
+        npr = past_results.loc[:, ['date', 'place', 'racename', 'course', 'distance', 'result', 'difference']].dropna()
         npr = npr[(npr['difference'] < 3.5)] 
         npr = npr[~npr['result'].str.contains('降')]
 
@@ -170,7 +170,6 @@ if push == True:
         npr = npr.reset_index()
 
 
-        past_weight_list.append(npr['pastweight'][0])
 
         if len(npr) < 3:
             tekito_shisu = 0
@@ -743,8 +742,18 @@ if push == True:
             tekito_shisu = int(ts)
             tekito_shisu_list.append(tekito_shisu)
 
-
     hyo2['TS'] = tekito_shisu_list
+
+    
+    past_weight_list = []
+    for horse in  syusso_list:
+        time.sleep(1)
+        url3 = 'https://db.netkeiba.com/horse/result/' + horse[:10]
+        pr_for_w = pd.read_html(url3, header = 0, encoding='EUC-JP')[0].head(3)
+        pr_for_w.columns = ['prfw1', 'prfw2','prfw3','prfw4','prfw5','prfw6','prfw7','prfw8','prfw9','prfw10','prfw11','prfw12','prfw13','prfw14',\
+                           'prfw15','prfw16','prfw17','prfw18','prfw19','prfw20','prfw21','prfw22','prfw23','prfw24','prfw25','prfw26','prfw27','prfw28']
+        pw = pr_for_w['prfw14'][0]
+        past_weight_list.append(pw)
 
 
     s = pd.Series(past_weight_list)
