@@ -96,26 +96,23 @@ if push == True:
     st.write('計算には約1分かかります。しばらくお待ちください。')
     
     url = 'https://race.netkeiba.com/race/shutuba.html?race_id=' + str(kotoshi) + race_for_keisan + '&rf=race_submenu'
+
     hyo = pd.read_html(url)[0]
     hyo.columns = hyo.columns.droplevel(0)
-    hyo.columns = ['waku', 'umaban', 'noneed1', 'name', 'age', 'weight', 'jockey', 'stable', 'bodyweight', 'noneed1', 'odds', 'noneed2', 'noneed3']    
+    hyo.columns = ['waku', 'umaban', 'noneed1', 'name', 'seirei', 'weight', 'jockey', 'stable', 'bodyweight', 'noneed1', 'odds', 'noneed2', 'noneed3']
     hyo.drop(columns=['waku', 'noneed1', 'noneed2', 'noneed3', 'bodyweight', 'odds'], inplace=True)
-    
-    
-    hyo2 = copy.deepcopy(hyo)
-    hyo2['性'] = hyo2['age'].str[0]
-    hyo2['年齢'] = hyo2['age'].str[1:].astype(int)
 
+    hyo2 = copy.deepcopy(hyo)
+    hyo2['gender'] = hyo2['seirei'].str[0]
+    hyo2['age'] = hyo2['seirei'].str[1:].astype(int)
 
     html = requests.get(url)
     html.encoding = 'EUC-JP'
     soup = BeautifulSoup(html.text, "html.parser")
 
-    time.sleep(1)
     syusso = soup.find('table').find_all('a', attrs = {'href': re.compile('^https://db.netkeiba.com/horse/')})
     syusso2 = soup.select('td:nth-of-type(6)')
     seirei = soup.select('td.Barei')
-  
 
     day_css = soup.select('#RaceList_DateList > dd.Active > a')[0]
     rd = re.findall((r'\d+'), day_css['href'])[0]
@@ -134,11 +131,11 @@ if push == True:
         L2.append(str(weight))
 
     L3 = []
-    for sei in hyo2['性']:
+    for sei in hyo2['gender']:
         L3.append(sei)
 
     L4 = []
-    for rei in hyo2['年齢']:
+    for rei in hyo2['age']:
         L4.append(str(rei))
 
     syusso_list = [x1 + ' ' + x2 +  ' ' + x3 + ' ' + x4  for (x1, x2, x3, x4) in zip(L1, L2, L3, L4)]
