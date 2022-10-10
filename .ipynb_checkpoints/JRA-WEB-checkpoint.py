@@ -163,8 +163,9 @@ if push == True:
         npr = npr[(npr['着差'] < 3.5)] 
         npr = npr[~npr['着順'].str.contains('降')]
         npr['着順'] = npr['着順'].astype(int)
+        npr.reset_index()
 
-        past_weight_list.append(npr.iloc[0]['過去斤量'])
+        past_weight_list.append(npr[0]['過去斤量'])
 
         if len(npr) < 3:
             tekito_shisu = 0
@@ -982,7 +983,10 @@ if push == True:
     
     
     hyo2['weight']= hyo2['weight'].astype(str)
-    hyo2['順位'] = hyo2['指数'].rank(ascending=False).astype(int)    
+    hyo2['順位'] = hyo2['指数'].rank(ascending=False).astype(int)
+    hyo2['馬番'] = hyo2['umaban']
+    hyo2['騎手'] = hyo2['jockey']
+    hyo2['厩舎'] = hyo2['stable']
     hyo3 = hyo2[['順位','umaban','指数','偏差値','jockey','stable', '性', '年齢', '生産者','馬主']]
     hyo4 = hyo3.sort_values('順位')
     hyo4.set_index("順位", inplace=True)
