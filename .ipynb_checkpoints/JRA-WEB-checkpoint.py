@@ -351,36 +351,36 @@ if push == True:
             #斤量補正
             if 1000 <= race_distance <= 1400:
                 if all(L3) =='牝':
-                    f = kijun1 * 0.20 * (max(hyo2['斤量']) - float(horse[11:15]))
+                    f = kijun1 * 0.20 * (max(hyo2['weight']) - float(horse[11:15]))
                 else:
                     if '牝' in horse:
-                        f = kijun1 * 0.20 * (max(hyo2['斤量']) -2.0 - float(horse[11:15]))
+                        f = kijun1 * 0.20 * (max(hyo2['weight']) -2.0 - float(horse[11:15]))
                     else:
-                        f = kijun1 * 0.20 * (max(hyo2['斤量']) - float(horse[11:15]))                
+                        f = kijun1 * 0.20 * (max(hyo2['weight']) - float(horse[11:15]))                
             elif 1400 < race_distance <= 1800:
                 if all(L3) =='牝':
-                    f = kijun1 * 0.15 * (max(hyo2['斤量']) - float(horse[11:15]))
+                    f = kijun1 * 0.15 * (max(hyo2['weight']) - float(horse[11:15]))
                 else:
                     if '牝' in horse:
-                        f = kijun1 * 0.15 * (max(hyo2['斤量']) -2.0 - float(horse[11:15]))
+                        f = kijun1 * 0.15 * (max(hyo2['weight']) -2.0 - float(horse[11:15]))
                     else:
-                        f = kijun1 * 0.15 * (max(hyo2['斤量']) - float(horse[11:15]))                            
+                        f = kijun1 * 0.15 * (max(hyo2['weight']) - float(horse[11:15]))                            
             elif 1800 < race_distance <= 2400:
                 if all(L3) =='牝':
-                    f = kijun1 * 0.10 * (max(hyo2['斤量']) - float(horse[11:15]))
+                    f = kijun1 * 0.10 * (max(hyo2['weight']) - float(horse[11:15]))
                 else:
                     if '牝' in horse:
-                        f = kijun1 * 0.10 * (max(hyo2['斤量']) -2.0 - float(horse[11:15]))
+                        f = kijun1 * 0.10 * (max(hyo2['weight']) -2.0 - float(horse[11:15]))
                     else:
-                        f = kijun1 * 0.10 * (max(hyo2['斤量']) - float(horse[11:15]))            
+                        f = kijun1 * 0.10 * (max(hyo2['weight']) - float(horse[11:15]))            
             elif race_distance > 2400:
                 if all(L3) =='牝':
-                    f = kijun1 * 0.05 * (max(hyo2['斤量']) - float(horse[11:15]))
+                    f = kijun1 * 0.05 * (max(hyo2['weight']) - float(horse[11:15]))
                 else:
                     if '牝' in horse:
-                        f = kijun1 * 0.05 * (max(hyo2['斤量']) -2.0 - float(horse[11:15]))
+                        f = kijun1 * 0.05 * (max(hyo2['weight']) -2.0 - float(horse[11:15]))
                     else:
-                        f = kijun1 * 0.05 * (max(hyo2['斤量']) - float(horse[11:15])) 
+                        f = kijun1 * 0.05 * (max(hyo2['weight']) - float(horse[11:15])) 
 
 
 
@@ -648,36 +648,36 @@ if push == True:
             #斤量補正
             if 1000 <= race_distance <= 1400:
                 if all(L3) =='牝':
-                    f = kijun1 * 0.20 * (max(hyo2['斤量']) - float(horse[11:15]))
+                    f = kijun1 * 0.20 * (max(hyo2['weight']) - float(horse[11:15]))
                 else:
                     if '牝' in horse:
-                        f = kijun1 * 0.20 * (max(hyo2['斤量']) -2.0 - float(horse[11:15]))
+                        f = kijun1 * 0.20 * (max(hyo2['weight']) -2.0 - float(horse[11:15]))
                     else:
-                        f = kijun1 * 0.20 * (max(hyo2['斤量']) - float(horse[11:15]))                
+                        f = kijun1 * 0.20 * (max(hyo2['weight']) - float(horse[11:15]))                
             elif 1400 < race_distance <= 1800:
                 if all(L3) =='牝':
-                    f = kijun1 * 0.15 * (max(hyo2['斤量']) - float(horse[11:15]))
+                    f = kijun1 * 0.15 * (max(hyo2['weight']) - float(horse[11:15]))
                 else:
                     if '牝' in horse:
-                        f = kijun1 * 0.15 * (max(hyo2['斤量']) -2.0 - float(horse[11:15]))
+                        f = kijun1 * 0.15 * (max(hyo2['weight']) -2.0 - float(horse[11:15]))
                     else:
-                        f = kijun1 * 0.15 * (max(hyo2['斤量']) - float(horse[11:15]))                            
+                        f = kijun1 * 0.15 * (max(hyo2['weight']) - float(horse[11:15]))                            
             elif 1800 < race_distance <= 2400:
                 if all(L3) =='牝':
-                    f = kijun1 * 0.10 * (max(hyo2['斤量']) - float(horse[11:15]))
+                    f = kijun1 * 0.10 * (max(hyo2['weight']) - float(horse[11:15]))
                 else:
                     if '牝' in horse:
-                        f = kijun1 * 0.10 * (max(hyo2['斤量']) -2.0 - float(horse[11:15]))
+                        f = kijun1 * 0.10 * (max(hyo2['weight']) -2.0 - float(horse[11:15]))
                     else:
-                        f = kijun1 * 0.10 * (max(hyo2['斤量']) - float(horse[11:15]))            
+                        f = kijun1 * 0.10 * (max(hyo2['weight']) - float(horse[11:15]))            
             elif race_distance > 2400:
                 if all(L3) =='牝':
-                    f = kijun1 * 0.05 * (max(hyo2['斤量']) - float(horse[11:15]))
+                    f = kijun1 * 0.05 * (max(hyo2['weight']) - float(horse[11:15]))
                 else:
                     if '牝' in horse:
-                        f = kijun1 * 0.05 * (max(hyo2['斤量']) -2.0 - float(horse[11:15]))
+                        f = kijun1 * 0.05 * (max(hyo2['weight']) -2.0 - float(horse[11:15]))
                     else:
-                        f = kijun1 * 0.05 * (max(hyo2['斤量']) - float(horse[11:15]))                              
+                        f = kijun1 * 0.05 * (max(hyo2['weight']) - float(horse[11:15]))                              
 
 
             #休養係数
@@ -981,7 +981,7 @@ if push == True:
     
     
     
-    hyo2['斤量']= hyo2['斤量'].astype(str)
+    hyo2['weight']= hyo2['weight'].astype(str)
     hyo2['順位'] = hyo2['指数'].rank(ascending=False).astype(int)    
     hyo3 = hyo2[['順位','umaban','馬名','指数','偏差値','jockey','stable', '性', '年齢', '生産者','馬主']]
     hyo4 = hyo3.sort_values('順位')
