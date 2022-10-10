@@ -163,7 +163,7 @@ if push == True:
         npr = npr[(npr['着差'] < 3.5)] 
         npr = npr[~npr['着順'].str.contains('降')]
         npr['着順'] = npr['着順'].astype(int)
-        npr.reset_index()
+        npr = npr.reset_index()
 
         past_weight_list.append(npr['過去斤量'][0])
 
