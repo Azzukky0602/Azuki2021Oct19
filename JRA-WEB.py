@@ -160,7 +160,13 @@ if push == True:
         npr = past_results.loc[:, ['date', 'place', 'racename', 'course', 'distance', 'result', 'difference', 'pastweight']].dropna()
         npr = npr[(npr['difference'] < 3.5)] 
         npr = npr[~npr['result'].str.contains('降')]
-        npr['result'] = npr['result'].astype(int)
+
+        if npr['result'].dtype != 'int':
+            npr['result'] = pd.to_numeric(npr['result'])
+            npr['result'] = npr['result'].astype(int)
+        else:
+            pass
+
         npr = npr.reset_index()
 
 
