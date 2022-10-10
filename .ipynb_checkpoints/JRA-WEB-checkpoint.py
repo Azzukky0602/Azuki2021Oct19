@@ -146,13 +146,17 @@ if push == True:
     past_weight_list = []
     for horse in  syusso_list:
         url2 = 'https://db.netkeiba.com/horse/result/' + horse[:10]
-        past_results = pd.read_html(url2, header = 0, encoding='EUC-JP')[0].head(20)[['日付','開催','レース名','着順','斤量','距離','着差']]
-        past_results['日付2'] = [dt.strptime(i, "%Y/%m/%d") for i in past_results['日付']]
-        past_results['着順'] = past_results['着順'].astype(str)
-        past_results['コース'] = past_results['距離'].str[0]
-        past_results['距離2'] = past_results['距離'].str[1:].astype(int)
-        past_results['開催2'] = past_results['開催'].str.extract('(\D+)')
-        past_results['過去斤量'] = past_results['斤量']
+        past_results = pd.read_html(url2, header = 0, encoding='EUC-JP')[0].head(10)
+        past_results.columns = ['col1', 'col2','col3','col4','col5','col6','col7','col8','col9','col10','col11','col12','col13','col14',\
+                       'col15','col16','col17','col18','col19','col20','col21','col22','col23','col24','col25','col26','col27','col28']
+        past_results['日付2'] = [dt.strptime(i, "%Y/%m/%d") for i in past_results['col1']]
+        past_results['着順'] = past_results['col12'].astype(str)
+        past_results['コース'] = past_results['col15'].str[0]
+        past_results['距離2'] = past_results['col15'].str[1:].astype(int)
+        past_results['開催2'] = past_results['col2'].str.extract('(\D+)')
+        past_results['過去斤量'] = past_results['col14']
+        past_results['着差'] = past_results['col19']
+        past_results['レース名'] = past_results['col15']
         npr = past_results.loc[:, ['日付2', '開催2', 'レース名', 'コース', '距離2', '着順', '着差', '過去斤量']].dropna()
         npr = npr[(npr['着差'] < 3.5)] 
         npr = npr[~npr['着順'].str.contains('降')]
