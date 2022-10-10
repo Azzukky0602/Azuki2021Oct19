@@ -98,11 +98,13 @@ if push == True:
     url = 'https://race.netkeiba.com/race/shutuba.html?race_id=' + str(kotoshi) + race_for_keisan + '&rf=race_submenu'
     hyo = pd.read_html(url)[0]
     hyo.columns = hyo.columns.droplevel(0)
+    hyo.columns = ['waku', 'umaban', 'noneed1', 'name', 'age', 'weight', 'jockey', 'stable', 'bodyweight', 'noneed1', 'odds', 'noneed2', 'noneed3']    
+    hyo.drop(columns=['waku', 'noneed1', 'noneed2', 'noneed3', 'bodyweight', 'odds'], inplace=True)
+    
     
     hyo2 = copy.deepcopy(hyo)
-    hyo2['性'] = hyo2['性齢'].str[0]
-    hyo2['年齢'] = hyo2['性齢'].str[1:].astype(int)
-    hyo2.drop(['印', '登録', 'メモ', '人気', '性齢'], axis = 1, inplace = True)
+    hyo2['性'] = hyo2['age'].str[0]
+    hyo2['年齢'] = hyo2['age'].str[1:].astype(int)
 
 
     html = requests.get(url)
@@ -128,7 +130,7 @@ if push == True:
         L1.append(id_number)
 
     L2 = []
-    for weight in hyo2['斤量']:
+    for weight in hyo2['weight']:
         L2.append(str(weight))
 
     L3 = []
@@ -740,7 +742,7 @@ if push == True:
 
 #前走からの斤量増減   
     s = pd.Series(past_weight_list)
-    hyo2['斤量増減']= hyo2['斤量']-s
+    hyo2['斤量増減']= hyo2['weight']-s
 
 #馬主、生産者係数    
     starion_list = []
@@ -767,168 +769,168 @@ if push == True:
     
 
     
-#騎手補正：連対率45%以上は1.125, 40%以上は1.1, 35-40%は1.075, 30-35%:1.05, 25-30%:1.025, 20-25%:1.00, 15-20%:0.975, 10-15%:0.95, 5-10%:0.925, 0-5%:0.90
+#jockey補正：連対率45%以上は1.125, 40%以上は1.1, 35-40%は1.075, 30-35%:1.05, 25-30%:1.025, 20-25%:1.00, 15-20%:0.975, 10-15%:0.95, 5-10%:0.925, 0-5%:0.90
 
     #三着内率50%以上
-    hyo2.loc[hyo2['騎手'] == 'マーフィ', '指数'] = hyo2['指数'] * 1.10 #
-    hyo2.loc[hyo2['騎手'] == 'レーン', '指数'] = hyo2['指数'] * 1.075 #
-    hyo2.loc[hyo2['騎手'] == 'ルメール', '指数'] = hyo2['指数'] * 1.075 #
-    hyo2.loc[hyo2['騎手'] == '川田', '指数'] = hyo2['指数'] * 1.125 #
-    hyo2.loc[hyo2['騎手'] == 'Ｃデムーロ', '指数'] = hyo2['指数'] * 1.125 #
-    hyo2.loc[hyo2['騎手'] == '伴', '指数'] = hyo2['指数'] * 1.00 #
-    hyo2.loc[hyo2['騎手'] == '平沢', '指数'] = hyo2['指数'] * 1.025 #
+    hyo2.loc[hyo2['jockey'] == 'マーフィ', '指数'] = hyo2['指数'] * 1.10 #
+    hyo2.loc[hyo2['jockey'] == 'レーン', '指数'] = hyo2['指数'] * 1.075 #
+    hyo2.loc[hyo2['jockey'] == 'ルメール', '指数'] = hyo2['指数'] * 1.075 #
+    hyo2.loc[hyo2['jockey'] == '川田', '指数'] = hyo2['指数'] * 1.125 #
+    hyo2.loc[hyo2['jockey'] == 'Ｃデムーロ', '指数'] = hyo2['指数'] * 1.125 #
+    hyo2.loc[hyo2['jockey'] == '伴', '指数'] = hyo2['指数'] * 1.00 #
+    hyo2.loc[hyo2['jockey'] == '平沢', '指数'] = hyo2['指数'] * 1.025 #
     
     #三着内率40-50%
-    hyo2.loc[hyo2['騎手'] == '高田', '指数'] = hyo2['指数'] * 1.00 #
-    hyo2.loc[hyo2['騎手'] == '横山武', '指数'] = hyo2['指数'] * 1.05 #
-    hyo2.loc[hyo2['騎手'] == 'Ｍデムーロ', '指数'] = hyo2['指数'] * 1.025 #
-    hyo2.loc[hyo2['騎手'] == '福永', '指数'] = hyo2['指数'] * 1.025 #
-    hyo2.loc[hyo2['騎手'] == '石神', '指数'] = hyo2['指数'] * 1.025 #   
-    hyo2.loc[hyo2['騎手'] == '北沢', '指数'] = hyo2['指数'] * 1.050 #
+    hyo2.loc[hyo2['jockey'] == '高田', '指数'] = hyo2['指数'] * 1.00 #
+    hyo2.loc[hyo2['jockey'] == '横山武', '指数'] = hyo2['指数'] * 1.05 #
+    hyo2.loc[hyo2['jockey'] == 'Ｍデムーロ', '指数'] = hyo2['指数'] * 1.025 #
+    hyo2.loc[hyo2['jockey'] == '福永', '指数'] = hyo2['指数'] * 1.025 #
+    hyo2.loc[hyo2['jockey'] == '石神', '指数'] = hyo2['指数'] * 1.025 #   
+    hyo2.loc[hyo2['jockey'] == '北沢', '指数'] = hyo2['指数'] * 1.050 #
 
     #三着内率30-40%
-    hyo2.loc[hyo2['騎手'] == '西谷誠', '指数'] = hyo2['指数'] * 1.00 #    
-    hyo2.loc[hyo2['騎手'] == '小野寺', '指数'] = hyo2['指数'] * 0.975 #
-    hyo2.loc[hyo2['騎手'] == '戸崎圭', '指数'] = hyo2['指数'] * 1.05 #
-    hyo2.loc[hyo2['騎手'] == '武豊', '指数'] = hyo2['指数'] * 1.025 #
-    hyo2.loc[hyo2['騎手'] == '横山典', '指数'] = hyo2['指数'] * 1.025 #    
-    hyo2.loc[hyo2['騎手'] == '岩田望', '指数'] = hyo2['指数'] * 1.00 #
-    hyo2.loc[hyo2['騎手'] == '熊沢', '指数'] = hyo2['指数'] * 1.05 #
-    hyo2.loc[hyo2['騎手'] == '森一', '指数'] = hyo2['指数'] * 1.025 #    
-    hyo2.loc[hyo2['騎手'] == '岩田康', '指数'] = hyo2['指数'] * 0.975 #
-    hyo2.loc[hyo2['騎手'] == '藤岡佑', '指数'] = hyo2['指数'] * 0.975 #  
+    hyo2.loc[hyo2['jockey'] == '西谷誠', '指数'] = hyo2['指数'] * 1.00 #    
+    hyo2.loc[hyo2['jockey'] == '小野寺', '指数'] = hyo2['指数'] * 0.975 #
+    hyo2.loc[hyo2['jockey'] == '戸崎圭', '指数'] = hyo2['指数'] * 1.05 #
+    hyo2.loc[hyo2['jockey'] == '武豊', '指数'] = hyo2['指数'] * 1.025 #
+    hyo2.loc[hyo2['jockey'] == '横山典', '指数'] = hyo2['指数'] * 1.025 #    
+    hyo2.loc[hyo2['jockey'] == '岩田望', '指数'] = hyo2['指数'] * 1.00 #
+    hyo2.loc[hyo2['jockey'] == '熊沢', '指数'] = hyo2['指数'] * 1.05 #
+    hyo2.loc[hyo2['jockey'] == '森一', '指数'] = hyo2['指数'] * 1.025 #    
+    hyo2.loc[hyo2['jockey'] == '岩田康', '指数'] = hyo2['指数'] * 0.975 #
+    hyo2.loc[hyo2['jockey'] == '藤岡佑', '指数'] = hyo2['指数'] * 0.975 #  
 
     #三着内率20-30%
-    hyo2.loc[hyo2['騎手'] == '松山', '指数'] = hyo2['指数'] * 1.00 #
-    hyo2.loc[hyo2['騎手'] == '五十嵐', '指数'] = hyo2['指数'] * 0.975 #
-    hyo2.loc[hyo2['騎手'] == '吉田隼', '指数'] = hyo2['指数'] * 1.00 #   
-    hyo2.loc[hyo2['騎手'] == '坂井', '指数'] = hyo2['指数'] * 1.00 #   
-    hyo2.loc[hyo2['騎手'] == '藤岡康', '指数'] = hyo2['指数'] * 0.975 #
-    hyo2.loc[hyo2['騎手'] == '三浦', '指数'] = hyo2['指数'] * 1.00 #    
-    hyo2.loc[hyo2['騎手'] == '菅原明', '指数'] = hyo2['指数'] * 0.975 #   
-    hyo2.loc[hyo2['騎手'] == '横山和', '指数'] = hyo2['指数'] * 1.00 #
-    hyo2.loc[hyo2['騎手'] == '池添', '指数'] = hyo2['指数'] * 0.975 #
-    hyo2.loc[hyo2['騎手'] == '西村淳', '指数'] = hyo2['指数'] * 1.00 #    
-    hyo2.loc[hyo2['騎手'] == '北村友', '指数'] = hyo2['指数'] * 0.975 #           
-    hyo2.loc[hyo2['騎手'] == '田辺', '指数'] = hyo2['指数'] * 1.025 #
-    hyo2.loc[hyo2['騎手'] == '鮫島克', '指数'] = hyo2['指数'] * 0.975 #    
-    hyo2.loc[hyo2['騎手'] == '菱田', '指数'] = hyo2['指数'] * 0.975 #
-    hyo2.loc[hyo2['騎手'] == '石橋脩', '指数'] = hyo2['指数'] * 0.95 #
-    hyo2.loc[hyo2['騎手'] == '内田博', '指数'] = hyo2['指数'] * 0.925 #    
-    hyo2.loc[hyo2['騎手'] == '幸', '指数'] = hyo2['指数'] * 0.975 #    
-    hyo2.loc[hyo2['騎手'] == '浜中', '指数'] = hyo2['指数'] * 1.00 #
-    hyo2.loc[hyo2['騎手'] == '荻野極', '指数'] = hyo2['指数'] * 0.95 #
-    hyo2.loc[hyo2['騎手'] == '丹内', '指数'] = hyo2['指数'] * 0.975 #    
-    hyo2.loc[hyo2['騎手'] == '石川', '指数'] = hyo2['指数'] * 0.95 #
-    hyo2.loc[hyo2['騎手'] == '和田竜', '指数'] = hyo2['指数'] * 0.95 #    
-    hyo2.loc[hyo2['騎手'] == '岡田', '指数'] = hyo2['指数'] * 0.925 #   
-    hyo2.loc[hyo2['騎手'] == '難波', '指数'] = hyo2['指数'] * 1.00 #    
-    hyo2.loc[hyo2['騎手'] == '松本', '指数'] = hyo2['指数'] * 0.95 #
-    hyo2.loc[hyo2['騎手'] == '団野', '指数'] = hyo2['指数'] * 0.95 #
-    hyo2.loc[hyo2['騎手'] == '北村宏', '指数'] = hyo2['指数'] * 0.95 #
+    hyo2.loc[hyo2['jockey'] == '松山', '指数'] = hyo2['指数'] * 1.00 #
+    hyo2.loc[hyo2['jockey'] == '五十嵐', '指数'] = hyo2['指数'] * 0.975 #
+    hyo2.loc[hyo2['jockey'] == '吉田隼', '指数'] = hyo2['指数'] * 1.00 #   
+    hyo2.loc[hyo2['jockey'] == '坂井', '指数'] = hyo2['指数'] * 1.00 #   
+    hyo2.loc[hyo2['jockey'] == '藤岡康', '指数'] = hyo2['指数'] * 0.975 #
+    hyo2.loc[hyo2['jockey'] == '三浦', '指数'] = hyo2['指数'] * 1.00 #    
+    hyo2.loc[hyo2['jockey'] == '菅原明', '指数'] = hyo2['指数'] * 0.975 #   
+    hyo2.loc[hyo2['jockey'] == '横山和', '指数'] = hyo2['指数'] * 1.00 #
+    hyo2.loc[hyo2['jockey'] == '池添', '指数'] = hyo2['指数'] * 0.975 #
+    hyo2.loc[hyo2['jockey'] == '西村淳', '指数'] = hyo2['指数'] * 1.00 #    
+    hyo2.loc[hyo2['jockey'] == '北村友', '指数'] = hyo2['指数'] * 0.975 #           
+    hyo2.loc[hyo2['jockey'] == '田辺', '指数'] = hyo2['指数'] * 1.025 #
+    hyo2.loc[hyo2['jockey'] == '鮫島克', '指数'] = hyo2['指数'] * 0.975 #    
+    hyo2.loc[hyo2['jockey'] == '菱田', '指数'] = hyo2['指数'] * 0.975 #
+    hyo2.loc[hyo2['jockey'] == '石橋脩', '指数'] = hyo2['指数'] * 0.95 #
+    hyo2.loc[hyo2['jockey'] == '内田博', '指数'] = hyo2['指数'] * 0.925 #    
+    hyo2.loc[hyo2['jockey'] == '幸', '指数'] = hyo2['指数'] * 0.975 #    
+    hyo2.loc[hyo2['jockey'] == '浜中', '指数'] = hyo2['指数'] * 1.00 #
+    hyo2.loc[hyo2['jockey'] == '荻野極', '指数'] = hyo2['指数'] * 0.95 #
+    hyo2.loc[hyo2['jockey'] == '丹内', '指数'] = hyo2['指数'] * 0.975 #    
+    hyo2.loc[hyo2['jockey'] == '石川', '指数'] = hyo2['指数'] * 0.95 #
+    hyo2.loc[hyo2['jockey'] == '和田竜', '指数'] = hyo2['指数'] * 0.95 #    
+    hyo2.loc[hyo2['jockey'] == '岡田', '指数'] = hyo2['指数'] * 0.925 #   
+    hyo2.loc[hyo2['jockey'] == '難波', '指数'] = hyo2['指数'] * 1.00 #    
+    hyo2.loc[hyo2['jockey'] == '松本', '指数'] = hyo2['指数'] * 0.95 #
+    hyo2.loc[hyo2['jockey'] == '団野', '指数'] = hyo2['指数'] * 0.95 #
+    hyo2.loc[hyo2['jockey'] == '北村宏', '指数'] = hyo2['指数'] * 0.95 #
      
 
-    hyo2.loc[hyo2['騎手'] == '古川奈', '指数'] = hyo2['指数'] * 0.95 #
-    hyo2.loc[hyo2['騎手'] == '古川吉', '指数'] = hyo2['指数'] * 0.95 #    
-    hyo2.loc[hyo2['騎手'] == '今村', '指数'] = hyo2['指数'] * 0.975 #  
-    hyo2.loc[hyo2['騎手'] == '松若', '指数'] = hyo2['指数'] * 0.95 #
-    hyo2.loc[hyo2['騎手'] == '角田和', '指数'] = hyo2['指数'] * 0.95 #
-    hyo2.loc[hyo2['騎手'] == '富田', '指数'] = hyo2['指数'] * 0.95 #    
-    hyo2.loc[hyo2['騎手'] == '秋山真', '指数'] = hyo2['指数'] * 0.95 #  
-    hyo2.loc[hyo2['騎手'] == '秋山稔', '指数'] = hyo2['指数'] * 0.925 #
-    hyo2.loc[hyo2['騎手'] == '白浜', '指数'] = hyo2['指数'] * 0.95 #    
-    hyo2.loc[hyo2['騎手'] == '川須', '指数'] = hyo2['指数'] * 0.925 #    
-    hyo2.loc[hyo2['騎手'] == '水口', '指数'] = hyo2['指数'] * 0.95 #    
-    hyo2.loc[hyo2['騎手'] == '高倉', '指数'] = hyo2['指数'] * 0.925 #     
-    hyo2.loc[hyo2['騎手'] == '植野', '指数'] = hyo2['指数'] * 0.95 
-    hyo2.loc[hyo2['騎手'] == '宮崎', '指数'] = hyo2['指数'] * 0.925 #     
-    hyo2.loc[hyo2['騎手'] == '大野', '指数'] = hyo2['指数'] * 0.925 # 
-    hyo2.loc[hyo2['騎手'] == '勝浦', '指数'] = hyo2['指数'] * 0.95 # 
-    hyo2.loc[hyo2['騎手'] == '田中勝', '指数'] = hyo2['指数'] * 0.95 # 
-    hyo2.loc[hyo2['騎手'] == '横山琉', '指数'] = hyo2['指数'] * 0.925 #     
-    hyo2.loc[hyo2['騎手'] == '黒岩', '指数'] = hyo2['指数'] * 1.00 # 
-    hyo2.loc[hyo2['騎手'] == '上野', '指数'] = hyo2['指数'] * 0.95 #     
-    hyo2.loc[hyo2['騎手'] == '松田', '指数'] = hyo2['指数'] * 0.925 #   
-    hyo2.loc[hyo2['騎手'] == '永野', '指数'] = hyo2['指数'] * 0.95 #     
-    hyo2.loc[hyo2['騎手'] == '斎藤', '指数'] = hyo2['指数'] * 0.95 # 
-    hyo2.loc[hyo2['騎手'] == '丸山', '指数'] = hyo2['指数'] * 0.95 #    
-    hyo2.loc[hyo2['騎手'] == '角田河', '指数'] = hyo2['指数'] * 0.95 #    
-    hyo2.loc[hyo2['騎手'] == '武藤', '指数'] = hyo2['指数'] * 0.95 #    
-    hyo2.loc[hyo2['騎手'] == '伊藤', '指数'] = hyo2['指数'] * 0.95 #
-    hyo2.loc[hyo2['騎手'] == '柴田大', '指数'] = hyo2['指数'] * 0.925 #    
-    hyo2.loc[hyo2['騎手'] == '泉谷', '指数'] = hyo2['指数'] * 0.925 #    
-    hyo2.loc[hyo2['騎手'] == '太宰', '指数'] = hyo2['指数'] * 0.925 #  
-    hyo2.loc[hyo2['騎手'] == '国分恭', '指数'] = hyo2['指数'] * 0.925 #  
-    hyo2.loc[hyo2['騎手'] == '松岡', '指数'] = hyo2['指数'] * 0.925 #
-    hyo2.loc[hyo2['騎手'] == '吉田豊', '指数'] = hyo2['指数'] * 0.925 #  
-    hyo2.loc[hyo2['騎手'] == '津村', '指数'] = hyo2['指数'] * 0.95 #
-    hyo2.loc[hyo2['騎手'] == '小牧加', '指数'] = hyo2['指数'] * 1.025 #    
-    hyo2.loc[hyo2['騎手'] == '小崎', '指数'] = hyo2['指数'] * 0.925 #    
-    hyo2.loc[hyo2['騎手'] == '永島', '指数'] = hyo2['指数'] * 0.925 #    
-    hyo2.loc[hyo2['騎手'] == '草野', '指数'] = hyo2['指数'] * 0.925 #    
-    hyo2.loc[hyo2['騎手'] == '原', '指数'] = hyo2['指数'] * 0.925 #  
-    hyo2.loc[hyo2['騎手'] == '川又', '指数'] = hyo2['指数'] * 0.925 #      
-    hyo2.loc[hyo2['騎手'] == '小坂', '指数'] = hyo2['指数'] * 0.95 #      
-    hyo2.loc[hyo2['騎手'] == '小沢', '指数'] = hyo2['指数'] * 0.925 #      
-    hyo2.loc[hyo2['騎手'] == '野中', '指数'] = hyo2['指数'] * 0.925 #  
-    hyo2.loc[hyo2['騎手'] == '菊沢', '指数'] = hyo2['指数'] * 0.925 #      
-    hyo2.loc[hyo2['騎手'] == '亀田', '指数'] = hyo2['指数'] * 0.925 #      
-    hyo2.loc[hyo2['騎手'] == '柴山', '指数'] = hyo2['指数'] * 0.925 #      
-    hyo2.loc[hyo2['騎手'] == '酒井', '指数'] = hyo2['指数'] * 0.925 #      
-    hyo2.loc[hyo2['騎手'] == '長岡', '指数'] = hyo2['指数'] * 0.925 #      
-    hyo2.loc[hyo2['騎手'] == '森裕', '指数'] = hyo2['指数'] * 0.925 #  
-    hyo2.loc[hyo2['騎手'] == '藤懸', '指数'] = hyo2['指数'] * 0.925 #      
-    hyo2.loc[hyo2['騎手'] == '中村', '指数'] = hyo2['指数'] * 0.925 #      
-    hyo2.loc[hyo2['騎手'] == '竹之下', '指数'] = hyo2['指数'] * 0.925 #      
-    hyo2.loc[hyo2['騎手'] == '田中健', '指数'] = hyo2['指数'] * 0.900 #      
-    hyo2.loc[hyo2['騎手'] == '木幡初', '指数'] = hyo2['指数'] * 0.925 #      
-    hyo2.loc[hyo2['騎手'] == '杉原', '指数'] = hyo2['指数'] * 0.925 #      
-    hyo2.loc[hyo2['騎手'] == '中井', '指数'] = hyo2['指数'] * 0.925 #      
-    hyo2.loc[hyo2['騎手'] == '大久保', '指数'] = hyo2['指数'] * 0.900 #  
-    hyo2.loc[hyo2['騎手'] == '江田照', '指数'] = hyo2['指数'] * 0.925 #      
-    hyo2.loc[hyo2['騎手'] == '国分優', '指数'] = hyo2['指数'] * 0.925 #      
-    hyo2.loc[hyo2['騎手'] == '城戸', '指数'] = hyo2['指数'] * 0.925 #      
-    hyo2.loc[hyo2['騎手'] == '小林脩', '指数'] = hyo2['指数'] * 0.925 #      
-    hyo2.loc[hyo2['騎手'] == '西塚', '指数'] = hyo2['指数'] * 0.925 #      
-    hyo2.loc[hyo2['騎手'] == '鷲頭', '指数'] = hyo2['指数'] * 0.925 #  
-    hyo2.loc[hyo2['騎手'] == '大江原', '指数'] = hyo2['指数'] * 0.95 #    
-    hyo2.loc[hyo2['騎手'] == '鮫島良', '指数'] = hyo2['指数'] * 0.925 #   
-    hyo2.loc[hyo2['騎手'] == '服部', '指数'] = hyo2['指数'] * 0.925 #
-    hyo2.loc[hyo2['騎手'] == '丸田', '指数'] = hyo2['指数'] * 0.925 #    
-    hyo2.loc[hyo2['騎手'] == '小林凌', '指数'] = hyo2['指数'] * 0.925 # 
-    hyo2.loc[hyo2['騎手'] == '黛', '指数'] = hyo2['指数'] * 0.925 # 
-    hyo2.loc[hyo2['騎手'] == '武士沢', '指数'] = hyo2['指数'] * 0.900 # 
-    hyo2.loc[hyo2['騎手'] == '加藤', '指数'] = hyo2['指数'] * 0.925 #     
-    hyo2.loc[hyo2['騎手'] == '川島', '指数'] = hyo2['指数'] * 0.900     
-    hyo2.loc[hyo2['騎手'] == '簑島', '指数'] = hyo2['指数'] * 0.900 #     
-    hyo2.loc[hyo2['騎手'] == '大庭', '指数'] = hyo2['指数'] * 0.900     
-    hyo2.loc[hyo2['騎手'] == '藤田菜', '指数'] = hyo2['指数'] * 0.900 #  
-    hyo2.loc[hyo2['騎手'] == '土田', '指数'] = hyo2['指数'] * 0.900 #      
-    hyo2.loc[hyo2['騎手'] == '嶋田', '指数'] = hyo2['指数'] * 0.925 #      
-    hyo2.loc[hyo2['騎手'] == '山田', '指数'] = hyo2['指数'] * 0.900 #      
-    hyo2.loc[hyo2['騎手'] == '佐々木', '指数'] = hyo2['指数'] * 0.925 #      
-    hyo2.loc[hyo2['騎手'] == '木幡巧', '指数'] = hyo2['指数'] * 0.950 #      
-    hyo2.loc[hyo2['騎手'] == '岩部', '指数'] = hyo2['指数'] * 0.900      
-    hyo2.loc[hyo2['騎手'] == '小牧太', '指数'] = hyo2['指数'] * 0.900 #
-    hyo2.loc[hyo2['騎手'] == '木幡育', '指数'] = hyo2['指数'] * 0.925 #      
-    hyo2.loc[hyo2['騎手'] == '荻野琢', '指数'] = hyo2['指数'] * 0.900     
-    hyo2.loc[hyo2['騎手'] == '的場', '指数'] = hyo2['指数'] * 0.900 
-    hyo2.loc[hyo2['騎手'] == '江田勇', '指数'] = hyo2['指数'] * 0.925 #     
-    hyo2.loc[hyo2['騎手'] == '水沼', '指数'] = hyo2['指数'] * 0.900     
-    hyo2.loc[hyo2['騎手'] == '原田', '指数'] = hyo2['指数'] * 0.900 #    
-    hyo2.loc[hyo2['騎手'] == '井上', '指数'] = hyo2['指数'] * 0.900    
-    hyo2.loc[hyo2['騎手'] == '田村', '指数'] = hyo2['指数'] * 0.900    
-    hyo2.loc[hyo2['騎手'] == '和田翼', '指数'] = hyo2['指数'] * 0.900
-    hyo2.loc[hyo2['騎手'] == '金子', '指数'] = hyo2['指数'] * 0.900    
-    hyo2.loc[hyo2['騎手'] == '菅原隆', '指数'] = hyo2['指数'] * 0.900    
-    hyo2.loc[hyo2['騎手'] == '柴田未', '指数'] = hyo2['指数'] * 0.900    
-    hyo2.loc[hyo2['騎手'] == '西村', '指数'] = hyo2['指数'] * 0.900    
-    hyo2.loc[hyo2['騎手'] == '鈴木', '指数'] = hyo2['指数'] * 0.900    
-    hyo2.loc[hyo2['騎手'] == '川端', '指数'] = hyo2['指数'] * 0.900    
-    hyo2.loc[hyo2['騎手'] == '柴田善', '指数'] = hyo2['指数'] * 0.925 #    
+    hyo2.loc[hyo2['jockey'] == '古川奈', '指数'] = hyo2['指数'] * 0.95 #
+    hyo2.loc[hyo2['jockey'] == '古川吉', '指数'] = hyo2['指数'] * 0.95 #    
+    hyo2.loc[hyo2['jockey'] == '今村', '指数'] = hyo2['指数'] * 0.975 #  
+    hyo2.loc[hyo2['jockey'] == '松若', '指数'] = hyo2['指数'] * 0.95 #
+    hyo2.loc[hyo2['jockey'] == '角田和', '指数'] = hyo2['指数'] * 0.95 #
+    hyo2.loc[hyo2['jockey'] == '富田', '指数'] = hyo2['指数'] * 0.95 #    
+    hyo2.loc[hyo2['jockey'] == '秋山真', '指数'] = hyo2['指数'] * 0.95 #  
+    hyo2.loc[hyo2['jockey'] == '秋山稔', '指数'] = hyo2['指数'] * 0.925 #
+    hyo2.loc[hyo2['jockey'] == '白浜', '指数'] = hyo2['指数'] * 0.95 #    
+    hyo2.loc[hyo2['jockey'] == '川須', '指数'] = hyo2['指数'] * 0.925 #    
+    hyo2.loc[hyo2['jockey'] == '水口', '指数'] = hyo2['指数'] * 0.95 #    
+    hyo2.loc[hyo2['jockey'] == '高倉', '指数'] = hyo2['指数'] * 0.925 #     
+    hyo2.loc[hyo2['jockey'] == '植野', '指数'] = hyo2['指数'] * 0.95 
+    hyo2.loc[hyo2['jockey'] == '宮崎', '指数'] = hyo2['指数'] * 0.925 #     
+    hyo2.loc[hyo2['jockey'] == '大野', '指数'] = hyo2['指数'] * 0.925 # 
+    hyo2.loc[hyo2['jockey'] == '勝浦', '指数'] = hyo2['指数'] * 0.95 # 
+    hyo2.loc[hyo2['jockey'] == '田中勝', '指数'] = hyo2['指数'] * 0.95 # 
+    hyo2.loc[hyo2['jockey'] == '横山琉', '指数'] = hyo2['指数'] * 0.925 #     
+    hyo2.loc[hyo2['jockey'] == '黒岩', '指数'] = hyo2['指数'] * 1.00 # 
+    hyo2.loc[hyo2['jockey'] == '上野', '指数'] = hyo2['指数'] * 0.95 #     
+    hyo2.loc[hyo2['jockey'] == '松田', '指数'] = hyo2['指数'] * 0.925 #   
+    hyo2.loc[hyo2['jockey'] == '永野', '指数'] = hyo2['指数'] * 0.95 #     
+    hyo2.loc[hyo2['jockey'] == '斎藤', '指数'] = hyo2['指数'] * 0.95 # 
+    hyo2.loc[hyo2['jockey'] == '丸山', '指数'] = hyo2['指数'] * 0.95 #    
+    hyo2.loc[hyo2['jockey'] == '角田河', '指数'] = hyo2['指数'] * 0.95 #    
+    hyo2.loc[hyo2['jockey'] == '武藤', '指数'] = hyo2['指数'] * 0.95 #    
+    hyo2.loc[hyo2['jockey'] == '伊藤', '指数'] = hyo2['指数'] * 0.95 #
+    hyo2.loc[hyo2['jockey'] == '柴田大', '指数'] = hyo2['指数'] * 0.925 #    
+    hyo2.loc[hyo2['jockey'] == '泉谷', '指数'] = hyo2['指数'] * 0.925 #    
+    hyo2.loc[hyo2['jockey'] == '太宰', '指数'] = hyo2['指数'] * 0.925 #  
+    hyo2.loc[hyo2['jockey'] == '国分恭', '指数'] = hyo2['指数'] * 0.925 #  
+    hyo2.loc[hyo2['jockey'] == '松岡', '指数'] = hyo2['指数'] * 0.925 #
+    hyo2.loc[hyo2['jockey'] == '吉田豊', '指数'] = hyo2['指数'] * 0.925 #  
+    hyo2.loc[hyo2['jockey'] == '津村', '指数'] = hyo2['指数'] * 0.95 #
+    hyo2.loc[hyo2['jockey'] == '小牧加', '指数'] = hyo2['指数'] * 1.025 #    
+    hyo2.loc[hyo2['jockey'] == '小崎', '指数'] = hyo2['指数'] * 0.925 #    
+    hyo2.loc[hyo2['jockey'] == '永島', '指数'] = hyo2['指数'] * 0.925 #    
+    hyo2.loc[hyo2['jockey'] == '草野', '指数'] = hyo2['指数'] * 0.925 #    
+    hyo2.loc[hyo2['jockey'] == '原', '指数'] = hyo2['指数'] * 0.925 #  
+    hyo2.loc[hyo2['jockey'] == '川又', '指数'] = hyo2['指数'] * 0.925 #      
+    hyo2.loc[hyo2['jockey'] == '小坂', '指数'] = hyo2['指数'] * 0.95 #      
+    hyo2.loc[hyo2['jockey'] == '小沢', '指数'] = hyo2['指数'] * 0.925 #      
+    hyo2.loc[hyo2['jockey'] == '野中', '指数'] = hyo2['指数'] * 0.925 #  
+    hyo2.loc[hyo2['jockey'] == '菊沢', '指数'] = hyo2['指数'] * 0.925 #      
+    hyo2.loc[hyo2['jockey'] == '亀田', '指数'] = hyo2['指数'] * 0.925 #      
+    hyo2.loc[hyo2['jockey'] == '柴山', '指数'] = hyo2['指数'] * 0.925 #      
+    hyo2.loc[hyo2['jockey'] == '酒井', '指数'] = hyo2['指数'] * 0.925 #      
+    hyo2.loc[hyo2['jockey'] == '長岡', '指数'] = hyo2['指数'] * 0.925 #      
+    hyo2.loc[hyo2['jockey'] == '森裕', '指数'] = hyo2['指数'] * 0.925 #  
+    hyo2.loc[hyo2['jockey'] == '藤懸', '指数'] = hyo2['指数'] * 0.925 #      
+    hyo2.loc[hyo2['jockey'] == '中村', '指数'] = hyo2['指数'] * 0.925 #      
+    hyo2.loc[hyo2['jockey'] == '竹之下', '指数'] = hyo2['指数'] * 0.925 #      
+    hyo2.loc[hyo2['jockey'] == '田中健', '指数'] = hyo2['指数'] * 0.900 #      
+    hyo2.loc[hyo2['jockey'] == '木幡初', '指数'] = hyo2['指数'] * 0.925 #      
+    hyo2.loc[hyo2['jockey'] == '杉原', '指数'] = hyo2['指数'] * 0.925 #      
+    hyo2.loc[hyo2['jockey'] == '中井', '指数'] = hyo2['指数'] * 0.925 #      
+    hyo2.loc[hyo2['jockey'] == '大久保', '指数'] = hyo2['指数'] * 0.900 #  
+    hyo2.loc[hyo2['jockey'] == '江田照', '指数'] = hyo2['指数'] * 0.925 #      
+    hyo2.loc[hyo2['jockey'] == '国分優', '指数'] = hyo2['指数'] * 0.925 #      
+    hyo2.loc[hyo2['jockey'] == '城戸', '指数'] = hyo2['指数'] * 0.925 #      
+    hyo2.loc[hyo2['jockey'] == '小林脩', '指数'] = hyo2['指数'] * 0.925 #      
+    hyo2.loc[hyo2['jockey'] == '西塚', '指数'] = hyo2['指数'] * 0.925 #      
+    hyo2.loc[hyo2['jockey'] == '鷲頭', '指数'] = hyo2['指数'] * 0.925 #  
+    hyo2.loc[hyo2['jockey'] == '大江原', '指数'] = hyo2['指数'] * 0.95 #    
+    hyo2.loc[hyo2['jockey'] == '鮫島良', '指数'] = hyo2['指数'] * 0.925 #   
+    hyo2.loc[hyo2['jockey'] == '服部', '指数'] = hyo2['指数'] * 0.925 #
+    hyo2.loc[hyo2['jockey'] == '丸田', '指数'] = hyo2['指数'] * 0.925 #    
+    hyo2.loc[hyo2['jockey'] == '小林凌', '指数'] = hyo2['指数'] * 0.925 # 
+    hyo2.loc[hyo2['jockey'] == '黛', '指数'] = hyo2['指数'] * 0.925 # 
+    hyo2.loc[hyo2['jockey'] == '武士沢', '指数'] = hyo2['指数'] * 0.900 # 
+    hyo2.loc[hyo2['jockey'] == '加藤', '指数'] = hyo2['指数'] * 0.925 #     
+    hyo2.loc[hyo2['jockey'] == '川島', '指数'] = hyo2['指数'] * 0.900     
+    hyo2.loc[hyo2['jockey'] == '簑島', '指数'] = hyo2['指数'] * 0.900 #     
+    hyo2.loc[hyo2['jockey'] == '大庭', '指数'] = hyo2['指数'] * 0.900     
+    hyo2.loc[hyo2['jockey'] == '藤田菜', '指数'] = hyo2['指数'] * 0.900 #  
+    hyo2.loc[hyo2['jockey'] == '土田', '指数'] = hyo2['指数'] * 0.900 #      
+    hyo2.loc[hyo2['jockey'] == '嶋田', '指数'] = hyo2['指数'] * 0.925 #      
+    hyo2.loc[hyo2['jockey'] == '山田', '指数'] = hyo2['指数'] * 0.900 #      
+    hyo2.loc[hyo2['jockey'] == '佐々木', '指数'] = hyo2['指数'] * 0.925 #      
+    hyo2.loc[hyo2['jockey'] == '木幡巧', '指数'] = hyo2['指数'] * 0.950 #      
+    hyo2.loc[hyo2['jockey'] == '岩部', '指数'] = hyo2['指数'] * 0.900      
+    hyo2.loc[hyo2['jockey'] == '小牧太', '指数'] = hyo2['指数'] * 0.900 #
+    hyo2.loc[hyo2['jockey'] == '木幡育', '指数'] = hyo2['指数'] * 0.925 #      
+    hyo2.loc[hyo2['jockey'] == '荻野琢', '指数'] = hyo2['指数'] * 0.900     
+    hyo2.loc[hyo2['jockey'] == '的場', '指数'] = hyo2['指数'] * 0.900 
+    hyo2.loc[hyo2['jockey'] == '江田勇', '指数'] = hyo2['指数'] * 0.925 #     
+    hyo2.loc[hyo2['jockey'] == '水沼', '指数'] = hyo2['指数'] * 0.900     
+    hyo2.loc[hyo2['jockey'] == '原田', '指数'] = hyo2['指数'] * 0.900 #    
+    hyo2.loc[hyo2['jockey'] == '井上', '指数'] = hyo2['指数'] * 0.900    
+    hyo2.loc[hyo2['jockey'] == '田村', '指数'] = hyo2['指数'] * 0.900    
+    hyo2.loc[hyo2['jockey'] == '和田翼', '指数'] = hyo2['指数'] * 0.900
+    hyo2.loc[hyo2['jockey'] == '金子', '指数'] = hyo2['指数'] * 0.900    
+    hyo2.loc[hyo2['jockey'] == '菅原隆', '指数'] = hyo2['指数'] * 0.900    
+    hyo2.loc[hyo2['jockey'] == '柴田未', '指数'] = hyo2['指数'] * 0.900    
+    hyo2.loc[hyo2['jockey'] == '西村', '指数'] = hyo2['指数'] * 0.900    
+    hyo2.loc[hyo2['jockey'] == '鈴木', '指数'] = hyo2['指数'] * 0.900    
+    hyo2.loc[hyo2['jockey'] == '川端', '指数'] = hyo2['指数'] * 0.900    
+    hyo2.loc[hyo2['jockey'] == '柴田善', '指数'] = hyo2['指数'] * 0.925 #    
 
-    hyo2.loc[hyo2['騎手'] == '高野', '指数'] = hyo2['指数'] * 0.900
-    hyo2.loc[hyo2['騎手'] == '大塚', '指数'] = hyo2['指数'] * 0.900
+    hyo2.loc[hyo2['jockey'] == '高野', '指数'] = hyo2['指数'] * 0.900
+    hyo2.loc[hyo2['jockey'] == '大塚', '指数'] = hyo2['指数'] * 0.900
     
     
     
@@ -981,7 +983,7 @@ if push == True:
     
     hyo2['斤量']= hyo2['斤量'].astype(str)
     hyo2['順位'] = hyo2['指数'].rank(ascending=False).astype(int)    
-    hyo3 = hyo2[['順位','馬番','馬名','指数','偏差値','騎手','厩舎', '性', '年齢', '生産者','馬主']]
+    hyo3 = hyo2[['順位','umaban','馬名','指数','偏差値','jockey','stable', '性', '年齢', '生産者','馬主']]
     hyo4 = hyo3.sort_values('順位')
     hyo4.set_index("順位", inplace=True)
     
