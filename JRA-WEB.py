@@ -981,8 +981,8 @@ if push == True:
     hyo3 = hyo2[['rank','umaban','name','TS','deviation','jockey','stable', 'gender', 'age', 'starion','owner']]
     hyo4 = hyo3.sort_values('rank')
 
-    st.write(race_name[:-26])
-    st.table(hyo4)
+    st.subheader(race_name[:-26])
+    st.dataframe(hyo4)
 
 else:
     st.write('・・・・・・・・')
