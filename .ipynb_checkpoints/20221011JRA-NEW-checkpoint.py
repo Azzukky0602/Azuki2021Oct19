@@ -41,6 +41,7 @@ age3_OP = ['すみれS(OP)', '青竜S(OP)', '端午S(OP)', '青竜S(OP)', '伏�
 
 st.title('テキトー指数研究所＠WEB')
 st.header('JRA版')
+st.subheader('新パラメータ版')
 
 st.write('   ')
 st.info('【参考】テキトー指数の使い方  \nhttps://note.com/tekito_lab/n/n3342d6531772')
