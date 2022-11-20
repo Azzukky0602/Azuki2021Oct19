@@ -442,7 +442,7 @@ if push == True:
 
 
 
-            ts = ((kijun1 * 1.5 * a + kijun2 * 1.3 * b + kijun3 *1.1 * c) + f) * e * g * h * i
+            ts = ((kijun1 * 1.5 * a + kijun2 * b + kijun3 * c) + f) * e * g * h * i
             tekito_shisu = int(ts)
             tekito_shisu_list.append(tekito_shisu)
 
@@ -511,9 +511,9 @@ if push == True:
 
                     elif npr.iloc[t]['racename'] in age3_GI:
                         if int(npr.iloc[t]['result']) <= 5:  
-                            kijun = 80000
+                            kijun = 800
                         elif float(npr.iloc[t]['difference']) <= 0.5:  
-                            kijun = 80000
+                            kijun = 800
                         else:
                             kijun = 650
 
@@ -739,7 +739,7 @@ if push == True:
 
 
 
-            ts = ((kijun1 *1.5 *a + kijun2 *1.3 * b + kijun3 *1.1 * c + kijun4 *1.0 * d) + f) * e * g * h * i
+            ts = ((kijun1 *a + kijun2 * b + kijun3 * c + kijun4 * d) + f) * e * g * h * i
             tekito_shisu = int(ts)
             tekito_shisu_list.append(tekito_shisu)
 
