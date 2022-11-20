@@ -739,7 +739,7 @@ if push == True:
 
 
 
-            ts = ((kijun1 *a + kijun2 * b + kijun3 * c + kijun4 * d) + f) * e * g * h * i
+            ts = ((kijun1 * a * 1.5 + kijun2 * b * 1.3 + kijun3 * c *1.1 + kijun4 * d) + f) * e * g * h * i
             tekito_shisu = int(ts)
             tekito_shisu_list.append(tekito_shisu)
 
