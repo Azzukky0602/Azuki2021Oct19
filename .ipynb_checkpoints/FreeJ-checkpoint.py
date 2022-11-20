@@ -774,172 +774,171 @@ if push == True:
     hyo2['starion'] = starion_list
     hyo2['owner'] = owner_list
 
-    #騎手補正：三着内率＝X、50≦X＜60は1.20, 40≦X＜50は1.15, 30≦X＜40は1.10, 20≦X＜30は1.05, 10≦X＜20は1.00, 0≦X＜10は0.95
+    #騎手補正：三着内率＝X、50≦X＜60は1.30, 40≦X＜50は1.20, 30≦X＜40は1.10, 20≦X＜30は1.00, 10≦X＜20は0.90, 0≦X＜10は0.80
 
     #三着内率50%以上
-    hyo2.loc[hyo2['jockey'] == 'マーフィ', 'TS'] = hyo2['TS'] * 1.15
-    hyo2.loc[hyo2['jockey'] == 'レーン', 'TS'] = hyo2['TS'] * 1.15
-    hyo2.loc[hyo2['jockey'] == 'ルメール', 'TS'] = hyo2['TS'] * 1.15
-    hyo2.loc[hyo2['jockey'] == '川田', 'TS'] = hyo2['TS'] * 1.20
-    hyo2.loc[hyo2['jockey'] == 'Ｃデムーロ', 'TS'] = hyo2['TS'] * 1.15
+    hyo2.loc[hyo2['jockey'] == 'マーフィ', 'TS'] = hyo2['TS'] * 1.20
+    hyo2.loc[hyo2['jockey'] == 'レーン', 'TS'] = hyo2['TS'] * 1.20
+    hyo2.loc[hyo2['jockey'] == 'ルメール', 'TS'] = hyo2['TS'] * 1.20
+    hyo2.loc[hyo2['jockey'] == '川田', 'TS'] = hyo2['TS'] * 1.30
+    hyo2.loc[hyo2['jockey'] == 'Ｃデムーロ', 'TS'] = hyo2['TS'] * 1.20
     hyo2.loc[hyo2['jockey'] == '伴', 'TS'] = hyo2['TS'] * 1.10
     hyo2.loc[hyo2['jockey'] == '平沢', 'TS'] = hyo2['TS'] * 1.10    
-    hyo2.loc[hyo2['jockey'] == 'ムーア', 'TS'] = hyo2['TS'] * 1.15
+    hyo2.loc[hyo2['jockey'] == 'ムーア', 'TS'] = hyo2['TS'] * 1.20
     hyo2.loc[hyo2['jockey'] == 'マーカンド', 'TS'] = hyo2['TS'] * 1.10
-    hyo2.loc[hyo2['jockey'] == 'Ｈドイル', 'TS'] = hyo2['TS'] * 1.05
+    hyo2.loc[hyo2['jockey'] == 'Ｈドイル', 'TS'] = hyo2['TS'] * 1.00
     
     #三着内率40-50%
     hyo2.loc[hyo2['jockey'] == '高田', 'TS'] = hyo2['TS'] * 1.10 
-    hyo2.loc[hyo2['jockey'] == '横山武', 'TS'] = hyo2['TS'] * 1.15
+    hyo2.loc[hyo2['jockey'] == '横山武', 'TS'] = hyo2['TS'] * 1.20
     hyo2.loc[hyo2['jockey'] == 'Ｍデムーロ', 'TS'] = hyo2['TS'] * 1.10
-    hyo2.loc[hyo2['jockey'] == '福永', 'TS'] = hyo2['TS'] * 1.15
-    hyo2.loc[hyo2['jockey'] == '石神', 'TS'] = hyo2['TS'] * 1.15    
+    hyo2.loc[hyo2['jockey'] == '福永', 'TS'] = hyo2['TS'] * 1.20
+    hyo2.loc[hyo2['jockey'] == '石神', 'TS'] = hyo2['TS'] * 1.20    
     hyo2.loc[hyo2['jockey'] == '北沢', 'TS'] = hyo2['TS'] * 1.10
 
     #三着内率30-40%
     hyo2.loc[hyo2['jockey'] == '西谷誠', 'TS'] = hyo2['TS'] * 1.10    
-    hyo2.loc[hyo2['jockey'] == '小野寺', 'TS'] = hyo2['TS'] * 1.05
-    hyo2.loc[hyo2['jockey'] == '戸崎圭', 'TS'] = hyo2['TS'] * 1.15
+    hyo2.loc[hyo2['jockey'] == '小野寺', 'TS'] = hyo2['TS'] * 1.00
+    hyo2.loc[hyo2['jockey'] == '戸崎圭', 'TS'] = hyo2['TS'] * 1.20
     hyo2.loc[hyo2['jockey'] == '武豊', 'TS'] = hyo2['TS'] * 1.10
-    hyo2.loc[hyo2['jockey'] == '横山典', 'TS'] = hyo2['TS'] * 1.05    
+    hyo2.loc[hyo2['jockey'] == '横山典', 'TS'] = hyo2['TS'] * 1.00    
     hyo2.loc[hyo2['jockey'] == '岩田望', 'TS'] = hyo2['TS'] * 1.10
     hyo2.loc[hyo2['jockey'] == '熊沢', 'TS'] = hyo2['TS'] * 1.10
     hyo2.loc[hyo2['jockey'] == '森一', 'TS'] = hyo2['TS'] * 1.10    
-    hyo2.loc[hyo2['jockey'] == '岩田康', 'TS'] = hyo2['TS'] * 1.05
+    hyo2.loc[hyo2['jockey'] == '岩田康', 'TS'] = hyo2['TS'] * 1.00
     hyo2.loc[hyo2['jockey'] == '藤岡佑', 'TS'] = hyo2['TS'] * 1.10   
 
     #三着内率20-30%
     hyo2.loc[hyo2['jockey'] == '松山', 'TS'] = hyo2['TS'] * 1.10
-    hyo2.loc[hyo2['jockey'] == '五十嵐', 'TS'] = hyo2['TS'] * 1.05
-    hyo2.loc[hyo2['jockey'] == '吉田隼', 'TS'] = hyo2['TS'] * 1.05    
+    hyo2.loc[hyo2['jockey'] == '五十嵐', 'TS'] = hyo2['TS'] * 1.00
+    hyo2.loc[hyo2['jockey'] == '吉田隼', 'TS'] = hyo2['TS'] * 1.00    
     hyo2.loc[hyo2['jockey'] == '坂井', 'TS'] = hyo2['TS'] * 1.10    
-    hyo2.loc[hyo2['jockey'] == '藤岡康', 'TS'] = hyo2['TS'] * 1.05
-    hyo2.loc[hyo2['jockey'] == '三浦', 'TS'] = hyo2['TS'] * 1.05    
-    hyo2.loc[hyo2['jockey'] == '菅原明', 'TS'] = hyo2['TS'] * 1.05    
+    hyo2.loc[hyo2['jockey'] == '藤岡康', 'TS'] = hyo2['TS'] * 1.00
+    hyo2.loc[hyo2['jockey'] == '三浦', 'TS'] = hyo2['TS'] * 1.00    
+    hyo2.loc[hyo2['jockey'] == '菅原明', 'TS'] = hyo2['TS'] * 1.00    
     hyo2.loc[hyo2['jockey'] == '横山和', 'TS'] = hyo2['TS'] * 1.10
-    hyo2.loc[hyo2['jockey'] == '池添', 'TS'] = hyo2['TS'] * 1.05
+    hyo2.loc[hyo2['jockey'] == '池添', 'TS'] = hyo2['TS'] * 1.00
     hyo2.loc[hyo2['jockey'] == '西村淳', 'TS'] = hyo2['TS'] * 1.10    
-    hyo2.loc[hyo2['jockey'] == '北村友', 'TS'] = hyo2['TS'] * 1.05            
+    hyo2.loc[hyo2['jockey'] == '北村友', 'TS'] = hyo2['TS'] * 1.00            
     hyo2.loc[hyo2['jockey'] == '田辺', 'TS'] = hyo2['TS'] * 1.10
-    hyo2.loc[hyo2['jockey'] == '鮫島克', 'TS'] = hyo2['TS'] * 1.05    
-    hyo2.loc[hyo2['jockey'] == '菱田', 'TS'] = hyo2['TS'] * 1.05
-    hyo2.loc[hyo2['jockey'] == '石橋脩', 'TS'] = hyo2['TS'] * 1.05
-    hyo2.loc[hyo2['jockey'] == '内田博', 'TS'] = hyo2['TS'] * 1.00    
-    hyo2.loc[hyo2['jockey'] == '幸', 'TS'] = hyo2['TS'] * 1.05    
-    hyo2.loc[hyo2['jockey'] == '浜中', 'TS'] = hyo2['TS'] * 1.05
-    hyo2.loc[hyo2['jockey'] == '荻野極', 'TS'] = hyo2['TS'] * 1.00
-    hyo2.loc[hyo2['jockey'] == '丹内', 'TS'] = hyo2['TS'] * 1.05    
-    hyo2.loc[hyo2['jockey'] == '石川', 'TS'] = hyo2['TS'] * 1.00
-    hyo2.loc[hyo2['jockey'] == '和田竜', 'TS'] = hyo2['TS'] * 1.05    
-    hyo2.loc[hyo2['jockey'] == '岡田', 'TS'] = hyo2['TS'] * 1.05    
+    hyo2.loc[hyo2['jockey'] == '鮫島克', 'TS'] = hyo2['TS'] * 1.00    
+    hyo2.loc[hyo2['jockey'] == '菱田', 'TS'] = hyo2['TS'] * 1.00
+    hyo2.loc[hyo2['jockey'] == '石橋脩', 'TS'] = hyo2['TS'] * 1.00
+    hyo2.loc[hyo2['jockey'] == '内田博', 'TS'] = hyo2['TS'] * 0.90    
+    hyo2.loc[hyo2['jockey'] == '幸', 'TS'] = hyo2['TS'] * 1.00    
+    hyo2.loc[hyo2['jockey'] == '浜中', 'TS'] = hyo2['TS'] * 1.00
+    hyo2.loc[hyo2['jockey'] == '荻野極', 'TS'] = hyo2['TS'] * 0.90
+    hyo2.loc[hyo2['jockey'] == '丹内', 'TS'] = hyo2['TS'] * 1.00    
+    hyo2.loc[hyo2['jockey'] == '石川', 'TS'] = hyo2['TS'] * 0.90
+    hyo2.loc[hyo2['jockey'] == '和田竜', 'TS'] = hyo2['TS'] * 1.00    
+    hyo2.loc[hyo2['jockey'] == '岡田', 'TS'] = hyo2['TS'] * 1.00    
     hyo2.loc[hyo2['jockey'] == '難波', 'TS'] = hyo2['TS'] * 1.10    
-    hyo2.loc[hyo2['jockey'] == '松本', 'TS'] = hyo2['TS'] * 1.00
-    hyo2.loc[hyo2['jockey'] == '団野', 'TS'] = hyo2['TS'] * 1.05
-    hyo2.loc[hyo2['jockey'] == '北村宏', 'TS'] = hyo2['TS'] * 1.00
+    hyo2.loc[hyo2['jockey'] == '松本', 'TS'] = hyo2['TS'] * 0.90
+    hyo2.loc[hyo2['jockey'] == '団野', 'TS'] = hyo2['TS'] * 1.00
+    hyo2.loc[hyo2['jockey'] == '北村宏', 'TS'] = hyo2['TS'] * 0.90
 
 
-    hyo2.loc[hyo2['jockey'] == '古川奈', 'TS'] = hyo2['TS'] * 1.00
-    hyo2.loc[hyo2['jockey'] == '古川吉', 'TS'] = hyo2['TS'] * 1.00    
-    hyo2.loc[hyo2['jockey'] == '今村', 'TS'] = hyo2['TS'] * 1.05    
-    hyo2.loc[hyo2['jockey'] == '松若', 'TS'] = hyo2['TS'] * 1.00
-    hyo2.loc[hyo2['jockey'] == '角田和', 'TS'] = hyo2['TS'] * 1.05
-    hyo2.loc[hyo2['jockey'] == '富田', 'TS'] = hyo2['TS'] * 1.05    
-    hyo2.loc[hyo2['jockey'] == '秋山真', 'TS'] = hyo2['TS'] * 1.00  
-    hyo2.loc[hyo2['jockey'] == '秋山稔', 'TS'] = hyo2['TS'] * 1.00
-    hyo2.loc[hyo2['jockey'] == '白浜', 'TS'] = hyo2['TS'] * 1.05    
-    hyo2.loc[hyo2['jockey'] == '川須', 'TS'] = hyo2['TS'] * 1.00   
-    hyo2.loc[hyo2['jockey'] == '水口', 'TS'] = hyo2['TS'] * 1.00
-    hyo2.loc[hyo2['jockey'] == '高倉', 'TS'] = hyo2['TS'] * 1.00
-    hyo2.loc[hyo2['jockey'] == '植野', 'TS'] = hyo2['TS'] * 1.00 
-    hyo2.loc[hyo2['jockey'] == '宮崎', 'TS'] = hyo2['TS'] * 1.00 
-    hyo2.loc[hyo2['jockey'] == '大野', 'TS'] = hyo2['TS'] * 1.00 
-    hyo2.loc[hyo2['jockey'] == '勝浦', 'TS'] = hyo2['TS'] * 1.00 
-    hyo2.loc[hyo2['jockey'] == '田中勝', 'TS'] = hyo2['TS'] * 1.00
-    hyo2.loc[hyo2['jockey'] == '横山琉', 'TS'] = hyo2['TS'] * 1.00    
-    hyo2.loc[hyo2['jockey'] == '黒岩', 'TS'] = hyo2['TS'] * 1.05 
-    hyo2.loc[hyo2['jockey'] == '上野', 'TS'] = hyo2['TS'] * 1.00     
-    hyo2.loc[hyo2['jockey'] == '松田', 'TS'] = hyo2['TS'] * 1.00     
-    hyo2.loc[hyo2['jockey'] == '永野', 'TS'] = hyo2['TS'] * 1.00     
-    hyo2.loc[hyo2['jockey'] == '斎藤', 'TS'] = hyo2['TS'] * 1.00 
-    hyo2.loc[hyo2['jockey'] == '丸山', 'TS'] = hyo2['TS'] * 1.00    
-    hyo2.loc[hyo2['jockey'] == '角田河', 'TS'] = hyo2['TS'] * 1.00   
-    hyo2.loc[hyo2['jockey'] == '武藤', 'TS'] = hyo2['TS'] * 1.00   
-    hyo2.loc[hyo2['jockey'] == '伊藤', 'TS'] = hyo2['TS'] * 1.00
-    hyo2.loc[hyo2['jockey'] == '柴田大', 'TS'] = hyo2['TS'] * 1.00    
-    hyo2.loc[hyo2['jockey'] == '泉谷', 'TS'] = hyo2['TS'] * 1.00    
-    hyo2.loc[hyo2['jockey'] == '太宰', 'TS'] = hyo2['TS'] * 1.00  
-    hyo2.loc[hyo2['jockey'] == '国分恭', 'TS'] = hyo2['TS'] * 1.00
-    hyo2.loc[hyo2['jockey'] == '松岡', 'TS'] = hyo2['TS'] * 1.00
-    hyo2.loc[hyo2['jockey'] == '吉田豊', 'TS'] = hyo2['TS'] * 1.00    
-    hyo2.loc[hyo2['jockey'] == '津村', 'TS'] = hyo2['TS'] * 1.05
+    hyo2.loc[hyo2['jockey'] == '古川奈', 'TS'] = hyo2['TS'] * 0.90
+    hyo2.loc[hyo2['jockey'] == '古川吉', 'TS'] = hyo2['TS'] * 0.90    
+    hyo2.loc[hyo2['jockey'] == '今村', 'TS'] = hyo2['TS'] * 1.00    
+    hyo2.loc[hyo2['jockey'] == '松若', 'TS'] = hyo2['TS'] * 0.90
+    hyo2.loc[hyo2['jockey'] == '角田和', 'TS'] = hyo2['TS'] * 1.00
+    hyo2.loc[hyo2['jockey'] == '富田', 'TS'] = hyo2['TS'] * 1.00    
+    hyo2.loc[hyo2['jockey'] == '秋山真', 'TS'] = hyo2['TS'] * 0.90  
+    hyo2.loc[hyo2['jockey'] == '秋山稔', 'TS'] = hyo2['TS'] * 0.90
+    hyo2.loc[hyo2['jockey'] == '白浜', 'TS'] = hyo2['TS'] * 1.00    
+    hyo2.loc[hyo2['jockey'] == '川須', 'TS'] = hyo2['TS'] * 0.90   
+    hyo2.loc[hyo2['jockey'] == '水口', 'TS'] = hyo2['TS'] * 0.90
+    hyo2.loc[hyo2['jockey'] == '高倉', 'TS'] = hyo2['TS'] * 0.90
+    hyo2.loc[hyo2['jockey'] == '植野', 'TS'] = hyo2['TS'] * 0.90 
+    hyo2.loc[hyo2['jockey'] == '宮崎', 'TS'] = hyo2['TS'] * 0.90 
+    hyo2.loc[hyo2['jockey'] == '大野', 'TS'] = hyo2['TS'] * 0.90 
+    hyo2.loc[hyo2['jockey'] == '勝浦', 'TS'] = hyo2['TS'] * 0.90 
+    hyo2.loc[hyo2['jockey'] == '田中勝', 'TS'] = hyo2['TS'] * 0.90
+    hyo2.loc[hyo2['jockey'] == '横山琉', 'TS'] = hyo2['TS'] * 0.90    
+    hyo2.loc[hyo2['jockey'] == '黒岩', 'TS'] = hyo2['TS'] * 1.00 
+    hyo2.loc[hyo2['jockey'] == '上野', 'TS'] = hyo2['TS'] * 0.90     
+    hyo2.loc[hyo2['jockey'] == '松田', 'TS'] = hyo2['TS'] * 0.90     
+    hyo2.loc[hyo2['jockey'] == '永野', 'TS'] = hyo2['TS'] * 0.90     
+    hyo2.loc[hyo2['jockey'] == '斎藤', 'TS'] = hyo2['TS'] * 0.90 
+    hyo2.loc[hyo2['jockey'] == '丸山', 'TS'] = hyo2['TS'] * 0.90    
+    hyo2.loc[hyo2['jockey'] == '角田河', 'TS'] = hyo2['TS'] * 0.90   
+    hyo2.loc[hyo2['jockey'] == '武藤', 'TS'] = hyo2['TS'] * 0.90   
+    hyo2.loc[hyo2['jockey'] == '伊藤', 'TS'] = hyo2['TS'] * 0.90
+    hyo2.loc[hyo2['jockey'] == '柴田大', 'TS'] = hyo2['TS'] * 0.90    
+    hyo2.loc[hyo2['jockey'] == '泉谷', 'TS'] = hyo2['TS'] * 0.90    
+    hyo2.loc[hyo2['jockey'] == '太宰', 'TS'] = hyo2['TS'] * 0.90  
+    hyo2.loc[hyo2['jockey'] == '国分恭', 'TS'] = hyo2['TS'] * 0.90
+    hyo2.loc[hyo2['jockey'] == '松岡', 'TS'] = hyo2['TS'] * 0.90
+    hyo2.loc[hyo2['jockey'] == '吉田豊', 'TS'] = hyo2['TS'] * 0.90    
+    hyo2.loc[hyo2['jockey'] == '津村', 'TS'] = hyo2['TS'] * 1.00
     hyo2.loc[hyo2['jockey'] == '小牧加', 'TS'] = hyo2['TS'] * 1.10    
-    hyo2.loc[hyo2['jockey'] == '小崎', 'TS'] = hyo2['TS'] * 1.00    
-    hyo2.loc[hyo2['jockey'] == '永島', 'TS'] = hyo2['TS'] * 1.00  
-    hyo2.loc[hyo2['jockey'] == '草野', 'TS'] = hyo2['TS'] * 1.00    
-    hyo2.loc[hyo2['jockey'] == '原', 'TS'] = hyo2['TS'] * 1.00   
-    hyo2.loc[hyo2['jockey'] == '川又', 'TS'] = hyo2['TS'] * 1.00   
-    hyo2.loc[hyo2['jockey'] == '小坂', 'TS'] = hyo2['TS'] * 1.05      
-    hyo2.loc[hyo2['jockey'] == '小沢', 'TS'] = hyo2['TS'] * 1.00    
-    hyo2.loc[hyo2['jockey'] == '野中', 'TS'] = hyo2['TS'] * 1.00
-    hyo2.loc[hyo2['jockey'] == '菊沢', 'TS'] = hyo2['TS'] * 1.00
-    hyo2.loc[hyo2['jockey'] == '亀田', 'TS'] = hyo2['TS'] * 1.00    
-    hyo2.loc[hyo2['jockey'] == '柴山', 'TS'] = hyo2['TS'] * 1.00   
-    hyo2.loc[hyo2['jockey'] == '酒井', 'TS'] = hyo2['TS'] * 1.00      
-    hyo2.loc[hyo2['jockey'] == '長岡', 'TS'] = hyo2['TS'] * 1.00      
-    hyo2.loc[hyo2['jockey'] == '森裕', 'TS'] = hyo2['TS'] * 1.00
-    hyo2.loc[hyo2['jockey'] == '藤懸', 'TS'] = hyo2['TS'] * 1.00      
-    hyo2.loc[hyo2['jockey'] == '中村', 'TS'] = hyo2['TS'] * 1.00
-    hyo2.loc[hyo2['jockey'] == '竹之下', 'TS'] = hyo2['TS'] * 0.95 
-    hyo2.loc[hyo2['jockey'] == '田中健', 'TS'] = hyo2['TS'] * 0.95 
-    hyo2.loc[hyo2['jockey'] == '木幡初', 'TS'] = hyo2['TS'] * 0.95   
-    hyo2.loc[hyo2['jockey'] == '杉原', 'TS'] = hyo2['TS'] * 1.00
-    hyo2.loc[hyo2['jockey'] == '中井', 'TS'] = hyo2['TS'] * 0.95
-    hyo2.loc[hyo2['jockey'] == '大久保', 'TS'] = hyo2['TS'] * 0.95
-    hyo2.loc[hyo2['jockey'] == '江田照', 'TS'] = hyo2['TS'] * 0.95
-    hyo2.loc[hyo2['jockey'] == '国分優', 'TS'] = hyo2['TS'] * 1.00
-    hyo2.loc[hyo2['jockey'] == '城戸', 'TS'] = hyo2['TS'] * 0.95
-    hyo2.loc[hyo2['jockey'] == '小林脩', 'TS'] = hyo2['TS'] * 0.95
-    hyo2.loc[hyo2['jockey'] == '西塚', 'TS'] = hyo2['TS'] * 1.00 
-    hyo2.loc[hyo2['jockey'] == '鷲頭', 'TS'] = hyo2['TS'] * 1.00
-    hyo2.loc[hyo2['jockey'] == '大江原', 'TS'] = hyo2['TS'] * 1.00    
-    hyo2.loc[hyo2['jockey'] == '鮫島良', 'TS'] = hyo2['TS'] * 1.00
-    hyo2.loc[hyo2['jockey'] == '服部', 'TS'] = hyo2['TS'] * 0.90
-    hyo2.loc[hyo2['jockey'] == '丸田', 'TS'] = hyo2['TS'] * 1.00
-    hyo2.loc[hyo2['jockey'] == '小林凌', 'TS'] = hyo2['TS'] * 1.00
-    hyo2.loc[hyo2['jockey'] == '黛', 'TS'] = hyo2['TS'] * 1.00
-    hyo2.loc[hyo2['jockey'] == '武士沢', 'TS'] = hyo2['TS'] * 1.00
-    hyo2.loc[hyo2['jockey'] == '加藤', 'TS'] = hyo2['TS'] * 0.95
-    hyo2.loc[hyo2['jockey'] == '川島', 'TS'] = hyo2['TS'] * 0.95
-    hyo2.loc[hyo2['jockey'] == '簑島', 'TS'] = hyo2['TS'] * 1.00
-    hyo2.loc[hyo2['jockey'] == '大庭', 'TS'] = hyo2['TS'] * 0.95
-    hyo2.loc[hyo2['jockey'] == '藤田菜', 'TS'] = hyo2['TS'] * 0.95
-    hyo2.loc[hyo2['jockey'] == '土田', 'TS'] = hyo2['TS'] * 0.95
-    hyo2.loc[hyo2['jockey'] == '嶋田', 'TS'] = hyo2['TS'] * 1.00
-    hyo2.loc[hyo2['jockey'] == '山田', 'TS'] = hyo2['TS'] * 0.95
-    hyo2.loc[hyo2['jockey'] == '佐々木', 'TS'] = hyo2['TS'] * 1.00   
-    hyo2.loc[hyo2['jockey'] == '木幡巧', 'TS'] = hyo2['TS'] * 1.00      
-    hyo2.loc[hyo2['jockey'] == '岩部', 'TS'] = hyo2['TS'] * 0.95
-    hyo2.loc[hyo2['jockey'] == '小牧太', 'TS'] = hyo2['TS'] * 0.95
-    hyo2.loc[hyo2['jockey'] == '木幡育', 'TS'] = hyo2['TS'] * 0.95
-    hyo2.loc[hyo2['jockey'] == '荻野琢', 'TS'] = hyo2['TS'] * 0.95
-    hyo2.loc[hyo2['jockey'] == '的場', 'TS'] = hyo2['TS'] * 0.95
-    hyo2.loc[hyo2['jockey'] == '江田勇', 'TS'] = hyo2['TS'] * 1.00     
-    hyo2.loc[hyo2['jockey'] == '水沼', 'TS'] = hyo2['TS'] * 0.95
-    hyo2.loc[hyo2['jockey'] == '原田', 'TS'] = hyo2['TS'] * 0.95
-    hyo2.loc[hyo2['jockey'] == '井上', 'TS'] = hyo2['TS'] * 0.95
-    hyo2.loc[hyo2['jockey'] == '田村', 'TS'] = hyo2['TS'] * 0.95
-    hyo2.loc[hyo2['jockey'] == '和田翼', 'TS'] = hyo2['TS'] * 0.95
-    hyo2.loc[hyo2['jockey'] == '金子', 'TS'] = hyo2['TS'] * 0.95
-    hyo2.loc[hyo2['jockey'] == '菅原隆', 'TS'] = hyo2['TS'] * 0.95
-    hyo2.loc[hyo2['jockey'] == '柴田未', 'TS'] = hyo2['TS'] * 0.95
-    hyo2.loc[hyo2['jockey'] == '西村', 'TS'] = hyo2['TS'] * 0.95 
-    hyo2.loc[hyo2['jockey'] == '鈴木', 'TS'] = hyo2['TS'] * 0.95
-    hyo2.loc[hyo2['jockey'] == '川端', 'TS'] = hyo2['TS'] * 0.95
-    hyo2.loc[hyo2['jockey'] == '柴田善', 'TS'] = hyo2['TS'] * 1.00
+    hyo2.loc[hyo2['jockey'] == '小崎', 'TS'] = hyo2['TS'] * 0.90    
+    hyo2.loc[hyo2['jockey'] == '永島', 'TS'] = hyo2['TS'] * 0.90  
+    hyo2.loc[hyo2['jockey'] == '草野', 'TS'] = hyo2['TS'] * 0.90    
+    hyo2.loc[hyo2['jockey'] == '原', 'TS'] = hyo2['TS'] * 0.90   
+    hyo2.loc[hyo2['jockey'] == '川又', 'TS'] = hyo2['TS'] * 0.90   
+    hyo2.loc[hyo2['jockey'] == '小坂', 'TS'] = hyo2['TS'] * 1.00      
+    hyo2.loc[hyo2['jockey'] == '小沢', 'TS'] = hyo2['TS'] * 0.90    
+    hyo2.loc[hyo2['jockey'] == '野中', 'TS'] = hyo2['TS'] * 0.90
+    hyo2.loc[hyo2['jockey'] == '菊沢', 'TS'] = hyo2['TS'] * 0.90
+    hyo2.loc[hyo2['jockey'] == '亀田', 'TS'] = hyo2['TS'] * 0.90    
+    hyo2.loc[hyo2['jockey'] == '柴山', 'TS'] = hyo2['TS'] * 0.90   
+    hyo2.loc[hyo2['jockey'] == '酒井', 'TS'] = hyo2['TS'] * 0.90      
+    hyo2.loc[hyo2['jockey'] == '長岡', 'TS'] = hyo2['TS'] * 0.90      
+    hyo2.loc[hyo2['jockey'] == '森裕', 'TS'] = hyo2['TS'] * 0.90
+    hyo2.loc[hyo2['jockey'] == '藤懸', 'TS'] = hyo2['TS'] * 0.90      
+    hyo2.loc[hyo2['jockey'] == '中村', 'TS'] = hyo2['TS'] * 0.90
+    hyo2.loc[hyo2['jockey'] == '竹之下', 'TS'] = hyo2['TS'] * 0.80 
+    hyo2.loc[hyo2['jockey'] == '田中健', 'TS'] = hyo2['TS'] * 0.80 
+    hyo2.loc[hyo2['jockey'] == '木幡初', 'TS'] = hyo2['TS'] * 0.80   
+    hyo2.loc[hyo2['jockey'] == '杉原', 'TS'] = hyo2['TS'] * 0.90
+    hyo2.loc[hyo2['jockey'] == '中井', 'TS'] = hyo2['TS'] * 0.80
+    hyo2.loc[hyo2['jockey'] == '大久保', 'TS'] = hyo2['TS'] * 0.80
+    hyo2.loc[hyo2['jockey'] == '江田照', 'TS'] = hyo2['TS'] * 0.80
+    hyo2.loc[hyo2['jockey'] == '国分優', 'TS'] = hyo2['TS'] * 0.90
+    hyo2.loc[hyo2['jockey'] == '城戸', 'TS'] = hyo2['TS'] * 0.80
+    hyo2.loc[hyo2['jockey'] == '小林脩', 'TS'] = hyo2['TS'] * 0.80
+    hyo2.loc[hyo2['jockey'] == '西塚', 'TS'] = hyo2['TS'] * 0.90 
+    hyo2.loc[hyo2['jockey'] == '鷲頭', 'TS'] = hyo2['TS'] * 0.90
+    hyo2.loc[hyo2['jockey'] == '大江原', 'TS'] = hyo2['TS'] * 0.90    
+    hyo2.loc[hyo2['jockey'] == '鮫島良', 'TS'] = hyo2['TS'] * 0.90
+    hyo2.loc[hyo2['jockey'] == '服部', 'TS'] = hyo2['TS'] * 0.80
+    hyo2.loc[hyo2['jockey'] == '丸田', 'TS'] = hyo2['TS'] * 0.90
+    hyo2.loc[hyo2['jockey'] == '小林凌', 'TS'] = hyo2['TS'] * 0.90
+    hyo2.loc[hyo2['jockey'] == '黛', 'TS'] = hyo2['TS'] * 0.90
+    hyo2.loc[hyo2['jockey'] == '武士沢', 'TS'] = hyo2['TS'] * 0.90
+    hyo2.loc[hyo2['jockey'] == '加藤', 'TS'] = hyo2['TS'] * 0.80
+    hyo2.loc[hyo2['jockey'] == '川島', 'TS'] = hyo2['TS'] * 0.80
+    hyo2.loc[hyo2['jockey'] == '簑島', 'TS'] = hyo2['TS'] * 0.90
+    hyo2.loc[hyo2['jockey'] == '大庭', 'TS'] = hyo2['TS'] * 0.80
+    hyo2.loc[hyo2['jockey'] == '藤田菜', 'TS'] = hyo2['TS'] * 0.80
+    hyo2.loc[hyo2['jockey'] == '土田', 'TS'] = hyo2['TS'] * 0.80
+    hyo2.loc[hyo2['jockey'] == '嶋田', 'TS'] = hyo2['TS'] * 0.90
+    hyo2.loc[hyo2['jockey'] == '山田', 'TS'] = hyo2['TS'] * 0.80
+    hyo2.loc[hyo2['jockey'] == '佐々木', 'TS'] = hyo2['TS'] * 0.90   
+    hyo2.loc[hyo2['jockey'] == '木幡巧', 'TS'] = hyo2['TS'] * 0.90      
+    hyo2.loc[hyo2['jockey'] == '岩部', 'TS'] = hyo2['TS'] * 0.80
+    hyo2.loc[hyo2['jockey'] == '小牧太', 'TS'] = hyo2['TS'] * 0.80
+    hyo2.loc[hyo2['jockey'] == '木幡育', 'TS'] = hyo2['TS'] * 0.80
+    hyo2.loc[hyo2['jockey'] == '荻野琢', 'TS'] = hyo2['TS'] * 0.80
+    hyo2.loc[hyo2['jockey'] == '的場', 'TS'] = hyo2['TS'] * 0.80
+    hyo2.loc[hyo2['jockey'] == '江田勇', 'TS'] = hyo2['TS'] * 0.90     
+    hyo2.loc[hyo2['jockey'] == '水沼', 'TS'] = hyo2['TS'] * 0.80
+    hyo2.loc[hyo2['jockey'] == '原田', 'TS'] = hyo2['TS'] * 0.80
+    hyo2.loc[hyo2['jockey'] == '井上', 'TS'] = hyo2['TS'] * 0.80
+    hyo2.loc[hyo2['jockey'] == '田村', 'TS'] = hyo2['TS'] * 0.80
+    hyo2.loc[hyo2['jockey'] == '和田翼', 'TS'] = hyo2['TS'] * 0.80
+    hyo2.loc[hyo2['jockey'] == '金子', 'TS'] = hyo2['TS'] * 0.80
+    hyo2.loc[hyo2['jockey'] == '菅原隆', 'TS'] = hyo2['TS'] * 0.80
+    hyo2.loc[hyo2['jockey'] == '柴田未', 'TS'] = hyo2['TS'] * 0.80
+    hyo2.loc[hyo2['jockey'] == '西村', 'TS'] = hyo2['TS'] * 0.80 
+    hyo2.loc[hyo2['jockey'] == '鈴木', 'TS'] = hyo2['TS'] * 0.80
+    hyo2.loc[hyo2['jockey'] == '川端', 'TS'] = hyo2['TS'] * 0.80
+    hyo2.loc[hyo2['jockey'] == '柴田善', 'TS'] = hyo2['TS'] * 0.90
 
-    hyo2.loc[hyo2['jockey'] == '高野', 'TS'] = hyo2['TS'] * 0.95
-    hyo2.loc[hyo2['jockey'] == '大塚', 'TS'] = hyo2['TS'] * 0.95
-
+    hyo2.loc[hyo2['jockey'] == '高野', 'TS'] = hyo2['TS'] * 0.80
+    hyo2.loc[hyo2['jockey'] == '大塚', 'TS'] = hyo2['TS'] * 0.80
 
 
 
