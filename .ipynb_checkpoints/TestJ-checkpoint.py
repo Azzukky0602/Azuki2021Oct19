@@ -511,9 +511,9 @@ if push == True:
 
                     elif npr.iloc[t]['racename'] in age3_GI:
                         if int(npr.iloc[t]['result']) <= 5:  
-                            kijun = 800
+                            kijun = 80000
                         elif float(npr.iloc[t]['difference']) <= 0.5:  
-                            kijun = 800
+                            kijun = 80000
                         else:
                             kijun = 650
 
