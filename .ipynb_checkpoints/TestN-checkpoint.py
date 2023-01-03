@@ -346,21 +346,21 @@ if push == True:
                 if p_df.iloc[0]['着順2'] == 1 and p_df.iloc[1]['着順2'] == 1 and p_df.iloc[2]['着順2'] == 1:
                     rensho = (-p_df.iloc[0]['差2'] -p_df.iloc[1]['差2'] -p_df.iloc[2]['差2']) / 4   #4戦の馬と比較するから
                     if rensho < -0.7:
-                        e = 1.4
+                        e = 1.25
                     elif -0.7 <= rensho < -0.5:
-                        e = 1.3    
+                        e = 1.20    
                     elif -0.5 <= rensho < -0.3:
-                        e = 1.2
+                        e = 1.15
                     else:
-                        e = 1.1                
+                        e = 1.10               
                 elif p_df.iloc[0]['着順2'] == 1 and p_df.iloc[1]['着順2'] == 1: # and p_df.iloc[2]['着順2'] != 1:
                     rensho = (-p_df.iloc[0]['差2'] -p_df.iloc[1]['差2'] +p_df.iloc[2]['差2']) / 4   #4戦の馬と比較するから
                     if rensho < -0.7:
-                        e = 1.3
+                        e = 1.20
                     elif -0.7 <= rensho < -0.5:
-                        e = 1.2   
+                        e = 1.15   
                     elif -0.5 <= rensho < -0.3:
-                        e = 1.1
+                        e = 1.10
                     else:
                         e = 1.05
                 else:
@@ -715,34 +715,34 @@ if push == True:
                 if p_df.iloc[0]['着順2'] == 1 and p_df.iloc[1]['着順2'] == 1 and p_df.iloc[2]['着順2'] == 1 and p_df.iloc[3]['着順2'] == 1:
                     rensho = (-p_df.iloc[0]['差2'] -p_df.iloc[1]['差2'] -p_df.iloc[2]['差2'] -p_df.iloc[3]['差2']) / 4
                     if rensho < -0.7:
-                        e = 1.5
+                        e = 1.30
                     elif -0.7 <= rensho < -0.5:
-                        e = 1.4    
+                        e = 1.25    
                     elif -0.5 <= rensho < -0.3:
-                        e = 1.3
+                        e = 1.20
                     else:
-                        e = 1.2                
+                        e = 1.15                
                 elif p_df.iloc[0]['着順2'] == 1 and p_df.iloc[1]['着順2'] == 1 and p_df.iloc[2]['着順2'] == 1:
                     rensho = (-p_df.iloc[0]['差2'] -p_df.iloc[1]['差2'] -p_df.iloc[2]['差2'] +p_df.iloc[3]['差2']) / 4    
 
                     if rensho < -0.7:
-                        e = 1.4
+                        e = 1.25
                     elif -0.7 <= rensho < -0.5:
-                        e = 1.3    
+                        e = 1.20    
                     elif -0.5 <= rensho < -0.3:
-                        e = 1.2
+                        e = 1.15
                     else:
-                        e = 1.1
+                        e = 1.10
 
                 elif p_df.iloc[0]['着順2'] == 1 and p_df.iloc[1]['着順2']:
                     rensho = (-p_df.iloc[0]['差2'] -p_df.iloc[1]['差2'] +p_df.iloc[2]['差2'] +p_df.iloc[3]['差2']) / 4    
 
                     if rensho < -0.7:
-                        e = 1.3
+                        e = 1.20
                     elif -0.7 <= rensho < -0.5:
-                        e = 1.2    
+                        e = 1.15    
                     elif -0.5 <= rensho < -0.3:
-                        e = 1.1
+                        e = 1.10
                     else:
                         e = 1.05
                                                                         
