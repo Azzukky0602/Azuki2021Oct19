@@ -620,13 +620,13 @@ if push == True:
             if npr.iloc[0]['result'] == "1" and npr.iloc[1]['result'] == "1" and npr.iloc[2]['result'] == "1" and npr.iloc[3]['result'] == "1":
                 rensho = (npr.iloc[0]['difference'] + npr.iloc[1]['difference'] + npr.iloc[2]['difference'] + npr.iloc[3]['difference']) / 4
                 if rensho < -0.7:
-                    e = 1.30
+                    e = 1.35
                 elif -0.7 <= rensho < -0.5:
-                    e = 1.25    
+                    e = 1.30    
                 elif -0.5 <= rensho < -0.3:
-                    e = 1.20
+                    e = 1.25
                 else:
-                    e = 1.15
+                    e = 1.20
             elif npr.iloc[0]['result'] == "1" and npr.iloc[1]['result'] == "1" and npr.iloc[2]['result'] == "1": #and npr.iloc[3]['result'] != 1:
                 rensho = (npr.iloc[0]['difference'] + npr.iloc[1]['difference'] + npr.iloc[2]['difference'] + npr.iloc[3]['difference']) / 4
                 if rensho < -0.7:
