@@ -334,21 +334,21 @@ if push == True:
             if npr.iloc[0]['result'] == "1" and npr.iloc[1]['result'] == "1" and npr.iloc[2]['result'] == "1":
                 rensho = (npr.iloc[0]['difference'] + npr.iloc[1]['difference'] + npr.iloc[2]['difference']) / 3
                 if rensho < -0.7:
-                    e = 1.4
+                    e = 1.25
                 elif -0.7 <= rensho < -0.5:
-                    e = 1.3    
+                    e = 1.20    
                 elif -0.5 <= rensho < -0.3:
-                    e = 1.2
+                    e = 1.15
                 else:
-                    e = 1.1
+                    e = 1.10
             elif npr.iloc[0]['result'] == "1" and npr.iloc[1]['result'] == "1": #and npr.iloc[2]['result'] != "1":
                 rensho = (npr.iloc[0]['difference'] + npr.iloc[1]['difference'] + npr.iloc[2]['difference']) / 3
                 if rensho < -0.7:
-                    e = 1.3
+                    e = 1.20
                 elif -0.7 <= rensho < -0.5:
-                    e = 1.2    
+                    e = 1.15    
                 elif -0.5 <= rensho < -0.3:
-                    e = 1.1
+                    e = 1.10
                 else:
                     e = 1.05
             else:
@@ -620,31 +620,31 @@ if push == True:
             if npr.iloc[0]['result'] == "1" and npr.iloc[1]['result'] == "1" and npr.iloc[2]['result'] == "1" and npr.iloc[3]['result'] == "1":
                 rensho = (npr.iloc[0]['difference'] + npr.iloc[1]['difference'] + npr.iloc[2]['difference'] + npr.iloc[3]['difference']) / 4
                 if rensho < -0.7:
-                    e = 1.5
+                    e = 1.30
                 elif -0.7 <= rensho < -0.5:
-                    e = 1.4    
+                    e = 1.25    
                 elif -0.5 <= rensho < -0.3:
-                    e = 1.3
+                    e = 1.20
                 else:
-                    e = 1.2
+                    e = 1.15
             elif npr.iloc[0]['result'] == "1" and npr.iloc[1]['result'] == "1" and npr.iloc[2]['result'] == "1": #and npr.iloc[3]['result'] != 1:
                 rensho = (npr.iloc[0]['difference'] + npr.iloc[1]['difference'] + npr.iloc[2]['difference'] + npr.iloc[3]['difference']) / 4
                 if rensho < -0.7:
-                    e = 1.4
+                    e = 1.25
                 elif -0.7 <= rensho < -0.5:
-                    e = 1.3   
+                    e = 1.20   
                 elif -0.5 <= rensho < -0.3:
-                    e = 1.2
+                    e = 1.15
                 else:
-                    e = 1.1
+                    e = 1.10
             elif npr.iloc[0]['result'] == "1" and npr.iloc[1]['result'] == "1": #and npr.iloc[2]['result'] != 1 and npr.iloc[3]['result'] != 1:
                 rensho = (npr.iloc[0]['difference'] + npr.iloc[1]['difference'] + npr.iloc[2]['difference'] + npr.iloc[3]['difference']) / 4
                 if rensho < -0.7:
-                    e = 1.3
+                    e = 1.20
                 elif -0.7 <= rensho < -0.5:
-                    e = 1.2
+                    e = 1.15
                 elif -0.5 <= rensho < -0.3:
-                    e = 1.1
+                    e = 1.10
                 else:
                     e = 1.05                       
             else:
