@@ -755,13 +755,13 @@ if push == True:
                         and p_df.iloc[3]['着順2'] == 1:
                     rensho = (-p_df.iloc[0]['差2'] -p_df.iloc[1]['差2'] -p_df.iloc[2]['差2'] -p_df.iloc[3]['差2']) / 4
                     if rensho < -0.7:
-                        e = 1.30
+                        e = 1.35
                     elif -0.7 <= rensho < -0.5:
-                        e = 1.25    
+                        e = 1.30    
                     elif -0.5 <= rensho < -0.3:
-                        e = 1.20
+                        e = 1.25
                     else:
-                        e = 1.15                
+                        e = 1.20                
                 elif p_df.iloc[0]['着順2'] == 1 and p_df.iloc[1]['着順2'] == 1 and p_df.iloc[2]['着順2'] == 1:
                     rensho = (-p_df.iloc[0]['差2'] -p_df.iloc[1]['差2'] -p_df.iloc[2]['差2'] +p_df.iloc[3]['差2']) / 4   
                     if rensho < -0.7:
