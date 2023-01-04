@@ -437,13 +437,20 @@ if push == True:
                     else:
                         h = 1.0
 
+
                 #コース係数
                 if race_course == 'ダ':
-                    if p_df.iloc[0]['コース'] == '芝' and p_df.iloc[1]['コース'] == '芝':
-                        i = 0.7
+                    if 'Ｊ' in p_df.iloc[0]['競馬場']:
+                        if p_df.iloc[0]['コース'] == '芝' and p_df.iloc[1]['コース'] == '芝':
+                            i = 0.5
+                        elif p_df.iloc[0]['コース'] == '芝' and p_df.iloc[1]['コース'] == 'ダ':
+                            i = 0.6
+                        elif p_df.iloc[0]['コース'] == 'ダ' and p_df.iloc[1]['コース'] == '芝':
+                            i = 0.7
+                        elif p_df.iloc[0]['コース'] == 'ダ':
+                            i = 0.8                       
                     else:
-                        i = 1.0           
-
+                        i = 1.0
 
 
                 ts = ((kijun1 *1.5 *a *a1 + kijun2 *b *b1 + kijun3 *c *c1) + f) * e * g * h * i
@@ -821,13 +828,20 @@ if push == True:
                     else:
                         h = 1.0
 
+   
                 #コース係数
                 if race_course == 'ダ':
-                    if p_df.iloc[0]['コース'] == '芝' and p_df.iloc[1]['コース'] == '芝' and p_df.iloc[2]['コース'] == '芝':
-                        i = 0.7
+                    if 'Ｊ' in p_df.iloc[0]['競馬場']:
+                        if p_df.iloc[0]['コース'] == '芝' and p_df.iloc[1]['コース'] == '芝':
+                            i = 0.5
+                        elif p_df.iloc[0]['コース'] == '芝' and p_df.iloc[1]['コース'] == 'ダ':
+                            i = 0.6
+                        elif p_df.iloc[0]['コース'] == 'ダ' and p_df.iloc[1]['コース'] == '芝':
+                            i = 0.7
+                        elif p_df.iloc[0]['コース'] == 'ダ':
+                            i = 0.8                       
                     else:
-                        i = 1.0           
-
+                        i = 1.0
 
 
                 ts = ((kijun1 *1.3 *a *a1 + kijun2 *1.2 *b *b1 + kijun3 *1.1 *c *c1 + kijun4 *1.0 *d *d1 ) + f) * e * g * h * i
