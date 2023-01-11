@@ -24,7 +24,8 @@ st.header('南関東')
 st.subheader('新パラメータ版')
 
 st.write('   ')
-
+st.info('【JRA版】\https://azzukky-j.streamlit.app/')
+st.info('【地方交流版】\https://azzukky-k.streamlit.app/')
 
 st.write('   ')
 st.write('   ')
