@@ -22,6 +22,8 @@ st.header('園田・姫路・門別・地方交流重賞')
 st.subheader('新パラメータ版')
 
 st.write('   ')
+st.info('【南関東版】\https://azzukky-n.streamlit.app/')
+st.info('【JRA版】\https://azzukky-j.streamlit.app/')
 
 st.write('   ')
 st.write('   ')
