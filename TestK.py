@@ -22,7 +22,6 @@ st.header('園田・姫路・門別・地方交流重賞')
 st.subheader('新パラメータ版')
 
 st.write('   ')
-st.info('【参考】テキトー指数の使い方  \nhttps://note.com/tekito_lab/n/n3342d6531772')
 
 st.write('   ')
 st.write('   ')
