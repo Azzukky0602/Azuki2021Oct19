@@ -24,8 +24,7 @@ st.header('南関東')
 st.subheader('新パラメータ版')
 
 st.write('   ')
-st.info('【参考】テキトー指数の使い方  \nhttps://note.com/tekito_lab/n/n3342d6531772')
-st.info('【参考】南関東競馬の賞金理論  \nhttps://note.com/tekito_lab/n/n9583c0fa9d75')
+
 
 st.write('   ')
 st.write('   ')
