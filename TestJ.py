@@ -175,9 +175,9 @@ if push == True:
             tekito_shisu = 0
             tekito_shisu_list.append(tekito_shisu)
 
-        #3歳、3戦のみ
+        #3歳、3戦のみ、皐月賞前
         elif len(npr) == 3:
-            if int(horse[18:]) == 3 and race_date <= dt(kotoshi, 5, 31):
+            if int(horse[18:]) == 3 and race_date <= dt(kotoshi, 4, 30):
 
                 base_number = []
                 for t in range(3):
@@ -218,8 +218,8 @@ if push == True:
 
                 kijun1, kijun2, kijun3 = base_number[0], base_number[1], base_number[2]
 
-
-            elif int(horse[18:]) == 3 and race_date >= dt(kotoshi, 6, 1):
+        #3歳、3戦のみ、皐月賞後
+            elif int(horse[18:]) == 3 and race_date >= dt(kotoshi, 5, 1):
 
                 base_number = []
                 for t in range(3):
@@ -356,28 +356,28 @@ if push == True:
             #斤量補正
             if 1000 <= race_distance <= 1400:
                 if all(L3) =='牝':
-                    f = kijun1 * 0.20 * (max(hyo2['weight']) - float(horse[11:15]))
-                else:
-                    if '牝' in horse:
-                        f = kijun1 * 0.20 * (max(hyo2['weight']) -2.0 - float(horse[11:15]))
-                    else:
-                        f = kijun1 * 0.20 * (max(hyo2['weight']) - float(horse[11:15]))                
-            elif 1400 < race_distance <= 1800:
-                if all(L3) =='牝':
                     f = kijun1 * 0.15 * (max(hyo2['weight']) - float(horse[11:15]))
                 else:
                     if '牝' in horse:
                         f = kijun1 * 0.15 * (max(hyo2['weight']) -2.0 - float(horse[11:15]))
                     else:
-                        f = kijun1 * 0.15 * (max(hyo2['weight']) - float(horse[11:15]))                            
-            elif 1800 < race_distance <= 2400:
+                        f = kijun1 * 0.15 * (max(hyo2['weight']) - float(horse[11:15]))                
+            elif 1400 < race_distance <= 1800:
                 if all(L3) =='牝':
-                    f = kijun1 * 0.10 * (max(hyo2['weight']) - float(horse[11:15]))
+                    f = kijun1 * 0.1166 * (max(hyo2['weight']) - float(horse[11:15]))
                 else:
                     if '牝' in horse:
-                        f = kijun1 * 0.10 * (max(hyo2['weight']) -2.0 - float(horse[11:15]))
+                        f = kijun1 * 0.1166 * (max(hyo2['weight']) -2.0 - float(horse[11:15]))
                     else:
-                        f = kijun1 * 0.10 * (max(hyo2['weight']) - float(horse[11:15]))            
+                        f = kijun1 * 0.1166 * (max(hyo2['weight']) - float(horse[11:15]))                            
+            elif 1800 < race_distance <= 2400:
+                if all(L3) =='牝':
+                    f = kijun1 * 0.0833 * (max(hyo2['weight']) - float(horse[11:15]))
+                else:
+                    if '牝' in horse:
+                        f = kijun1 * 0.0833 * (max(hyo2['weight']) -2.0 - float(horse[11:15]))
+                    else:
+                        f = kijun1 * 0.0833 * (max(hyo2['weight']) - float(horse[11:15]))            
             elif race_distance > 2400:
                 if all(L3) =='牝':
                     f = kijun1 * 0.05 * (max(hyo2['weight']) - float(horse[11:15]))
@@ -441,14 +441,14 @@ if push == True:
 
 
 
-            ts = ((kijun1 * 1.5 * a + kijun2 * b + kijun3 * c) + f) * e * g * h * i
+            ts = ((kijun1 * 2.0 * a + kijun2 * b * 1.1 + kijun3 * c * 1.0) + f) * e * g * h * i
             tekito_shisu = int(ts)
             tekito_shisu_list.append(tekito_shisu)
 
 
-        #3歳　春　補正　4戦以上
+        #3歳、4戦以上、皐月賞前
         else:
-            if int(horse[18:]) == 3 and race_date <= dt(kotoshi, 5, 31):
+            if int(horse[18:]) == 3 and race_date <= dt(kotoshi, 4, 30):
 
                 base_number = []
                 for t in range(4):
@@ -489,8 +489,8 @@ if push == True:
 
                 kijun1, kijun2, kijun3, kijun4 = base_number[0], base_number[1], base_number[2], base_number[3]    
 
-    #3歳　秋　補正　4戦以上
-            elif int(horse[18:]) == 3 and race_date >= dt(kotoshi, 6, 1):
+            #3歳、4戦以上、皐月賞後
+            elif int(horse[18:]) == 3 and race_date >= dt(kotoshi, 5, 1):
 
                 base_number = []
                 for t in range(4):
@@ -548,7 +548,7 @@ if push == True:
                 kijun1, kijun2, kijun3, kijun4 = base_number[0], base_number[1], base_number[2], base_number[3] 
 
 
-        #古馬混合戦の指数
+            #古馬混合戦の指数
             else:
                 base_number = []
                 for t in range(4):
@@ -653,28 +653,28 @@ if push == True:
             #斤量補正
             if 1000 <= race_distance <= 1400:
                 if all(L3) =='牝':
-                    f = kijun1 * 0.20 * (max(hyo2['weight']) - float(horse[11:15]))
-                else:
-                    if '牝' in horse:
-                        f = kijun1 * 0.20 * (max(hyo2['weight']) -2.0 - float(horse[11:15]))
-                    else:
-                        f = kijun1 * 0.20 * (max(hyo2['weight']) - float(horse[11:15]))                
-            elif 1400 < race_distance <= 1800:
-                if all(L3) =='牝':
                     f = kijun1 * 0.15 * (max(hyo2['weight']) - float(horse[11:15]))
                 else:
                     if '牝' in horse:
                         f = kijun1 * 0.15 * (max(hyo2['weight']) -2.0 - float(horse[11:15]))
                     else:
-                        f = kijun1 * 0.15 * (max(hyo2['weight']) - float(horse[11:15]))                            
-            elif 1800 < race_distance <= 2400:
+                        f = kijun1 * 0.15 * (max(hyo2['weight']) - float(horse[11:15]))                
+            elif 1400 < race_distance <= 1800:
                 if all(L3) =='牝':
-                    f = kijun1 * 0.10 * (max(hyo2['weight']) - float(horse[11:15]))
+                    f = kijun1 * 0.1166 * (max(hyo2['weight']) - float(horse[11:15]))
                 else:
                     if '牝' in horse:
-                        f = kijun1 * 0.10 * (max(hyo2['weight']) -2.0 - float(horse[11:15]))
+                        f = kijun1 * 0.1166 * (max(hyo2['weight']) -2.0 - float(horse[11:15]))
                     else:
-                        f = kijun1 * 0.10 * (max(hyo2['weight']) - float(horse[11:15]))            
+                        f = kijun1 * 0.1166 * (max(hyo2['weight']) - float(horse[11:15]))                            
+            elif 1800 < race_distance <= 2400:
+                if all(L3) =='牝':
+                    f = kijun1 * 0.0833 * (max(hyo2['weight']) - float(horse[11:15]))
+                else:
+                    if '牝' in horse:
+                        f = kijun1 * 0.0833 * (max(hyo2['weight']) -2.0 - float(horse[11:15]))
+                    else:
+                        f = kijun1 * 0.0833 * (max(hyo2['weight']) - float(horse[11:15]))            
             elif race_distance > 2400:
                 if all(L3) =='牝':
                     f = kijun1 * 0.05 * (max(hyo2['weight']) - float(horse[11:15]))
