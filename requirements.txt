@@ -6,3 +6,4 @@ pytz
 numpy
 datetime
 streamlit
+html5lib
