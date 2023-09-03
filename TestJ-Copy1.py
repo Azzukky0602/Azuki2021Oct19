@@ -99,7 +99,7 @@ if push == True:
     
     url = 'https://race.netkeiba.com/race/shutuba.html?race_id=' + str(kotoshi) + race_for_keisan + '&rf=race_submenu'
 
-    hyo = pd.read_html(url)[0]
+    hyo = pd.read_html(url, encoding='shift_jis')[0]
     hyo.columns = hyo.columns.droplevel(0)
     hyo.columns = ['waku', 'umaban', 'noneed1', 'name', 'seirei', 'weight', 'jockey', 'stable', 'bodyweight', 'noneed1', 'odds', 'noneed2', 'noneed3']
     hyo.drop(columns=['waku', 'noneed1', 'noneed2', 'noneed3', 'bodyweight', 'odds'], inplace=True)
