@@ -17,6 +17,7 @@ from datetime import timedelta as td
 from pytz import timezone
 import copy
 import numpy as np
+import html5lib
 
 # タイムゾーンを指定して、日時を作成.
 utc_time = dt.now(timezone('Asia/Tokyo'))
@@ -98,7 +99,7 @@ if push == True:
     
     url = 'https://race.netkeiba.com/race/shutuba.html?race_id=' + str(kotoshi) + race_for_keisan + '&rf=race_submenu'
 
-    hyo = pd.read_html(url)[0]
+    hyo = pd.read_html(url, encoding='euc-jp')[0]
     hyo.columns = hyo.columns.droplevel(0)
     hyo.columns = ['waku', 'umaban', 'noneed1', 'name', 'seirei', 'weight', 'jockey', 'stable', 'bodyweight', 'noneed1', 'odds', 'noneed2', 'noneed3']
     hyo.drop(columns=['waku', 'noneed1', 'noneed2', 'noneed3', 'bodyweight', 'odds'], inplace=True)
@@ -765,7 +766,7 @@ if push == True:
     for uma_b in L1:
         time.sleep(1)
         url_b = 'https://db.netkeiba.com/horse/' + uma_b
-        uma_data = pd.read_html(url_b)[1]
+        uma_data = pd.read_html(url_b, encoding='euc-jp')[1]
         starion = uma_data[uma_data[0].str.contains('生産者')].iat[0,1][:4]
         owner = uma_data[uma_data[0].str.contains('馬主')].iat[0,1][:4]
         starion_list.append(starion)
