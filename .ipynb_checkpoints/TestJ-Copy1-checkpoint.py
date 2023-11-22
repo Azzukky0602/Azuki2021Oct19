@@ -779,9 +779,9 @@ if push == True:
 
     #三着内率50%以上
     hyo2.loc[hyo2['jockey'] == 'マーフィ', 'TS'] = hyo2['TS'] * 1.20
-    hyo2.loc[hyo2['jockey'] == 'レーン', 'TS'] = hyo2['TS'] * 1.20
-    hyo2.loc[hyo2['jockey'] == 'ルメール', 'TS'] = hyo2['TS'] * 1.20
-    hyo2.loc[hyo2['jockey'] == 'モレイラ', 'TS'] = hyo2['TS'] * 1.20    
+    hyo2.loc[hyo2['jockey'] == 'レーン', 'TS'] = hyo2['TS'] * 1.30
+    hyo2.loc[hyo2['jockey'] == 'ルメール', 'TS'] = hyo2['TS'] * 1.30
+    hyo2.loc[hyo2['jockey'] == 'モレイラ', 'TS'] = hyo2['TS'] * 1.30    
     hyo2.loc[hyo2['jockey'] == '川田', 'TS'] = hyo2['TS'] * 1.30
     hyo2.loc[hyo2['jockey'] == 'Ｃデムーロ', 'TS'] = hyo2['TS'] * 1.20
     hyo2.loc[hyo2['jockey'] == '伴', 'TS'] = hyo2['TS'] * 1.10
