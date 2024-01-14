@@ -933,15 +933,15 @@ if push == True:
         if racedate <= dt(kotoshi, 6, 30):
 
             if hyo1.loc[i]['年齢'] == 3:
-                if 0 <= hyo1.loc[i]['賞金'] < 600:
+                if 0 <= hyo1.loc[i]['賞金'] < 700:
                     present_cl = "ND"
-                elif 600 <= hyo1.loc[i]['賞金'] < 1000:
+                elif 700 <= hyo1.loc[i]['賞金'] < 1100:
                     present_cl = "B3"
-                elif 1000 <= hyo1.loc[i]['賞金'] < 1300:
+                elif 1100 <= hyo1.loc[i]['賞金'] < 1500:
                     present_cl = "B2"
-                elif 1300 <= hyo1.loc[i]['賞金'] < 1800:
+                elif 1500 <= hyo1.loc[i]['賞金'] < 2000:
                     present_cl = "B1"
-                elif 1800 <= hyo1.loc[i]['賞金'] < 2600:
+                elif 2000 <= hyo1.loc[i]['賞金'] < 2800:
                     present_cl = "A2"
                 else:
                     present_cl = "A1"                        
@@ -949,23 +949,23 @@ if push == True:
             elif hyo1.loc[i]['年齢'] == 4:
                 if 0 <= hyo1.loc[i]['賞金'] < 200:
                     present_cl = "C3"
-                elif 200 <= hyo1.loc[i]['賞金'] < 400:
+                elif 200 <= hyo1.loc[i]['賞金'] < 500:
                     present_cl = "C2"
-                elif 400 <= hyo1.loc[i]['賞金'] < 700:
+                elif 500 <= hyo1.loc[i]['賞金'] < 800:
                     present_cl = "C1"
-                elif 700 <= hyo1.loc[i]['賞金'] < 1100:
+                elif 800 <= hyo1.loc[i]['賞金'] < 1200:
                     present_cl = "B3"
-                elif 1100 <= hyo1.loc[i]['賞金'] < 1500:
+                elif 1200 <= hyo1.loc[i]['賞金'] < 1600:
                     present_cl = "B2"
-                elif 1500 <= hyo1.loc[i]['賞金'] < 2000:
+                elif 1600 <= hyo1.loc[i]['賞金'] < 2100:
                     present_cl = "B1"
-                elif 2000 <= hyo1.loc[i]['賞金'] < 3300:
+                elif 2100 <= hyo1.loc[i]['賞金'] < 3400:
                     present_cl = "A2"
                 else:
                     present_cl = "A1"
 
             elif hyo1.loc[i]['年齢'] == 5:
-                if 0 <= hyo1.loc[i]['賞金'] < 400:
+                if 80 <= hyo1.loc[i]['賞金'] < 400:
                     present_cl = "C3"
                 elif 400 <= hyo1.loc[i]['賞金'] < 700:
                     present_cl = "C2"
@@ -977,13 +977,13 @@ if push == True:
                     present_cl = "B2"
                 elif 1900 <= hyo1.loc[i]['賞金'] < 2500:
                     present_cl = "B1"
-                elif 2500 <= hyo1.loc[i]['賞金'] < 4200:
+                elif 2500 <= hyo1.loc[i]['賞金'] < 4300:
                     present_cl = "A2"
                 else:
                     present_cl = "A1"
 
             elif hyo1.loc[i]['年齢'] == 6:
-                if 0 <= hyo1.loc[i]['賞金'] < 700:
+                if 160 <= hyo1.loc[i]['賞金'] < 700:
                     present_cl = "C3"
                 elif 700 <= hyo1.loc[i]['賞金'] < 1000:
                     present_cl = "C2"
@@ -991,9 +991,9 @@ if push == True:
                     present_cl = "C1"
                 elif 1300 <= hyo1.loc[i]['賞金'] < 1700:
                     present_cl = "B3"
-                elif 1700 <= hyo1.loc[i]['賞金'] < 2300:
+                elif 1700 <= hyo1.loc[i]['賞金'] < 2200:
                     present_cl = "B2"
-                elif 2300 <= hyo1.loc[i]['賞金'] < 3200:
+                elif 2200 <= hyo1.loc[i]['賞金'] < 3200:
                     present_cl = "B1"
                 elif 3200 <= hyo1.loc[i]['賞金'] < 5000:
                     present_cl = "A2"
@@ -1001,37 +1001,37 @@ if push == True:
                     present_cl = "A1"             
 
             elif hyo1.loc[i]['年齢'] == 7:
-                if 0 <= hyo1.loc[i]['賞金'] < 1100:
+                if 240 <= hyo1.loc[i]['賞金'] < 1000:
                     present_cl = "C3"
-                elif 1100 <= hyo1.loc[i]['賞金'] < 1400:
+                elif 1000 <= hyo1.loc[i]['賞金'] < 1300:
                     present_cl = "C2"
-                elif 1400 <= hyo1.loc[i]['賞金'] < 1700:
+                elif 1300 <= hyo1.loc[i]['賞金'] < 1600:
                     present_cl = "C1"
-                elif 1700 <= hyo1.loc[i]['賞金'] < 2100:
+                elif 1600 <= hyo1.loc[i]['賞金'] < 2000:
                     present_cl = "B3"
-                elif 2100 <= hyo1.loc[i]['賞金'] < 2800:
+                elif 2000 <= hyo1.loc[i]['賞金'] < 2700:
                     present_cl = "B2"
-                elif 2800 <= hyo1.loc[i]['賞金'] < 3800:
+                elif 2700 <= hyo1.loc[i]['賞金'] < 3700:
                     present_cl = "B1"
-                elif 3800 <= hyo1.loc[i]['賞金'] < 5600:
+                elif 3700 <= hyo1.loc[i]['賞金'] < 5500:
                     present_cl = "A2"
                 else:
                     present_cl = "A1"
 
             elif hyo1.loc[i]['年齢'] >= 8:
-                if 0 <= hyo1.loc[i]['賞金'] < 1200:
+                if 240 <= hyo1.loc[i]['賞金'] < 1200:
                     present_cl = "C3"
                 elif 1200 <= hyo1.loc[i]['賞金'] < 1500:
                     present_cl = "C2"
-                elif 1500 <= hyo1.loc[i]['賞金'] < 1900:
+                elif 1500 <= hyo1.loc[i]['賞金'] < 1800:
                     present_cl = "C1"
-                elif 1900 <= hyo1.loc[i]['賞金'] < 2300:
+                elif 1800 <= hyo1.loc[i]['賞金'] < 2200:
                     present_cl = "B3"
-                elif 2300 <= hyo1.loc[i]['賞金'] < 3100:
+                elif 2200 <= hyo1.loc[i]['賞金'] < 3000:
                     present_cl = "B2"
-                elif 3100 <= hyo1.loc[i]['賞金'] < 4200:
+                elif 3000 <= hyo1.loc[i]['賞金'] < 4100:
                     present_cl = "B1"
-                elif 4200 <= hyo1.loc[i]['賞金'] < 6000:
+                elif 4100 <= hyo1.loc[i]['賞金'] < 5900:
                     present_cl = "A2"
                 else:
                     present_cl = "A1"         
@@ -1043,25 +1043,7 @@ if push == True:
             if hyo1.loc[i]['年齢'] == 3:
                 if 0 <= hyo1.loc[i]['賞金'] < 200:
                     present_cl = "C3"
-                elif 200 <= hyo1.loc[i]['賞金'] < 400:
-                    present_cl = "C2"
-                elif 400 <= hyo1.loc[i]['賞金'] < 700:
-                    present_cl = "C1"
-                elif 700 <= hyo1.loc[i]['賞金'] < 1100:
-                    present_cl = "B3"
-                elif 1100 <= hyo1.loc[i]['賞金'] < 1500:
-                    present_cl = "B2"
-                elif 1500 <= hyo1.loc[i]['賞金'] < 2000:
-                    present_cl = "B1"
-                elif 2000 <= hyo1.loc[i]['賞金'] < 2800:
-                    present_cl = "A2"
-                else:
-                    present_cl = "A1"
-
-            elif hyo1.loc[i]['年齢'] == 4:
-                if 0 <= hyo1.loc[i]['賞金'] < 300:
-                    present_cl = "C3"
-                elif 300 <= hyo1.loc[i]['賞金'] < 500:
+                elif 200 <= hyo1.loc[i]['賞金'] < 500:
                     present_cl = "C2"
                 elif 500 <= hyo1.loc[i]['賞金'] < 800:
                     present_cl = "C1"
@@ -1071,13 +1053,31 @@ if push == True:
                     present_cl = "B2"
                 elif 1700 <= hyo1.loc[i]['賞金'] < 2200:
                     present_cl = "B1"
-                elif 2200 <= hyo1.loc[i]['賞金'] < 3500:
+                elif 2200 <= hyo1.loc[i]['賞金'] < 3000:
+                    present_cl = "A2"
+                else:
+                    present_cl = "A1"
+
+            elif hyo1.loc[i]['年齢'] == 4:
+                if 20 <= hyo1.loc[i]['賞金'] < 300:
+                    present_cl = "C3"
+                elif 300 <= hyo1.loc[i]['賞金'] < 600:
+                    present_cl = "C2"
+                elif 600 <= hyo1.loc[i]['賞金'] < 900:
+                    present_cl = "C1"
+                elif 900 <= hyo1.loc[i]['賞金'] < 1300:
+                    present_cl = "B3"
+                elif 1300 <= hyo1.loc[i]['賞金'] < 1800:
+                    present_cl = "B2"
+                elif 1800 <= hyo1.loc[i]['賞金'] < 2300:
+                    present_cl = "B1"
+                elif 2300 <= hyo1.loc[i]['賞金'] < 3600:
                     present_cl = "A2"
                 else:
                     present_cl = "A1"
 
             elif hyo1.loc[i]['年齢'] == 5:
-                if 0 <= hyo1.loc[i]['賞金'] < 500:
+                if 80 <= hyo1.loc[i]['賞金'] < 500:
                     present_cl = "C3"
                 elif 500 <= hyo1.loc[i]['賞金'] < 800:
                     present_cl = "C2"
@@ -1085,17 +1085,17 @@ if push == True:
                     present_cl = "C1"
                 elif 1100 <= hyo1.loc[i]['賞金'] < 1500:
                     present_cl = "B3"
-                elif 1500 <= hyo1.loc[i]['賞金'] < 2100:
+                elif 1500 <= hyo1.loc[i]['賞金'] < 2000:
                     present_cl = "B2"
-                elif 2100 <= hyo1.loc[i]['賞金'] < 2700:
+                elif 2000 <= hyo1.loc[i]['賞金'] < 2600:
                     present_cl = "B1"
-                elif 2700 <= hyo1.loc[i]['賞金'] < 4400:
+                elif 2600 <= hyo1.loc[i]['賞金'] < 4400:
                     present_cl = "A2"
                 else:
                     present_cl = "A1"
 
             elif hyo1.loc[i]['年齢'] == 6:
-                if 0 <= hyo1.loc[i]['賞金'] < 800:
+                if 160 <= hyo1.loc[i]['賞金'] < 800:
                     present_cl = "C3"
                 elif 800 <= hyo1.loc[i]['賞金'] < 1100:
                     present_cl = "C2"
@@ -1113,11 +1113,29 @@ if push == True:
                     present_cl = "A1"             
 
             elif hyo1.loc[i]['年齢'] == 7:
-                if 0 <= hyo1.loc[i]['賞金'] < 1100:
+                if 240 <= hyo1.loc[i]['賞金'] < 1100:
                     present_cl = "C3"
                 elif 1100 <= hyo1.loc[i]['賞金'] < 1400:
                     present_cl = "C2"
-                elif 1400 <= hyo1.loc[i]['賞金'] < 1800:
+                elif 1400 <= hyo1.loc[i]['賞金'] < 1700:
+                    present_cl = "C1"
+                elif 1700 <= hyo1.loc[i]['賞金'] < 2100:
+                    present_cl = "B3"
+                elif 2100 <= hyo1.loc[i]['賞金'] < 2900:
+                    present_cl = "B2"
+                elif 2900 <= hyo1.loc[i]['賞金'] < 3900:
+                    present_cl = "B1"
+                elif 3900 <= hyo1.loc[i]['賞金'] < 5700:
+                    present_cl = "A2"
+                else:
+                    present_cl = "A1"
+
+            elif hyo1.loc[i]['年齢'] >= 8:
+                if 240 <= hyo1.loc[i]['賞金'] < 1200:
+                    present_cl = "C3"
+                elif 1200 <= hyo1.loc[i]['賞金'] < 1500:
+                    present_cl = "C2"
+                elif 1500 <= hyo1.loc[i]['賞金'] < 1800:
                     present_cl = "C1"
                 elif 1800 <= hyo1.loc[i]['賞金'] < 2200:
                     present_cl = "B3"
@@ -1126,24 +1144,6 @@ if push == True:
                 elif 3000 <= hyo1.loc[i]['賞金'] < 4100:
                     present_cl = "B1"
                 elif 4100 <= hyo1.loc[i]['賞金'] < 5900:
-                    present_cl = "A2"
-                else:
-                    present_cl = "A1"
-
-            elif hyo1.loc[i]['年齢'] >= 8:
-                if 0 <= hyo1.loc[i]['賞金'] < 1200:
-                    present_cl = "C3"
-                elif 1200 <= hyo1.loc[i]['賞金'] < 1500:
-                    present_cl = "C2"
-                elif 1500 <= hyo1.loc[i]['賞金'] < 1900:
-                    present_cl = "C1"
-                elif 1900 <= hyo1.loc[i]['賞金'] < 2300:
-                    present_cl = "B3"
-                elif 2300 <= hyo1.loc[i]['賞金'] < 3100:
-                    present_cl = "B2"
-                elif 3100 <= hyo1.loc[i]['賞金'] < 4200:
-                    present_cl = "B1"
-                elif 4200 <= hyo1.loc[i]['賞金'] < 6000:
                     present_cl = "A2"
                 else:
                     present_cl = "A1"
@@ -1162,113 +1162,6 @@ if push == True:
             
             if hyo1.loc[i]['年齢'] == 3:
                 if hyo1.loc[i]['クラス'] == 'ND':
-                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 600:
-                        ok = "5着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 600:
-                        ok = "4着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 600:
-                        ok = "3着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 600:
-                        ok = "2着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 600:
-                        ok = "1着で昇級"
-                    else:
-                        ok = "1着でも現級"    
-
-                elif hyo1.loc[i]['クラス'] == 'B3':
-                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 1000:
-                        ok = "5着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 1000:
-                        ok = "4着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 1000:
-                        ok = "3着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 1000:
-                        ok = "2着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 1000:
-                        ok = "1着で昇級"
-                    else:
-                        ok = "1着でも現級"
-
-                elif hyo1.loc[i]['クラス'] == 'B2':
-                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 1300:
-                        ok = "5着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 1300:
-                        ok = "4着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 1300:
-                        ok = "3着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 1300:
-                        ok = "2着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 100:
-                        ok = "1着で昇級"
-                    else:
-                        ok = "1着でも現級" 
-
-                elif hyo1.loc[i]['クラス'] == 'B1':
-                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 1800:
-                        ok = "5着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 1800:
-                        ok = "4着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 1800:
-                        ok = "3着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 1800:
-                        ok = "2着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 1800:
-                        ok = "1着で昇級"
-                    else:
-                        ok = "1着でも現級"
-
-                elif hyo1.loc[i]['クラス'] == 'A2':
-                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 2600:
-                        ok = "5着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 2600:
-                        ok = "4着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 2600:
-                        ok = "3着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 2600:
-                        ok = "2着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 2600:
-                        ok = "1着で昇級"
-                    else:
-                        ok = "1着でも現級" 
-
-                else:
-                #elif hyo1.loc[i]['クラス'] == 'A1':
-                    ok = "稼ぎ放題"
-
-                ok_list.append(ok)
-                
-            
-            elif hyo1.loc[i]['年齢'] == 4:
-
-                if hyo1.loc[i]['クラス'] == 'C3':
-                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 200:
-                        ok = "5着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 200:
-                        ok = "4着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 200:
-                        ok = "3着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 200:
-                        ok = "2着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 200:
-                        ok = "1着で昇級"
-                    else:
-                        ok = "1着でも現級"                 
-                
-                elif hyo1.loc[i]['クラス'] == 'C2':
-                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 400:
-                        ok = "5着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 400:
-                        ok = "4着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 400:
-                        ok = "3着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 400:
-                        ok = "2着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 400:
-                        ok = "1着で昇級"
-                    else:
-                        ok = "1着でも現級"    
-
-                elif hyo1.loc[i]['クラス'] == 'C1':
                     if hyo1.loc[i]['賞金'] + race_syokin[4] >= 700:
                         ok = "5着で昇級"
                     elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 700:
@@ -1280,7 +1173,7 @@ if push == True:
                     elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 700:
                         ok = "1着で昇級"
                     else:
-                        ok = "1着でも現級"
+                        ok = "1着でも現級"    
 
                 elif hyo1.loc[i]['クラス'] == 'B3':
                     if hyo1.loc[i]['賞金'] + race_syokin[4] >= 1100:
@@ -1325,15 +1218,122 @@ if push == True:
                         ok = "1着でも現級"
 
                 elif hyo1.loc[i]['クラス'] == 'A2':
-                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 3300:
+                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 2800:
                         ok = "5着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 3300:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 2800:
                         ok = "4着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 3300:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 2800:
                         ok = "3着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 3300:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 2800:
                         ok = "2着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 3300:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 2800:
+                        ok = "1着で昇級"
+                    else:
+                        ok = "1着でも現級" 
+
+                else:
+                #elif hyo1.loc[i]['クラス'] == 'A1':
+                    ok = "稼ぎ放題"
+
+                ok_list.append(ok)
+                
+            
+            elif hyo1.loc[i]['年齢'] == 4:
+
+                if hyo1.loc[i]['クラス'] == 'C3':
+                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 200:
+                        ok = "5着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 200:
+                        ok = "4着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 200:
+                        ok = "3着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 200:
+                        ok = "2着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 200:
+                        ok = "1着で昇級"
+                    else:
+                        ok = "1着でも現級"                 
+                
+                elif hyo1.loc[i]['クラス'] == 'C2':
+                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 500:
+                        ok = "5着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 500:
+                        ok = "4着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 500:
+                        ok = "3着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 500:
+                        ok = "2着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 500:
+                        ok = "1着で昇級"
+                    else:
+                        ok = "1着でも現級"    
+
+                elif hyo1.loc[i]['クラス'] == 'C1':
+                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 800:
+                        ok = "5着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 800:
+                        ok = "4着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 800:
+                        ok = "3着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 800:
+                        ok = "2着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 800:
+                        ok = "1着で昇級"
+                    else:
+                        ok = "1着でも現級"
+
+                elif hyo1.loc[i]['クラス'] == 'B3':
+                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 1200:
+                        ok = "5着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 1200:
+                        ok = "4着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 1200:
+                        ok = "3着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 1200:
+                        ok = "2着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 1200:
+                        ok = "1着で昇級"
+                    else:
+                        ok = "1着でも現級"
+
+                elif hyo1.loc[i]['クラス'] == 'B2':
+                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 1600:
+                        ok = "5着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 1600:
+                        ok = "4着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 1600:
+                        ok = "3着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 1600:
+                        ok = "2着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 1600:
+                        ok = "1着で昇級"
+                    else:
+                        ok = "1着でも現級" 
+
+                elif hyo1.loc[i]['クラス'] == 'B1':
+                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 2100:
+                        ok = "5着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 2100:
+                        ok = "4着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 2100:
+                        ok = "3着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 2100:
+                        ok = "2着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 2100:
+                        ok = "1着で昇級"
+                    else:
+                        ok = "1着でも現級"
+
+                elif hyo1.loc[i]['クラス'] == 'A2':
+                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 3400:
+                        ok = "5着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 3400:
+                        ok = "4着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 3400:
+                        ok = "3着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 3400:
+                        ok = "2着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 3400:
                         ok = "1着で昇級"
                     else:
                         ok = "1着でも現級" 
@@ -1431,15 +1431,15 @@ if push == True:
                         ok = "1着でも現級"
 
                 elif hyo1.loc[i]['クラス'] == 'A2':
-                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 4200:
+                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 4300:
                         ok = "5着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 4200:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 4300:
                         ok = "4着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 4200:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 4300:
                         ok = "3着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 4200:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 4300:
                         ok = "2着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 4200:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 4300:
                         ok = "1着で昇級"
                     else:
                         ok = "1着でも現級" 
@@ -1509,15 +1509,15 @@ if push == True:
                         ok = "1着でも現級"
 
                 elif hyo1.loc[i]['クラス'] == 'B2':
-                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 2300:
+                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 2200:
                         ok = "5着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 2300:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 2200:
                         ok = "4着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 2300:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 2200:
                         ok = "3着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 2300:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 2200:
                         ok = "2着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 2300:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 2200:
                         ok = "1着で昇級"
                     else:
                         ok = "1着でも現級" 
@@ -1559,99 +1559,99 @@ if push == True:
             elif hyo1.loc[i]['年齢'] == 7:
 
                 if hyo1.loc[i]['クラス'] == 'C3':
-                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 1100:
+                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 1000:
                         ok = "5着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 1100:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 1000:
                         ok = "4着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 1100:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 1000:
                         ok = "3着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 1100:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 1000:
                         ok = "2着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 1100:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 1000:
                         ok = "1着で昇級"
                     else:
                         ok = "1着でも現級"                    
                 
                 elif hyo1.loc[i]['クラス'] == 'C2':
-                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 1400:
+                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 1300:
                         ok = "5着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 1400:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 1300:
                         ok = "4着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 1400:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 1300:
                         ok = "3着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 1400:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 1300:
                         ok = "2着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 1400:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 1300:
                         ok = "1着で昇級"
                     else:
                         ok = "1着でも現級"    
 
                 elif hyo1.loc[i]['クラス'] == 'C1':
-                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 1700:
+                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 1600:
                         ok = "5着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 1700:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 1600:
                         ok = "4着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 1700:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 1600:
                         ok = "3着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 1700:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 1600:
                         ok = "2着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 1700:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 1600:
                         ok = "1着で昇級"
                     else:
                         ok = "1着でも現級"
 
                 elif hyo1.loc[i]['クラス'] == 'B3':
-                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 2100:
+                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 2000:
                         ok = "5着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 2100:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 2000:
                         ok = "4着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 2100:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 2000:
                         ok = "3着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 2100:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 2000:
                         ok = "2着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 2100:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 2000:
                         ok = "1着で昇級"
                     else:
                         ok = "1着でも現級"
 
                 elif hyo1.loc[i]['クラス'] == 'B2':
-                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 2800:
+                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 2700:
                         ok = "5着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 2800:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 2700:
                         ok = "4着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 2800:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 2700:
                         ok = "3着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 2800:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 2700:
                         ok = "2着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 2800:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 2700:
                         ok = "1着で昇級"
                     else:
                         ok = "1着でも現級" 
 
                 elif hyo1.loc[i]['クラス'] == 'B1':
-                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 3800:
+                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 3700:
                         ok = "5着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 3800:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 3700:
                         ok = "4着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 3800:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 3700:
                         ok = "3着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 3800:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 3700:
                         ok = "2着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 3800:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 3700:
                         ok = "1着で昇級"
                     else:
                         ok = "1着でも現級"
 
                 elif hyo1.loc[i]['クラス'] == 'A2':
-                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 5600:
+                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 5500:
                         ok = "5着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 5600:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 5500:
                         ok = "4着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 5600:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 5500:
                         ok = "3着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 5600:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 5500:
                         ok = "2着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 5600:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 5500:
                         ok = "1着で昇級"
                     else:
                         ok = "1着でも現級" 
@@ -1694,71 +1694,71 @@ if push == True:
                         ok = "1着でも現級"    
 
                 elif hyo1.loc[i]['クラス'] == 'C1':
-                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 1900:
+                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 1800:
                         ok = "5着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 1900:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 1800:
                         ok = "4着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 1900:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 1800:
                         ok = "3着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 1900:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 1800:
                         ok = "2着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 1900:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 1800:
                         ok = "1着で昇級"
                     else:
                         ok = "1着でも現級"
 
                 elif hyo1.loc[i]['クラス'] == 'B3':
-                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 2300:
+                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 2200:
                         ok = "5着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 2300:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 2200:
                         ok = "4着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 2300:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 2200:
                         ok = "3着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 2300:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 2200:
                         ok = "2着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 2300:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 2200:
                         ok = "1着で昇級"
                     else:
                         ok = "1着でも現級"
 
                 elif hyo1.loc[i]['クラス'] == 'B2':
-                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 3100:
+                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 3000:
                         ok = "5着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 3100:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 3000:
                         ok = "4着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 3100:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 3000:
                         ok = "3着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 3100:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 3000:
                         ok = "2着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 3100:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 3000:
                         ok = "1着で昇級"
                     else:
                         ok = "1着でも現級" 
 
                 elif hyo1.loc[i]['クラス'] == 'B1':
-                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 4200:
+                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 4100:
                         ok = "5着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 4200:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 4100:
                         ok = "4着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 4200:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 4100:
                         ok = "3着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 4200:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 4100:
                         ok = "2着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 4200:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 4100:
                         ok = "1着で昇級"
                     else:
                         ok = "1着でも現級"
 
                 elif hyo1.loc[i]['クラス'] == 'A2':
-                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 6000:
+                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 5900:
                         ok = "5着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 6000:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 5900:
                         ok = "4着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 6000:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 5900:
                         ok = "3着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 6000:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 5900:
                         ok = "2着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 6000:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 5900:
                         ok = "1着で昇級"
                     else:
                         ok = "1着でも現級" 
@@ -1788,111 +1788,6 @@ if push == True:
                     else:
                         ok = "1着でも現級"    
                 
-                
-                elif hyo1.loc[i]['クラス'] == 'C2':
-                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 400:
-                        ok = "5着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 400:
-                        ok = "4着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 400:
-                        ok = "3着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 400:
-                        ok = "2着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 400:
-                        ok = "1着で昇級"
-                    else:
-                        ok = "1着でも現級"    
-
-                elif hyo1.loc[i]['クラス'] == 'C1':
-                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 700:
-                        ok = "5着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 700:
-                        ok = "4着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 700:
-                        ok = "3着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 700:
-                        ok = "2着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 700:
-                        ok = "1着で昇級"
-                    else:
-                        ok = "1着でも現級"
-
-                elif hyo1.loc[i]['クラス'] == 'B3':
-                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 1100:
-                        ok = "5着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 1100:
-                        ok = "4着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 1100:
-                        ok = "3着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 1100:
-                        ok = "2着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 1100:
-                        ok = "1着で昇級"
-                    else:
-                        ok = "1着でも現級"
-
-                elif hyo1.loc[i]['クラス'] == 'B2':
-                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 1500:
-                        ok = "5着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 1500:
-                        ok = "4着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 1500:
-                        ok = "3着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 1500:
-                        ok = "2着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 1500:
-                        ok = "1着で昇級"
-                    else:
-                        ok = "1着でも現級" 
-
-                elif hyo1.loc[i]['クラス'] == 'B1':
-                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 2000:
-                        ok = "5着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 2000:
-                        ok = "4着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 2000:
-                        ok = "3着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 2000:
-                        ok = "2着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 2000:
-                        ok = "1着で昇級"
-                    else:
-                        ok = "1着でも現級"
-
-                elif hyo1.loc[i]['クラス'] == 'A2':
-                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 2800:
-                        ok = "5着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 2800:
-                        ok = "4着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 2800:
-                        ok = "3着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 2800:
-                        ok = "2着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 2800:
-                        ok = "1着で昇級"
-                    else:
-                        ok = "1着でも現級" 
-                else:
-                #elif hyo1.loc[i]['クラス'] == 'A1':
-                    ok = "稼ぎ放題"
-
-                ok_list.append(ok)
-
-            elif hyo1.loc[i]['年齢'] == 4:
-
-                if hyo1.loc[i]['クラス'] == 'C3':
-                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 300:
-                        ok = "5着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 300:
-                        ok = "4着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 300:
-                        ok = "3着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 300:
-                        ok = "2着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 300:
-                        ok = "1着で昇級"
-                    else:
-                        ok = "1着でも現級"   
                 
                 elif hyo1.loc[i]['クラス'] == 'C2':
                     if hyo1.loc[i]['賞金'] + race_syokin[4] >= 500:
@@ -1965,15 +1860,120 @@ if push == True:
                         ok = "1着でも現級"
 
                 elif hyo1.loc[i]['クラス'] == 'A2':
-                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 3500:
+                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 3000:
                         ok = "5着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 3500:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 3000:
                         ok = "4着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 3500:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 3000:
                         ok = "3着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 3500:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 3000:
                         ok = "2着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 3500:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 3000:
+                        ok = "1着で昇級"
+                    else:
+                        ok = "1着でも現級" 
+                else:
+                #elif hyo1.loc[i]['クラス'] == 'A1':
+                    ok = "稼ぎ放題"
+
+                ok_list.append(ok)
+
+            elif hyo1.loc[i]['年齢'] == 4:
+
+                if hyo1.loc[i]['クラス'] == 'C3':
+                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 300:
+                        ok = "5着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 300:
+                        ok = "4着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 300:
+                        ok = "3着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 300:
+                        ok = "2着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 300:
+                        ok = "1着で昇級"
+                    else:
+                        ok = "1着でも現級"   
+                
+                elif hyo1.loc[i]['クラス'] == 'C2':
+                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 600:
+                        ok = "5着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 600:
+                        ok = "4着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 600:
+                        ok = "3着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 600:
+                        ok = "2着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 600:
+                        ok = "1着で昇級"
+                    else:
+                        ok = "1着でも現級"    
+
+                elif hyo1.loc[i]['クラス'] == 'C1':
+                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 900:
+                        ok = "5着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 900:
+                        ok = "4着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 900:
+                        ok = "3着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 900:
+                        ok = "2着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 900:
+                        ok = "1着で昇級"
+                    else:
+                        ok = "1着でも現級"
+
+                elif hyo1.loc[i]['クラス'] == 'B3':
+                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 1300:
+                        ok = "5着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 1300:
+                        ok = "4着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 1300:
+                        ok = "3着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 1300:
+                        ok = "2着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 1300:
+                        ok = "1着で昇級"
+                    else:
+                        ok = "1着でも現級"
+
+                elif hyo1.loc[i]['クラス'] == 'B2':
+                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 1800:
+                        ok = "5着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 1800:
+                        ok = "4着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 1800:
+                        ok = "3着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 1800:
+                        ok = "2着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 1800:
+                        ok = "1着で昇級"
+                    else:
+                        ok = "1着でも現級" 
+
+                elif hyo1.loc[i]['クラス'] == 'B1':
+                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 2300:
+                        ok = "5着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 2300:
+                        ok = "4着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 2300:
+                        ok = "3着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 2300:
+                        ok = "2着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 2300:
+                        ok = "1着で昇級"
+                    else:
+                        ok = "1着でも現級"
+
+                elif hyo1.loc[i]['クラス'] == 'A2':
+                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 3600:
+                        ok = "5着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 3600:
+                        ok = "4着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 3600:
+                        ok = "3着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 3600:
+                        ok = "2着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 3600:
                         ok = "1着で昇級"
                     else:
                         ok = "1着でも現級" 
@@ -2042,29 +2042,29 @@ if push == True:
                         ok = "1着でも現級"
 
                 elif hyo1.loc[i]['クラス'] == 'B2':
-                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 2100:
+                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 2000:
                         ok = "5着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 2100:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 2000:
                         ok = "4着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 2100:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 2000:
                         ok = "3着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 2100:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 2000:
                         ok = "2着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 2100:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 2000:
                         ok = "1着で昇級"
                     else:
                         ok = "1着でも現級" 
 
                 elif hyo1.loc[i]['クラス'] == 'B1':
-                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 2700:
+                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 2600:
                         ok = "5着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 2700:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 2600:
                         ok = "4着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 2700:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 2600:
                         ok = "3着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 2700:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 2600:
                         ok = "2着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 2700:
+                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 2600:
                         ok = "1着で昇級"
                     else:
                         ok = "1着でも現級"
@@ -2227,6 +2227,113 @@ if push == True:
                         ok = "1着でも現級"    
 
                 elif hyo1.loc[i]['クラス'] == 'C1':
+                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 1700:
+                        ok = "5着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 1700:
+                        ok = "4着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 1700:
+                        ok = "3着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 1700:
+                        ok = "2着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 1700:
+                        ok = "1着で昇級"
+                    else:
+                        ok = "1着でも現級"
+
+                elif hyo1.loc[i]['クラス'] == 'B3':
+                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 2100:
+                        ok = "5着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 2100:
+                        ok = "4着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 2100:
+                        ok = "3着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 2100:
+                        ok = "2着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 2100:
+                        ok = "1着で昇級"
+                    else:
+                        ok = "1着でも現級"
+
+                elif hyo1.loc[i]['クラス'] == 'B2':
+                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 2900:
+                        ok = "5着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 2900:
+                        ok = "4着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 2900:
+                        ok = "3着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 2900:
+                        ok = "2着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 2900:
+                        ok = "1着で昇級"
+                    else:
+                        ok = "1着でも現級" 
+
+                elif hyo1.loc[i]['クラス'] == 'B1':
+                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 3900:
+                        ok = "5着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 3900:
+                        ok = "4着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 3900:
+                        ok = "3着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 3900:
+                        ok = "2着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 3900:
+                        ok = "1着で昇級"
+                    else:
+                        ok = "1着でも現級"
+
+                elif hyo1.loc[i]['クラス'] == 'A2':
+                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 5700:
+                        ok = "5着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 5700:
+                        ok = "4着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 5700:
+                        ok = "3着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 5700:
+                        ok = "2着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 5700:
+                        ok = "1着で昇級"
+                    else:
+                        ok = "1着でも現級" 
+                        
+                else:        
+                #elif hyo1.loc[i]['クラス'] == 'A1':
+                    ok = "稼ぎ放題"
+
+                ok_list.append(ok)
+
+            else:    
+            #if hyo1.loc[i]['年齢'] >= 8:
+
+                if hyo1.loc[i]['クラス'] == 'C3':
+                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 1200:
+                        ok = "5着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 1200:
+                        ok = "4着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 1200:
+                        ok = "3着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 1200:
+                        ok = "2着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 1200:
+                        ok = "1着で昇級"
+                    else:
+                        ok = "1着でも現級"                
+            
+                elif hyo1.loc[i]['クラス'] == 'C2':
+                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 1500:
+                        ok = "5着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 1500:
+                        ok = "4着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 1500:
+                        ok = "3着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 1500:
+                        ok = "2着で昇級"
+                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 1500:
+                        ok = "1着で昇級"
+                    else:
+                        ok = "1着でも現級"    
+
+                elif hyo1.loc[i]['クラス'] == 'C1':
                     if hyo1.loc[i]['賞金'] + race_syokin[4] >= 1800:
                         ok = "5着で昇級"
                     elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 1800:
@@ -2292,113 +2399,6 @@ if push == True:
                     elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 5900:
                         ok = "2着で昇級"
                     elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 5900:
-                        ok = "1着で昇級"
-                    else:
-                        ok = "1着でも現級" 
-                        
-                else:        
-                #elif hyo1.loc[i]['クラス'] == 'A1':
-                    ok = "稼ぎ放題"
-
-                ok_list.append(ok)
-
-            else:    
-            #if hyo1.loc[i]['年齢'] >= 8:
-
-                if hyo1.loc[i]['クラス'] == 'C3':
-                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 1200:
-                        ok = "5着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 1200:
-                        ok = "4着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 1200:
-                        ok = "3着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 1200:
-                        ok = "2着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 1200:
-                        ok = "1着で昇級"
-                    else:
-                        ok = "1着でも現級"                
-            
-                elif hyo1.loc[i]['クラス'] == 'C2':
-                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 1500:
-                        ok = "5着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 1500:
-                        ok = "4着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 1500:
-                        ok = "3着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 1500:
-                        ok = "2着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 1500:
-                        ok = "1着で昇級"
-                    else:
-                        ok = "1着でも現級"    
-
-                elif hyo1.loc[i]['クラス'] == 'C1':
-                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 1900:
-                        ok = "5着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 1900:
-                        ok = "4着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 1900:
-                        ok = "3着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 1900:
-                        ok = "2着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 1900:
-                        ok = "1着で昇級"
-                    else:
-                        ok = "1着でも現級"
-
-                elif hyo1.loc[i]['クラス'] == 'B3':
-                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 2300:
-                        ok = "5着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 2300:
-                        ok = "4着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 2300:
-                        ok = "3着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 2300:
-                        ok = "2着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 2300:
-                        ok = "1着で昇級"
-                    else:
-                        ok = "1着でも現級"
-
-                elif hyo1.loc[i]['クラス'] == 'B2':
-                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 3100:
-                        ok = "5着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 3100:
-                        ok = "4着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 3100:
-                        ok = "3着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 3100:
-                        ok = "2着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 3100:
-                        ok = "1着で昇級"
-                    else:
-                        ok = "1着でも現級" 
-
-                elif hyo1.loc[i]['クラス'] == 'B1':
-                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 4200:
-                        ok = "5着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 4200:
-                        ok = "4着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 4200:
-                        ok = "3着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 4200:
-                        ok = "2着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 4200:
-                        ok = "1着で昇級"
-                    else:
-                        ok = "1着でも現級"
-
-                elif hyo1.loc[i]['クラス'] == 'A2':
-                    if hyo1.loc[i]['賞金'] + race_syokin[4] >= 6000:
-                        ok = "5着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[3] >= 6000:
-                        ok = "4着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[2] >= 6000:
-                        ok = "3着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[1] >= 6000:
-                        ok = "2着で昇級"
-                    elif hyo1.loc[i]['賞金'] + race_syokin[0] >= 6000:
                         ok = "1着で昇級"
                     else:
                         ok = "1着でも現級" 
