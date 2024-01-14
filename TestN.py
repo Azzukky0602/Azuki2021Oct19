@@ -1027,9 +1027,9 @@ if push == True:
                     present_cl = "C1"
                 elif 1800 <= hyo1.loc[i]['賞金'] < 2200:
                     present_cl = "B3"
-                elif 2200 <= hyo1.loc[i]['賞金'] < 3000:
+                elif 2200 <= hyo1.loc[i]['賞金'] < 2999:
                     present_cl = "B2"
-                elif 3000 <= hyo1.loc[i]['賞金'] < 4100:
+                elif 2999 <= hyo1.loc[i]['賞金'] < 4100:
                     present_cl = "B1"
                 elif 4100 <= hyo1.loc[i]['賞金'] < 5900:
                     present_cl = "A2"
