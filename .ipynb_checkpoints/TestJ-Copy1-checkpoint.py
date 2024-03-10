@@ -46,8 +46,8 @@ st.header('JRA版')
 st.subheader('新パラメータ版')
 
 st.write('   ')
-st.info('【南関東版】\https://azzukky-n.streamlit.app/')
-st.info('【地方交流版】\https://azzukky-k.streamlit.app/')
+st.info('【南関東版】\https://azzukky-n24.streamlit.app/')
+st.info('【地方交流版】\https://azzukky-k24.streamlit.app/')
 st.write('   ')
 st.write('   ')
 st.write('クラスが上がるほど、良く当たる傾向があります。')
@@ -1003,7 +1003,7 @@ if push == True:
     hyo3 = hyo2[['rank','umaban','name','TS','deviation','jockey','stable', 'gender', 'age', 'starion','owner']]
     hyo4 = hyo3.sort_values('rank')
 
-    st.write(race_name[:-26])
+    st.write(race_name[:-21])
     st.dataframe(hyo4)
 
 else:
