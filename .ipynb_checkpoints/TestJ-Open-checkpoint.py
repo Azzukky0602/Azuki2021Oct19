@@ -47,7 +47,7 @@ st.subheader('新パラメータ版')
 
 st.write('   ')
 st.info('【南関東版】\https://derby2024n.streamlit.app/')
-st.info('【地方交流版】\https://derby2024jk.streamlit.app/')
+st.info('【地方交流版】\https://derby2024k.streamlit.app/')
 st.write('   ')
 st.write('   ')
 st.write('クラスが上がるほど、良く当たる傾向があります。')
