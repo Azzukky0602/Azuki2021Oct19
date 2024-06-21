@@ -28,14 +28,14 @@ nankan = ['浦和', '船橋', '大井', '川崎']
 hyogo = ['園田', '姫路']
 others = ['門別', '盛岡', '水沢', '金沢', '名古屋', '高知', '佐賀']
 
-age3_GI = ['皐月賞(G1)', '東京優駿(G1)', '菊花賞(G1)', '桜花賞(G1)', '優駿牝馬(G1)',
-           '秋華賞(G1)', 'NHKマイルC(G1)', 'ジャパンダートダービ(G1)']
-age3_GII = ['神戸新聞杯(G2)', '関西TVローズS(G2)', 'チューリップ賞(G2)', 'テレビ東京杯青葉賞(G2)', '朝日セントライト記念(G2)',
-            'サンスポ賞フローラS(G2)', '京都新聞杯(G2)', 'ニュージーランドT(G2)', 'フジTVスプリングS(G2)', '報知弥生ディープ記念(G2)',
-            'フィリーズレビュー(G2)']
-age3_GIII = ['フェアリーS(G3)', '共同通信杯(G3)', 'ラジオNIKKEI賞(G3)', '日刊スポシンザン記念(G3)', '毎日杯(G3)',
-             'デイリー杯クイーンC(G3)', 'アーリントンC(G3)', '中スポ賞ファルコンS(G3)', 'きさらぎ賞(G3)',
-            '共同通信杯(G3)', '京成杯(G3)', 'ユニコーンS(G3)', 'フラワーC(G3)', '紫苑S(G3)', 'レパードS(G3)']
+age3_GI = ['皐月賞(GI)', '東京優駿(GI)', '菊花賞(GI)', '桜花賞(GI)', '優駿牝馬(GI)',
+           '秋華賞(GI)', 'NHKマイルC(GI)', 'ジャパンダートダービ(GI)']
+age3_GII = ['神戸新聞杯(GII)', '関西TVローズS(GII)', 'チューリップ賞(GII)', 'テレビ東京杯青葉賞(GII)', '朝日セントライト記念(GII)',
+            'サンスポ賞フローラS(GII)', '京都新聞杯(GII)', 'ニュージーランドT(GII)', 'フジTVスプリングS(GII)', '報知弥生ディープ記念(GII)',
+            'フィリーズレビュー(GII)']
+age3_GIII = ['フェアリーS(GIII)', '共同通信杯(GIII)', 'ラジオNIKKEI賞(GIII)', '日刊スポシンザン記念(GIII)', '毎日杯(GIII)',
+             'デイリー杯クイーンC(GIII)', 'アーリントンC(GIII)', '中スポ賞ファルコンS(GIII)', 'きさらぎ賞(GIII)',
+            '共同通信杯(GIII)', '京成杯(GIII)', 'ユニコーンS(GIII)', 'フラワーC(GIII)', '紫苑S(GIII)', 'レパードS(GIII)']
 age3_L = ['若葉S(L)', '若駒S(L)', 'クロッカスS(L)', 'ジュニアC(L)', '葵S(G)', 'プリンシパルS(L)', '鳳雛S(L)', 'ヒヤシンスS(L)',
          '紅梅S(L)', 'エルフィンS(L)', 'アネモネS(L)', 'スイートピーS(L)', '忘れな草賞(L)']
 age3_OP = ['すみれS(OP)', '青竜S(OP)', '端午S(OP)', '青竜S(OP)', '伏竜S(OP)']
@@ -184,18 +184,18 @@ if push == True:
                 base_number = []
                 for t in range(3):
 
-                    if 'G1' in npr.iloc[t]['racename'] and npr.iloc[t]['date'] > dt(kotoshi, 1, 1):  
-                        kijun = 550
-                    elif 'G1' in npr.iloc[t]['racename'] and npr.iloc[t]['date'] < dt(kotoshi, 1, 1):  
-                        kijun = 350        
-                    elif 'G2' in npr.iloc[t]['racename'] and npr.iloc[t]['date'] > dt(kotoshi, 1, 1):
-                        kijun = 480
-                    elif 'G2' in npr.iloc[t]['racename'] and npr.iloc[t]['date'] < dt(kotoshi, 1, 1):
-                        kijun = 300 
-                    elif 'G3' in npr.iloc[t]['racename'] and npr.iloc[t]['date'] > dt(kotoshi, 1, 1):
+                    if 'GIII' in npr.iloc[t]['racename'] and npr.iloc[t]['date'] > dt(kotoshi, 1, 1):  
                         kijun = 430
-                    elif 'G3' in npr.iloc[t]['racename'] and npr.iloc[t]['date'] < dt(kotoshi, 1, 1):
-                        kijun = 300    
+                    elif 'GIII' in npr.iloc[t]['racename'] and npr.iloc[t]['date'] < dt(kotoshi, 1, 1):  
+                        kijun = 300        
+                    elif 'GII' in npr.iloc[t]['racename'] and npr.iloc[t]['date'] > dt(kotoshi, 1, 1):
+                        kijun = 480
+                    elif 'GII' in npr.iloc[t]['racename'] and npr.iloc[t]['date'] < dt(kotoshi, 1, 1):
+                        kijun = 315 
+                    elif 'GI' in npr.iloc[t]['racename'] and npr.iloc[t]['date'] > dt(kotoshi, 1, 1):
+                        kijun = 550
+                    elif 'GI' in npr.iloc[t]['racename'] and npr.iloc[t]['date'] < dt(kotoshi, 1, 1):
+                        kijun = 350    
                     elif npr.iloc[t]['place'] in jra and 'L' in npr.iloc[t]['racename'] \
                         and npr.iloc[t]['date'] > dt(kotoshi, 1, 1):
                         kijun = 400
@@ -226,18 +226,18 @@ if push == True:
                 base_number = []
                 for t in range(3):
 
-                    if npr.iloc[t]['racename'] in age3_GI:  
-                        kijun = 650
-                    elif 'G1' in npr.iloc[t]['racename'] and npr.iloc[t]['date'] < dt(kotoshi, 1, 1):  
-                        kijun = 350                                                    
+                    if npr.iloc[t]['racename'] in age3_GIII:
+                        kijun = 530
+                    elif 'GIII' in npr.iloc[t]['racename'] and npr.iloc[t]['date'] < dt(kotoshi, 1, 1):
+                        kijun = 300
                     elif npr.iloc[t]['racename'] in age3_GII:
                         kijun = 580
-                    elif 'G2' in npr.iloc[t]['racename'] and npr.iloc[t]['date'] < dt(kotoshi, 1, 1):
-                        kijun = 300
-                    elif npr.iloc[t]['racename'] in age3_GIII:
-                        kijun = 530
-                    elif 'G3' in npr.iloc[t]['racename'] and npr.iloc[t]['date'] < dt(kotoshi, 1, 1):
-                        kijun = 300
+                    elif 'GII' in npr.iloc[t]['racename'] and npr.iloc[t]['date'] < dt(kotoshi, 1, 1):
+                        kijun = 315                                              
+                    elif npr.iloc[t]['racename'] in age3_GI:  
+                        kijun = 650
+                    elif 'GI' in npr.iloc[t]['racename'] and npr.iloc[t]['date'] < dt(kotoshi, 1, 1):  
+                        kijun = 350                                                    
                     elif npr.iloc[t]['racename'] in age3_L:
                         kijun = 500   
                     elif npr.iloc[t]['racename'] in age3_OP:
@@ -248,12 +248,12 @@ if push == True:
                     elif npr.iloc[t]['place'] in jra and 'OP' in npr.iloc[t]['racename'] \
                         and npr.iloc[t]['date'] < dt(kotoshi, 1, 1):
                         kijun = 300
-                    elif 'G1' in npr.iloc[t]['racename'] and npr.iloc[t]['racename'] not in age3_GI: 
-                        kijun = 800
-                    elif 'G2' in npr.iloc[t]['racename'] and npr.iloc[t]['racename'] not in age3_GII:
-                        kijun = 700
-                    elif 'G3' in npr.iloc[t]['racename'] and npr.iloc[t]['racename'] not in age3_GIII:
+                    elif 'GIII' in npr.iloc[t]['racename'] and npr.iloc[t]['racename'] not in age3_GIII: 
                         kijun = 650
+                    elif 'GII' in npr.iloc[t]['racename'] and npr.iloc[t]['racename'] not in age3_GII:
+                        kijun = 700
+                    elif 'GI' in npr.iloc[t]['racename'] and npr.iloc[t]['racename'] not in age3_GI:
+                        kijun = 800
                     elif 'L' in npr.iloc[t]['racename'] and npr.iloc[t]['racename'] not in age3_L:
                         kijun = 600
                     elif 'OP' in npr.iloc[t]['racename']and npr.iloc[t]['racename'] not in age3_OP:
@@ -275,12 +275,12 @@ if push == True:
                 base_number = []
                 for t in range(3):                
 
-                    if npr.iloc[t]['place'] in jra and 'G1' in npr.iloc[t]['racename']:  
-                        kijun = 800
-                    elif npr.iloc[t]['place'] in jra and 'G2' in npr.iloc[t]['racename']:
-                        kijun = 700
-                    elif npr.iloc[t]['place'] in jra and 'G3' in npr.iloc[t]['racename']:
+                    if npr.iloc[t]['place'] in jra and 'GIII' in npr.iloc[t]['racename']:  
                         kijun = 650
+                    elif npr.iloc[t]['place'] in jra and 'GII' in npr.iloc[t]['racename']:
+                        kijun = 700
+                    elif npr.iloc[t]['place'] in jra and 'GI' in npr.iloc[t]['racename']:
+                        kijun = 800
                     elif npr.iloc[t]['place'] in jra and 'L' in npr.iloc[t]['racename']:
                         kijun = 600
                     elif npr.iloc[t]['place'] in jra and 'OP' in npr.iloc[t]['racename']:
@@ -297,12 +297,12 @@ if push == True:
                         kijun = 300  
                     elif npr.iloc[t]['place'] in jra and '500' in npr.iloc[t]['racename']:
                         kijun = 300           
-                    elif npr.iloc[t]['place'] not in jra and 'G1' in npr.iloc[t]['racename']:  
-                        kijun = 700
-                    elif npr.iloc[t]['place'] not in jra  and 'G2' in npr.iloc[t]['racename']:  
-                        kijun = 600
-                    elif npr.iloc[t]['place'] not in jra  and 'G3' in npr.iloc[t]['racename']:  
+                    elif npr.iloc[t]['place'] not in jra and 'GIII' in npr.iloc[t]['racename']:  
                         kijun = 500
+                    elif npr.iloc[t]['place'] not in jra  and 'GII' in npr.iloc[t]['racename']:  
+                        kijun = 600
+                    elif npr.iloc[t]['place'] not in jra  and 'GI' in npr.iloc[t]['racename']:  
+                        kijun = 700
                     else:
                         kijun = 200
                     base_number.append(kijun)                   
@@ -455,18 +455,18 @@ if push == True:
                 base_number = []
                 for t in range(4):
 
-                    if 'G1' in npr.iloc[t]['racename'] and npr.iloc[t]['date'] > dt(kotoshi, 1, 1):  
-                        kijun = 550
-                    elif 'G1' in npr.iloc[t]['racename'] and npr.iloc[t]['date'] < dt(kotoshi, 1, 1):  
-                        kijun = 350        
-                    elif 'G2' in npr.iloc[t]['racename'] and npr.iloc[t]['date'] > dt(kotoshi, 1, 1):
-                        kijun = 480
-                    elif 'G2' in npr.iloc[t]['racename'] and npr.iloc[t]['date'] < dt(kotoshi, 1, 1):
-                        kijun = 300 
-                    elif 'G3' in npr.iloc[t]['racename'] and npr.iloc[t]['date'] > dt(kotoshi, 1, 1):
+                    if 'GIII' in npr.iloc[t]['racename'] and npr.iloc[t]['date'] > dt(kotoshi, 1, 1):  
                         kijun = 430
-                    elif 'G3' in npr.iloc[t]['racename'] and npr.iloc[t]['date'] < dt(kotoshi, 1, 1):
-                        kijun = 300    
+                    elif 'GIII' in npr.iloc[t]['racename'] and npr.iloc[t]['date'] < dt(kotoshi, 1, 1):  
+                        kijun = 300        
+                    elif 'GII' in npr.iloc[t]['racename'] and npr.iloc[t]['date'] > dt(kotoshi, 1, 1):
+                        kijun = 480
+                    elif 'GII' in npr.iloc[t]['racename'] and npr.iloc[t]['date'] < dt(kotoshi, 1, 1):
+                        kijun = 315 
+                    elif 'GI' in npr.iloc[t]['racename'] and npr.iloc[t]['date'] > dt(kotoshi, 1, 1):
+                        kijun = 550
+                    elif 'GI' in npr.iloc[t]['racename'] and npr.iloc[t]['date'] < dt(kotoshi, 1, 1):
+                        kijun = 350    
                     elif npr.iloc[t]['place'] in jra and 'L' in npr.iloc[t]['racename'] \
                         and npr.iloc[t]['date'] > dt(kotoshi, 1, 1):
                         kijun = 400
@@ -474,7 +474,7 @@ if push == True:
                         and npr.iloc[t]['date'] < dt(kotoshi, 1, 1):
                         kijun = 300
                     elif npr.iloc[t]['place'] in jra and 'OP' in npr.iloc[t]['racename'] \
-                    and npr.iloc[t]['date'] > dt(kotoshi, 1, 1):
+                        and npr.iloc[t]['date'] > dt(kotoshi, 1, 1):
                         kijun = 400
                     elif npr.iloc[t]['place'] in jra and 'OP' in npr.iloc[t]['racename'] \
                         and npr.iloc[t]['date'] < dt(kotoshi, 1, 1):
@@ -497,19 +497,22 @@ if push == True:
                 base_number = []
                 for t in range(4):
 
-                    if 'G1' in npr.iloc[t]['racename'] and npr.iloc[t]['date'] < dt(kotoshi, 1, 1):  
-                        kijun = 350                                                    
-                    elif 'G2' in npr.iloc[t]['racename'] and npr.iloc[t]['date'] < dt(kotoshi, 1, 1):
-                        kijun = 300
-                    elif 'G3' in npr.iloc[t]['racename'] and npr.iloc[t]['date'] < dt(kotoshi, 1, 1):
-                        kijun = 300
+                    if 'GIII' in npr.iloc[t]['racename'] and npr.iloc[t]['date'] < dt(kotoshi, 1, 1):  
+                        kijun = 300                                                    
+                    elif 'GII' in npr.iloc[t]['racename'] and npr.iloc[t]['date'] < dt(kotoshi, 1, 1):
+                        kijun = 315
+                    elif 'GI' in npr.iloc[t]['racename'] and npr.iloc[t]['date'] < dt(kotoshi, 1, 1):
+                        kijun = 350
                     elif npr.iloc[t]['place'] in jra and 'L' in npr.iloc[t]['racename'] \
                         and npr.iloc[t]['date'] < dt(kotoshi, 1, 1):
                         kijun = 300
                     elif npr.iloc[t]['place'] in jra and 'OP' in npr.iloc[t]['racename'] \
                         and npr.iloc[t]['date'] < dt(kotoshi, 1, 1):
                         kijun = 300
-
+                    elif npr.iloc[t]['racename'] in age3_GIII:
+                        kijun = 530
+                    elif npr.iloc[t]['racename'] in age3_GII:
+                        kijun = 580
                     elif npr.iloc[t]['racename'] in age3_GI:
                         if int(npr.iloc[t]['result']) <= 5:  
                             kijun = 800
@@ -517,21 +520,16 @@ if push == True:
                             kijun = 800
                         else:
                             kijun = 650
-
-                    elif npr.iloc[t]['racename'] in age3_GII:
-                        kijun = 580
-                    elif npr.iloc[t]['racename'] in age3_GIII:
-                        kijun = 530
                     elif npr.iloc[t]['racename'] in age3_L:
                         kijun = 500   
                     elif npr.iloc[t]['racename'] in age3_OP:
                         kijun = 500
-                    elif 'G1' in npr.iloc[t]['racename'] and npr.iloc[t]['racename'] not in age3_GI: 
-                        kijun = 800
-                    elif 'G2' in npr.iloc[t]['racename'] and npr.iloc[t]['racename'] not in age3_GII:
-                        kijun = 700
-                    elif 'G3' in npr.iloc[t]['racename'] and npr.iloc[t]['racename'] not in age3_GIII:
+                    elif 'GIII' in npr.iloc[t]['racename'] and npr.iloc[t]['racename'] not in age3_GIII: 
                         kijun = 650
+                    elif 'GII' in npr.iloc[t]['racename'] and npr.iloc[t]['racename'] not in age3_GII:
+                        kijun = 700
+                    elif 'GI' in npr.iloc[t]['racename'] and npr.iloc[t]['racename'] not in age3_GI:
+                        kijun = 800
                     elif 'L' in npr.iloc[t]['racename'] and npr.iloc[t]['racename'] not in age3_L:
                         kijun = 600
                     elif 'OP' in npr.iloc[t]['racename'] and npr.iloc[t]['racename'] not in age3_OP:
@@ -555,22 +553,22 @@ if push == True:
                 base_number = []
                 for t in range(4):
 
-                    if npr.iloc[t]['course'] == '障' and 'J.G1' in npr.iloc[t]['racename']:  
-                        kijun = 800      
-                    elif npr.iloc[t]['course'] == '障' and 'J.G2' in npr.iloc[t]['racename']:  
+                    if npr.iloc[t]['course'] == '障' and 'J.GIII' in npr.iloc[t]['racename']:  
+                        kijun = 600      
+                    elif npr.iloc[t]['course'] == '障' and 'J.GII' in npr.iloc[t]['racename']:  
                         kijun = 700
-                    elif npr.iloc[t]['course'] == '障' and 'J.G3' in npr.iloc[t]['racename']:  
-                        kijun = 600          
+                    elif npr.iloc[t]['course'] == '障' and 'J.GI' in npr.iloc[t]['racename']:  
+                        kijun = 800          
                     elif npr.iloc[t]['course'] == '障' and 'OP' in npr.iloc[t]['racename']:  
                         kijun = 500           
                     elif npr.iloc[t]['course'] == '障' and '未勝利' in npr.iloc[t]['racename']:  
                         kijun = 400           
-                    elif npr.iloc[t]['place'] in jra and 'G1' in npr.iloc[t]['racename']:  
-                        kijun = 800
-                    elif npr.iloc[t]['place'] in jra and 'G2' in npr.iloc[t]['racename']:
-                        kijun = 700
-                    elif npr.iloc[t]['place'] in jra and 'G3' in npr.iloc[t]['racename']:
+                    elif npr.iloc[t]['place'] in jra and 'GIII' in npr.iloc[t]['racename']:  
                         kijun = 650
+                    elif npr.iloc[t]['place'] in jra and 'GII' in npr.iloc[t]['racename']:
+                        kijun = 700
+                    elif npr.iloc[t]['place'] in jra and 'GI' in npr.iloc[t]['racename']:
+                        kijun = 800
                     elif npr.iloc[t]['place'] in jra and 'L' in npr.iloc[t]['racename']:
                         kijun = 600
                     elif npr.iloc[t]['place'] in jra and 'OP' in npr.iloc[t]['racename']:
@@ -581,12 +579,12 @@ if push == True:
                         kijun = 400
                     elif npr.iloc[t]['place'] in jra and '1勝' in npr.iloc[t]['racename']:
                         kijun = 300 
-                    elif npr.iloc[t]['place'] not in jra and 'G1' in npr.iloc[t]['racename']:  
-                        kijun = 700
-                    elif npr.iloc[t]['place'] not in jra  and 'G2' in npr.iloc[t]['racename']:  
-                        kijun = 600
-                    elif npr.iloc[t]['place'] not in jra  and 'G3' in npr.iloc[t]['racename']:  
+                    elif npr.iloc[t]['place'] not in jra and 'GIII' in npr.iloc[t]['racename']:  
                         kijun = 500
+                    elif npr.iloc[t]['place'] not in jra  and 'GII' in npr.iloc[t]['racename']:  
+                        kijun = 600
+                    elif npr.iloc[t]['place'] not in jra  and 'GI' in npr.iloc[t]['racename']:  
+                        kijun = 700
                     else:
                         kijun = 200
 
