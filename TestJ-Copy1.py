@@ -466,7 +466,7 @@ if push == True:
                     elif 'GI' in npr.iloc[t]['racename'] and npr.iloc[t]['date'] > dt(kotoshi, 1, 1):
                         kijun = 550
                     elif 'GI' in npr.iloc[t]['racename'] and npr.iloc[t]['date'] < dt(kotoshi, 1, 1):
-                        kijun = 300    
+                        kijun = 350    
                     elif npr.iloc[t]['place'] in jra and 'L' in npr.iloc[t]['racename'] \
                         and npr.iloc[t]['date'] > dt(kotoshi, 1, 1):
                         kijun = 400
