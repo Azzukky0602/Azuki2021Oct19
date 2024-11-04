@@ -160,7 +160,7 @@ if push == True:
         past_results['difference'] = past_results['col19']
         past_results['racename'] = past_results['col5']
         npr = past_results.loc[:, ['date', 'place', 'racename', 'course', 'distance', 'result', 'difference']].dropna()
-        npr = npr[(npr['difference'] < 3.5)] 
+        npr = npr[(-3.0 < npr['difference'] < 3.5)] 
         npr = npr[~npr['result'].str.contains('降')]
 
         if npr['result'].dtype != 'int':
