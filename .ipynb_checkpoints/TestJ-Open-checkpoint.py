@@ -173,7 +173,7 @@ if push == True:
 
 
 
-        if 0 <= len(npr) < 3:
+        if len(npr) < 3:
             tekito_shisu = 0
             tekito_shisu_list.append(tekito_shisu)
 
