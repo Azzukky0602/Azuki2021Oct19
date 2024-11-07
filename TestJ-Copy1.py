@@ -171,9 +171,11 @@ if push == True:
 
         npr = npr.reset_index()
 
+        if bool(len(npr)) == False:
+            tekito_shisu = 0
+            tekito_shisu_list.append(tekito_shisu)
 
-
-        if len(npr) < 3:
+        elif len(npr) < 3:
             tekito_shisu = 0
             tekito_shisu_list.append(tekito_shisu)
 
