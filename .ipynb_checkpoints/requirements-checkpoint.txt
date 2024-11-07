@@ -1,0 +1,9 @@
+requests
+lxml
+bs4
+pandas
+pytz
+numpy
+datetime
+streamlit
+html5lib
