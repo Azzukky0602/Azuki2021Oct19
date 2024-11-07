@@ -216,7 +216,7 @@ if push == True:
 
         tekito_shisu = {}
         for horse_id, p_df in processed_horse_results.items():  #p_dfはprocessed dafa frame
-            if 0 <= len(p_df) < 3:
+            if len(p_df) < 3:
                 tekito_shisu[horse_id] = 0
 
             elif len(p_df) == 3:
