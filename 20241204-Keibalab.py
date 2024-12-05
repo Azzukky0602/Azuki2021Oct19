@@ -142,8 +142,8 @@ url = 'https://www.keibalab.jp/db/race/' + nengappi + place + str(str(race).zfil
 
 
 st.write('   ')
-st.subheader('計算するときはチェックボックスをチェック！')
-st.subheader('次のレースを計算する前にチェックを外す！')
+st.write('計算するときはチェックボックスをチェック！')
+st.write('次のレースを計算する前にチェックを外す！')
 
 push = st.checkbox('チェック！！')
 
