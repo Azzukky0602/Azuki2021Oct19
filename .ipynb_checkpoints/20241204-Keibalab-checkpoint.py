@@ -234,8 +234,12 @@ if push == True:
     #テキトー指数を計算
     tekito_shisu_list = []
     for horse in syusso_list:
-    
-        if len(npr[horse]) < 3:
+
+        if npr[horse].empty:
+            tekito_shisu = 0
+            tekito_shisu_list.append(tekito_shisu)
+
+        elif len(npr[horse]) < 3:
             tekito_shisu = 0
             tekito_shisu_list.append(tekito_shisu)
     
@@ -711,7 +715,7 @@ if push == True:
                     e = 1.10
             elif npr[horse].iloc[0]['result'] == 1 and npr[horse].iloc[1]['result'] == 1: #2連勝
                 rensho = (npr[horse].iloc[0]['difference'] + npr[horse].iloc[1]['difference'] + npr[horse].iloc[2]['difference']\
-                          + npr.iloc[3]['difference']) / 4
+                          + npr[horse].iloc[3]['difference']) / 4
                 if rensho < -0.7:
                     e = 1.20
                 elif -0.7 <= rensho < -0.5:
