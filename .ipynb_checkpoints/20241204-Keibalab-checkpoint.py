@@ -235,592 +235,595 @@ if push == True:
     tekito_shisu_list = []
     for horse in syusso_list:
 
-        if npr[horse].empty:
+        try:
+    
+            if len(npr[horse]) < 3:
+                tekito_shisu = 0
+                tekito_shisu_list.append(tekito_shisu)
+        
+        #3歳春、3戦のみ
+            elif len(npr[horse]) == 3:
+                if int(horse[18:]) == 3 and racedate2 <= date(kotoshi, 5, 31):
+        
+                    base_number = []
+                    for t in range(3):
+        
+                        if npr[horse].iloc[t]['racename'] in age3_G1: #3歳春のJRA GI
+                            kijun = 500
+                        elif npr[horse].iloc[t]['racename'] in age3_Jpn1: #3歳春のJpnI
+                            kijun = 400
+                        elif npr[horse].iloc[t]['racename'] in age2_G1:  #2歳秋のJRA GI
+                            kijun = 350
+                        elif npr[horse].iloc[t]['racename'] in age2_Jpn1:  #2歳秋のJpnI
+                            kijun = 300
+        
+                        elif npr[horse].iloc[t]['racename'] in age3_G2: #3歳春のJRA GII
+                            kijun = 430
+                        elif npr[horse].iloc[t]['racename'] in age3_Jpn2:  #3歳春のJpnII
+                            kijun = 415
+                        elif npr[horse].iloc[t]['racename'] in age2_G2: #2歳秋のJRA GII
+                            kijun = 300
+                        elif npr[horse].iloc[t]['racename'] in age2_Jpn2:  #2歳秋のJpnII
+                            kijun = 270                    
+        
+                        elif npr[horse].iloc[t]['racename'] in age3_G3: #3歳春のJRA GIII
+                            kijun = 415
+                        elif npr[horse].iloc[t]['racename'] in age3_Jpn3:  #3歳春のJpnIII
+                            kijun = 400
+                        elif npr[horse].iloc[t]['racename'] in age2_G3: #2歳秋のJRA GIII
+                            kijun = 270
+                        elif npr[horse].iloc[t]['racename'] in age2_Jpn3:  #2歳秋のJpnIII
+                            kijun = 250
+                        
+                        elif npr[horse].iloc[t]['racename'] in age3_OP: ##3歳春のOP
+                            kijun = 400
+                        elif npr[horse].iloc[t]['racename'] in age2_OP:  #2歳秋のOP
+                            kijun = 250
+        
+                        elif '2勝' in npr[horse].iloc[t]['racename']: #3歳春の2勝クラス
+                            kijun = 400                
+                        elif '1勝' in npr[horse].iloc[t]['racename']: #3歳春の1勝クラス
+                            kijun = 300                  
+                        
+                        else:
+                            kijun = 200
+                            
+                        base_number.append(kijun)
+        
+                    kijun1, kijun2, kijun3 = base_number[0], base_number[1], base_number[2]
+        
+        #3歳夏以降、3戦のみ
+                elif int(horse[18:]) == 3 and race_date >= date(kotoshi, 6, 1):
+        
+                    base_number = []
+                    for t in range(3):
+        
+                        if npr[horse].iloc[t]['racename'] in age3_G1: #3歳春のJRA GI
+                            kijun = 500
+                        elif npr[horse].iloc[t]['racename'] in age3_Jpn1: #3歳春のJpnI
+                            kijun = 400
+                        elif npr[horse].iloc[t]['racename'] in age2_G1:  #2歳秋のJRA GI
+                            kijun = 350
+                        elif npr[horse].iloc[t]['racename'] in age2_Jpn1:  #2歳秋のJpnI
+                            kijun = 300
+        
+                        elif npr[horse].iloc[t]['racename'] in age3_G2: #3歳春のJRA GII
+                            kijun = 430
+                        elif npr[horse].iloc[t]['racename'] in age3_Jpn2:  #3歳春のJpnII
+                            kijun = 415
+                        elif npr[horse].iloc[t]['racename'] in age2_G2: #2歳秋のJRA GII
+                            kijun = 300
+                        elif npr[horse].iloc[t]['racename'] in age2_Jpn2:  #2歳秋のJpnII
+                            kijun = 270                    
+        
+                        elif npr[horse].iloc[t]['racename'] in age3_G3: #3歳春のJRA GIII
+                            kijun = 415
+                        elif npr[horse].iloc[t]['racename'] in age3_Jpn3:  #3歳春のJpnIII
+                            kijun = 400
+                        elif npr[horse].iloc[t]['racename'] in age2_G3: #2歳秋のJRA GIII
+                            kijun = 270
+                        elif npr[horse].iloc[t]['racename'] in age2_Jpn3:  #2歳秋のJpnIII
+                            kijun = 250
+                        
+                        elif npr[horse].iloc[t]['racename'] in age3_OP: ##3歳春のOP
+                            kijun = 400
+                        elif npr[horse].iloc[t]['racename'] in age2_OP:  #2歳秋のOP
+                            kijun = 250
+        
+                        elif '3勝' in npr[horse].iloc[t]['racename']: #3歳春の2勝クラス
+                            kijun = 500   
+                        elif '2勝' in npr[horse].iloc[t]['racename']: #3歳春の2勝クラス
+                            kijun = 400                
+                        elif '1勝' in npr[horse].iloc[t]['racename']: #3歳春の1勝クラス
+                            kijun = 300                  
+                        
+                        else:
+                            kijun = 200
+                            
+                        base_number.append(kijun)
+        
+                    kijun1, kijun2, kijun3 = base_number[0], base_number[1], base_number[2]         
+        
+        #3歳夏以降、3戦のみ        
+                else:        
+                    base_number = []
+                    for t in range(3):                
+        
+                        if npr[horse].iloc[t]['place'] in jra and 'ＧⅠ' in npr[horse].iloc[t]['racename']: #G1 
+                            kijun = 800
+                        elif npr[horse].iloc[t]['place'] not in jra and 'ＧⅠ' in npr[horse].iloc[t]['racename']: #Jpn1 
+                            kijun = 700             
+                        elif npr[horse].iloc[t]['place'] in jra and 'ＧⅡ' in npr[horse].iloc[t]['racename']: #G2
+                            kijun = 700
+                        elif npr[horse].iloc[t]['place'] not in jra and 'ＧⅡ' in npr[horse].iloc[t]['racename']: #Jpn2
+                            kijun = 600
+                        elif npr[horse].iloc[t]['place'] in jra and 'ＧⅢ' in npr[horse].iloc[t]['racename']: #G3
+                            kijun = 650
+                        elif npr[horse].iloc[t]['place'] not in jra and 'ＧⅢ' in npr[horse].iloc[t]['racename']: #Jpn3
+                            kijun = 500
+                        elif npr[horse].iloc[t]['place'] in jra and 'Ｌ' in npr[horse].iloc[t]['racename']:
+                            kijun = 600
+                        elif npr[horse].iloc[t]['place'] in jra and 'OP' in npr[horse].iloc[t]['racename']:
+                            kijun = 600
+                        elif npr[horse].iloc[t]['place'] in jra and '3勝' in npr[horse].iloc[t]['racename']:
+                            kijun = 500
+                        elif npr[horse].iloc[t]['place'] in jra and '2勝'in npr[horse].iloc[t]['racename']:
+                            kijun = 400
+                        elif npr[horse].iloc[t]['place'] in jra and '1勝' in npr[horse].iloc[t]['racename']:
+                            kijun = 300  
+                        else:
+                            kijun = 200
+        
+                        base_number.append(kijun)                   
+        
+                    kijun1, kijun2, kijun3 = base_number[0], base_number[1], base_number[2]
+        
+                #着差係数
+                chakusa = []
+                for u in range(3):
+        
+                    if npr[horse].iloc[u]['difference'] < -0.7:
+                        race_chakusa = 1.5
+                    elif -0.7 <= npr[horse].iloc[u]['difference'] < -0.5:
+                        race_chakusa = 1.3    
+                    elif -0.5 <= npr[horse].iloc[u]['difference'] < -0.3:
+                        race_chakusa = 1.2
+                    elif -0.3 <= npr[horse].iloc[u]['difference'] <= 0.5:
+                        race_chakusa = 1.0
+                    elif 0.5 < npr[horse].iloc[u]['difference'] <= 1.0:
+                        race_chakusa = 0.8
+                    elif 1.0 < npr[horse].iloc[u]['difference'] <= 2.0:
+                        race_chakusa = 0.5
+                    else:
+                        race_chakusa = 0.2
+                    chakusa.append(race_chakusa)
+        
+                a, b, c = chakusa[0], chakusa[1], chakusa[2]
+        
+                #連勝係数    
+                if npr[horse].iloc[0]['result'] == 1 and npr[horse].iloc[1]['result'] == 1 and npr[horse].iloc[2]['result'] == 1:
+                    rensho = (npr[horse].iloc[0]['difference'] + npr[horse].iloc[1]['difference'] + npr[horse].iloc[2]['difference']) / 3
+                    if rensho < -0.7:
+                        e = 1.25
+                    elif -0.7 <= rensho < -0.5:
+                        e = 1.20  
+                    elif -0.5 <= rensho < -0.3:
+                        e = 1.15
+                    else:
+                        e = 1.10
+                elif npr[horse].iloc[0]['result'] == 1 and npr[horse].iloc[1]['result'] == 1:
+                    rensho = (npr[horse].iloc[0]['difference'] + npr[horse].iloc[1]['difference'] + npr[horse].iloc[2]['difference']) / 3
+                    if rensho < -0.7:
+                        e = 1.20
+                    elif -0.7 <= rensho < -0.5:
+                        e = 1.15   
+                    elif -0.5 <= rensho < -0.3:
+                        e = 1.10
+                    else:
+                        e = 1.05
+                else:
+                    e = 1.0
+        
+                #斤量補正
+                if 1000 <= race_distance <= 1400:
+                    if all(L3) =='牝':
+                        f = kijun1 * 0.15 * (max(df_s['斤量']) - float(horse[11:15]))
+                    else:
+                        if '牝' in horse:
+                            f = kijun1 * 0.15 * (max(df_s['斤量']) -2.0 - float(horse[11:15]))
+                        else:
+                            f = kijun1 * 0.15 * (max(df_s['斤量']) - float(horse[11:15]))                
+                elif 1400 < race_distance <= 1800:
+                    if all(L3) =='牝':
+                        f = kijun1 * 0.1166 * (max(df_s['斤量']) - float(horse[11:15]))
+                    else:
+                        if '牝' in horse:
+                            f = kijun1 * 0.1166 * (max(df_s['斤量']) -2.0 - float(horse[11:15]))
+                        else:
+                            f = kijun1 * 0.1166 * (max(df_s['斤量']) - float(horse[11:15]))                            
+                elif 1800 < race_distance <= 2400:
+                    if all(L3) =='牝':
+                        f = kijun1 * 0.0833 * (max(df_s['斤量']) - float(horse[11:15]))
+                    else:
+                        if '牝' in horse:
+                            f = kijun1 * 0.0833 * (max(df_s['斤量']) -2.0 - float(horse[11:15]))
+                        else:
+                            f = kijun1 * 0.0833 * (max(df_s['斤量']) - float(horse[11:15]))            
+                elif race_distance > 2400:
+                    if all(L3) =='牝':
+                        f = kijun1 * 0.05 * (max(df_s['斤量']) - float(horse[11:15]))
+                    else:
+                        if '牝' in horse:
+                            f = kijun1 * 0.05 * (max(df_s['斤量']) -2.0 - float(horse[11:15]))
+                        else:
+                            f = kijun1 * 0.05 * (max(df_s['斤量']) - float(horse[11:15])) 
+        
+        
+        
+                #休養係数
+                if td(weeks = 0) < (racedate2 - npr[horse].iloc[0]['past_date']) <= td(weeks = 4):
+                    g = 0.95
+                elif td(weeks = 4) < (racedate2 - npr[horse].iloc[0]['past_date']) <= td(weeks = 16):
+                    g = 1.0
+                elif td(weeks = 16) < (racedate2 - npr[horse].iloc[0]['past_date']) <= td(weeks = 36):
+                    g = 0.9
+                elif td(weeks = 36) < (racedate2 - npr[horse].iloc[0]['past_date']) <= td(weeks = 48):
+                    g = 0.85                
+                elif td(weeks = 48) < (racedate2 - npr[horse].iloc[0]['past_date']):
+                    g = 0.8
+                else:
+                    g = 1.0                
+        
+        
+                #距離係数                
+                av_dist = (npr[horse].iloc[0]['distance'] + npr[horse].iloc[1]['distance'] + npr[horse].iloc[2]['distance']) / 3 
+                if 1000 <= race_distance <= 1400:
+                    if abs(race_distance - npr[horse].iloc[0]['distance']) > 200 and abs(race_distance - av_dist) > 200:
+                        h = 0.9
+                    else:
+                        h = 1.0
+                elif 1400 < race_distance <= 1800:
+                    if abs(race_distance - npr[horse].iloc[0]['distance']) > 300 and abs(race_distance - av_dist) > 300:
+                        h = 0.9
+                    else:
+                        h = 1.0
+                elif 1800 < race_distance <= 2400:
+                    if abs(race_distance - npr[horse].iloc[0]['distance']) > 400 and abs(race_distance - av_dist) > 400:
+                        h = 0.9
+                    else:
+                        h = 1.0
+                elif 2400 < race_distance:
+                    if abs(race_distance - npr[horse].iloc[0]['distance']) > 500 and av_dist < 2000:
+                        h = 0.9
+                    else:
+                        h = 1.0
+        
+                #コース係数
+                if race_course == 'ダ':
+                    if npr[horse].iloc[0]['course'] == '芝' and npr[horse].iloc[1]['course'] == '芝' and npr[horse].iloc[2]['course'] == '芝':
+                        i = 0.7
+                    else:
+                        i = 1.0
+                elif race_course == '芝':
+                    if npr[horse].iloc[0]['course'] == 'ダ' and npr[horse].iloc[1]['course'] == 'ダ' and npr[horse].iloc[2]['course'] == 'ダ':
+                        i = 0.7
+                    else:
+                        i = 1.0
+        
+        
+        
+                ts = ((kijun1 * 2.4 * a * 1.1 + kijun2 * b + kijun3 * c * 1.0) + f) * e * g * h * i
+                tekito_shisu = int(ts)
+                tekito_shisu_list.append(tekito_shisu)
+        
+        #4戦以上
+            else:
+        #3歳春、4戦以上
+                if int(horse[18:]) == 3 and racedate2 <= date(kotoshi, 5, 31):
+                    base_number = []
+                    for t in range(4):
+        
+                        if npr[horse].iloc[t]['racename'] in age3_G1: #3歳春のJRA GI
+                            kijun = 500
+                        elif npr[horse].iloc[t]['racename'] in age3_Jpn1: #3歳春のJpnI
+                            kijun = 400
+                        elif npr[horse].iloc[t]['racename'] in age2_G1:  #2歳秋のJRA GI
+                            kijun = 350
+                        elif npr[horse].iloc[t]['racename'] in age2_Jpn1:  #2歳秋のJpnI
+                            kijun = 300
+        
+                        elif npr[horse].iloc[t]['racename'] in age3_G2: #3歳春のJRA GII
+                            kijun = 430
+                        elif npr[horse].iloc[t]['racename'] in age3_Jpn2:  #3歳春のJpnII
+                            kijun = 415
+                        elif npr[horse].iloc[t]['racename'] in age2_G2: #2歳秋のJRA GII
+                            kijun = 300
+                        elif npr[horse].iloc[t]['racename'] in age2_Jpn2:  #2歳秋のJpnII
+                            kijun = 270                    
+        
+                        elif npr[horse].iloc[t]['racename'] in age3_G3: #3歳春のJRA GIII
+                            kijun = 415
+                        elif npr[horse].iloc[t]['racename'] in age3_Jpn3:  #3歳春のJpnIII
+                            kijun = 400
+                        elif npr[horse].iloc[t]['racename'] in age2_G3: #2歳秋のJRA GIII
+                            kijun = 270
+                        elif npr[horse].iloc[t]['racename'] in age2_Jpn3:  #2歳秋のJpnIII
+                            kijun = 250
+                        
+                        elif npr[horse].iloc[t]['racename'] in age3_OP: ##3歳春のOP
+                            kijun = 400
+                        elif npr[horse].iloc[t]['racename'] in age2_OP:  #2歳秋のOP
+                            kijun = 250
+        
+                        elif '2勝' in npr[horse].iloc[t]['racename']: #3歳春の2勝クラス
+                            kijun = 400                
+                        elif '1勝' in npr[horse].iloc[t]['racename']: #3歳春の1勝クラス
+                            kijun = 300                  
+                        
+                        else:
+                            kijun = 200
+                            
+                        base_number.append(kijun)
+        
+                    kijun1, kijun2, kijun3, kijun4 = base_number[0], base_number[1], base_number[2], base_number[3]             
+                    
+        #3歳夏以降、4戦以上
+                elif int(horse[18:]) == 3 and racedate2 >= date(kotoshi, 6, 1):
+        
+                    base_number = []
+                    for t in range(4):
+        
+                        if npr[horse].iloc[t]['racename'] in age3_G1: #3歳春のJRA GI
+                            kijun = 500
+                        elif npr[horse].iloc[t]['racename'] in age3_Jpn1: #3歳春のJpnI
+                            kijun = 400
+                        elif npr[horse].iloc[t]['racename'] in age2_G1:  #2歳秋のJRA GI
+                            kijun = 350
+                        elif npr[horse].iloc[t]['racename'] in age2_Jpn1:  #2歳秋のJpnI
+                            kijun = 300
+        
+                        elif npr[horse].iloc[t]['racename'] in age3_G2: #3歳春のJRA GII
+                            kijun = 430
+                        elif npr[horse].iloc[t]['racename'] in age3_Jpn2:  #3歳春のJpnII
+                            kijun = 415
+                        elif npr[horse].iloc[t]['racename'] in age2_G2: #2歳秋のJRA GII
+                            kijun = 300
+                        elif npr[horse].iloc[t]['racename'] in age2_Jpn2:  #2歳秋のJpnII
+                            kijun = 270                    
+        
+                        elif npr[horse].iloc[t]['racename'] in age3_G3: #3歳春のJRA GIII
+                            kijun = 415
+                        elif npr[horse].iloc[t]['racename'] in age3_Jpn3:  #3歳春のJpnIII
+                            kijun = 400
+                        elif npr[horse].iloc[t]['racename'] in age2_G3: #2歳秋のJRA GIII
+                            kijun = 270
+                        elif npr[horse].iloc[t]['racename'] in age2_Jpn3:  #2歳秋のJpnIII
+                            kijun = 250
+                        
+                        elif npr[horse].iloc[t]['racename'] in age3_OP: ##3歳春のOP
+                            kijun = 400
+                        elif npr[horse].iloc[t]['racename'] in age2_OP:  #2歳秋のOP
+                            kijun = 250
+        
+                        elif '3勝' in npr[horse].iloc[t]['racename']: #3歳春の2勝クラス
+                            kijun = 500   
+                        elif '2勝' in npr[horse].iloc[t]['racename']: #3歳春の2勝クラス
+                            kijun = 400                
+                        elif '1勝' in npr[horse].iloc[t]['racename']: #3歳春の1勝クラス
+                            kijun = 300                  
+                        
+                        else:
+                            kijun = 200
+                            
+                        base_number.append(kijun)
+        
+                    kijun1, kijun2, kijun3, kijun4 = base_number[0], base_number[1], base_number[2], base_number[3]
+        
+        #古馬混合戦の指数
+                else:
+                    base_number = []
+                    for t in range(4):
+        
+                        if npr[horse].iloc[t]['racename'] in Obs_G1: #障害G1
+                            kijun = 800
+                        elif npr[horse].iloc[t]['racename'] in Obs_G2: #障害G2
+                            kijun = 700
+                        elif npr[horse].iloc[t]['racename'] in Obs_G3: #障害G3
+                            kijun = 600                
+                        elif npr[horse].iloc[t]['racename'] in Obs_OP: #障害OP
+                            kijun = 500                
+                        elif npr[horse].iloc[t]['course'] == '障' and '未勝利' in npr.iloc[t]['racename']: #障害未勝利
+                            kijun = 400      
+        
+                        if npr[horse].iloc[t]['place'] in jra and 'ＧⅠ' in npr[horse].iloc[t]['racename']: #G1 
+                            kijun = 800
+                        elif npr[horse].iloc[t]['place'] not in jra and 'ＧⅠ' in npr[horse].iloc[t]['racename']: #Jpn1 
+                            kijun = 700             
+                        elif npr[horse].iloc[t]['place'] in jra and 'ＧⅡ' in npr[horse].iloc[t]['racename']: #G2
+                            kijun = 700
+                        elif npr[horse].iloc[t]['place'] not in jra and 'ＧⅡ' in npr[horse].iloc[t]['racename']: #Jpn2
+                            kijun = 600
+                        elif npr[horse].iloc[t]['place'] in jra and 'ＧⅢ' in npr[horse].iloc[t]['racename']: #G3
+                            kijun = 650
+                        elif npr[horse].iloc[t]['place'] not in jra and 'ＧⅢ' in npr[horse].iloc[t]['racename']: #Jpn3
+                            kijun = 500
+                        elif npr[horse].iloc[t]['place'] in jra and 'Ｌ' in npr[horse].iloc[t]['racename']:
+                            kijun = 600
+                        elif npr[horse].iloc[t]['place'] in jra and 'OP' in npr[horse].iloc[t]['racename']:
+                            kijun = 600
+                        elif npr[horse].iloc[t]['place'] in jra and '3勝' in npr[horse].iloc[t]['racename']:
+                            kijun = 500
+                        elif npr[horse].iloc[t]['place'] in jra and '2勝'in npr[horse].iloc[t]['racename']:
+                            kijun = 400
+                        elif npr[horse].iloc[t]['place'] in jra and '1勝' in npr[horse].iloc[t]['racename']:
+                            kijun = 300  
+                        else:
+                            kijun = 200
+        
+                        base_number.append(kijun)
+        
+                    kijun1, kijun2, kijun3, kijun4 = base_number[0], base_number[1], base_number[2], base_number[3] 
+        
+                #着差係数
+        
+                chakusa = []
+                for u in range(4):
+        
+                    if npr[horse].iloc[u]['difference'] < -0.7:
+                        race_chakusa = 1.5
+                    elif -0.7 <= npr[horse].iloc[u]['difference'] < -0.5:
+                        race_chakusa = 1.3    
+                    elif -0.5 <= npr[horse].iloc[u]['difference'] < -0.3:
+                        race_chakusa = 1.2
+                    elif -0.3 <= npr[horse].iloc[u]['difference'] <= 0.5:
+                        race_chakusa = 1.0
+                    elif 0.5 < npr[horse].iloc[u]['difference'] <= 1.0:
+                        race_chakusa = 0.8
+                    elif 1.0 < npr[horse].iloc[u]['difference'] <= 2.0:
+                        race_chakusa = 0.5
+                    else:
+                        race_chakusa = 0.2
+                    chakusa.append(race_chakusa)
+        
+                a, b, c, d = chakusa[0], chakusa[1], chakusa[2], chakusa[3]                    
+        
+                #連勝係数    
+                if npr[horse].iloc[0]['result'] == 1 and npr[horse].iloc[1]['result'] == 1 and npr[horse].iloc[2]['result'] == 1\
+                and npr[horse].iloc[3]['result'] == 1:
+                    rensho = (npr[horse].iloc[0]['difference'] + npr[horse].iloc[1]['difference'] + npr[horse].iloc[2]['difference']\
+                              + npr[horse].iloc[3]['difference']) / 4
+                    if rensho < -0.7:
+                        e = 1.35
+                    elif -0.7 <= rensho < -0.5:
+                        e = 1.30   
+                    elif -0.5 <= rensho < -0.3:
+                        e = 1.25
+                    else:
+                        e = 1.20
+                elif npr[horse].iloc[0]['result'] == 1 and npr[horse].iloc[1]['result'] == 1 and npr[horse].iloc[2]['result'] == 1:
+                    rensho = (npr[horse].iloc[0]['difference'] + npr[horse].iloc[1]['difference'] + npr[horse].iloc[2]['difference']\
+                              + npr[horse].iloc[3]['difference']) / 4
+                    if rensho < -0.7:
+                        e = 1.25
+                    elif -0.7 <= rensho < -0.5:
+                        e = 1.20
+                    elif -0.5 <= rensho < -0.3:
+                        e = 1.15
+                    else:
+                        e = 1.10
+                elif npr[horse].iloc[0]['result'] == 1 and npr[horse].iloc[1]['result'] == 1: #2連勝
+                    rensho = (npr[horse].iloc[0]['difference'] + npr[horse].iloc[1]['difference'] + npr[horse].iloc[2]['difference']\
+                              + npr[horse].iloc[3]['difference']) / 4
+                    if rensho < -0.7:
+                        e = 1.20
+                    elif -0.7 <= rensho < -0.5:
+                        e = 1.15
+                    elif -0.5 <= rensho < -0.3:
+                        e = 1.10
+                    else:
+                        e = 1.05                       
+                else:
+                    e = 1.0
+        
+        
+                #斤量補正
+                if 1000 <= race_distance <= 1400:
+                    if all(L3) =='牝':
+                        f = kijun1 * 0.15 * (max(df_s['斤量']) - float(horse[11:15]))
+                    else:
+                        if '牝' in horse:
+                            f = kijun1 * 0.15 * (max(df_s['斤量']) -2.0 - float(horse[11:15]))
+                        else:
+                            f = kijun1 * 0.15 * (max(df_s['斤量']) - float(horse[11:15]))                
+                elif 1400 < race_distance <= 1800:
+                    if all(L3) =='牝':
+                        f = kijun1 * 0.1166 * (max(df_s['斤量']) - float(horse[11:15]))
+                    else:
+                        if '牝' in horse:
+                            f = kijun1 * 0.1166 * (max(df_s['斤量']) -2.0 - float(horse[11:15]))
+                        else:
+                            f = kijun1 * 0.1166 * (max(df_s['斤量']) - float(horse[11:15]))                            
+                elif 1800 < race_distance <= 2400:
+                    if all(L3) =='牝':
+                        f = kijun1 * 0.0833 * (max(df_s['斤量']) - float(horse[11:15]))
+                    else:
+                        if '牝' in horse:
+                            f = kijun1 * 0.0833 * (max(df_s['斤量']) -2.0 - float(horse[11:15]))
+                        else:
+                            f = kijun1 * 0.0833 * (max(df_s['斤量']) - float(horse[11:15]))            
+                elif race_distance > 2400:
+                    if all(L3) =='牝':
+                        f = kijun1 * 0.05 * (max(df_s['斤量']) - float(horse[11:15]))
+                    else:
+                        if '牝' in horse:
+                            f = kijun1 * 0.05 * (max(df_s['斤量']) -2.0 - float(horse[11:15]))
+                        else:
+                            f = kijun1 * 0.05 * (max(df_s['斤量']) - float(horse[11:15]))                              
+        
+        
+                #休養係数
+                if td(weeks = 0) < (racedate2 - npr[horse].iloc[0]['past_date']) <= td(weeks = 4):
+                    g = 0.95
+                elif td(weeks = 4) < (racedate2 - npr[horse].iloc[0]['past_date']) <= td(weeks = 16):
+                    g = 1.0
+                elif td(weeks = 16) < (racedate2 - npr[horse].iloc[0]['past_date']) <= td(weeks = 36):
+                    g = 0.9
+                elif td(weeks = 36) < (racedate2 - npr[horse].iloc[0]['past_date']) <= td(weeks = 48):
+                    g = 0.85                
+                elif td(weeks = 48) < (racedate2 - npr[horse].iloc[0]['past_date']):
+                    g = 0.8
+                else:
+                    g = 1.0
+        
+                #距離係数                
+                av_dist = (npr[horse].iloc[0]['distance'] + npr[horse].iloc[1]['distance']\
+                           + npr[horse].iloc[2]['distance'] + npr[horse].iloc[3]['distance']) / 4 
+        
+                if 1000 <= race_distance <= 1400:
+                    if abs(race_distance - npr[horse].iloc[0]['distance']) > 200 and abs(race_distance - av_dist) > 200:
+                        h = 0.9
+                    else:
+                        h = 1.0
+                elif 1400 < race_distance <= 1800:
+                    if abs(race_distance - npr[horse].iloc[0]['distance']) > 300 and abs(race_distance - av_dist) > 300:
+                        h = 0.9
+                    else:
+                        h = 1.0
+                elif 1800 < race_distance <= 2400:
+                    if abs(race_distance - npr[horse].iloc[0]['distance']) > 400 and abs(race_distance - av_dist) > 400:
+                        h = 0.9
+                    else:
+                        h = 1.0
+                elif 2400 < race_distance:
+                    if abs(race_distance - npr[horse].iloc[0]['distance']) > 500 and av_dist < 2000:
+                        h = 0.9
+                    else:
+                        h = 1.0
+        
+                #コース係数
+                if race_course == 'ダ':
+                    if npr[horse].iloc[0]['course'] == '芝' and npr[horse].iloc[1]['course'] == '芝' and npr[horse].iloc[2]['course'] == '芝':
+                        i = 0.7
+                    else:
+                        i = 1.0
+                elif race_course == '芝':
+                    if npr[horse].iloc[0]['course'] == 'ダ' and npr[horse].iloc[1]['course'] == 'ダ' and npr[horse].iloc[2]['course'] == 'ダ':
+                        i = 0.7
+                    else:
+                        i = 1.0
+                else:
+                    i = 1.0
+        
+        
+        
+                ts = ((kijun1 * 1.3 *a + kijun2 * 1.2 * b + kijun3 * 1.1 * c + kijun4 * 1.0 * d) + f) * e * g * h * i
+                tekito_shisu = int(ts)
+                tekito_shisu_list.append(tekito_shisu)
+
+        except:
             tekito_shisu = 0
             tekito_shisu_list.append(tekito_shisu)
 
-        elif len(npr[horse]) < 3:
-            tekito_shisu = 0
-            tekito_shisu_list.append(tekito_shisu)
-    
-    #3歳春、3戦のみ
-        elif len(npr[horse]) == 3:
-            if int(horse[18:]) == 3 and racedate2 <= date(kotoshi, 5, 31):
-    
-                base_number = []
-                for t in range(3):
-    
-                    if npr[horse].iloc[t]['racename'] in age3_G1: #3歳春のJRA GI
-                        kijun = 500
-                    elif npr[horse].iloc[t]['racename'] in age3_Jpn1: #3歳春のJpnI
-                        kijun = 400
-                    elif npr[horse].iloc[t]['racename'] in age2_G1:  #2歳秋のJRA GI
-                        kijun = 350
-                    elif npr[horse].iloc[t]['racename'] in age2_Jpn1:  #2歳秋のJpnI
-                        kijun = 300
-    
-                    elif npr[horse].iloc[t]['racename'] in age3_G2: #3歳春のJRA GII
-                        kijun = 430
-                    elif npr[horse].iloc[t]['racename'] in age3_Jpn2:  #3歳春のJpnII
-                        kijun = 415
-                    elif npr[horse].iloc[t]['racename'] in age2_G2: #2歳秋のJRA GII
-                        kijun = 300
-                    elif npr[horse].iloc[t]['racename'] in age2_Jpn2:  #2歳秋のJpnII
-                        kijun = 270                    
-    
-                    elif npr[horse].iloc[t]['racename'] in age3_G3: #3歳春のJRA GIII
-                        kijun = 415
-                    elif npr[horse].iloc[t]['racename'] in age3_Jpn3:  #3歳春のJpnIII
-                        kijun = 400
-                    elif npr[horse].iloc[t]['racename'] in age2_G3: #2歳秋のJRA GIII
-                        kijun = 270
-                    elif npr[horse].iloc[t]['racename'] in age2_Jpn3:  #2歳秋のJpnIII
-                        kijun = 250
-                    
-                    elif npr[horse].iloc[t]['racename'] in age3_OP: ##3歳春のOP
-                        kijun = 400
-                    elif npr[horse].iloc[t]['racename'] in age2_OP:  #2歳秋のOP
-                        kijun = 250
-    
-                    elif '2勝' in npr[horse].iloc[t]['racename']: #3歳春の2勝クラス
-                        kijun = 400                
-                    elif '1勝' in npr[horse].iloc[t]['racename']: #3歳春の1勝クラス
-                        kijun = 300                  
-                    
-                    else:
-                        kijun = 200
-                        
-                    base_number.append(kijun)
-    
-                kijun1, kijun2, kijun3 = base_number[0], base_number[1], base_number[2]
-    
-    #3歳夏以降、3戦のみ
-            elif int(horse[18:]) == 3 and race_date >= date(kotoshi, 6, 1):
-    
-                base_number = []
-                for t in range(3):
-    
-                    if npr[horse].iloc[t]['racename'] in age3_G1: #3歳春のJRA GI
-                        kijun = 500
-                    elif npr[horse].iloc[t]['racename'] in age3_Jpn1: #3歳春のJpnI
-                        kijun = 400
-                    elif npr[horse].iloc[t]['racename'] in age2_G1:  #2歳秋のJRA GI
-                        kijun = 350
-                    elif npr[horse].iloc[t]['racename'] in age2_Jpn1:  #2歳秋のJpnI
-                        kijun = 300
-    
-                    elif npr[horse].iloc[t]['racename'] in age3_G2: #3歳春のJRA GII
-                        kijun = 430
-                    elif npr[horse].iloc[t]['racename'] in age3_Jpn2:  #3歳春のJpnII
-                        kijun = 415
-                    elif npr[horse].iloc[t]['racename'] in age2_G2: #2歳秋のJRA GII
-                        kijun = 300
-                    elif npr[horse].iloc[t]['racename'] in age2_Jpn2:  #2歳秋のJpnII
-                        kijun = 270                    
-    
-                    elif npr[horse].iloc[t]['racename'] in age3_G3: #3歳春のJRA GIII
-                        kijun = 415
-                    elif npr[horse].iloc[t]['racename'] in age3_Jpn3:  #3歳春のJpnIII
-                        kijun = 400
-                    elif npr[horse].iloc[t]['racename'] in age2_G3: #2歳秋のJRA GIII
-                        kijun = 270
-                    elif npr[horse].iloc[t]['racename'] in age2_Jpn3:  #2歳秋のJpnIII
-                        kijun = 250
-                    
-                    elif npr[horse].iloc[t]['racename'] in age3_OP: ##3歳春のOP
-                        kijun = 400
-                    elif npr[horse].iloc[t]['racename'] in age2_OP:  #2歳秋のOP
-                        kijun = 250
-    
-                    elif '3勝' in npr[horse].iloc[t]['racename']: #3歳春の2勝クラス
-                        kijun = 500   
-                    elif '2勝' in npr[horse].iloc[t]['racename']: #3歳春の2勝クラス
-                        kijun = 400                
-                    elif '1勝' in npr[horse].iloc[t]['racename']: #3歳春の1勝クラス
-                        kijun = 300                  
-                    
-                    else:
-                        kijun = 200
-                        
-                    base_number.append(kijun)
-    
-                kijun1, kijun2, kijun3 = base_number[0], base_number[1], base_number[2]         
-    
-    #3歳夏以降、3戦のみ        
-            else:        
-                base_number = []
-                for t in range(3):                
-    
-                    if npr[horse].iloc[t]['place'] in jra and 'ＧⅠ' in npr[horse].iloc[t]['racename']: #G1 
-                        kijun = 800
-                    elif npr[horse].iloc[t]['place'] not in jra and 'ＧⅠ' in npr[horse].iloc[t]['racename']: #Jpn1 
-                        kijun = 700             
-                    elif npr[horse].iloc[t]['place'] in jra and 'ＧⅡ' in npr[horse].iloc[t]['racename']: #G2
-                        kijun = 700
-                    elif npr[horse].iloc[t]['place'] not in jra and 'ＧⅡ' in npr[horse].iloc[t]['racename']: #Jpn2
-                        kijun = 600
-                    elif npr[horse].iloc[t]['place'] in jra and 'ＧⅢ' in npr[horse].iloc[t]['racename']: #G3
-                        kijun = 650
-                    elif npr[horse].iloc[t]['place'] not in jra and 'ＧⅢ' in npr[horse].iloc[t]['racename']: #Jpn3
-                        kijun = 500
-                    elif npr[horse].iloc[t]['place'] in jra and 'Ｌ' in npr[horse].iloc[t]['racename']:
-                        kijun = 600
-                    elif npr[horse].iloc[t]['place'] in jra and 'OP' in npr[horse].iloc[t]['racename']:
-                        kijun = 600
-                    elif npr[horse].iloc[t]['place'] in jra and '3勝' in npr[horse].iloc[t]['racename']:
-                        kijun = 500
-                    elif npr[horse].iloc[t]['place'] in jra and '2勝'in npr[horse].iloc[t]['racename']:
-                        kijun = 400
-                    elif npr[horse].iloc[t]['place'] in jra and '1勝' in npr[horse].iloc[t]['racename']:
-                        kijun = 300  
-                    else:
-                        kijun = 200
-    
-                    base_number.append(kijun)                   
-    
-                kijun1, kijun2, kijun3 = base_number[0], base_number[1], base_number[2]
-    
-            #着差係数
-            chakusa = []
-            for u in range(3):
-    
-                if npr[horse].iloc[u]['difference'] < -0.7:
-                    race_chakusa = 1.5
-                elif -0.7 <= npr[horse].iloc[u]['difference'] < -0.5:
-                    race_chakusa = 1.3    
-                elif -0.5 <= npr[horse].iloc[u]['difference'] < -0.3:
-                    race_chakusa = 1.2
-                elif -0.3 <= npr[horse].iloc[u]['difference'] <= 0.5:
-                    race_chakusa = 1.0
-                elif 0.5 < npr[horse].iloc[u]['difference'] <= 1.0:
-                    race_chakusa = 0.8
-                elif 1.0 < npr[horse].iloc[u]['difference'] <= 2.0:
-                    race_chakusa = 0.5
-                else:
-                    race_chakusa = 0.2
-                chakusa.append(race_chakusa)
-    
-            a, b, c = chakusa[0], chakusa[1], chakusa[2]
-    
-            #連勝係数    
-            if npr[horse].iloc[0]['result'] == 1 and npr[horse].iloc[1]['result'] == 1 and npr[horse].iloc[2]['result'] == 1:
-                rensho = (npr[horse].iloc[0]['difference'] + npr[horse].iloc[1]['difference'] + npr[horse].iloc[2]['difference']) / 3
-                if rensho < -0.7:
-                    e = 1.25
-                elif -0.7 <= rensho < -0.5:
-                    e = 1.20  
-                elif -0.5 <= rensho < -0.3:
-                    e = 1.15
-                else:
-                    e = 1.10
-            elif npr[horse].iloc[0]['result'] == 1 and npr[horse].iloc[1]['result'] == 1:
-                rensho = (npr[horse].iloc[0]['difference'] + npr[horse].iloc[1]['difference'] + npr[horse].iloc[2]['difference']) / 3
-                if rensho < -0.7:
-                    e = 1.20
-                elif -0.7 <= rensho < -0.5:
-                    e = 1.15   
-                elif -0.5 <= rensho < -0.3:
-                    e = 1.10
-                else:
-                    e = 1.05
-            else:
-                e = 1.0
-    
-            #斤量補正
-            if 1000 <= race_distance <= 1400:
-                if all(L3) =='牝':
-                    f = kijun1 * 0.15 * (max(df_s['斤量']) - float(horse[11:15]))
-                else:
-                    if '牝' in horse:
-                        f = kijun1 * 0.15 * (max(df_s['斤量']) -2.0 - float(horse[11:15]))
-                    else:
-                        f = kijun1 * 0.15 * (max(df_s['斤量']) - float(horse[11:15]))                
-            elif 1400 < race_distance <= 1800:
-                if all(L3) =='牝':
-                    f = kijun1 * 0.1166 * (max(df_s['斤量']) - float(horse[11:15]))
-                else:
-                    if '牝' in horse:
-                        f = kijun1 * 0.1166 * (max(df_s['斤量']) -2.0 - float(horse[11:15]))
-                    else:
-                        f = kijun1 * 0.1166 * (max(df_s['斤量']) - float(horse[11:15]))                            
-            elif 1800 < race_distance <= 2400:
-                if all(L3) =='牝':
-                    f = kijun1 * 0.0833 * (max(df_s['斤量']) - float(horse[11:15]))
-                else:
-                    if '牝' in horse:
-                        f = kijun1 * 0.0833 * (max(df_s['斤量']) -2.0 - float(horse[11:15]))
-                    else:
-                        f = kijun1 * 0.0833 * (max(df_s['斤量']) - float(horse[11:15]))            
-            elif race_distance > 2400:
-                if all(L3) =='牝':
-                    f = kijun1 * 0.05 * (max(df_s['斤量']) - float(horse[11:15]))
-                else:
-                    if '牝' in horse:
-                        f = kijun1 * 0.05 * (max(df_s['斤量']) -2.0 - float(horse[11:15]))
-                    else:
-                        f = kijun1 * 0.05 * (max(df_s['斤量']) - float(horse[11:15])) 
-    
-    
-    
-            #休養係数
-            if td(weeks = 0) < (racedate2 - npr[horse].iloc[0]['past_date']) <= td(weeks = 4):
-                g = 0.95
-            elif td(weeks = 4) < (racedate2 - npr[horse].iloc[0]['past_date']) <= td(weeks = 16):
-                g = 1.0
-            elif td(weeks = 16) < (racedate2 - npr[horse].iloc[0]['past_date']) <= td(weeks = 36):
-                g = 0.9
-            elif td(weeks = 36) < (racedate2 - npr[horse].iloc[0]['past_date']) <= td(weeks = 48):
-                g = 0.85                
-            elif td(weeks = 48) < (racedate2 - npr[horse].iloc[0]['past_date']):
-                g = 0.8
-            else:
-                g = 1.0                
-    
-    
-            #距離係数                
-            av_dist = (npr[horse].iloc[0]['distance'] + npr[horse].iloc[1]['distance'] + npr[horse].iloc[2]['distance']) / 3 
-            if 1000 <= race_distance <= 1400:
-                if abs(race_distance - npr[horse].iloc[0]['distance']) > 200 and abs(race_distance - av_dist) > 200:
-                    h = 0.9
-                else:
-                    h = 1.0
-            elif 1400 < race_distance <= 1800:
-                if abs(race_distance - npr[horse].iloc[0]['distance']) > 300 and abs(race_distance - av_dist) > 300:
-                    h = 0.9
-                else:
-                    h = 1.0
-            elif 1800 < race_distance <= 2400:
-                if abs(race_distance - npr[horse].iloc[0]['distance']) > 400 and abs(race_distance - av_dist) > 400:
-                    h = 0.9
-                else:
-                    h = 1.0
-            elif 2400 < race_distance:
-                if abs(race_distance - npr[horse].iloc[0]['distance']) > 500 and av_dist < 2000:
-                    h = 0.9
-                else:
-                    h = 1.0
-    
-            #コース係数
-            if race_course == 'ダ':
-                if npr[horse].iloc[0]['course'] == '芝' and npr[horse].iloc[1]['course'] == '芝' and npr[horse].iloc[2]['course'] == '芝':
-                    i = 0.7
-                else:
-                    i = 1.0
-            elif race_course == '芝':
-                if npr[horse].iloc[0]['course'] == 'ダ' and npr[horse].iloc[1]['course'] == 'ダ' and npr[horse].iloc[2]['course'] == 'ダ':
-                    i = 0.7
-                else:
-                    i = 1.0
-    
-    
-    
-            ts = ((kijun1 * 2.4 * a * 1.1 + kijun2 * b + kijun3 * c * 1.0) + f) * e * g * h * i
-            tekito_shisu = int(ts)
-            tekito_shisu_list.append(tekito_shisu)
-    
-    #4戦以上
-        else:
-    #3歳春、4戦以上
-            if int(horse[18:]) == 3 and racedate2 <= date(kotoshi, 5, 31):
-                base_number = []
-                for t in range(4):
-    
-                    if npr[horse].iloc[t]['racename'] in age3_G1: #3歳春のJRA GI
-                        kijun = 500
-                    elif npr[horse].iloc[t]['racename'] in age3_Jpn1: #3歳春のJpnI
-                        kijun = 400
-                    elif npr[horse].iloc[t]['racename'] in age2_G1:  #2歳秋のJRA GI
-                        kijun = 350
-                    elif npr[horse].iloc[t]['racename'] in age2_Jpn1:  #2歳秋のJpnI
-                        kijun = 300
-    
-                    elif npr[horse].iloc[t]['racename'] in age3_G2: #3歳春のJRA GII
-                        kijun = 430
-                    elif npr[horse].iloc[t]['racename'] in age3_Jpn2:  #3歳春のJpnII
-                        kijun = 415
-                    elif npr[horse].iloc[t]['racename'] in age2_G2: #2歳秋のJRA GII
-                        kijun = 300
-                    elif npr[horse].iloc[t]['racename'] in age2_Jpn2:  #2歳秋のJpnII
-                        kijun = 270                    
-    
-                    elif npr[horse].iloc[t]['racename'] in age3_G3: #3歳春のJRA GIII
-                        kijun = 415
-                    elif npr[horse].iloc[t]['racename'] in age3_Jpn3:  #3歳春のJpnIII
-                        kijun = 400
-                    elif npr[horse].iloc[t]['racename'] in age2_G3: #2歳秋のJRA GIII
-                        kijun = 270
-                    elif npr[horse].iloc[t]['racename'] in age2_Jpn3:  #2歳秋のJpnIII
-                        kijun = 250
-                    
-                    elif npr[horse].iloc[t]['racename'] in age3_OP: ##3歳春のOP
-                        kijun = 400
-                    elif npr[horse].iloc[t]['racename'] in age2_OP:  #2歳秋のOP
-                        kijun = 250
-    
-                    elif '2勝' in npr[horse].iloc[t]['racename']: #3歳春の2勝クラス
-                        kijun = 400                
-                    elif '1勝' in npr[horse].iloc[t]['racename']: #3歳春の1勝クラス
-                        kijun = 300                  
-                    
-                    else:
-                        kijun = 200
-                        
-                    base_number.append(kijun)
-    
-                kijun1, kijun2, kijun3, kijun4 = base_number[0], base_number[1], base_number[2], base_number[3]             
-                
-    #3歳夏以降、4戦以上
-            elif int(horse[18:]) == 3 and racedate2 >= date(kotoshi, 6, 1):
-    
-                base_number = []
-                for t in range(4):
-    
-                    if npr[horse].iloc[t]['racename'] in age3_G1: #3歳春のJRA GI
-                        kijun = 500
-                    elif npr[horse].iloc[t]['racename'] in age3_Jpn1: #3歳春のJpnI
-                        kijun = 400
-                    elif npr[horse].iloc[t]['racename'] in age2_G1:  #2歳秋のJRA GI
-                        kijun = 350
-                    elif npr[horse].iloc[t]['racename'] in age2_Jpn1:  #2歳秋のJpnI
-                        kijun = 300
-    
-                    elif npr[horse].iloc[t]['racename'] in age3_G2: #3歳春のJRA GII
-                        kijun = 430
-                    elif npr[horse].iloc[t]['racename'] in age3_Jpn2:  #3歳春のJpnII
-                        kijun = 415
-                    elif npr[horse].iloc[t]['racename'] in age2_G2: #2歳秋のJRA GII
-                        kijun = 300
-                    elif npr[horse].iloc[t]['racename'] in age2_Jpn2:  #2歳秋のJpnII
-                        kijun = 270                    
-    
-                    elif npr[horse].iloc[t]['racename'] in age3_G3: #3歳春のJRA GIII
-                        kijun = 415
-                    elif npr[horse].iloc[t]['racename'] in age3_Jpn3:  #3歳春のJpnIII
-                        kijun = 400
-                    elif npr[horse].iloc[t]['racename'] in age2_G3: #2歳秋のJRA GIII
-                        kijun = 270
-                    elif npr[horse].iloc[t]['racename'] in age2_Jpn3:  #2歳秋のJpnIII
-                        kijun = 250
-                    
-                    elif npr[horse].iloc[t]['racename'] in age3_OP: ##3歳春のOP
-                        kijun = 400
-                    elif npr[horse].iloc[t]['racename'] in age2_OP:  #2歳秋のOP
-                        kijun = 250
-    
-                    elif '3勝' in npr[horse].iloc[t]['racename']: #3歳春の2勝クラス
-                        kijun = 500   
-                    elif '2勝' in npr[horse].iloc[t]['racename']: #3歳春の2勝クラス
-                        kijun = 400                
-                    elif '1勝' in npr[horse].iloc[t]['racename']: #3歳春の1勝クラス
-                        kijun = 300                  
-                    
-                    else:
-                        kijun = 200
-                        
-                    base_number.append(kijun)
-    
-                kijun1, kijun2, kijun3, kijun4 = base_number[0], base_number[1], base_number[2], base_number[3]
-    
-    #古馬混合戦の指数
-            else:
-                base_number = []
-                for t in range(4):
-    
-                    if npr[horse].iloc[t]['racename'] in Obs_G1: #障害G1
-                        kijun = 800
-                    elif npr[horse].iloc[t]['racename'] in Obs_G2: #障害G2
-                        kijun = 700
-                    elif npr[horse].iloc[t]['racename'] in Obs_G3: #障害G3
-                        kijun = 600                
-                    elif npr[horse].iloc[t]['racename'] in Obs_OP: #障害OP
-                        kijun = 500                
-                    elif npr[horse].iloc[t]['course'] == '障' and '未勝利' in npr.iloc[t]['racename']: #障害未勝利
-                        kijun = 400      
-    
-                    if npr[horse].iloc[t]['place'] in jra and 'ＧⅠ' in npr[horse].iloc[t]['racename']: #G1 
-                        kijun = 800
-                    elif npr[horse].iloc[t]['place'] not in jra and 'ＧⅠ' in npr[horse].iloc[t]['racename']: #Jpn1 
-                        kijun = 700             
-                    elif npr[horse].iloc[t]['place'] in jra and 'ＧⅡ' in npr[horse].iloc[t]['racename']: #G2
-                        kijun = 700
-                    elif npr[horse].iloc[t]['place'] not in jra and 'ＧⅡ' in npr[horse].iloc[t]['racename']: #Jpn2
-                        kijun = 600
-                    elif npr[horse].iloc[t]['place'] in jra and 'ＧⅢ' in npr[horse].iloc[t]['racename']: #G3
-                        kijun = 650
-                    elif npr[horse].iloc[t]['place'] not in jra and 'ＧⅢ' in npr[horse].iloc[t]['racename']: #Jpn3
-                        kijun = 500
-                    elif npr[horse].iloc[t]['place'] in jra and 'Ｌ' in npr[horse].iloc[t]['racename']:
-                        kijun = 600
-                    elif npr[horse].iloc[t]['place'] in jra and 'OP' in npr[horse].iloc[t]['racename']:
-                        kijun = 600
-                    elif npr[horse].iloc[t]['place'] in jra and '3勝' in npr[horse].iloc[t]['racename']:
-                        kijun = 500
-                    elif npr[horse].iloc[t]['place'] in jra and '2勝'in npr[horse].iloc[t]['racename']:
-                        kijun = 400
-                    elif npr[horse].iloc[t]['place'] in jra and '1勝' in npr[horse].iloc[t]['racename']:
-                        kijun = 300  
-                    else:
-                        kijun = 200
-    
-                    base_number.append(kijun)
-    
-                kijun1, kijun2, kijun3, kijun4 = base_number[0], base_number[1], base_number[2], base_number[3] 
-    
-            #着差係数
-    
-            chakusa = []
-            for u in range(4):
-    
-                if npr[horse].iloc[u]['difference'] < -0.7:
-                    race_chakusa = 1.5
-                elif -0.7 <= npr[horse].iloc[u]['difference'] < -0.5:
-                    race_chakusa = 1.3    
-                elif -0.5 <= npr[horse].iloc[u]['difference'] < -0.3:
-                    race_chakusa = 1.2
-                elif -0.3 <= npr[horse].iloc[u]['difference'] <= 0.5:
-                    race_chakusa = 1.0
-                elif 0.5 < npr[horse].iloc[u]['difference'] <= 1.0:
-                    race_chakusa = 0.8
-                elif 1.0 < npr[horse].iloc[u]['difference'] <= 2.0:
-                    race_chakusa = 0.5
-                else:
-                    race_chakusa = 0.2
-                chakusa.append(race_chakusa)
-    
-            a, b, c, d = chakusa[0], chakusa[1], chakusa[2], chakusa[3]                    
-    
-            #連勝係数    
-            if npr[horse].iloc[0]['result'] == 1 and npr[horse].iloc[1]['result'] == 1 and npr[horse].iloc[2]['result'] == 1\
-            and npr[horse].iloc[3]['result'] == 1:
-                rensho = (npr[horse].iloc[0]['difference'] + npr[horse].iloc[1]['difference'] + npr[horse].iloc[2]['difference']\
-                          + npr[horse].iloc[3]['difference']) / 4
-                if rensho < -0.7:
-                    e = 1.35
-                elif -0.7 <= rensho < -0.5:
-                    e = 1.30   
-                elif -0.5 <= rensho < -0.3:
-                    e = 1.25
-                else:
-                    e = 1.20
-            elif npr[horse].iloc[0]['result'] == 1 and npr[horse].iloc[1]['result'] == 1 and npr[horse].iloc[2]['result'] == 1:
-                rensho = (npr[horse].iloc[0]['difference'] + npr[horse].iloc[1]['difference'] + npr[horse].iloc[2]['difference']\
-                          + npr[horse].iloc[3]['difference']) / 4
-                if rensho < -0.7:
-                    e = 1.25
-                elif -0.7 <= rensho < -0.5:
-                    e = 1.20
-                elif -0.5 <= rensho < -0.3:
-                    e = 1.15
-                else:
-                    e = 1.10
-            elif npr[horse].iloc[0]['result'] == 1 and npr[horse].iloc[1]['result'] == 1: #2連勝
-                rensho = (npr[horse].iloc[0]['difference'] + npr[horse].iloc[1]['difference'] + npr[horse].iloc[2]['difference']\
-                          + npr[horse].iloc[3]['difference']) / 4
-                if rensho < -0.7:
-                    e = 1.20
-                elif -0.7 <= rensho < -0.5:
-                    e = 1.15
-                elif -0.5 <= rensho < -0.3:
-                    e = 1.10
-                else:
-                    e = 1.05                       
-            else:
-                e = 1.0
-    
-    
-            #斤量補正
-            if 1000 <= race_distance <= 1400:
-                if all(L3) =='牝':
-                    f = kijun1 * 0.15 * (max(df_s['斤量']) - float(horse[11:15]))
-                else:
-                    if '牝' in horse:
-                        f = kijun1 * 0.15 * (max(df_s['斤量']) -2.0 - float(horse[11:15]))
-                    else:
-                        f = kijun1 * 0.15 * (max(df_s['斤量']) - float(horse[11:15]))                
-            elif 1400 < race_distance <= 1800:
-                if all(L3) =='牝':
-                    f = kijun1 * 0.1166 * (max(df_s['斤量']) - float(horse[11:15]))
-                else:
-                    if '牝' in horse:
-                        f = kijun1 * 0.1166 * (max(df_s['斤量']) -2.0 - float(horse[11:15]))
-                    else:
-                        f = kijun1 * 0.1166 * (max(df_s['斤量']) - float(horse[11:15]))                            
-            elif 1800 < race_distance <= 2400:
-                if all(L3) =='牝':
-                    f = kijun1 * 0.0833 * (max(df_s['斤量']) - float(horse[11:15]))
-                else:
-                    if '牝' in horse:
-                        f = kijun1 * 0.0833 * (max(df_s['斤量']) -2.0 - float(horse[11:15]))
-                    else:
-                        f = kijun1 * 0.0833 * (max(df_s['斤量']) - float(horse[11:15]))            
-            elif race_distance > 2400:
-                if all(L3) =='牝':
-                    f = kijun1 * 0.05 * (max(df_s['斤量']) - float(horse[11:15]))
-                else:
-                    if '牝' in horse:
-                        f = kijun1 * 0.05 * (max(df_s['斤量']) -2.0 - float(horse[11:15]))
-                    else:
-                        f = kijun1 * 0.05 * (max(df_s['斤量']) - float(horse[11:15]))                              
-    
-    
-            #休養係数
-            if td(weeks = 0) < (racedate2 - npr[horse].iloc[0]['past_date']) <= td(weeks = 4):
-                g = 0.95
-            elif td(weeks = 4) < (racedate2 - npr[horse].iloc[0]['past_date']) <= td(weeks = 16):
-                g = 1.0
-            elif td(weeks = 16) < (racedate2 - npr[horse].iloc[0]['past_date']) <= td(weeks = 36):
-                g = 0.9
-            elif td(weeks = 36) < (racedate2 - npr[horse].iloc[0]['past_date']) <= td(weeks = 48):
-                g = 0.85                
-            elif td(weeks = 48) < (racedate2 - npr[horse].iloc[0]['past_date']):
-                g = 0.8
-            else:
-                g = 1.0
-    
-            #距離係数                
-            av_dist = (npr[horse].iloc[0]['distance'] + npr[horse].iloc[1]['distance']\
-                       + npr[horse].iloc[2]['distance'] + npr[horse].iloc[3]['distance']) / 4 
-    
-            if 1000 <= race_distance <= 1400:
-                if abs(race_distance - npr[horse].iloc[0]['distance']) > 200 and abs(race_distance - av_dist) > 200:
-                    h = 0.9
-                else:
-                    h = 1.0
-            elif 1400 < race_distance <= 1800:
-                if abs(race_distance - npr[horse].iloc[0]['distance']) > 300 and abs(race_distance - av_dist) > 300:
-                    h = 0.9
-                else:
-                    h = 1.0
-            elif 1800 < race_distance <= 2400:
-                if abs(race_distance - npr[horse].iloc[0]['distance']) > 400 and abs(race_distance - av_dist) > 400:
-                    h = 0.9
-                else:
-                    h = 1.0
-            elif 2400 < race_distance:
-                if abs(race_distance - npr[horse].iloc[0]['distance']) > 500 and av_dist < 2000:
-                    h = 0.9
-                else:
-                    h = 1.0
-    
-            #コース係数
-            if race_course == 'ダ':
-                if npr[horse].iloc[0]['course'] == '芝' and npr[horse].iloc[1]['course'] == '芝' and npr[horse].iloc[2]['course'] == '芝':
-                    i = 0.7
-                else:
-                    i = 1.0
-            elif race_course == '芝':
-                if npr[horse].iloc[0]['course'] == 'ダ' and npr[horse].iloc[1]['course'] == 'ダ' and npr[horse].iloc[2]['course'] == 'ダ':
-                    i = 0.7
-                else:
-                    i = 1.0
-            else:
-                i = 1.0
-    
-    
-    
-            ts = ((kijun1 * 1.3 *a + kijun2 * 1.2 * b + kijun3 * 1.1 * c + kijun4 * 1.0 * d) + f) * e * g * h * i
-            tekito_shisu = int(ts)
-            tekito_shisu_list.append(tekito_shisu)
     
     #指数計算結果を出走表に追加
     syusso_hyo['指数'] = tekito_shisu_list
