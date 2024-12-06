@@ -1078,7 +1078,7 @@ if push == True:
 
     #出走表を表示
     st.write(racedate2, racenumber, today_race)
-    st.dataframe(syusso_hyo_final)
+    st.table(syusso_hyo_final)
     
 else:
     st.write("・・・・・・・")
