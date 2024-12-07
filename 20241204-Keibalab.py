@@ -824,7 +824,7 @@ if push == True:
                 tekito_shisu = int(ts)
                 tekito_shisu_list.append(tekito_shisu)
 
-        except:
+        except KeyError:
             tekito_shisu = 0
             tekito_shisu_list.append(tekito_shisu)
 
