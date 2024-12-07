@@ -868,7 +868,7 @@ if push == True:
     
     syusso_hyo.loc[syusso_hyo['騎手'] == 'マーフ', '指数'] = round(syusso_hyo['指数'] * 1.30)
     syusso_hyo.loc[syusso_hyo['騎手'] == 'レーン', '指数'] = round(syusso_hyo['指数'] * 1.30)
-    
+    syusso_hyo.loc[syusso_hyo['騎手'] == 'デット', '指数'] = round(syusso_hyo['指数'] * 1.30)
     
     #三着内率40-50%
     syusso_hyo.loc[syusso_hyo['騎手'] == '西谷誠', '指数'] = round(syusso_hyo['指数'] * 1.20)    
