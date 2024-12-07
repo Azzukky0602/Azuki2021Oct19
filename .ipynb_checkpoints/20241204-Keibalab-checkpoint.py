@@ -236,8 +236,12 @@ if push == True:
     for horse in syusso_list:
 
         try:
-    
-            if len(npr[horse]) < 3:
+
+            if npr[horse].empty == True:
+                tekito_shisu = 0
+                tekito_shisu_list.append(tekito_shisu)                
+            
+            elif len(npr[horse]) < 3:
                 tekito_shisu = 0
                 tekito_shisu_list.append(tekito_shisu)
         
@@ -829,11 +833,16 @@ if push == True:
     syusso_hyo['指数'] = tekito_shisu_list
     
     #前走の斤量リストを作成
-    past_weight_list = []
+    past_weight_list = []       
     for horse in syusso_list:
-        pw = npr[horse]['pastweight'][0] 
-        past_weight_list.append(pw)
-    
+        if npr[horse]['pastweight'].empty == True:
+            pw = 60.0
+            past_weight_list.append(pw)
+        else:
+            pw = npr[horse]['pastweight'][0] 
+            past_weight_list.append(pw)
+            
+        
     #今走と前走の斤量差を計算し、出走表に追加
     gap = pd.Series(past_weight_list)
     syusso_hyo['斤量増減']= syusso_hyo['斤量']-gap
