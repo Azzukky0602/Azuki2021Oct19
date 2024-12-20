@@ -714,7 +714,7 @@ if push == True:
                             kijun = 600                
                         elif npr[horse].iloc[t]['racename'] in Obs_OP: #障害OP
                             kijun = 500                
-                        elif npr[horse].iloc[t]['course'] == '障' and '未勝利' in npr.iloc[t]['racename']: #障害未勝利
+                        elif npr[horse].iloc[t]['course'] == '障' and '未勝利' in npr[horse].iloc[t]['racename']: #障害未勝利
                             kijun = 400      
         
                         if npr[horse].iloc[t]['racename'] in all_G1 or npr[horse].iloc[t]['racename'] in age3_G1:
