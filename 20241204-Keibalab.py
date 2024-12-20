@@ -265,7 +265,13 @@ if push == True:
     past_results = copy.deepcopy(horse_results)
     syusso_hyo = copy.deepcopy(df_s)
     npr = past_results
-    
+
+    for horse in syusso_list:
+        for t in range(4):
+            if npr[horse].loc[t, 'result'] == 1:
+                npr[horse].loc[t, 'difference'] = -npr[horse].loc[t,'difference']
+            else:
+                pass
     
     #テキトー指数を計算
     tekito_shisu_list = []
