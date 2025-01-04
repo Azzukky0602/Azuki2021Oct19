@@ -1107,7 +1107,7 @@ if push == True:
     hyo3.set_index("順位", inplace=True)
     
     st.write('【' + racenumber + '】' +  racename)
-    st.dataframe(hyo3)
+    st.table(hyo3)
     
 else:
     st.write('・・・・・・・・')
