@@ -23,7 +23,7 @@ st.subheader('新パラメータ版')
 
 st.write('   ')
 st.info('【南関東版】\https://azzukky-n24.streamlit.app/')
-st.info('【JRA版】\https://azzukky-j24.streamlit.app/')
+st.info('【JRA版】\https://azzukky-jra.streamlit.app/')
 
 st.write('   ')
 st.write('   ')
