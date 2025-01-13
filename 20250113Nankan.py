@@ -7,10 +7,6 @@
    "metadata": {},
    "outputs": [],
    "source": [
-    "#!/usr/bin/env python\n",
-    "# coding: utf-8\n",
-    "\n",
-    "# In[5]:\n",
     "import streamlit as st\n",
     "import requests   #3歳補正導入済み\n",
     "import re\n",
