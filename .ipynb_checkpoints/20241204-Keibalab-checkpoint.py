@@ -118,7 +118,7 @@ st.subheader('めでたく復活version')
 
 st.write('   ')
 st.info('【南関東版】\https://azzukky-nankan.streamlit.app/')
-st.info('【園田・交流重賞版】\https://azzukky-Jpn.streamlit.app/')
+st.info('【園田・交流重賞版】\https://azzukky-jpn.streamlit.app/')
 
 st.write('   ')
 st.write('   ')
