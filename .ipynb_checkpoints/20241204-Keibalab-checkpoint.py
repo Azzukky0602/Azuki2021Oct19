@@ -117,8 +117,9 @@ st.header('JRA版')
 st.subheader('めでたく復活version')
 
 st.write('   ')
-#st.info('【南関東版】\https://azzukky-n24.streamlit.app/')
-#st.info('【地方交流版】\https://azzukky-k24.streamlit.app/')
+st.info('【南関東版】\https://azzukky-nankan.streamlit.app/')
+st.info('【園田・交流重賞版】\https://azzukky-Jpn.streamlit.app/')
+
 st.write('   ')
 st.write('   ')
 st.write('クラスが上がるほど、良く当たる傾向があります。')
