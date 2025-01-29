@@ -1014,7 +1014,7 @@ if push == True:
 
 
     st.write(race_name[:-21])
-    st.table(hyo4)
+    st.dataframe(hyo4)
 
 else:
     st.write('・・・・・・・・')
