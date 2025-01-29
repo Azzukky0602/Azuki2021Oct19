@@ -1002,10 +1002,10 @@ if push == True:
     
     deviation = []
     for i in final_shisu:
-      deviation_value = round(float((i - ave) / std * 10 + 50), 1)
-      deviation.append(deviation_value)
+      deviation_value = float((i - ave) / std * 10 + 50)
+      deviation.append(round(deviation_value, 1))
     
-    hyo2['deviation'] = format(deviation, ".1f")
+    hyo2['deviation'] = deviation
     
     
     hyo2['rank'] = hyo2['TS'].rank(ascending=False).astype(int)    
