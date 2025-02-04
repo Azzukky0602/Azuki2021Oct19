@@ -1234,7 +1234,6 @@ if push == True:
     hyo3 = hyo2[['rank','umaban','name','TS','deviation','jockey','stable', 'gender', 'age', 'starion','owner']]
     hyo4 = hyo3.sort_values('rank')
 
-    pd.options.display.float_format = '{:.1f}'.format
     st.write(race_name[:-21])
     st.table(hyo4)
 
