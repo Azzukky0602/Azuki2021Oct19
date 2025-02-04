@@ -50,7 +50,7 @@ age3_JpnIII = ['マリーンC(JpnIII)', '北海道スプリントカッ(JpnIII)'
 
 st.title('テキトー指数研究所＠WEB')
 st.header('JRA版')
-st.subheader('新パラメータ版')
+st.subheader('2024リーディング反映版')
 
 st.write('   ')
 st.info('【南関東版】\https://azzukky-nankan.streamlit.app/')
