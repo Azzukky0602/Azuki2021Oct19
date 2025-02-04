@@ -1216,7 +1216,80 @@ if push == True:
     hyo2.loc[hyo2['starion'] == 'リョーケ', 'TS'] = round(hyo2['TS'] * 1.05)
     hyo2.loc[hyo2['starion'] == '前谷武志', 'TS'] = round(hyo2['TS'] * 1.05)
     
-        
+    #調教師補正：三着内率＝X%、 25≦X＜30は1.05,30≦X＜35は1.10, 35≦X＜40は1.15, 40≦X＜45は1.20
+    #2024リーディング
+    
+    #三着内率40%以上
+    hyo2.loc[hyo2['stable'] == '美浦田中博', 'TS'] = round(hyo2['TS'] * 1.20)
+    hyo2.loc[hyo2['stable'] == '栗東上村', 'TS'] = round(hyo2['TS'] * 1.20)
+    hyo2.loc[hyo2['stable'] == '栗東中内田', 'TS'] = round(hyo2['TS'] * 1.20)
+    hyo2.loc[hyo2['stable'] == '美浦堀', 'TS'] = round(hyo2['TS'] * 1.20)
+    hyo2.loc[hyo2['stable'] == '栗東友道', 'TS'] = round(hyo2['TS'] * 1.20)
+    
+    #三着内率35%以上
+    hyo2.loc[hyo2['stable'] == '美浦木村', 'TS'] = round(hyo2['TS'] * 1.15)
+    hyo2.loc[hyo2['stable'] == '栗東杉山晴', 'TS'] = round(hyo2['TS'] * 1.15)
+    hyo2.loc[hyo2['stable'] == '栗東須貝', 'TS'] = round(hyo2['TS'] * 1.15)
+    hyo2.loc[hyo2['stable'] == '栗東福永', 'TS'] = round(hyo2['TS'] * 1.15)
+    hyo2.loc[hyo2['stable'] == '美浦鹿戸', 'TS'] = round(hyo2['TS'] * 1.15)
+    
+    #三着内率30%以上
+    hyo2.loc[hyo2['stable'] == '美浦菊沢', 'TS'] = round(hyo2['TS'] * 1.10)
+    hyo2.loc[hyo2['stable'] == '栗東藤原', 'TS'] = round(hyo2['TS'] * 1.10)
+    hyo2.loc[hyo2['stable'] == '栗東吉岡', 'TS'] = round(hyo2['TS'] * 1.10)
+    hyo2.loc[hyo2['stable'] == '栗東斉藤崇', 'TS'] = round(hyo2['TS'] * 1.10)
+    hyo2.loc[hyo2['stable'] == '美浦宮田', 'TS'] = round(hyo2['TS'] * 1.10)
+    hyo2.loc[hyo2['stable'] == '栗東松永幹', 'TS'] = round(hyo2['TS'] * 1.10)
+    hyo2.loc[hyo2['stable'] == '栗東池添', 'TS'] = round(hyo2['TS'] * 1.10)
+    hyo2.loc[hyo2['stable'] == '美浦森一', 'TS'] = round(hyo2['TS'] * 1.10)
+    hyo2.loc[hyo2['stable'] == '美浦加藤征', 'TS'] = round(hyo2['TS'] * 1.10)
+    hyo2.loc[hyo2['stable'] == '栗東牧浦', 'TS'] = round(hyo2['TS'] * 1.10)
+    hyo2.loc[hyo2['stable'] == '美浦手塚', 'TS'] = round(hyo2['TS'] * 1.10)
+    hyo2.loc[hyo2['stable'] == '栗東高野', 'TS'] = round(hyo2['TS'] * 1.10)
+    hyo2.loc[hyo2['stable'] == '美浦上原佑', 'TS'] = round(hyo2['TS'] * 1.10)
+    hyo2.loc[hyo2['stable'] == '栗東武幸', 'TS'] = round(hyo2['TS'] * 1.10)
+    hyo2.loc[hyo2['stable'] == '美浦萩原', 'TS'] = round(hyo2['TS'] * 1.10)
+    hyo2.loc[hyo2['stable'] == '美浦中舘', 'TS'] = round(hyo2['TS'] * 1.10)
+    hyo2.loc[hyo2['stable'] == '栗東田中克', 'TS'] = round(hyo2['TS'] * 1.10)
+    hyo2.loc[hyo2['stable'] == '栗東矢作', 'TS'] = round(hyo2['TS'] * 1.10)
+    hyo2.loc[hyo2['stable'] == '栗東四位', 'TS'] = round(hyo2['TS'] * 1.10)
+    hyo2.loc[hyo2['stable'] == '美浦高木', 'TS'] = round(hyo2['TS'] * 1.10)
+    hyo2.loc[hyo2['stable'] == '栗東奥村豊', 'TS'] = round(hyo2['TS'] * 1.10)
+    
+    #三着内率25%以上
+    hyo2.loc[hyo2['stable'] == '栗東大久保', 'TS'] = round(hyo2['TS'] * 1.05)
+    hyo2.loc[hyo2['stable'] == '栗東安田', 'TS'] = round(hyo2['TS'] * 1.05)
+    hyo2.loc[hyo2['stable'] == '美浦蛯名正', 'TS'] = round(hyo2['TS'] * 1.05)
+    hyo2.loc[hyo2['stable'] == '栗東武英', 'TS'] = round(hyo2['TS'] * 1.05)
+    hyo2.loc[hyo2['stable'] == '栗東小林', 'TS'] = round(hyo2['TS'] * 1.05)
+    hyo2.loc[hyo2['stable'] == '栗東西園正', 'TS'] = round(hyo2['TS'] * 1.05)
+    hyo2.loc[hyo2['stable'] == '栗東宮本', 'TS'] = round(hyo2['TS'] * 1.05)
+    hyo2.loc[hyo2['stable'] == '栗東辻野', 'TS'] = round(hyo2['TS'] * 1.05)
+    hyo2.loc[hyo2['stable'] == '栗東高柳', 'TS'] = round(hyo2['TS'] * 1.05)
+    hyo2.loc[hyo2['stable'] == '栗東長谷川', 'TS'] = round(hyo2['TS'] * 1.05)
+    hyo2.loc[hyo2['stable'] == '栗東新谷', 'TS'] = round(hyo2['TS'] * 1.05)
+    hyo2.loc[hyo2['stable'] == '美浦稲垣', 'TS'] = round(hyo2['TS'] * 1.05)
+    hyo2.loc[hyo2['stable'] == '美浦国枝', 'TS'] = round(hyo2['TS'] * 1.05)
+    hyo2.loc[hyo2['stable'] == '栗東中竹', 'TS'] = round(hyo2['TS'] * 1.05)
+    hyo2.loc[hyo2['stable'] == '美浦戸田', 'TS'] = round(hyo2['TS'] * 1.05)
+    hyo2.loc[hyo2['stable'] == '栗東藤岡', 'TS'] = round(hyo2['TS'] * 1.05)
+    hyo2.loc[hyo2['stable'] == '栗東浜田', 'TS'] = round(hyo2['TS'] * 1.05)
+    hyo2.loc[hyo2['stable'] == '栗東吉村', 'TS'] = round(hyo2['TS'] * 1.05)
+    hyo2.loc[hyo2['stable'] == '美浦栗田', 'TS'] = round(hyo2['TS'] * 1.05)
+    hyo2.loc[hyo2['stable'] == '美浦和田正', 'TS'] = round(hyo2['TS'] * 1.05)
+    hyo2.loc[hyo2['stable'] == '美浦伊藤圭', 'TS'] = round(hyo2['TS'] * 1.05)
+    hyo2.loc[hyo2['stable'] == '美浦竹内', 'TS'] = round(hyo2['TS'] * 1.05)
+    hyo2.loc[hyo2['stable'] == '栗東橋口', 'TS'] = round(hyo2['TS'] * 1.05)
+    hyo2.loc[hyo2['stable'] == '栗東杉山', 'TS'] = round(hyo2['TS'] * 1.05)
+    hyo2.loc[hyo2['stable'] == '栗東角田', 'TS'] = round(hyo2['TS'] * 1.05)
+    hyo2.loc[hyo2['stable'] == '栗東岡田', 'TS'] = round(hyo2['TS'] * 1.05)
+    hyo2.loc[hyo2['stable'] == '美浦牧', 'TS'] = round(hyo2['TS'] * 1.05)
+    hyo2.loc[hyo2['stable'] == '栗東池江', 'TS'] = round(hyo2['TS'] * 1.05)
+    hyo2.loc[hyo2['stable'] == '栗東西村', 'TS'] = round(hyo2['TS'] * 1.05)
+    hyo2.loc[hyo2['stable'] == '美浦武井', 'TS'] = round(hyo2['TS'] * 1.05)
+    hyo2.loc[hyo2['stable'] == '栗東音無', 'TS'] = round(hyo2['TS'] * 1.05)        
+
+    
     hyo2['TS']= hyo2['TS'].astype(int)
     final_shisu = hyo2['TS'].to_list()
     
