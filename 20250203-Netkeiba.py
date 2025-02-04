@@ -1228,7 +1228,7 @@ if push == True:
       deviation_value = round((float(i - ave) / std * 10 + 50), 1)
       deviation.append(deviation_value)
     
-    hyo2['deviation'] = "{:.1f}".format(deviation)
+    hyo2['deviation'] = deviation
     
     hyo2['rank'] = hyo2['TS'].rank(ascending=False).astype(int)    
     hyo3 = hyo2[['rank','umaban','name','TS','deviation','jockey','stable', 'gender', 'age', 'starion','owner']]
