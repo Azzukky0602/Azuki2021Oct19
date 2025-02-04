@@ -1225,7 +1225,7 @@ if push == True:
     
     deviation = []
     for i in final_shisu:
-      deviation_value = ((float(i - ave) / std * 10 + 50), 1)
+      deviation_value = round((float(i - ave) / std * 10 + 50), 1)
       deviation.append(deviation_value)
     
     hyo2['deviation'] = deviation
