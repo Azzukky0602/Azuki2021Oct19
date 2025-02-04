@@ -1228,7 +1228,7 @@ if push == True:
       deviation_value = (float(i - ave) / std * 10 + 50)
       deviation.append(deviation_value)
     
-    hyo2['deviation'] = deviation.round(1)
+    hyo2['deviation'] = deviation.format({'A': '{:.1f}'})
     
     
     hyo2['rank'] = hyo2['TS'].rank(ascending=False).astype(int)    
