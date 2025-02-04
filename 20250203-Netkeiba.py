@@ -1229,7 +1229,8 @@ if push == True:
       deviation.append(deviation_value)
     
     hyo2['deviation'] = deviation
-    
+    hyo2['deviation'] = hyo2['deviation'].map(lambda x: f"{x:.1f}")
+
     hyo2['rank'] = hyo2['TS'].rank(ascending=False).astype(int)    
     hyo3 = hyo2[['rank','umaban','name','TS','deviation','jockey','stable', 'gender', 'age', 'starion','owner']]
     hyo4 = hyo3.sort_values('rank')
