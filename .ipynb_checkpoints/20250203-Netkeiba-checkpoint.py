@@ -1308,7 +1308,7 @@ if push == True:
     hyo4 = hyo3.sort_values('rank')
 
     st.write(race_name[:-21])
-    st.table(hyo4)
+    st.dataframe(hyo4)
 
 else:
     st.write('・・・・・・・・')
