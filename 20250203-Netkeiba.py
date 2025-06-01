@@ -22,7 +22,7 @@ import numpy as np
 
 # タイムゾーンを指定して、日時を作成.
 utc_time = dt.now(timezone('Asia/Tokyo'))
-kotoshi = utc_time.year
+kotoshi = int(utc_time.year)
 
 age3_GI = ['皐月賞(GI)', '東京優駿(GI)', '菊花賞(GI)', '桜花賞(GI)', '優駿牝馬(GI)',
            '秋華賞(GI)', 'NHKマイルC(GI)']
