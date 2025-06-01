@@ -218,7 +218,7 @@ if push == True:
         
             #3歳、3戦のみ
             elif len(npr[horse]) == 3:
-                if int(horse[18:]) == 3 and race_date <= dt(kotoshi, 5, 31):
+                if int(horse[18:]) == 3 and race_date <= dt(kotoshi, 6, 10):
         
                     base_number = []
                     for t in range(3):
@@ -270,7 +270,7 @@ if push == True:
                     kijun1, kijun2, kijun3 = base_number[0], base_number[1], base_number[2]
         
         
-                elif int(horse[18:]) == 3 and race_date >= dt(kotoshi, 6, 1):
+                elif int(horse[18:]) == 3 and race_date >= dt(kotoshi, 6, 11):
         
                     base_number = []
                     for t in range(3):
@@ -514,7 +514,7 @@ if push == True:
                 
             #3歳　春　補正　4戦以上
             else:
-                if int(horse[18:]) == 3 and race_date <= dt(kotoshi, 5, 31):
+                if int(horse[18:]) == 3 and race_date <= dt(kotoshi, 6, 10):
         
                     base_number = []
                     for t in range(4):
@@ -566,7 +566,7 @@ if push == True:
                     kijun1, kijun2, kijun3, kijun4 = base_number[0], base_number[1], base_number[2], base_number[3]    
         
             #3歳　秋　補正　4戦以上
-                elif int(horse[18:]) == 3 and race_date >= dt(kotoshi, 6, 1):
+                elif int(horse[18:]) == 3 and race_date >= dt(kotoshi, 6, 11):
         
                     base_number = []
                     for t in range(4):
