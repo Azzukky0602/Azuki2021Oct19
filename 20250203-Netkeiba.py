@@ -22,7 +22,7 @@ import numpy as np
 
 # タイムゾーンを指定して、日時を作成.
 utc_time = dt.now(timezone('Asia/Tokyo'))
-kotoshi = int(utc_time.year)
+kotoshi = utc_time.year
 
 age3_GI = ['皐月賞(GI)', '東京優駿(GI)', '菊花賞(GI)', '桜花賞(GI)', '優駿牝馬(GI)',
            '秋華賞(GI)', 'NHKマイルC(GI)']
@@ -218,7 +218,7 @@ if push == True:
         
             #3歳、3戦のみ
             elif len(npr[horse]) == 3:
-                if int(horse[18:]) == 3 and race_date <= dt(kotoshi, 6, 10):
+                if int(horse[18:]) == 3 and race_date <= dt(2025, 6, 10):
         
                     base_number = []
                     for t in range(3):
@@ -270,7 +270,7 @@ if push == True:
                     kijun1, kijun2, kijun3 = base_number[0], base_number[1], base_number[2]
         
         
-                elif int(horse[18:]) == 3 and race_date >= dt(kotoshi, 6, 11):
+                elif int(horse[18:]) == 3 and race_date >= dt(2025, 6, 11):
         
                     base_number = []
                     for t in range(3):
@@ -514,7 +514,7 @@ if push == True:
                 
             #3歳　春　補正　4戦以上
             else:
-                if int(horse[18:]) == 3 and race_date <= dt(kotoshi, 6, 10):
+                if int(horse[18:]) == 3 and race_date <= dt(2025, 6, 10):
         
                     base_number = []
                     for t in range(4):
@@ -566,7 +566,7 @@ if push == True:
                     kijun1, kijun2, kijun3, kijun4 = base_number[0], base_number[1], base_number[2], base_number[3]    
         
             #3歳　秋　補正　4戦以上
-                elif int(horse[18:]) == 3 and race_date >= dt(kotoshi, 6, 11):
+                elif int(horse[18:]) == 3 and race_date >= dt(2025, 6, 11):
         
                     base_number = []
                     for t in range(4):
